@@ -4,7 +4,7 @@
     <ul class="albums">
         {% for album in albums %}
             <li class="media album">
-                <img class="album-artwork" src="http://upload.wikimedia.org/wikipedia/en/b/b9/Nothing_Was_the_Same_cover_2.png"/>
+                <img class="album-artwork" src="{{ MEDIA_URL }}/{{ album.artwork }}"/>
 
                 <div class="media-body">
                     <h2 class="album-title">{{ album.title }}</h2>
