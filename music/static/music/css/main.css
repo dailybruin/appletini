@@ -1,4 +1,81 @@
-body {
-    color: red;
+*, *:before, *:after {
+       -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
 }
 
+html, body {
+    height: 100%;
+}
+    html {
+        background: #222;
+        font-size: 62.5%; /* Now, 1rem = 10px */
+        overflow-y: scroll; /* Force scroll bar */
+    }
+    body {
+        background: #444;
+        background:      -o-linear-gradient(top, #444 0%, #222 100%);
+        background:     -ms-linear-gradient(top, #444 0%, #222 100%);
+        background:    -moz-linear-gradient(top, #444 0%, #222 100%);
+        background: -webkit-linear-gradient(top, #444 0%, #222 100%);
+        background:         linear-gradient(to bottom, #444 0%, #222 100%);
+        background-repeat: no-repeat;
+        color: #222;
+        font-family: Helvetica, Arial, sans-serif;
+    }
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 100;
+}
+
+.container {
+    margin: auto;
+    padding-top: 60px;
+    width: 960px;
+}
+
+/*
+ Media object:
+ http://www.stubbornella.org/content/2010/06/25/the-media-object-saves-hundreds-of-lines-of-code/
+ */
+.media, .media-body {
+    overflow: hidden;
+    _overflow: visible;
+    zoom: 1;
+}
+    .media img {
+        display: block;
+        float: left;
+        margin-right: 30px;
+    }
+
+.albums {
+    margin: auto;
+    padding: 0;
+    width: 750px;
+}
+
+.album {
+    background: #222;
+    color: #fff;
+    list-style: none;
+    margin-bottom: 30px;
+}
+    .album:last-child {
+        margin-bottom: 0;
+    }
+    .album img {
+        width: 250px;
+        height: 250px;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        margin-left: 15px;
+    }
+    .album-title {
+        font-size: 32px;
+        font-size: 3.2rem;
+    }
+    .album-artist {
+        font-size: 26px;
+        font-size: 2.6rem;
+    }
