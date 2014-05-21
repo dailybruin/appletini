@@ -9,6 +9,17 @@
                 <div class="media-body">
                     <h2 class="album-title">{{ album.title }}</h2>
                     <h3 class="album-artist">{{ album.artist }}</h3>
+
+                    <div class="album-rating">
+                        {% for i in album.rating_range %}
+                            <i class="icon-star"></i>
+                        {% endfor %}
+                        {% for i in album.rating_range_alt %}
+                            <i class="icon-star-empty"></i>
+                        {% endfor %}
+                    </div>
+
+
                 </div>
             </li>
         {% endfor %}
