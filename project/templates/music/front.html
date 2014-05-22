@@ -8,7 +8,7 @@
 
                 <div class="media-body">
                     <h2 class="album-title">{{ album.title }}</h2>
-                    <h3 class="album-artist">{{ album.artist }}</h3>
+                    <h3 class="album-artist"><span class="minor">by</span> {{ album.artist }}</h3>
 
                     <div class="album-rating">
                         {% for i in album.rating_range %}
@@ -19,7 +19,7 @@
                         {% endfor %}
                     </div>
 
-
+                    <h4 class="album-author"><span class="minor">reviewed by</span> {{ album.author }}</h4>
                 </div>
             </li>
         {% endfor %}
