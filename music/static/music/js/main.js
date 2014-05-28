@@ -12,3 +12,17 @@ $('.albums').imagesLoaded(function() {
         recolorBackground($a);
     });
 });
+
+$('.media.album').click(function() {
+
+//AJAX request for spotify and wordpress URL's
+var spotifyURL;
+var wordpressURL;
+
+//AJAX request for review text
+
+var reviewText;
+
+//Frontend visual changes to display review text and spotify playlist
+
+});
