@@ -1,7 +1,7 @@
-var colorThief = new ColorThief();
+var color_thief = new ColorThief();
 
 var recolorBackground = function($album_cover) {
-    var rgb = colorThief.getColor($album_cover),
+    var rgb = color_thief.getColor($album_cover),
         color_string = 'rgb(' + rgb[0] + ',' + rgb[1] + ',' + rgb[2] + ')';
 
     $($album_cover).parents('.album').css('background-color', color_string);
@@ -39,3 +39,4 @@ $('.album').click(function() {
 function toggleAlbumReview($album) {
     $album.children('.album-review').toggle();
 }
+
