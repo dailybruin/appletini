@@ -3,23 +3,29 @@
 {% block content %}
     <ul class="albums">
         {% for album in albums %}
-            <li class="media album">
-                <img class="album-artwork" src="{{ MEDIA_URL }}/{{ album.artwork }}"/>
+            <li class="album" data-review-url="{{ album.review_url }}" data-review-loaded="false">
+                <div class="album-header media">
+                    <img class="album-artwork" src="{{ MEDIA_URL }}/{{ album.artwork }}"/>
 
-                <div class="media-body">
-                    <h2 class="album-title">{{ album.title }}</h2>
-                    <h3 class="album-artist"><span class="minor">by</span> {{ album.artist }}</h3>
+                    <div class="media-body">
+                        <h2 class="album-title">{{ album.title }}</h2>
+                        <h3 class="album-artist"><span class="minor">by</span> {{ album.artist }}</h3>
 
-                    <div class="album-rating">
-                        {% for i in album.rating_range %}
-                            <i class="icon-star"></i>
-                        {% endfor %}
-                        {% for i in album.rating_range_alt %}
-                            <i class="icon-star-empty"></i>
-                        {% endfor %}
+                        <div class="album-rating">
+                            {% for i in album.rating_range %}
+                                <i class="icon-star"></i>
+                            {% endfor %}
+                            {% for i in album.rating_range_alt %}
+                                <i class="icon-star-empty"></i>
+                            {% endfor %}
+                        </div>
+
+                        <h4 class="album-author"><span class="minor">reviewed by</span> {{ album.author }}</h4>
                     </div>
+                </div>
 
-                    <h4 class="album-author"><span class="minor">reviewed by</span> {{ album.author }}</h4>
+                <div class="album-review">
+                    Lorem Ipsum
                 </div>
             </li>
         {% endfor %}
