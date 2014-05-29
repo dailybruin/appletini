@@ -20,12 +20,10 @@ $('.album').click(function() {
 
     if ($review_loaded === 'false') {
         $.ajax({
-            type: 'POST',
-            url: $this.attr('data-review-url') + '?json=1',
-            success: function(data) {
-                // TODO: place data into .review-album child
-                console.log(data);
-
+            url: 'reviews?url=' + $this.attr('data-review-url'),
+            success: function(response) {
+                $this.attr('data-review-loaded', 'true')
+                $this.children('.album-review').html(response.content)
                 toggleAlbumReview($this);
             }
         });
@@ -39,4 +37,3 @@ $('.album').click(function() {
 function toggleAlbumReview($album) {
     $album.children('.album-review').toggle();
 }
-
