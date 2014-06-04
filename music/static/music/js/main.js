@@ -23,7 +23,7 @@ $('.album').click(function() {
             url: 'reviews?url=' + $this.attr('data-review-url'),
             success: function(response) {
                 $this.attr('data-review-loaded', 'true')
-                $this.children('.album-review').html(response.content)
+                $this.children('.album-review').append(response.content)
                 toggleAlbumReview($this);
             }
         });
