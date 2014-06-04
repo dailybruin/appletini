@@ -15,6 +15,11 @@
                             {% for i in album.rating_range %}
                                 <i class="icon-star"></i>
                             {% endfor %}
+
+                            {% if album.need_half_star %}
+                                <i class="icon-star-half-alt"></i>
+                            {% endif %}
+
                             {% for i in album.rating_range_alt %}
                                 <i class="icon-star-empty"></i>
                             {% endfor %}

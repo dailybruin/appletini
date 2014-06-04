@@ -2,6 +2,8 @@ import json
 import urllib
 import urllib2
 
+from math import ceil, floor
+
 from django.http import HttpResponse
 
 from django.shortcuts import render
@@ -27,8 +29,12 @@ class MainView(TemplateView):
             elif rating > max_rating:
                 rating = max_rating
 
-            album.rating_range = xrange(rating)
-            album.rating_range_alt = xrange(max_rating - rating)
+            album.rating_range = xrange(int(floor(rating)))
+            album.rating_range_alt = xrange(max_rating - int(ceil(rating)))
+
+            album.need_half_star = True
+            if (abs(rating - floor(rating)) < 0.1): # 0.1 acts as "epsilon"
+                album.need_half_star = False
 
         return context
 
