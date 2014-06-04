@@ -99,3 +99,7 @@ h1, h2, h3, h4, h5, h6 {
     .album-review {
         display: none;
     }
+        .album-review p {
+            font-size: 18px;
+            font-size: 1.8rem;
+        }
