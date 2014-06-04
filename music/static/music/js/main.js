@@ -35,5 +35,10 @@ $('.album').click(function() {
 });
 
 function toggleAlbumReview($album) {
+    // Hide all other open reviews:
+    if ($album.is(':visible')) {
+        $('.album-review').hide();
+    }
+
     $album.children('.album-review').toggle();
 }
