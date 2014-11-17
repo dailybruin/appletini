@@ -4,6 +4,6 @@ import markdown2
 
 register = template.Library()
 
-@register.filter(is_safe=True)
+@register.filter()
 def markdown(value):
-    return mark_safe(markdown2.markdown(value, safe_mode='escape'))
+    return mark_safe(markdown2.markdown(value))
