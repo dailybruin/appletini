@@ -23,7 +23,7 @@
             {% endif %}
         {% endfor %}    
         </span>
-        {{ article.body|markdown|image|youtube }}
+        {{ article.body|markdown|image|youtube|safe }}
         <a class="refer-back" href="{% url 'prime_issue' article.issue.slug %}">&larr; back to the articles</a>
     </div>
 {% endblock %}
