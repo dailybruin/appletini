@@ -5,8 +5,8 @@
 {% block content %}
     <script>
         $(document).ready(function(){
-            $.miniShare( { 
-                message: "Share this", 
+            $.miniShare( {
+                message: "Share this",
                 done_message: "Thanks!",
                 twitter_message: "{{ article.title }}, from @dailybruinprime's {{ article.issue.name }} issue"
             });
@@ -14,16 +14,16 @@
     </script>
     <div class="article">
         <h1 class="headline">{{ article.title }}</h1>
-        <span class="author">by 
+        <span class="author">by
         {% for author in article.author.all %}
             {% if forloop.last %}
                 {{ author }}
             {% else %}
                 {{ author }} and
             {% endif %}
-        {% endfor %}    
+        {% endfor %}
         </span>
-        {{ article.body|markdown|image|youtube|safe }}
+        {{ article.body|safe|markdown|image|youtube }}
         <a class="refer-back" href="{% url 'prime_issue' article.issue.slug %}">&larr; back to the articles</a>
     </div>
 {% endblock %}
