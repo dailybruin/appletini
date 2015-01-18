@@ -1,4 +1,4 @@
-from prime.models import Issue, Article, PDF
+from prime.models import Issue, Article, PDF, Recipe
 from django.views.generic import View
 from django.views.generic.detail import DetailView
 from django.shortcuts import render_to_response, get_object_or_404, redirect
@@ -54,6 +54,33 @@ class ArticleView(View):
                    'STATIC_URL': settings.STATIC_URL}
         return render_to_response('prime/article.html', context)
 
+class RecipeFrontView(View):
+    def get(self, context):
+        recipes = Recipe.objects.all()[:5]
+        context = { 'recipes': recipes,
+                    'MEDIA_URL': settings.MEDIA_URL,
+                    'STATIC_URL': settings.STATIC_URL
+                    }
+        return render_to_response('prime/recipefront.html', context)
+
+
+class RecipeView(View):
+
+    def get(self, context, recipe_slug):
+        try:
+            recipe = Recipe.objects.get(slug=recipe_slug)
+        except Recipe.DoesNotExist:
+            raise Http404
+        if recipe.redirect:
+            return redirect(recipe.redirect)
+        recipes = Recipes.objects.filter
+        context = {
+                    'recipe': recipe,
+                    'pdf': pdf,
+                    'MEDIA_URL': settings.MEDIA_URL, 
+                    'STATIC_URL': settings.STATIC_URL
+                    }
+        return render_to_response('prime/recipe.html')
 
 # special handlers
 
