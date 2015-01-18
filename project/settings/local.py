@@ -5,6 +5,7 @@ DEBUG = True
 STATIC_ROOT = BASE_DIR + "/static"
 
 # SECURITY WARNING: keep the secret key used in production secret!
+
 SECRET_KEY = os.environ['SECRET_KEY']
 
 
