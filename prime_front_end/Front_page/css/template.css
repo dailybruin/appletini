@@ -1,0 +1,6 @@
+#template-background-photo
+{
+	width: 100%;
+	position: fixed;
+	z-index: -1;
+}
