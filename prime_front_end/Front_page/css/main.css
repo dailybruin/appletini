@@ -125,3 +125,41 @@
 		background-color: transparent !important;
 	}
 }
+
+.row
+{
+	width: 100%;
+	padding-left: 0.5%;
+}
+
+.header
+{
+	font-weight: bold;
+	/*font-size: 28px; *//*idk actual size */
+	font-size: 3.0vh;
+	margin-bottom: 0%;
+}
+
+.description
+{
+	font-size: 2.25vh;
+	font-weight: lighter;
+	/*color: grey;*/
+	color: #778899;
+	margin-top: 0%;
+
+}
+
+.container2
+{
+	width: 100%;
+}
+
+hr
+{
+	width: 90%;
+	background-color: black;
+	height: 2px;
+}
+
+
