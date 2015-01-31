@@ -4,7 +4,11 @@
 	<div>
 		<ul>
 			{% for article in articles %}
-				<li>{{article.title}}</li>
+				<li>
+					{{article.title}}
+					<p>{{article.body}}</p>
+				</li>
+
 			{% endfor %}
 		</ul>
 	</div>
