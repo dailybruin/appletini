@@ -1,0 +1,11 @@
+{% extends 'prime/landingbase.html' %}
+
+{% block content %}
+	<div>
+		<ul>
+			{% for article in articles %}
+				<li>{{article.title}}</li>
+			{% endfor %}
+		</ul>
+	</div>
+{% endblock %}
