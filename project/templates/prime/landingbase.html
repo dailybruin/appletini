@@ -112,6 +112,8 @@
 <div class = "container2">
 
 <div class = "row">
+
+	{% for article in articles %}
 	<div class = "col-xs-6 left">
 		<img width="100%" height="300" src = "{{ STATIC_URL }}prime/img/Front/brentwood.png" class="img-responsive">
 		<div class = "header">
@@ -121,15 +123,9 @@
 		<br>
 
 		<div class = "description">
-		<ul>
-			{% for article in articles %}
-				<li>
-					{{article.title}}
-					<p>{{article.body}}</p>
-				</li>
+			{{article.title}}
+			<p>{{article.body|truncatechars:200}}</p>
 
-			{% endfor %}
-		</ul>
 
 		<font color="black"><strong>READ MORE >> </strong></font>
 		</div>
@@ -137,8 +133,10 @@
 		<hr>
 
 	</div>
+	{% endfor %}
 
-	<div class = "col-xs-6 left">
+
+<!-- 	<div class = "col-xs-6 left">
 		<img width="100%" height="300" src = "{{ STATIC_URL }}prime/img/Front/brentwood.png" class="img-responsive">
 
 		<div class = "header">
@@ -153,11 +151,11 @@
 
 		<hr>
 
-	</div>
+	</div> -->
 
 </div>
 
-<div class = "row">
+<!-- <div class = "row">
 	<div class = "col-xs-6 left">
 		<img width="100%" height="300" src = "{{ STATIC_URL }}prime/img/Front/brentwood.png" class="img-responsive">
 
@@ -227,16 +225,16 @@
 
 	</div>
 
-</div>
+</div> -->
 
 </div>
 
 
-
+<!-- 
 
 
 	POOOOOP
-    {% block content %}{% endblock %}
+    {% block content %}{% endblock %} -->
 
 
 </body>

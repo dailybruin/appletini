@@ -6,7 +6,7 @@
 			{% for article in articles %}
 				<li>
 					{{article.title}}
-					<p>{{article.body}}</p>
+					<p>{{article.body|truncatechars:9 }}</p>
 				</li>
 
 			{% endfor %}
