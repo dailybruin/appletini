@@ -125,6 +125,9 @@
 		<div class = "description">
 			{{article.title}}
 			<p>{{article.body|truncatechars:200}}</p>
+			<strong>{{article.lead_photo}}</strong>
+			<img src="{{ MEDIA_ROOT }}{{ article.lead_photo }}.jpg" />
+
 
 
 		<font color="black"><strong>READ MORE >> </strong></font>
