@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.db import models
 from django.forms import Textarea
-from prime.models import Issue, Article, Image, PDF, Recipe
+from prime.models import Issue, Article, Image, PDF, Recipe, DIYarticle
 
 class IssueAdmin(admin.ModelAdmin):
     list_display = ('name', 'release_date')
@@ -27,6 +27,11 @@ class RecipeAdmin(admin.ModelAdmin):
     #     },
     # }
 admin.site.register(Recipe, RecipeAdmin)
+
+class DIYAdmin(admin.ModelAdmin):
+    list_display = ('title', 'position')
+    prepopulated_fields = {"slug": ("title",)}
+admin.site.register(DIYarticle, DIYAdmin)
 
 class ImageAdmin(admin.ModelAdmin):
     list_display = ('id', 'image', 'caption', 'author', 'issue')
