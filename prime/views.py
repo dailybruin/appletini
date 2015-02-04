@@ -58,13 +58,13 @@ class ArticleView(View):
 
 class LandingView(View):
     def get(self, context):
-        articles = Article.objects.all()[:5]
+        articles = Article.objects.all()[:4]
         context = {
                     'articles': articles,
                     'MEDIA_URL': settings.MEDIA_URL,
                     'STATIC_URL': settings.STATIC_URL
                     } 
-        return render_to_response('prime/landingfront.html', context)
+        return render_to_response('prime/landingbase.html', context)
 
 
 class RecipeFrontView(View):
