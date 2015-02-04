@@ -1,0 +1,156 @@
+ul {
+	padding: 0;
+}
+
+ul li {
+	list-style: none;
+}
+
+header {
+	text-align: center;
+	height: 40vh;
+}
+
+header:after {
+	width: 100vw;
+	height: 40vh;
+	content: "";
+	background: url(./header.jpg);
+	background-size: cover;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: -1;
+	position: absolute;
+	opacity: 0.6
+}
+
+#mainnav li {
+	display: inline-block;
+	height: 10vh;
+	width: 13vw;
+	background-color: black;
+	color: white;
+	padding-top: 17px;
+	margin-left: 20px;
+	margin-right: 20px;
+	font-size: 1.2em;
+	font-family: "helvetica";
+	font-weight: lighter;
+}
+
+#mainnav li:hover {
+	cursor: pointer;
+}
+
+#title {
+	padding-top: 30px;
+	font-size: 6em;
+	font-weight: lighter;
+	opacity: 1;
+}
+
+#one {
+	font-family: "helvetica";
+	font-weight: lighter;
+	font-size: 1.3em;
+}
+
+#two {
+	font-family: serif;
+	text-transform: uppercase;
+}
+
+.hr {
+	width : 50vw;
+	background-color: black;
+	height : 3px;
+}
+
+#intropara {
+	margin: auto;
+	width: 70vw;
+	text-align: center;
+	font-size: 1.3em;
+	font-family: "Helvetica";
+	font-weight: lighter;
+}
+
+#sidebar {
+	width: 20vw;
+	margin: 0px;
+	float: left;
+}
+
+#sidebar li {
+	width: 150px;
+	background-color: black;
+	color: white;
+	height: 50px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	text-align: center;
+	padding-top: 15px;
+	font-family: "helvetica";
+	font-weight: lighter;
+	transition: 0.3s ease;
+}
+
+#sidebar li:hover {
+	width: 190px;
+	cursor: pointer;
+}
+
+#main {
+	width: 80vw;
+	margin: 0px;
+	float: right;
+}
+
+.diy {
+	height: 220px;
+}
+
+.diy img {
+	width: 27%;
+	float: left;
+	margin: 0px;
+}
+
+.diyintro {
+	width: 73%;
+	margin: 0px;
+	float: right;
+	padding-right: 10px;
+	padding: 0px 10px;
+}
+
+.diytitle {
+	text-transform: uppercase;
+	font-weight: bold;
+	font-size: 1.5em;
+}
+
+.diybody {
+	font-family: "helvetica";
+	font-weight: lighter;
+	font-size: 1.1em;
+}
+
+.diydivider {
+	height: 2px;
+	background-color: black;
+	width: 80%;
+}
+
+.readmore {
+	text-transform: uppercase;
+	font-family: "helvetica";
+	font-weight: bold;
+}
+
+.readmore:hover {
+	cursor: pointer;
+	text-decoration: underline;
+}

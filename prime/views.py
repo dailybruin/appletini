@@ -1,4 +1,4 @@
-from prime.models import Issue, Article, PDF, Recipe
+from prime.models import Issue, Article, PDF, Recipe, DIYarticle
 from django.views.generic import View
 from django.views.generic.detail import DetailView
 from django.shortcuts import render_to_response, get_object_or_404, redirect
@@ -27,7 +27,8 @@ class IssueView(View):
 
     def get(self, context, slug):
         issue, recent_issues = get_recent_issues(slug)
-        articles = Article.objects.filter(issue=issue).order_by('position')
+        #articles = Article.objects.filter(issue=issue).order_by('position')
+        articles = Article.objects.filter(issue=issue).order_by('position').all()[:5]
         pdf = PDF.objects.get(issue=issue)
         context = {'issue': issue, 'recent_issues': recent_issues,
                    'articles': articles, 'pdf': pdf, 
@@ -54,14 +55,37 @@ class ArticleView(View):
                    'STATIC_URL': settings.STATIC_URL}
         return render_to_response('prime/article.html', context)
 
+
+class LandingView(View):
+    def get(self, context):
+        articles = Article.objects.all()[:4]
+        context = {
+                    'articles': articles,
+                    'MEDIA_URL': settings.MEDIA_URL,
+                    'STATIC_URL': settings.STATIC_URL
+                    } 
+        return render_to_response('prime/landingbase.html', context)
+
+
 class RecipeFrontView(View):
     def get(self, context):
         recipes = Recipe.objects.all()[:5]
         context = { 'recipes': recipes,
-                    'MEDIA_URL': settings.MEDIA_URL,
-                    'STATIC_URL': settings.STATIC_URL
+                    'STATIC_URL': settings.STATIC_URL,
+                    'MEDIA_URL': settings.MEDIA_URL
                     }
-    return render_to_response('prime/recipefront.html', context)
+        return render_to_response('prime/recipefront.html', context)
+
+
+class DIYFrontView(View):
+    def get(self, context):
+        articles = DIYarticle.objects.all()[:5]
+        context = { 'articles': articles,
+                    'STATIC_URL': settings.STATIC_URL,
+                    'MEDIA_URL': settings.MEDIA_URL
+                    }
+        return render_to_response('prime/diyfront.html', context)
+
 
 
 class RecipeView(View):

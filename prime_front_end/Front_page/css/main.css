@@ -64,6 +64,8 @@
 	background-color: transparent;
 	margin-left: auto;
 	margin-right: auto;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+
 
 }
 
@@ -85,6 +87,7 @@
 	{
 		height: 0;
 		display: none;
+		font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 	}
 }
 
@@ -93,6 +96,8 @@
 	#tile_photo
 	{
 		width: 47%;
+		font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+
 	}
 
 	#tile_photo.col-sm-3

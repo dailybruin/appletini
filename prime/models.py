@@ -71,6 +71,22 @@ class Recipe(models.Model):
     def __unicode__(self):
         return self.title
 
+class DIYarticle(models.Model):
+    title = models.CharField(max_length=128)
+    slug = models.SlugField(max_length=128)
+    lead_photo = models.ImageField(upload_to="prime/diy/lead")
+    teaser = models.TextField(blank=True)
+    author = models.ManyToManyField('main.Author')
+    body = models.TextField(blank=True) #, widget=models.Field.Textarea(attrs={'rows': 40, 'cols': 120}))
+    redirect = models.URLField(blank=True)
+    position = models.PositiveIntegerField(default=0)
+
+    def getPrettyAuthors(self):
+        return ' and '.join([str(a) for a in self.author])
+
+    def __unicode__(self):
+        return self.title
+
 
 class Image(models.Model):
     get_upload_path = createUploadPath('article')
