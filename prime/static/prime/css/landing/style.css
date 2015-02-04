@@ -1,0 +1,170 @@
+.navbar-default .navbar-collapse, .navbar-default .navbar-form
+{
+	border-top: none !important;
+}
+
+.row
+{
+	margin-left: 0px !important;
+	margin-right: 0px !important;
+}
+
+.container>.navbar-header, .container-fluid>.navbar-header, .container>.navbar-collapse, .container-fluid>.navbar-collapse 
+{
+	margin-left: 0px;
+	margin-right: 0px;
+}
+
+.navbar-nav
+{
+	background-color: white !important;
+}
+
+.navbar
+{
+	border: none !important;
+}
+.navbar-default
+{
+	border: none !important;
+}
+
+#tile_li
+{
+	width: 20%;
+}
+
+.navbar-collapse
+{
+	padding-right: 0px !important;
+	padding-left: 0px !important;
+}
+
+.container-fluid
+{
+	padding-right: 0px !important;
+	padding-left: 0px !important;
+}
+
+#container
+{
+    padding-top: 2%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 95%;
+}
+
+#cover_photo
+{
+	width: 100%;
+}
+
+#below_cover_photo
+{
+	background-color: transparent;
+	margin-left: auto;
+	margin-right: auto;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+
+
+}
+
+#tile_photo
+{
+	margin-top: 2%;
+	width: 100%;
+}
+
+#tile
+{
+	text-align: center;
+	padding: 5%;
+	background-image: url("/Users/reganhsu/Documents/prime_front_page/img/tile_photo.jpg") !important;
+}
+
+@media only screen and (min-width: 767px) {
+	#tile_photo_transcription
+	{
+		height: 0;
+		display: none;
+		font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	}
+}
+
+
+@media only screen and (max-width: 767px) and (min-width: 501px) {
+	#tile_photo
+	{
+		width: 47%;
+		font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+
+	}
+
+	#tile_photo.col-sm-3
+	{
+		padding: 0px;
+	}
+}
+
+@media only screen and (max-width: 500px) {
+	#tile_photo
+	{
+		width: 100%;
+	}
+	
+}
+
+@media only screen and (max-width: 767px) {
+	#tile_photo
+	{
+		display: none;
+	}
+	
+	#tile_li
+	{
+		width: 100%;
+	}
+
+	#below_cover_photo
+	{
+		background-color: transparent !important;
+	}
+}
+
+.row
+{
+	width: 100%;
+	padding-left: 0.5%;
+}
+
+.header
+{
+	font-weight: bold;
+	/*font-size: 28px; *//*idk actual size */
+	font-size: 3.0vh;
+	margin-bottom: 0%;
+}
+
+.description
+{
+	font-size: 2.25vh;
+	font-weight: lighter;
+	/*color: grey;*/
+	color: #778899;
+	margin-top: 0%;
+
+}
+
+.container2
+{
+	width: 100%;
+}
+
+hr
+{
+	width: 90%;
+	background-color: black;
+	height: 2px;
+}
+
+

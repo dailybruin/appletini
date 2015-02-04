@@ -27,7 +27,8 @@ class IssueView(View):
 
     def get(self, context, slug):
         issue, recent_issues = get_recent_issues(slug)
-        articles = Article.objects.filter(issue=issue).order_by('position')
+        #articles = Article.objects.filter(issue=issue).order_by('position')
+        articles = Article.objects.filter(issue=issue).order_by('position').all()[:5]
         pdf = PDF.objects.get(issue=issue)
         context = {'issue': issue, 'recent_issues': recent_issues,
                    'articles': articles, 'pdf': pdf, 
@@ -53,6 +54,18 @@ class ArticleView(View):
                    'MEDIA_URL': settings.MEDIA_URL, 
                    'STATIC_URL': settings.STATIC_URL}
         return render_to_response('prime/article.html', context)
+
+
+class LandingView(View):
+    def get(self, context):
+        articles = Article.objects.all()[:4]
+        context = {
+                    'articles': articles,
+                    'MEDIA_URL': settings.MEDIA_URL,
+                    'STATIC_URL': settings.STATIC_URL
+                    } 
+        return render_to_response('prime/landingbase.html', context)
+
 
 class RecipeFrontView(View):
     def get(self, context):
