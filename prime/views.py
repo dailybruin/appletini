@@ -58,7 +58,7 @@ class ArticleView(View):
 
 class LandingView(View):
     def get(self, context):
-        articles = Article.objects.all()[:4]
+        articles = Article.objects.all()[:3]
         context = {
                     'articles': articles,
                     'MEDIA_URL': settings.MEDIA_URL,
