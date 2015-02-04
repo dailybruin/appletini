@@ -61,7 +61,7 @@ class RecipeFrontView(View):
                     'MEDIA_URL': settings.MEDIA_URL,
                     'STATIC_URL': settings.STATIC_URL
                     }
-        return render_to_response('prime/recipefront.html', context)
+    return render_to_response('prime/recipefront.html', context)
 
 
 class RecipeView(View):
