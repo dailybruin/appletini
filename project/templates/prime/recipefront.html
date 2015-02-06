@@ -1,19 +1,28 @@
 {% extends 'prime/recipebase.html' %}
 
 {% block content %}
+
+<div id="sidebar">
+	<ul id="sidenav">
+		{% for tag in tags %}
+			<li> {{ tag.name }} </li>
+		{% endfor %}
+	</ul>
+</div>
+
 <div id="main">
-		<ul id="recipelist">
-			{% for recipe in recipes %}
-				<li class="recipe">
-				<img src="{{ MEDIA_URL }}{{ recipe.lead_photo }}" />
-				<div class="recipeintro">
-					<p class="recipetitle">{{ recipe.title }}</p>
-					<p class="recipebody">
-						{{ recipe.teaser }} <span class="readmore">read more &#8688</span>
-					</p>
-				</div>
-			{% endfor %}
-			<hr class="recipedivider" />
-		</ul>
-	</div>
+	<ul id="recipelist">
+		{% for recipe in recipes %}
+			<li class="recipe">
+			<img src="{{ MEDIA_URL }}{{ recipe.lead_photo }}" />
+			<div class="recipeintro">
+				<p class="recipetitle">{{ recipe.title }}</p>
+				<p class="recipebody">
+					{{ recipe.teaser }} <span class="readmore">read more &#8688</span>
+				</p>
+			</div>
+		{% endfor %}
+		<hr class="recipedivider" />
+	</ul>
+</div>
 {% endblock %}

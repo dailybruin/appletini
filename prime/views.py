@@ -1,4 +1,5 @@
 from prime.models import Issue, Article, PDF, Recipe, DIYarticle
+from main.models import RecipeTag, DIYTag
 from django.views.generic import View
 from django.views.generic.detail import DetailView
 from django.shortcuts import render_to_response, get_object_or_404, redirect
@@ -70,7 +71,9 @@ class LandingView(View):
 class RecipeFrontView(View):
     def get(self, context):
         recipes = Recipe.objects.all()[:5]
+        tags = RecipeTag.objects.all()
         context = { 'recipes': recipes,
+                    'tags': tags,
                     'STATIC_URL': settings.STATIC_URL,
                     'MEDIA_URL': settings.MEDIA_URL
                     }
@@ -80,7 +83,9 @@ class RecipeFrontView(View):
 class DIYFrontView(View):
     def get(self, context):
         articles = DIYarticle.objects.all()[:5]
+        tags = DIYTag.objects.all()
         context = { 'articles': articles,
+                    'tags': tags,
                     'STATIC_URL': settings.STATIC_URL,
                     'MEDIA_URL': settings.MEDIA_URL
                     }
