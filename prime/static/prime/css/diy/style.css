@@ -95,6 +95,11 @@ header {
 
 .diy {
 	height: 220px;
+	margin-top: 20px;
+}
+
+.diy:first-child {
+	margin-top: 0px;
 }
 
 .diy img {
@@ -140,4 +145,14 @@ header {
 .readmore:hover {
 	cursor: pointer;
 	text-decoration: underline;
+}
+
+.pagination {
+	clear: both;
+	width: 100%;
+	text-align: center;
+}
+
+.step-links a {
+	color: black;
 }
