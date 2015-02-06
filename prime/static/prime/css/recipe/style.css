@@ -95,6 +95,11 @@ header {
 
 .recipe {
 	height: 220px;
+	margin-top: 20px;
+}
+
+.recipe:first-child {
+	margin-top: 0px;
 }
 
 .recipe .img_container {
@@ -152,4 +157,9 @@ header {
 	clear: both;
 	width: 100%;
 	text-align: center;
+	padding-bottom: 30px;
+}
+
+.step-links a {
+	color: black;
 }

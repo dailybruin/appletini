@@ -72,7 +72,7 @@ class LandingView(View):
 class RecipeFrontView(View):
     def get(self, context):
         recipe_list = Recipe.objects.all()
-        paginator = Paginator(recipe_list, 1)
+        paginator = Paginator(recipe_list, 5)
         page = self.request.GET.get('page')
         try:
             recipes = paginator.page(page)
@@ -91,7 +91,15 @@ class RecipeFrontView(View):
 
 class DIYFrontView(View):
     def get(self, context):
-        articles = DIYarticle.objects.all()[:5]
+        diy_list = DIYarticle.objects.all()
+        paginator = Paginator(diy_list, 5)
+        page = self.request.GET.get('page')
+        try:
+            articles = paginator.page(page)
+        except PageNotAnInteger:
+            articles = paginator.page(1)
+        except EmptyPage:
+            articles = paginator.page(paginator.num_pages)
         tags = DIYTag.objects.all()
         context = { 'articles': articles,
                     'tags': tags,
