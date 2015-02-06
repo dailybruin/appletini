@@ -78,6 +78,7 @@ class DIYarticle(models.Model):
     lead_photo = models.ImageField(upload_to="prime/diy/lead")
     teaser = models.TextField(blank=True)
     author = models.ManyToManyField('main.Author')
+    tag = models.ManyToManyField('main.DIYTag')
     body = models.TextField(blank=True) #, widget=models.Field.Textarea(attrs={'rows': 40, 'cols': 120}))
     redirect = models.URLField(blank=True)
     position = models.PositiveIntegerField(default=0)

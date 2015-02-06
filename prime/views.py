@@ -86,7 +86,7 @@ class RecipeFrontView(View):
                     'STATIC_URL': settings.STATIC_URL,
                     'MEDIA_URL': settings.MEDIA_URL
                     }
-        return render_to_response('prime/recipefront.html', context)
+        return render_to_response('prime/Recipe/recipefront.html', context)
 
 class RecipeTagsView(View):
     def get(self, context, tag_name):
@@ -106,7 +106,7 @@ class RecipeTagsView(View):
                     'STATIC_URL': settings.STATIC_URL,
                     'MEDIA_URL': settings.MEDIA_URL
                     }
-        return render_to_response('prime/recipetagfront.html', context)        
+        return render_to_response('prime/Recipe/recipetagfront.html', context)        
 
 
 class DIYFrontView(View):
@@ -126,9 +126,27 @@ class DIYFrontView(View):
                     'STATIC_URL': settings.STATIC_URL,
                     'MEDIA_URL': settings.MEDIA_URL
                     }
-        return render_to_response('prime/diyfront.html', context)
+        return render_to_response('prime/DIY/diyfront.html', context)
 
-
+class DIYTagsView(View):
+    def get(self, context, tag_name):
+        diy_list = DIYarticle.objects.filter(tag__name=tag_name)
+        paginator = Paginator(diy_list, 15)
+        page = self.request.GET.get('page')
+        try:
+            articles = paginator.page(page)
+        except PageNotAnInteger:
+            articles = paginator.page(1)
+        except EmptyPage:
+            articles = paginator.page(paginator.num_pages)
+        tags = DIYTag.objects.all()
+        context = { 'articles': articles,
+                    'tags': tags,
+                    'tag_name': tag_name,
+                    'STATIC_URL': settings.STATIC_URL,
+                    'MEDIA_URL': settings.MEDIA_URL
+                    }    
+        return render_to_response('prime/DIY/diytagfront.html', context)
 
 class RecipeView(View):
 
