@@ -88,6 +88,26 @@ class RecipeFrontView(View):
                     }
         return render_to_response('prime/recipefront.html', context)
 
+class RecipeTagsView(View):
+    def get(self, context, tag_name):
+        recipe_list = Recipe.objects.filter(tag__name=tag_name)
+        paginator = Paginator(recipe_list, 15)
+        page = self.request.GET.get('page')
+        try:
+            recipes = paginator.page(page)
+        except PageNotAnInteger:
+            recipes = paginator.page(1)
+        except EmptyPage:
+            recipes = paginator.page(paginator.num_pages)
+        tags = RecipeTag.objects.all()
+        context = { 'recipes': recipes,
+                    'tags': tags,
+                    'tag_name': tag_name,
+                    'STATIC_URL': settings.STATIC_URL,
+                    'MEDIA_URL': settings.MEDIA_URL
+                    }
+        return render_to_response('prime/recipetagfront.html', context)        
+
 
 class DIYFrontView(View):
     def get(self, context):

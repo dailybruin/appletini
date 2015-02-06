@@ -1,11 +1,11 @@
-{% extends 'prime/recipebase.html' %}
+{% extends 'prime/recipetagbase.html' %}
 
 {% block content %}
 
 <div id="sidebar">
 	<ul id="sidenav">
 		{% for tag in tags %}
-			<a href="tag/{{ tag.name }}/"> <li> {{ tag.name }} </li></a>
+			<a href="../../tag/{{ tag.name }}/"> <li> {{ tag.name }} </li></a>
 		{% endfor %}
 	</ul>
 </div>

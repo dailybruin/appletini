@@ -87,6 +87,16 @@ header {
 	cursor: pointer;
 }
 
+#sidebar a {
+	color: white;
+
+}
+
+#sidebar a:hover {
+	text-decoration: none;
+}
+
+
 #main {
 	width: 80vw;
 	margin: 0px;
