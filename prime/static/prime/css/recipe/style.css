@@ -11,21 +11,6 @@ header {
 	height: 40vh;
 }
 
-header:after {
-	width: 100vw;
-	height: 40vh;
-	content: "";
-	background: url(./header.jpg);
-	background-size: cover;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	z-index: -1;
-	position: absolute;
-	opacity: 0.6
-}
-
 #mainnav li {
 	display: inline-block;
 	height: 10vh;
@@ -124,6 +109,7 @@ header:after {
 	float: right;
 	padding-right: 10px;
 	padding: 0px 10px;
+	min-height: 210px;
 }
 
 .recipetitle {
@@ -136,6 +122,7 @@ header:after {
 	font-family: "helvetica";
 	font-weight: lighter;
 	font-size: 1.1em;
+	margin-right: 20px;
 }
 
 .recipedivider {

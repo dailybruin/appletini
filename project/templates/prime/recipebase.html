@@ -25,20 +25,24 @@
 
         <!-- Fonts -->
         <link href='http://fonts.googleapis.com/css?family=Slabo+27px' rel='stylesheet' type='text/css'>
-
+        <style type="text/css">
+            header:after {
+                width: 100vw;
+                height: 40vh;
+                content: "";
+                background: url('{{ STATIC_URL }}prime/img/Recipe/header.jpg');
+                background-size: cover;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                z-index: -1;
+                position: absolute;
+                opacity: 0.6
+            }
+        </style>
 </head>
 <body>
-    <script>
-        $(document).ready(function(){
-            $('header, footer').css({
-                "background": "url('{{ MEDIA_URL }}{{ issue.header_image }}') no-repeat center center fixed",
-                "-webkit-background-size": "cover",
-                "-moz-background-size": "cover",
-                "-o-background-size": "cover",
-                "background-size": "cover"
-            });
-        });
-    </script>
     {% block header %}
         <header>
             <ul id="mainnav">
@@ -69,20 +73,6 @@
             </p>
         </div>
         <hr class="hr" />
-        <div id="sidebar">
-            <ul id="sidenav">
-                <li>breakfast</li>
-                <li>healthy</li>
-                <li>tailgating</li>
-                <li>vegetarian</li>
-                <li>baking</li>
-                <li>easy</li>
-                <li>party</li>
-                <li>make-ahead</li>
-                <li>brunch</li>
-                <li>holiday</li>
-            </ul>
-        </div>
     {% endblock %}
     {% block content %}{% endblock %}
     {% block footer %}
