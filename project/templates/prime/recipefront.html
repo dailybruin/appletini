@@ -14,7 +14,9 @@
 	<ul id="recipelist">
 		{% for recipe in recipes %}
 			<li class="recipe">
-			<img src="{{ MEDIA_URL }}{{ recipe.lead_photo }}" />
+			<div class="img_container">
+				<img src="{{ MEDIA_URL }}{{ recipe.lead_photo }}" />
+			</div>
 			<div class="recipeintro">
 				<p class="recipetitle">{{ recipe.title }}</p>
 				<p class="recipebody">
@@ -24,5 +26,21 @@
 		{% endfor %}
 		<hr class="recipedivider" />
 	</ul>
+</div>
+
+<div class="pagination">
+	<span class="step-links">
+		{% if recipes.has_previous %}
+			<a href="?page={{ recipes.previous_page_number }}"> << </a>
+		{% endif %}
+
+		<span class="current">
+			Page {{ recipes.number }} of {{ recipes.paginator.num_pages }}.
+		</span>
+
+		{% if recipes.has_next %}
+			<a href="?page={{ recipes.next_page_number }}"> >> </a>
+		{% endif %}
+	</span>
 </div>
 {% endblock %}

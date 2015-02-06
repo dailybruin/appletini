@@ -97,10 +97,16 @@ header {
 	height: 220px;
 }
 
-.recipe img {
+.recipe .img_container {
 	width: 27%;
+	height: 180px;
 	float: left;
 	margin: 0px;
+	overflow: hidden;
+}
+
+.img_container img {
+	width: 100%;
 }
 
 .recipeintro {
@@ -140,4 +146,10 @@ header {
 .readmore:hover {
 	cursor: pointer;
 	text-decoration: underline;
+}
+
+.pagination {
+	clear: both;
+	width: 100%;
+	text-align: center;
 }

@@ -5,7 +5,8 @@ from django.views.generic.detail import DetailView
 from django.shortcuts import render_to_response, get_object_or_404, redirect
 from django.http import Http404
 from django.conf import settings
-
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.http import HttpResponse
 
 # utility functions
 
@@ -70,7 +71,15 @@ class LandingView(View):
 
 class RecipeFrontView(View):
     def get(self, context):
-        recipes = Recipe.objects.all()[:5]
+        recipe_list = Recipe.objects.all()
+        paginator = Paginator(recipe_list, 1)
+        page = self.request.GET.get('page')
+        try:
+            recipes = paginator.page(page)
+        except PageNotAnInteger:
+            recipes = paginator.page(1)
+        except EmptyPage:
+            recipes = paginator.page(paginator.num_pages)
         tags = RecipeTag.objects.all()
         context = { 'recipes': recipes,
                     'tags': tags,
