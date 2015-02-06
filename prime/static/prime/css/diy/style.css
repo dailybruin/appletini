@@ -87,6 +87,15 @@ header {
 	cursor: pointer;
 }
 
+#sidebar a {
+	color: white;
+
+}
+
+#sidebar a:hover {
+	text-decoration: none;
+}
+
 #main {
 	width: 80vw;
 	margin: 0px;
@@ -102,10 +111,16 @@ header {
 	margin-top: 0px;
 }
 
-.diy img {
+.diy .img_container {
 	width: 27%;
+	height: 180px;
 	float: left;
 	margin: 0px;
+	overflow: hidden;
+}
+
+.img_container img {
+	width: 100%;
 }
 
 .diyintro {

@@ -14,7 +14,9 @@
 	<ul id="diylist">
 		{% for article in articles %}
 			<li class="diy">
-			<img src="{{ MEDIA_URL }}{{ article.lead_photo }}" />
+			<div class="img_container">
+				<img src="{{ MEDIA_URL }}{{ article.lead_photo }}" />
+			</div>
 			<div class="diyintro">
 				<p class="diytitle">{{ article.title }}</p>
 				<p class="diybody">
