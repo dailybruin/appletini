@@ -68,7 +68,6 @@ class LandingView(View):
                     } 
         return render_to_response('prime/landingbase.html', context)
 
-
 class RecipeFrontView(View):
     def get(self, context):
         recipe_list = Recipe.objects.all()
@@ -87,6 +86,17 @@ class RecipeFrontView(View):
                     'MEDIA_URL': settings.MEDIA_URL
                     }
         return render_to_response('prime/Recipe/recipefront.html', context)
+
+class RecipeView(View):
+    def get(self, context, recipe_slug):
+        recipe = Recipe.objects.get(slug=recipe_slug)
+        context = {
+                    'recipe': recipe,
+                    'STATIC_URL': settings.STATIC_URL,
+                    'MEDIA_URL': settings.MEDIA_URL
+                    }
+        return render_to_response('prime/Recipe/recipe.html', context)
+
 
 class RecipeTagsView(View):
     def get(self, context, tag_name):
@@ -147,24 +157,6 @@ class DIYTagsView(View):
                     'MEDIA_URL': settings.MEDIA_URL
                     }    
         return render_to_response('prime/DIY/diytagfront.html', context)
-
-class RecipeView(View):
-
-    def get(self, context, recipe_slug):
-        try:
-            recipe = Recipe.objects.get(slug=recipe_slug)
-        except Recipe.DoesNotExist:
-            raise Http404
-        if recipe.redirect:
-            return redirect(recipe.redirect)
-        recipes = Recipes.objects.filter
-        context = {
-                    'recipe': recipe,
-                    'pdf': pdf,
-                    'MEDIA_URL': settings.MEDIA_URL, 
-                    'STATIC_URL': settings.STATIC_URL
-                    }
-        return render_to_response('prime/recipe.html')
 
 # special handlers
 

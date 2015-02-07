@@ -1,4 +1,4 @@
-{% extends 'prime/Recipe/recipebase.html' %}
+{% extends 'prime/Recipe/recipefrontbase.html' %}
 
 {% block content %}
 
@@ -20,7 +20,7 @@
 			<div class="recipeintro">
 				<p class="recipetitle">{{ recipe.title }}</p>
 				<p class="recipebody">
-					{{ recipe.teaser }} <span class="readmore">read more &#8688</span>
+					{{ recipe.teaser }} <span class="readmore"><a href="{{ recipe.slug }}">read more &#8688</a></span>
 				</p>
 			</div>
 			<hr class="recipedivider" />
