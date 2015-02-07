@@ -163,6 +163,15 @@ header {
 	text-decoration: underline;
 }
 
+.readmore a {
+	text-decoration: inherit;
+	color: inherit;
+}
+
+.readmore a:hover {
+	color: inherit;
+}
+
 .pagination {
 	clear: both;
 	width: 100%;
