@@ -97,6 +97,15 @@ class RecipeView(View):
                     }
         return render_to_response('prime/Recipe/recipe.html', context)
 
+class DIYView(View):
+    def get(self, context, diy_slug):
+        article = DIYarticle.objects.get(slug=diy_slug)
+        context = {
+                    'article': article,
+                    'STATIC_URL': settings.STATIC_URL,
+                    'MEDIA_URL': settings.MEDIA_URL
+                    }
+        return render_to_response('prime/DIY/diy.html', context)
 
 class RecipeTagsView(View):
     def get(self, context, tag_name):
