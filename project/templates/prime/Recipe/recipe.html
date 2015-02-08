@@ -4,9 +4,9 @@
 {% load markdown %}
 
 {% block content %}
-    <div class="recipe">
+    <div class="Ind-recipe">
         <h1 class="headline">{{ recipe.title }}</h1>
-        <span class="author">by 
+        <span class="author">by
         {% for author in recipe.author.all %}
             {% if forloop.last %}
                 {{ author }}
