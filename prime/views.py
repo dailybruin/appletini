@@ -1,4 +1,4 @@
-from prime.models import Issue, Article, PDF, Recipe
+from prime.models import Issue, Article, PDF, Recipe, DIYarticle
 from django.views.generic import View
 from django.views.generic.detail import DetailView
 from django.shortcuts import render_to_response, get_object_or_404, redirect
@@ -71,10 +71,21 @@ class RecipeFrontView(View):
     def get(self, context):
         recipes = Recipe.objects.all()[:5]
         context = { 'recipes': recipes,
-                    'MEDIA_URL': settings.MEDIA_URL,
-                    'STATIC_URL': settings.STATIC_URL
+                    'STATIC_URL': settings.STATIC_URL,
+                    'MEDIA_URL': settings.MEDIA_URL
                     }
         return render_to_response('prime/recipefront.html', context)
+
+
+class DIYFrontView(View):
+    def get(self, context):
+        articles = DIYarticle.objects.all()[:5]
+        context = { 'articles': articles,
+                    'STATIC_URL': settings.STATIC_URL,
+                    'MEDIA_URL': settings.MEDIA_URL
+                    }
+        return render_to_response('prime/diyfront.html', context)
+
 
 
 class RecipeView(View):
