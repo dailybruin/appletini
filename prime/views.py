@@ -1,10 +1,12 @@
 from prime.models import Issue, Article, PDF, Recipe, DIYarticle
+from main.models import RecipeTag, DIYTag
 from django.views.generic import View
 from django.views.generic.detail import DetailView
 from django.shortcuts import render_to_response, get_object_or_404, redirect
 from django.http import Http404
 from django.conf import settings
-
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.http import HttpResponse
 
 # utility functions
 
@@ -66,45 +68,104 @@ class LandingView(View):
                     } 
         return render_to_response('prime/landingbase.html', context)
 
-
 class RecipeFrontView(View):
     def get(self, context):
-        recipes = Recipe.objects.all()[:5]
+        recipe_list = Recipe.objects.all()
+        paginator = Paginator(recipe_list, 5)
+        page = self.request.GET.get('page')
+        try:
+            recipes = paginator.page(page)
+        except PageNotAnInteger:
+            recipes = paginator.page(1)
+        except EmptyPage:
+            recipes = paginator.page(paginator.num_pages)
+        tags = RecipeTag.objects.all()
         context = { 'recipes': recipes,
+                    'tags': tags,
                     'STATIC_URL': settings.STATIC_URL,
                     'MEDIA_URL': settings.MEDIA_URL
                     }
-        return render_to_response('prime/recipefront.html', context)
+        return render_to_response('prime/Recipe/recipefront.html', context)
+
+class RecipeView(View):
+    def get(self, context, recipe_slug):
+        recipe = Recipe.objects.get(slug=recipe_slug)
+        context = {
+                    'recipe': recipe,
+                    'STATIC_URL': settings.STATIC_URL,
+                    'MEDIA_URL': settings.MEDIA_URL
+                    }
+        return render_to_response('prime/Recipe/recipe.html', context)
+
+class DIYView(View):
+    def get(self, context, diy_slug):
+        article = DIYarticle.objects.get(slug=diy_slug)
+        context = {
+                    'article': article,
+                    'STATIC_URL': settings.STATIC_URL,
+                    'MEDIA_URL': settings.MEDIA_URL
+                    }
+        return render_to_response('prime/DIY/diy.html', context)
+
+class RecipeTagsView(View):
+    def get(self, context, tag_name):
+        recipe_list = Recipe.objects.filter(tag__name=tag_name)
+        paginator = Paginator(recipe_list, 15)
+        page = self.request.GET.get('page')
+        try:
+            recipes = paginator.page(page)
+        except PageNotAnInteger:
+            recipes = paginator.page(1)
+        except EmptyPage:
+            recipes = paginator.page(paginator.num_pages)
+        tags = RecipeTag.objects.all()
+        context = { 'recipes': recipes,
+                    'tags': tags,
+                    'tag_name': tag_name,
+                    'STATIC_URL': settings.STATIC_URL,
+                    'MEDIA_URL': settings.MEDIA_URL
+                    }
+        return render_to_response('prime/Recipe/recipetagfront.html', context)        
 
 
 class DIYFrontView(View):
     def get(self, context):
-        articles = DIYarticle.objects.all()[:5]
+        diy_list = DIYarticle.objects.all()
+        paginator = Paginator(diy_list, 5)
+        page = self.request.GET.get('page')
+        try:
+            articles = paginator.page(page)
+        except PageNotAnInteger:
+            articles = paginator.page(1)
+        except EmptyPage:
+            articles = paginator.page(paginator.num_pages)
+        tags = DIYTag.objects.all()
         context = { 'articles': articles,
+                    'tags': tags,
                     'STATIC_URL': settings.STATIC_URL,
                     'MEDIA_URL': settings.MEDIA_URL
                     }
-        return render_to_response('prime/diyfront.html', context)
+        return render_to_response('prime/DIY/diyfront.html', context)
 
-
-
-class RecipeView(View):
-
-    def get(self, context, recipe_slug):
+class DIYTagsView(View):
+    def get(self, context, tag_name):
+        diy_list = DIYarticle.objects.filter(tag__name=tag_name)
+        paginator = Paginator(diy_list, 15)
+        page = self.request.GET.get('page')
         try:
-            recipe = Recipe.objects.get(slug=recipe_slug)
-        except Recipe.DoesNotExist:
-            raise Http404
-        if recipe.redirect:
-            return redirect(recipe.redirect)
-        recipes = Recipes.objects.filter
-        context = {
-                    'recipe': recipe,
-                    'pdf': pdf,
-                    'MEDIA_URL': settings.MEDIA_URL, 
-                    'STATIC_URL': settings.STATIC_URL
-                    }
-        return render_to_response('prime/recipe.html')
+            articles = paginator.page(page)
+        except PageNotAnInteger:
+            articles = paginator.page(1)
+        except EmptyPage:
+            articles = paginator.page(paginator.num_pages)
+        tags = DIYTag.objects.all()
+        context = { 'articles': articles,
+                    'tags': tags,
+                    'tag_name': tag_name,
+                    'STATIC_URL': settings.STATIC_URL,
+                    'MEDIA_URL': settings.MEDIA_URL
+                    }    
+        return render_to_response('prime/DIY/diytagfront.html', context)
 
 # special handlers
 

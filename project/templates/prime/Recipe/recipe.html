@@ -1,0 +1,20 @@
+{% extends 'prime/Recipe/recipebase.html' %}
+
+{% load shortcodes %}
+{% load markdown %}
+
+{% block content %}
+    <div class="Ind-recipe">
+        <h1 class="headline">{{ recipe.title }}</h1>
+        <span class="author">by
+        {% for author in recipe.author.all %}
+            {% if forloop.last %}
+                {{ author }}
+            {% else %}
+                {{ author }} and
+            {% endif %}
+        {% endfor %}
+        </span>
+        {{ recipe.body|markdown|image|youtube }}
+    </div>
+{% endblock %}

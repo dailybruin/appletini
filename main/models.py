@@ -6,8 +6,7 @@ class Author(models.Model):
     user = models.ForeignKey(User, null=True, blank=True)
     first_name = models.CharField(max_length=32)
     last_name = models.CharField(max_length=32)
-    organization = models.CharField(max_length=32, default="Daily Bruin",
-                                    blank=True)
+    organization = models.CharField(max_length=32, default="Daily Bruin", blank=True)
     # title = models.CharField(max_length=32, blank=True)
     email = models.EmailField(blank=True)
     twitter = models.CharField(max_length=15, blank=True)
@@ -18,3 +17,16 @@ class Author(models.Model):
 
     def __unicode__(self):
         return "%s %s" % (self.first_name, self.last_name)
+
+
+class RecipeTag(models.Model):
+    name = models.CharField(max_length = 32)
+
+    def __unicode__(self):
+        return "%s" % (self.name)
+
+class DIYTag(models.Model):
+    name = models.CharField(max_length = 32)
+
+    def __unicode__(self):
+        return "%s" % (self.name)
