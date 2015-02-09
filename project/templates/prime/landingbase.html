@@ -42,60 +42,60 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     	<center>
-    	<div class="row"> <!--in place so that photo tiles are in line with cover_photo-->
-	      <ul class="nav navbar-nav" id="below_cover_photo">
-		        <li id="tile_li">
-			        <a href="#">
-			        <img id="tile_photo" src="{{ STATIC_URL }}prime/img/Front/tile_photo.jpg">
-			        </a>
+		    	<div class="row"> <!--in place so that photo tiles are in line with cover_photo-->
+			      <ul class="nav navbar-nav" id="below_cover_photo">
+				        <li id="tile_li">
+					        <a href="#">
+					        <img id="tile_photo" src="{{ STATIC_URL }}prime/img/Front/tile_photo.jpg">
+					        </a>
 
-			        <a href="#" id="tile_photo_transcription">
-			        <div id="tile_photo_transcription">Current Issue</div>
-			        </a>
-		        </li>
+					        <a href="#" id="tile_photo_transcription">
+					        <div id="tile_photo_transcription">Current Issue</div>
+					        </a>
+				        </li>
 
-		        <li id="tile_li">
-			        <a href="#">
-			        <img id="tile_photo" src="{{ STATIC_URL }}prime/img/Front/tile_photo.jpg">
-			        </a>
+				        <li id="tile_li">
+					        <a href="#">
+					        <img id="tile_photo" src="{{ STATIC_URL }}prime/img/Front/tile_photo.jpg">
+					        </a>
 
-			        <a href="#" id="tile_photo_transcription">
-			        <div id="tile_photo_transcription">LA City Guide</div>
-			        </a>			        
-		        </li>
+					        <a href="#" id="tile_photo_transcription">
+					        <div id="tile_photo_transcription">LA City Guide</div>
+					        </a>			        
+				        </li>
 
-		        <li id="tile_li">
-			        <a href="#">
-			        <img id="tile_photo" src="{{ STATIC_URL }}prime/img/Front/tile_photo.jpg">
-			        </a>
+				        <li id="tile_li">
+					        <a href="#">
+					        <img id="tile_photo" src="{{ STATIC_URL }}prime/img/Front/tile_photo.jpg">
+					        </a>
 
-			        <a href="#" id="tile_photo_transcription">
-			        <div id="tile_photo_transcription">DIY</div>
-			        </a>			        
-		        </li>
+					        <a href="#" id="tile_photo_transcription">
+					        <div id="tile_photo_transcription">DIY</div>
+					        </a>			        
+				        </li>
 
-		        <li id="tile_li">
-			        <a href="#">
-			        <img id="tile_photo" src="{{ STATIC_URL }}prime/img/Front/tile_photo.jpg">
-			        </a>
+				        <li id="tile_li">
+					        <a href="#">
+					        <img id="tile_photo" src="{{ STATIC_URL }}prime/img/Front/tile_photo.jpg">
+					        </a>
 
-			        <a href="#" id="tile_photo_transcription">
-			        <div id="tile_photo_transcription">Recipes</div>
-			        </a>			        
-		        </li>
+					        <a href="#" id="tile_photo_transcription">
+					        <div id="tile_photo_transcription">Recipes</div>
+					        </a>			        
+				        </li>
 
-		        <li id="tile_li">
-			        <a href="#">
-			        <img id="tile_photo" src="{{ STATIC_URL }}prime/img/Front/tile_photo.jpg">
-			        </a>
+				        <li id="tile_li">
+					        <a href="#">
+					        <img id="tile_photo" src="{{ STATIC_URL }}prime/img/Front/tile_photo.jpg">
+					        </a>
 
-			        <a href="#" id="tile_photo_transcription">
-			        <div id="tile_photo_transcription">Previous Issues</div>
-			        </a>			        
-		        </li>		        		        		  
-	      </ul>
-	    </div>
+					        <a href="#" id="tile_photo_transcription">
+					        <div id="tile_photo_transcription">Previous Issues</div>
+					        </a>			        
+				        </li>
 
+			      </ul>
+			    </div>
 	     </center>
       
 
@@ -106,135 +106,32 @@
 </div>
 
 	<hr>
-	<h3 style="text-align:center" >LATEST STORIES</h1>
+	<h3 style="text-align:center">LATEST STORIES</h1>
 	<hr>
 
-<div class = "container2">
+	<div id="container">
+	{% for row in rows %}
+		<div class = "row">
+			{% for article in row %}
 
-	<div class = "row">
-
-		{% for article in articles %}
-		<div class = "col-xs-6 left">
-			<img width="100%" height="300" src = "{{ MEDIA_URL }}{{ article.lead_photo }}" class="img-responsive">
-			<div class = "header">
-			LA CITY GUIDE: Brentwood
-			</div>
-
-			<br>
-
-			<div class = "description">
-				
-				{{article.title}}
-				<p>{{article.body|truncatechars:200}}</p>
-
-				<font color="black"><strong>READ MORE >> </strong></font>
-			</div>
-
-			<hr>
-
+								<div class = "col-xs-6">
+									<img height="50% !important" src = "{{ MEDIA_URL }}{{ article.lead_photo }}" class="img-responsive">			
+										<div class = "header">
+											{{article.title}}
+										</div>
+										<div class = "description">
+											<p>{{article.body|truncatechars:200}}</p>
+											<font color="black"><strong>READ MORE >> </strong></font>
+										</div>
+									<hr>
+								</div>
+			{% endfor %}
 		</div>
-		{% endfor %}
-
-
-<!-- 	<div class = "col-xs-6 left">
-		<img width="100%" height="300" src = "{{ STATIC_URL }}prime/img/Front/brentwood.png" class="img-responsive">
-
-		<div class = "header">
-		LA CITY GUIDE: Brentwood
-		</div>
-
-		<br>
-
-		<div class = "description">
-		Intro text will go here, about a sentence or basically just hte first 15 ish words or about 3 lines, however characteres that is... <font color="black"><strong>READ MORE >> </strong></font>
-		</div>
-
-		<hr>
-
-	</div> -->
-
+	{% endfor %}
 	</div>
 
-<!-- <div class = "row">
-	<div class = "col-xs-6 left">
-		<img width="100%" height="300" src = "{{ STATIC_URL }}prime/img/Front/brentwood.png" class="img-responsive">
-
-		<div class = "header">
-		LA CITY GUIDE: Brentwood
-		</div>
-
-		<br>
-
-		<div class = "description">
-		Intro text will go here, about a sentence or basically just hte first 15 ish words or about 3 lines, however characteres that is... <font color="black"><strong>READ MORE >> </strong></font>
-		</div>
-
-		<hr>
-
-	</div>
-
-	<div class = "col-xs-6 left">
-		<img width="100%" height="300" src = "{{ STATIC_URL }}prime/img/Front/brentwood.png" class="img-responsive">
-
-		<div class = "header">
-		LA CITY GUIDE: Brentwood
-		</div>
-
-		<br>
-
-		<div class = "description">
-		Intro text will go here, about a sentence or basically just hte first 15 ish words or about 3 lines, however characteres that is... <font color="black"><strong>READ MORE >> </strong></font>
-		</div>
-
-		<hr>
-
-	</div>
-
-</div>
-
-<div class = "row">
-	<div class = "col-xs-6 left">
-		<img width="100%" height="300" src = "{{ STATIC_URL }}prime/img/Front/brentwood.png" class="img-responsive">
-
-		<div class = "header">
-		LA CITY GUIDE: Brentwood
-		</div>
-
-		<br>
-
-		<div class = "description">
-		Intro text will go here, about a sentence or basically just hte first 15 ish words or about 3 lines, however characteres that is... <font color="black"><strong>READ MORE >> </strong></font>
-		</div>
-
-		<hr>
-
-	</div>
-
-	<div class = "col-xs-6 left">
-		<img width="100%" height="100%" src = "{{ STATIC_URL }}prime/img/Front/brentwood.png" class="img-responsive">
-
-		<div class = "header">
-			LA CITY GUIDE: Brentwood
-		</div>
-
-		<div class = "description">
-			Intro text will go here, about a sentence or basically just hte first 15 ish words or about 3 lines, however characteres that is... <font color="black"><strong>READ MORE >></strong></font>
-		</div>
-
-		<hr>
-
-	</div>
-
-</div> -->
-
-</div>
 
 
-<!-- 
-
-
-	POOOOOP
-    {% block content %}{% endblock %} -->
 
 
 </body>

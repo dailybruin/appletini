@@ -48,7 +48,9 @@
 
 #container
 {
-    padding-top: 2%;
+    padding-top: 4%;
+    padding-left: 3%;
+    padding-right: 3%;
     margin-left: auto;
     margin-right: auto;
     width: 95%;
@@ -134,7 +136,7 @@
 .row
 {
 	width: 100%;
-	padding-left: 0.5%;
+	padding-left: 0;
 }
 
 .header

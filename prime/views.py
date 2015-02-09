@@ -60,9 +60,16 @@ class ArticleView(View):
 
 class LandingView(View):
     def get(self, context):
-        articles = Article.objects.all()[:3]
+        articles = Article.objects.order_by('position').reverse()
+        rows = []
+        count = 0
+        size = len(articles)
+        while( (count+2) < size):
+            rows.append(articles[count:count+2])
+            count += 2
         context = {
-                    'articles': articles,
+                    'size': size,
+                    'rows': rows,
                     'MEDIA_URL': settings.MEDIA_URL,
                     'STATIC_URL': settings.STATIC_URL
                     } 
