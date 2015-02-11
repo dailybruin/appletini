@@ -13,7 +13,33 @@
 <!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 
+
+<script>
+$(window).scroll(function(e){
+
+  $el = $('.fixedElement'); 
+  var offset = $el.offset();
+  console.log(offset);
+  if ($(this).scrollTop() > 600 && $el.css('position') != 'fixed'){
+      $('.fixedElement').css({'display': 'none', 'top': '0px'}); 
+    $('.fixedElement').css({'position': 'fixed', 'top': '0px'}); 
+  $( '.fixedElement' ).fadeIn( "slow", function() {
+    // Animation complete
+    console.log("success");
+  });
+  }
+  if ($(this).scrollTop() < 600 && $el.css('position') == 'fixed')
+  {
+    $('.fixedElement').css({'position': 'static', 'top': '0px'}); 
+  } 
+});
+
+</script>
+
+
+
 </head>
+
 
 <body>
 
@@ -24,7 +50,6 @@
 	<br />
 
 <nav class="navbar navbar-default">
-
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
 	<center>
@@ -39,6 +64,7 @@
 	    </div>
 	</center>
 
+	<center>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     	<center>
@@ -99,10 +125,14 @@
 	     </center>
       
 
-    </div><!-- /.navbar-collapse -->
+    	</div><!-- /.navbar-collapse -->
+    	</center>
   </div><!-- /.container-fluid -->
 </nav>
 
+<div class="fixedElement" style="background-color:blue; z-index:6; color: white; width: 100% !important">
+pooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooop
+</div>
 </div>
 
 	<hr>
