@@ -53,9 +53,15 @@
         <hr class="hr" />
 
         <div id="intropara">
-            <p>
-                For many of us, college life means living in tiny spaces. Whether you are in a triple dorm in Hedrick Hall or splitting the expensive LA rent with five other people, prime wants you to feel at home in Westwood. We have everything you need to make your space efficient and cozy, all on a budget!
-            </p>
+            {% if typeTitle == 'DIY' %}
+                <p>
+                    For many of us, college life means living in tiny spaces. Whether you are in a triple dorm in Hedrick Hall or splitting the expensive LA rent with five other people, prime wants you to feel at home in Westwood. We have everything you need to make your space efficient and cozy, all on a budget!
+                </p>
+            {% else %}
+                <p>
+                    Being a college student doesn't mean you have to resort to a diet of instant ramen and hot pockets. The goal of prime recipes is to inspire college students to try cooking delicious food while maintaining a busy schedule. Explore our latest recipes before or browse by category on the side. Bon appetit!
+                </p>
+            {% endif %}
         </div>
         <hr class="hr" />
 
