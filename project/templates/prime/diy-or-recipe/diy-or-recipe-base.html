@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     {% if article.title %}
-        <title>{{ recipe.title }} | prime | Daily Bruin</title>
+        <title>{{ article.title }} | prime | Daily Bruin</title>
     {% else %}
-        <title>Recipes | prime | Daily Bruin</title>
+        <title>{{ typeTitle }} | prime | Daily Bruin</title>
     {% endif %}
-    <link href="{{ STATIC_URL }}prime/css/recipe/style.css" rel="stylesheet" type="text/css">
+    <link href="{{ STATIC_URL }}prime/css/diy-or-recipe/style.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
-        <link rel="stylesheet" type="text/css" href="http://necolas.github.io/normalize.css/3.0.2/normalize.css">
+        <link rel="stylesheet" href="http://necolas.github.io/normalize.css/3.0.2/normalize.css">
 
         <style type="text/css">
             header:after {
                 width: 100vw;
                 height: 40vh;
                 content: "";
-                background: url('{{ STATIC_URL }}prime/img/Recipe/header.jpg');
+                background: url('{{ STATIC_URL }}prime/img/{{ typeTitle }}/header.jpg'); /*TODO: fix*/
                 background-size: cover;
                 top: 0;
                 left: 0;
@@ -36,20 +36,28 @@
                     home
                 </li>
                 <li>
-                    recipes
+                    {% if typeTitle == 'DIY' %}
+                        diy
+                    {% else %}
+                        recipes
+                    {% endif %}
                 </li>
                 <li>
                     city guides
                 </li>
                 <li>
-                    DIY
+                    {% if typeTitle == 'DIY' %}
+                        recipes
+                    {% else %}
+                        diy
+                    {% endif %}
                 </li>
                 <li>
                     past issues
                 </li>
             </ul>
             <p id="title">
-                <span id="one">prime</span> <span id="two">recipes</span>
+                <span id="one">prime</span> <span id="two">{{ typeTitle }}</span>
             </p>
         </header>
 
