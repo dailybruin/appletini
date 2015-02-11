@@ -17,12 +17,12 @@
 <script>
 $(window).scroll(function(e){
 
-  $el = $('.fixedElement'); 
+  $el = $('.fixedElement');
   var offset = $el.offset();
   console.log(offset);
   if ($(this).scrollTop() > 600 && $el.css('position') != 'fixed'){
-      $('.fixedElement').css({'display': 'none', 'top': '0px'}); 
-    $('.fixedElement').css({'position': 'fixed', 'top': '0px'}); 
+      $('.fixedElement').css({'display': 'none', 'top': '0px'});
+    $('.fixedElement').css({'position': 'fixed', 'top': '0px'});
   $( '.fixedElement' ).fadeIn( "slow", function() {
     // Animation complete
     console.log("success");
@@ -30,8 +30,8 @@ $(window).scroll(function(e){
   }
   if ($(this).scrollTop() < 600 && $el.css('position') == 'fixed')
   {
-    $('.fixedElement').css({'position': 'static', 'top': '0px'}); 
-  } 
+    $('.fixedElement').css({'position': 'static', 'top': '0px'});
+  }
 });
 
 </script>
@@ -87,7 +87,7 @@ $(window).scroll(function(e){
 
 					        <a href="#" id="tile_photo_transcription">
 					        <div id="tile_photo_transcription">LA City Guide</div>
-					        </a>			        
+					        </a>
 				        </li>
 
 				        <li id="tile_li">
@@ -97,7 +97,7 @@ $(window).scroll(function(e){
 
 					        <a href="#" id="tile_photo_transcription">
 					        <div id="tile_photo_transcription">DIY</div>
-					        </a>			        
+					        </a>
 				        </li>
 
 				        <li id="tile_li">
@@ -107,7 +107,7 @@ $(window).scroll(function(e){
 
 					        <a href="#" id="tile_photo_transcription">
 					        <div id="tile_photo_transcription">Recipes</div>
-					        </a>			        
+					        </a>
 				        </li>
 
 				        <li id="tile_li">
@@ -117,22 +117,19 @@ $(window).scroll(function(e){
 
 					        <a href="#" id="tile_photo_transcription">
 					        <div id="tile_photo_transcription">Previous Issues</div>
-					        </a>			        
+					        </a>
 				        </li>
 
 			      </ul>
 			    </div>
 	     </center>
-      
+
 
     	</div><!-- /.navbar-collapse -->
     	</center>
   </div><!-- /.container-fluid -->
 </nav>
 
-<!-- <div class="fixedElement" style="background-color:blue; z-index:6; color: white; width: 100% !important">
-pooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooop
-</div> -->
 </div>
 
 	<hr>
@@ -145,7 +142,7 @@ pooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 			{% for article in row %}
 
 								<div class = "col-xs-6">
-									<img height="50% !important" src = "{{ MEDIA_URL }}{{ article.lead_photo }}" class="img-responsive">			
+									<img height="50% !important" src = "{{ MEDIA_URL }}{{ article.lead_photo }}" class="img-responsive">
 										<div class = "header">
 											{{article.title}}
 										</div>
