@@ -51,6 +51,12 @@ header {
     opacity: 1;
 }
 
+@media screen and (max-width: 750px) {
+    #title {
+        font-size: 4em;
+    }
+}
+
 #one {
     font-family: "helvetica";
     font-weight: lighter;
