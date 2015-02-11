@@ -1,11 +1,11 @@
-{% extends 'prime/Recipe/recipefrontbase.html' %}
+{% extends 'prime/Recipe/recipebase.html' %}
 
 {% block content %}
 
 <div id="sidebar">
 	<ul id="sidenav">
 		{% for tag in tags %}
-			<a href="tagged/{{ tag.name }}/"> <li> {{ tag.name }} </li></a>
+			<a href="{% url 'prime_recipe' %}tagged/{{ tag.name }}/"> <li> {{ tag.name }} </li></a>
 		{% endfor %}
 	</ul>
 </div>
@@ -20,7 +20,7 @@
 			<div class="recipeintro">
 				<p class="recipetitle">{{ recipe.title }}</p>
 				<p class="recipebody">
-					{{ recipe.teaser }} <span class="readmore"><a href="{{ recipe.slug }}">read more &#8688</a></span>
+					{{ recipe.teaser }} <span class="readmore"><a href="{% url 'prime_recipe' %}{{ recipe.slug }}">read more &#8688</a></span>
 				</p>
 			</div>
 			<hr class="recipedivider" />

@@ -123,7 +123,7 @@ class RecipeTagsView(View):
                     'STATIC_URL': settings.STATIC_URL,
                     'MEDIA_URL': settings.MEDIA_URL
                     }
-        return render_to_response('prime/Recipe/recipetagfront.html', context)
+        return render_to_response('prime/Recipe/recipefront.html', context)
 
 
 class DIYFrontView(View):
