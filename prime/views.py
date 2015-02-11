@@ -74,12 +74,12 @@ class LandingView(View):
             rows.append(articles[count:count+2])
             count += 2
         context = {
-                    'size': size,
-                    'rows': rows,
-                    'MEDIA_URL': settings.MEDIA_URL,
-                    'STATIC_URL': settings.STATIC_URL
-                    } 
-        return render_to_response('prime/landingbase.html', context)
+            'size': size,
+            'rows': rows,
+            'MEDIA_URL': settings.MEDIA_URL,
+            'STATIC_URL': settings.STATIC_URL
+        }
+        return render_to_response('prime/landing.html', context)
 
 class RecipeFrontView(View):
     def get(self, context):
