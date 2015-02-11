@@ -26,21 +26,19 @@ def get_recent_issues(issue_slug=None):
 # pages
 
 class IssueView(View):
-
     def get(self, context, slug):
         issue, recent_issues = get_recent_issues(slug)
         #articles = Article.objects.filter(issue=issue).order_by('position')
         articles = Article.objects.filter(issue=issue).order_by('position').all()[:5]
         pdf = PDF.objects.get(issue=issue)
         context = {'issue': issue, 'recent_issues': recent_issues,
-                   'articles': articles, 'pdf': pdf, 
+                   'articles': articles, 'pdf': pdf,
                    'MEDIA_URL': settings.MEDIA_URL,
                    'STATIC_URL': settings.STATIC_URL}
         return render_to_response('prime/front.html', context)
 
 
 class ArticleView(View):
-
     def get(self, context, issue_slug, article_slug):
         issue, recent_issues = get_recent_issues(issue_slug)
         try:
@@ -53,7 +51,7 @@ class ArticleView(View):
         pdf = PDF.objects.get(issue=issue)
         context = {'issue': issue, 'recent_issues': recent_issues,
                    'article': article, 'articles': articles, 'pdf': pdf,
-                   'MEDIA_URL': settings.MEDIA_URL, 
+                   'MEDIA_URL': settings.MEDIA_URL,
                    'STATIC_URL': settings.STATIC_URL}
         return render_to_response('prime/article.html', context)
 
@@ -65,7 +63,7 @@ class LandingView(View):
                     'articles': articles,
                     'MEDIA_URL': settings.MEDIA_URL,
                     'STATIC_URL': settings.STATIC_URL
-                    } 
+                    }
         return render_to_response('prime/landingbase.html', context)
 
 class RecipeFrontView(View):
@@ -125,7 +123,7 @@ class RecipeTagsView(View):
                     'STATIC_URL': settings.STATIC_URL,
                     'MEDIA_URL': settings.MEDIA_URL
                     }
-        return render_to_response('prime/Recipe/recipetagfront.html', context)        
+        return render_to_response('prime/Recipe/recipetagfront.html', context)
 
 
 class DIYFrontView(View):
@@ -164,8 +162,8 @@ class DIYTagsView(View):
                     'tag_name': tag_name,
                     'STATIC_URL': settings.STATIC_URL,
                     'MEDIA_URL': settings.MEDIA_URL
-                    }    
-        return render_to_response('prime/DIY/diytagfront.html', context)
+                    }
+        return render_to_response('prime/DIY/diyfront.html', context)
 
 # special handlers
 
@@ -173,6 +171,6 @@ def error404(request): # not currently implemented
     issue, recent_issues = get_recent_issues()
     print "hello"
     context = {'issue': issue, 'recent_issues': recent_issues,
-               'MEDIA_URL': settings.MEDIA_URL, 
+               'MEDIA_URL': settings.MEDIA_URL,
                'STATIC_URL': settings.STATIC_URL}
     return render_to_response('404.html', context)

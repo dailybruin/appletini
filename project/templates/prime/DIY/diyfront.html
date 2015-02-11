@@ -1,11 +1,11 @@
-{% extends 'prime/DIY/diyfrontbase.html' %}
+{% extends 'prime/DIY/diybase.html' %}
 
 {% block content %}
 
 <div id="sidebar">
 	<ul id="sidenav">
 		{% for tag in tags %}
-			<a href="tagged/{{ tag.name }}/"> <li> {{ tag.name }} </li></a>
+			<a href="{% url 'prime_diy' %}tagged/{{ tag.name }}/"> <li> {{ tag.name }} </li></a>
 		{% endfor %}
 	</ul>
 </div>
@@ -20,7 +20,7 @@
 			<div class="diyintro">
 				<p class="diytitle">{{ article.title }}</p>
 				<p class="diybody">
-					{{ article.teaser }} <span class="readmore"><a href="{{ article.slug }}">read more &#8688</a></span>
+					{{ article.teaser }} <span class="readmore"><a href="{% url 'prime_diy' %}{{ article.slug }}">read more &#8688</a></span>
 				</p>
 			</div>
 			<hr class="diydivider" />
