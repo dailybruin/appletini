@@ -96,23 +96,22 @@ header {
 	text-decoration: none;
 }
 
-
 #main {
 	width: 80vw;
 	margin: 0px;
 	float: right;
 }
 
-.recipe {
+.article {
 	height: 220px;
 	margin-top: 20px;
 }
 
-.recipe:first-child {
+.article:first-child {
 	margin-top: 0px;
 }
 
-.recipe .img_container {
+.article .img_container {
 	width: 27%;
 	height: 180px;
 	float: left;
@@ -124,7 +123,7 @@ header {
 	width: 100%;
 }
 
-.recipeintro {
+.article-intro {
 	width: 73%;
 	margin: 0px;
 	float: right;
@@ -133,20 +132,20 @@ header {
 	min-height: 210px;
 }
 
-.recipetitle {
+.article-title {
 	text-transform: uppercase;
 	font-weight: bold;
 	font-size: 1.5em;
 }
 
-.recipebody {
+.article-body {
 	font-family: "helvetica";
 	font-weight: lighter;
 	font-size: 1.1em;
 	margin-right: 20px;
 }
 
-.recipedivider {
+.article-divider {
 	height: 2px;
 	background-color: black;
 	width: 80%;
@@ -176,7 +175,6 @@ header {
 	clear: both;
 	width: 100%;
 	text-align: center;
-	padding-bottom: 30px;
 }
 
 .step-links a {
@@ -241,7 +239,7 @@ figure .credit {
     line-height: 1.3;
 }
 
-.Ind-recipe {
+.ind-article {
     width: 500px;
     margin: 0 auto 2.5em auto;
 }

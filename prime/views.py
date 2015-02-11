@@ -26,21 +26,23 @@ def get_recent_issues(issue_slug=None):
 # pages
 
 class IssueView(View):
-
     def get(self, context, slug):
         issue, recent_issues = get_recent_issues(slug)
         #articles = Article.objects.filter(issue=issue).order_by('position')
         articles = Article.objects.filter(issue=issue).order_by('position').all()[:5]
         pdf = PDF.objects.get(issue=issue)
-        context = {'issue': issue, 'recent_issues': recent_issues,
-                   'articles': articles, 'pdf': pdf, 
-                   'MEDIA_URL': settings.MEDIA_URL,
-                   'STATIC_URL': settings.STATIC_URL}
+        context = {
+            'issue': issue,
+            'recent_issues': recent_issues,
+            'articles': articles,
+            'pdf': pdf,
+            'MEDIA_URL': settings.MEDIA_URL,
+            'STATIC_URL': settings.STATIC_URL
+        }
         return render_to_response('prime/front.html', context)
 
 
 class ArticleView(View):
-
     def get(self, context, issue_slug, article_slug):
         issue, recent_issues = get_recent_issues(issue_slug)
         try:
@@ -51,10 +53,14 @@ class ArticleView(View):
             return redirect(article.redirect)
         articles = Article.objects.filter(issue=issue).order_by('position')
         pdf = PDF.objects.get(issue=issue)
-        context = {'issue': issue, 'recent_issues': recent_issues,
-                   'article': article, 'articles': articles, 'pdf': pdf,
-                   'MEDIA_URL': settings.MEDIA_URL, 
-                   'STATIC_URL': settings.STATIC_URL}
+        context = {
+            'issue': issue,
+            'recent_issues': recent_issues,
+            'article': article,
+            'articles': articles, 'pdf': pdf,
+            'MEDIA_URL': settings.MEDIA_URL,
+            'STATIC_URL': settings.STATIC_URL
+        }
         return render_to_response('prime/article.html', context)
 
 
@@ -87,32 +93,39 @@ class RecipeFrontView(View):
         except EmptyPage:
             recipes = paginator.page(paginator.num_pages)
         tags = RecipeTag.objects.all()
-        context = { 'recipes': recipes,
-                    'tags': tags,
-                    'STATIC_URL': settings.STATIC_URL,
-                    'MEDIA_URL': settings.MEDIA_URL
-                    }
-        return render_to_response('prime/Recipe/recipefront.html', context)
+        context = {
+            'articles': recipes,
+            'tags': tags,
+            'typeTitle': 'Recipes',
+            'typeRoot': 'prime_recipe',
+            'STATIC_URL': settings.STATIC_URL,
+            'MEDIA_URL': settings.MEDIA_URL
+        }
+        return render_to_response('prime/diy-or-recipe/diy-or-recipe-front.html', context)
 
 class RecipeView(View):
     def get(self, context, recipe_slug):
         recipe = Recipe.objects.get(slug=recipe_slug)
         context = {
-                    'recipe': recipe,
-                    'STATIC_URL': settings.STATIC_URL,
-                    'MEDIA_URL': settings.MEDIA_URL
-                    }
-        return render_to_response('prime/Recipe/recipe.html', context)
+            'article': recipe,
+            'typeTitle': 'Recipes',
+            'typeRoot': 'prime_recipe',
+            'STATIC_URL': settings.STATIC_URL,
+            'MEDIA_URL': settings.MEDIA_URL
+        }
+        return render_to_response('prime/diy-or-recipe/article.html', context)
 
 class DIYView(View):
     def get(self, context, diy_slug):
         article = DIYarticle.objects.get(slug=diy_slug)
         context = {
-                    'article': article,
-                    'STATIC_URL': settings.STATIC_URL,
-                    'MEDIA_URL': settings.MEDIA_URL
-                    }
-        return render_to_response('prime/DIY/diy.html', context)
+            'article': article,
+            'typeTitle': 'Recipes',
+            'typeRoot': 'prime_recipe',
+            'STATIC_URL': settings.STATIC_URL,
+            'MEDIA_URL': settings.MEDIA_URL
+        }
+        return render_to_response('prime/diy-or-recipe/article.html', context)
 
 class RecipeTagsView(View):
     def get(self, context, tag_name):
@@ -126,13 +139,16 @@ class RecipeTagsView(View):
         except EmptyPage:
             recipes = paginator.page(paginator.num_pages)
         tags = RecipeTag.objects.all()
-        context = { 'recipes': recipes,
-                    'tags': tags,
-                    'tag_name': tag_name,
-                    'STATIC_URL': settings.STATIC_URL,
-                    'MEDIA_URL': settings.MEDIA_URL
-                    }
-        return render_to_response('prime/Recipe/recipetagfront.html', context)        
+        context = {
+            'articles': recipes,
+            'tags': tags,
+            'tag_name': tag_name,
+            'typeTitle': 'DIY',
+            'typeRoot': 'prime_diy',
+            'STATIC_URL': settings.STATIC_URL,
+            'MEDIA_URL': settings.MEDIA_URL
+        }
+        return render_to_response('prime/diy-or-recipe/diy-or-recipe-front.html', context)
 
 
 class DIYFrontView(View):
@@ -147,12 +163,15 @@ class DIYFrontView(View):
         except EmptyPage:
             articles = paginator.page(paginator.num_pages)
         tags = DIYTag.objects.all()
-        context = { 'articles': articles,
-                    'tags': tags,
-                    'STATIC_URL': settings.STATIC_URL,
-                    'MEDIA_URL': settings.MEDIA_URL
-                    }
-        return render_to_response('prime/DIY/diyfront.html', context)
+        context = {
+            'articles': articles,
+            'tags': tags,
+            'typeTitle': 'DIY',
+            'typeRoot': 'prime_diy',
+            'STATIC_URL': settings.STATIC_URL,
+            'MEDIA_URL': settings.MEDIA_URL
+        }
+        return render_to_response('prime/diy-or-recipe/diy-or-recipe-front.html', context)
 
 class DIYTagsView(View):
     def get(self, context, tag_name):
@@ -166,20 +185,26 @@ class DIYTagsView(View):
         except EmptyPage:
             articles = paginator.page(paginator.num_pages)
         tags = DIYTag.objects.all()
-        context = { 'articles': articles,
-                    'tags': tags,
-                    'tag_name': tag_name,
-                    'STATIC_URL': settings.STATIC_URL,
-                    'MEDIA_URL': settings.MEDIA_URL
-                    }    
-        return render_to_response('prime/DIY/diytagfront.html', context)
+        context = {
+            'articles': articles,
+            'tags': tags,
+            'tag_name': tag_name,
+            'typeTitle': 'DIY',
+            'typeRoot': 'prime_diy',
+            'STATIC_URL': settings.STATIC_URL,
+            'MEDIA_URL': settings.MEDIA_URL
+        }
+        return render_to_response('prime/diy-or-recipe/diy-or-recipe-front.html', context)
 
 # special handlers
 
 def error404(request): # not currently implemented
     issue, recent_issues = get_recent_issues()
     print "hello"
-    context = {'issue': issue, 'recent_issues': recent_issues,
-               'MEDIA_URL': settings.MEDIA_URL, 
-               'STATIC_URL': settings.STATIC_URL}
+    context = {
+        'issue': issue,
+        'recent_issues': recent_issues,
+        'MEDIA_URL': settings.MEDIA_URL,
+        'STATIC_URL': settings.STATIC_URL
+    }
     return render_to_response('404.html', context)

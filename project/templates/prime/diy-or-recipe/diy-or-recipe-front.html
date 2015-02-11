@@ -1,0 +1,48 @@
+{% extends 'prime/diy-or-recipe/diy-or-recipe-base.html' %}
+
+{% block content %}
+
+<div id="sidebar">
+	<ul id="sidenav">
+		{% for tag in tags %}
+			<a href="{% url typeRoot %}tagged/{{ tag.name }}/"> <li> {{ tag.name }} </li></a>
+		{% endfor %}
+	</ul>
+</div>
+
+<div id="main">
+	<ul id="article-list">
+		{% for article in articles %}
+			<li class="article">
+				<div class="img_container">
+					<img src="{{ MEDIA_URL }}{{ article.lead_photo }}" />
+				</div>
+				<div class="article-intro">
+					<p class="article-title">{{ article.title }}</p>
+					<p class="article-body">
+						{{ article.teaser }} <span class="readmore"><a href="{% url typeRoot %}{{ article.slug }}">read more &#8688</a></span>
+					</p>
+				</div>
+			</li>
+			<hr class="article-divider" />
+		{% endfor %}
+	</ul>
+</div>
+
+<div class="pagination">
+	<span class="step-links">
+		{% if articles.has_previous %}
+			<a href="?page={{ articles.previous_page_number }}"> << </a>
+		{% endif %}
+
+		<span class="current">
+			Page {{ articles.number }} of {{ articles.paginator.num_pages }}.
+		</span>
+
+		{% if articles.has_next %}
+			<a href="?page={{ articles.next_page_number }}"> >> </a>
+		{% endif %}
+	</span>
+</div>
+
+{% endblock %}
