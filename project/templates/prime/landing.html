@@ -25,40 +25,40 @@
                         <div class="row"> <!--in place so that photo tiles are in line with cover_photo-->
                             <ul class="nav navbar-nav" id="below_cover_photo">
                                 <li>
-                                    <a href="#">
-                                        <img id="tile_photo" src="{{ STATIC_URL }}prime/img/Front/tile_photo.jpg">
+                                    <a href="{% url 'root' %}">
+                                        <img class="tile_photo" src="{{ STATIC_URL }}prime/img/Front/tile_photo.jpg">
                                     </a>
-                                    <a href="#" class="tile_photo_transcription">
+                                    <a href="{% url 'root' %}" class="tile_photo_transcription">
                                         <div class="tile_photo_transcription">Current Issue</div>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <img id="tile_photo" src="{{ STATIC_URL }}prime/img/Front/tile_photo.jpg">
+                                        <img class="tile_photo" src="{{ STATIC_URL }}prime/img/Front/tile_photo.jpg">
                                     </a>
                                     <a href="#" class="tile_photo_transcription">
                                         <div class="tile_photo_transcription">LA City Guide</div>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
-                                        <img id="tile_photo" src="{{ STATIC_URL }}prime/img/Front/tile_photo.jpg">
+                                    <a href="{% url 'prime_diy' %}">
+                                        <img class="tile_photo" src="{{ STATIC_URL }}prime/img/Front/tile_photo.jpg">
                                     </a>
-                                    <a href="#" class="tile_photo_transcription">
+                                    <a href="{% url 'prime_diy' %}" class="tile_photo_transcription">
                                         <div class="tile_photo_transcription">DIY</div>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
-                                        <img id="tile_photo" src="{{ STATIC_URL }}prime/img/Front/tile_photo.jpg">
+                                    <a href="{% url 'prime_recipe' %}">
+                                        <img class="tile_photo" src="{{ STATIC_URL }}prime/img/Front/tile_photo.jpg">
                                     </a>
-                                    <a href="#" class="tile_photo_transcription">
+                                    <a href="{% url 'prime_recipe' %}" class="tile_photo_transcription">
                                         <div class="tile_photo_transcription">Recipes</div>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <img id="tile_photo" src="{{ STATIC_URL }}prime/img/Front/tile_photo.jpg">
+                                        <img class="tile_photo" src="{{ STATIC_URL }}prime/img/Front/tile_photo.jpg">
                                     </a>
                                     <a href="#" class="tile_photo_transcription">
                                         <div class="tile_photo_transcription">Previous Issues</div>
@@ -76,8 +76,6 @@
         <h3 style="text-align:center">LATEST STORIES</h3>
 
         <hr>
-
-        {{ size }}
 
         <div id="container">
             {% for row in rows %}

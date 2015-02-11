@@ -14,18 +14,7 @@
 
         <style type="text/css">
             header:after {
-                width: 100vw;
-                height: 40vh;
-                content: "";
-                background: url('{{ STATIC_URL }}prime/img/{{ typeTitle }}/header.jpg'); /*TODO: fix*/
-                background-size: cover;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                z-index: -1;
-                position: absolute;
-                opacity: 0.6
+                background-image: url('{{ STATIC_URL }}prime/img/{{ typeTitle }}/header.jpg');
             }
         </style>
     </head>
@@ -33,27 +22,27 @@
         <header>
             <ul id="mainnav">
                 <li>
-                    home
+                    <a href="{% url 'root' %}">home</a>
                 </li>
                 <li>
                     {% if typeTitle == 'DIY' %}
-                        diy
+                        <a href="{% url 'prime_diy' %}">diy</a>
                     {% else %}
-                        recipes
+                        <a href="{% url 'prime_recipe' %}">recipes</a>
                     {% endif %}
                 </li>
                 <li>
-                    city guides
+                    <a href="#">city guides</a>
                 </li>
                 <li>
                     {% if typeTitle == 'DIY' %}
-                        recipes
+                        <a href="{% url 'prime_recipe' %}">recipes</a>
                     {% else %}
-                        diy
+                        <a href="{% url 'prime_diy' %}">diy</a>
                     {% endif %}
                 </li>
                 <li>
-                    past issues
+                    <a href="#">past issues</a>
                 </li>
             </ul>
             <p id="title">

@@ -57,15 +57,9 @@
 	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
-#tile_photo {
+.tile_photo {
 	margin-top: 2%;
 	width: 100%;
-}
-
-#tile {
-	text-align: center;
-	padding: 5%;
-	background-image: url("/Users/reganhsu/Documents/prime_front_page/img/tile_photo.jpg") !important;
 }
 
 @media only screen and (min-width: 767px) {
@@ -78,25 +72,25 @@
 
 
 @media only screen and (max-width: 767px) and (min-width: 501px) {
-	#tile_photo {
+	.tile_photo {
 		width: 47%;
 		font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 	}
 
-	#tile_photo.col-sm-3 {
+	.tile_photo.col-sm-3 {
 		padding: 0px;
 	}
 }
 
 @media only screen and (max-width: 500px) {
-	#tile_photo {
+	.tile_photo {
 		width: 100%;
 	}
 
 }
 
 @media only screen and (max-width: 767px) {
-	#tile_photo {
+	.tile_photo {
 		display: none;
 	}
 
