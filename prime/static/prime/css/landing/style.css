@@ -1,3 +1,29 @@
+.container-fluid
+{
+	background-color: white !important;
+}
+
+#thick_border
+{
+	border: solid black 3px;
+}
+
+#thick_border2
+{
+	border: solid black 1px;
+}
+
+#one {
+    font-family: "helvetica" !important;
+    font-weight: lighter;
+    font-size: 1.3em;
+}
+
+#two {
+    font-family: serif;
+    text-transform: uppercase;
+}
+
 .navbar-default .navbar-collapse, .navbar-default .navbar-form
 {
 	border-top: none !important;
@@ -89,7 +115,8 @@
 	{
 		height: 0;
 		display: none;
-		font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    	font-family: "helvetica" !important;
+    	font-size: 20px !important;
 	}
 }
 
@@ -125,6 +152,8 @@
 	#tile_li
 	{
 		width: 100%;
+		font-size: 20px;
+		font-family: "helvetica";
 	}
 
 	#below_cover_photo

@@ -1,4 +1,4 @@
-from prime.models import Issue, Article, PDF, Recipe, DIYarticle
+from prime.models import Issue, Article, PDF, Recipe, DIYarticle, Category
 from main.models import RecipeTag, DIYTag
 from django.views.generic import View
 from django.views.generic.detail import DetailView
@@ -66,6 +66,7 @@ class ArticleView(View):
 
 class LandingView(View):
     def get(self, context):
+        categories = Category.objects.all()
         articles = Article.objects.order_by('position').reverse()
         rows = []
         count = 0
@@ -74,6 +75,7 @@ class LandingView(View):
             rows.append(articles[count:count+2])
             count += 2
         context = {
+                    'categories': categories,
                     'size': size,
                     'rows': rows,
                     'MEDIA_URL': settings.MEDIA_URL,

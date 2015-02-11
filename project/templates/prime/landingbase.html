@@ -9,9 +9,48 @@
 
 <!-- Optional theme -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+<!-- Normalize: http://necolas.github.io/normalize.css/ -->
+        <link rel="stylesheet" type="text/css" href="http://necolas.github.io/normalize.css/3.0.2/normalize.css">
+
+        <!-- Underscore: http://underscorejs.org/ -->
+        <script type="text/javascript" src="http://underscorejs.org/underscore-min.js"></script>
+        <!-- jQuery: http://jquery.com/ -->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <!-- Backbone: http://backbonejs.org/ -->
+        <script type="text/javascript" src="http://backbonejs.org/backbone-min.js"></script>
+
+
+        <!-- Fonts -->
+        <link href='http://fonts.googleapis.com/css?family=Slabo+27px' rel='stylesheet' type='text/css'>
+
+
 
 <!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+
+        <style type="text/css">
+            #poop {
+                background: url('{{ STATIC_URL }}prime/img/Front/cover_photo.jpg');
+                background-repeat:no-repeat;
+				background-size: contain;
+				background-repeat: no-repeat;
+				    width: 100%;
+				    height: 0;
+				    padding-top: 31%;
+
+            }
+            #divOnTop 
+            { 
+            	z-index: 1000;
+            	position: absolute;
+            	margin-left: auto;
+            	margin-right: auto;
+            	width: 100%;
+            }
+
+        </style>
+
 
 
 <script>
@@ -44,9 +83,23 @@ $(window).scroll(function(e){
 <body>
 
 
+<header>
+</header>
 
 <div id="container">
-	<img id="cover_photo" src="{{ STATIC_URL }}prime/img/Front/cover_photo.jpg" />
+
+<!-- 	<div id="divOnTop">
+		<br /><br /><br /><br /><br /><br />
+
+		<center><span id="one">prime</span></center>
+	</div>
+ -->
+<!-- 	<img id="cover_photo" style="position: absolute; width: 89%" src="{{ STATIC_URL }}prime/img/Front/cover_photo.jpg"  />
+ -->
+
+
+	<img id="cover_photo" style="background-color: white" src="{{ STATIC_URL }}prime/img/Front/cover_photo.jpg"  />
+
 	<br />
 
 <nav class="navbar navbar-default">
@@ -130,14 +183,21 @@ $(window).scroll(function(e){
   </div><!-- /.container-fluid -->
 </nav>
 
+<!--             <p id="title">
+                <span id="one">prime</span> <span id="two">recipes</span>
+            </p>
+ -->
 <!-- <div class="fixedElement" style="background-color:blue; z-index:6; color: white; width: 100% !important">
 pooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooop
 </div> -->
 </div>
 
-	<hr>
+	{% for category in categories %}
+		{{category.name}}
+	{% endfor %}
+	<hr id="thick_border">
 	<h3 style="text-align:center">LATEST STORIES</h1>
-	<hr>
+	<hr id="thick_border2">
 
 	<div id="container">
 	{% for row in rows %}

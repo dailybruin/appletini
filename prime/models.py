@@ -37,6 +37,14 @@ class Issue(models.Model):
     def __unicode__(self):
         return self.name
 
+class Category(models.Model):
+    name = models.CharField(max_length=128, unique=True)
+
+    def __unicode__(self):
+        return self.name
+
+
+
 class Article(models.Model):
     issue = models.ForeignKey('Issue', default=None, null=True, blank=True)
     title = models.CharField(max_length=128)
@@ -54,6 +62,25 @@ class Article(models.Model):
 
     def __unicode__(self):
         return self.title
+
+class CityGuideArticle(Article):
+    def __unicode__(self):
+        return self.name
+
+class District(models.Model):
+    name = models.CharField(max_length=128, unique=True)
+    articles = models.ManyToManyField(CityGuideArticle, through='CityGuide')
+    def __unicode__(self):
+        return self.name
+
+class CityGuide(models.Model):
+    article = models.ForeignKey(CityGuideArticle)
+    neighborhood = models.ForeignKey(District)
+    time_stamp = models.DateField()
+
+
+# class CityGuide(Article):
+
 
 class Recipe(models.Model):
     title = models.CharField(max_length=128)

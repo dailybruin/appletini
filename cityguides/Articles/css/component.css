@@ -1,3 +1,8 @@
+.container
+{
+	padding-left: 0px !important;
+	padding-right: 0px !important;
+}
 
 @font-face {
 	font-weight: normal;
@@ -12,6 +17,7 @@
 
 html, body, .container, .header {
 	height: 100%;
+	background-color: white;
 }
 
 /* Header */
