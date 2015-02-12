@@ -26,12 +26,12 @@ header {
 
 #mainnav li {
     display: inline-block;
-    height: 40px;
-    width: 13vw;
+    height: 6.5vh;
+    width: 14vw;
     background-color: black;
     color: white;
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-left: 1.5vw;
+    margin-right: 1.5vw;
     font-size: 1.2em;
     font-family: "helvetica";
     font-weight: lighter;
@@ -54,6 +54,24 @@ header {
 @media screen and (max-width: 750px) {
     #title {
         font-size: 4em;
+    }
+    #sidebar li {
+        width: 75%;
+    }
+    #sidebar li:hover {
+        width: 90%;
+    }
+    #mainnav li {
+        font-size: .9em;
+    }
+    #mainnav li a {
+        padding-top: 10px;
+    }
+    #intropara p {
+        font-size: .9em;
+    }
+    .article-intro {
+        font-size: .9em;
     }
 }
 
@@ -89,7 +107,7 @@ header {
     float: left;
 }
     #sidebar li {
-        width: 150px;
+        max-width: 150px;
         background-color: black;
         color: white;
         height: 50px;
@@ -102,9 +120,10 @@ header {
         transition: 0.3s ease;
     }
         #sidebar li:hover {
-            width: 190px;
+            max-width: 190px;
             cursor: pointer;
         }
+
     #sidebar a {
         color: white;
 
@@ -120,17 +139,15 @@ header {
 }
 
 .article {
-    height: 220px;
-    margin-top: 20px;
+    margin-top: 40px;
 }
     .article:first-child {
         margin-top: 0px;
     }
     .article .img_container {
         width: 27%;
-        height: 180px;
         float: left;
-        margin: 0px;
+        margin-bottom: 20px;
         overflow: hidden;
     }
         .img_container img {
@@ -143,7 +160,7 @@ header {
     float: right;
     padding-right: 10px;
     padding: 0px 10px;
-    min-height: 210px;
+    margin-bottom: 20px;
 }
 
 .article-title {
@@ -160,6 +177,7 @@ header {
 }
 
 .article-divider {
+    margin-top: 40px;
     height: 2px;
     background-color: black;
     width: 80%;
@@ -259,3 +277,5 @@ figure {
     text-align: center;
     margin-top: 1em;
 }
+
+
