@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .container-fluid
 {
 	background-color: white !important;
@@ -29,51 +30,42 @@
 	border-top: none !important;
 }
 
-.row
-{
+.row {
 	margin-left: 0px !important;
 	margin-right: 0px !important;
 }
 
-.container>.navbar-header, .container-fluid>.navbar-header, .container>.navbar-collapse, .container-fluid>.navbar-collapse 
-{
+.container>.navbar-header, .container-fluid>.navbar-header, .container>.navbar-collapse, .container-fluid>.navbar-collapse {
 	margin-left: 0px;
 	margin-right: 0px;
 }
 
-.navbar-nav
-{
+.navbar-nav {
 	background-color: white !important;
 }
 
-.navbar
-{
+.navbar {
 	border: none !important;
 }
-.navbar-default
-{
+.navbar-default {
 	border: none !important;
 }
 
-#tile_li
-{
+#below_cover_photo li {
 	width: 20%;
 }
 
-.navbar-collapse
-{
+.navbar-collapse {
 	padding-right: 0px !important;
 	padding-left: 0px !important;
 }
 
-.container-fluid
-{
+.container-fluid {
 	padding-right: 0px !important;
 	padding-left: 0px !important;
 }
 
-#container
-{
+#container {
     padding-top: 4%;
     padding-left: 3%;
     padding-right: 3%;
@@ -82,37 +74,24 @@
     width: 95%;
 }
 
-#cover_photo
-{
+#cover_photo {
 	width: 100%;
 }
 
-#below_cover_photo
-{
+#below_cover_photo {
 	background-color: transparent;
 	margin-left: auto;
 	margin-right: auto;
 	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-
-
 }
 
-#tile_photo
-{
+.tile_photo {
 	margin-top: 2%;
 	width: 100%;
 }
 
-#tile
-{
-	text-align: center;
-	padding: 5%;
-	background-image: url("/Users/reganhsu/Documents/prime_front_page/img/tile_photo.jpg") !important;
-}
-
 @media only screen and (min-width: 767px) {
-	#tile_photo_transcription
-	{
+	.tile_photo_transcription {
 		height: 0;
 		display: none;
     	font-family: "helvetica" !important;
@@ -122,77 +101,63 @@
 
 
 @media only screen and (max-width: 767px) and (min-width: 501px) {
-	#tile_photo
-	{
+	.tile_photo {
 		width: 47%;
 		font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-
 	}
 
-	#tile_photo.col-sm-3
-	{
+	.tile_photo.col-sm-3 {
 		padding: 0px;
 	}
 }
 
 @media only screen and (max-width: 500px) {
-	#tile_photo
-	{
+	.tile_photo {
 		width: 100%;
 	}
-	
+
 }
 
 @media only screen and (max-width: 767px) {
-	#tile_photo
-	{
+	.tile_photo {
 		display: none;
 	}
-	
-	#tile_li
-	{
+
+	#below_cover_photo li {
 		width: 100%;
 		font-size: 20px;
 		font-family: "helvetica";
 	}
 
-	#below_cover_photo
-	{
+	#below_cover_photo {
 		background-color: transparent !important;
 	}
 }
 
-.row
-{
+.row {
 	width: 100%;
 	padding-left: 0;
 }
 
-.header
-{
+.header {
 	font-weight: bold;
 	/*font-size: 28px; *//*idk actual size */
 	font-size: 3.0vh;
 	margin-bottom: 0%;
 }
 
-.description
-{
+.description {
 	font-size: 2.25vh;
 	font-weight: lighter;
-	/*color: grey;*/
 	color: #778899;
 	margin-top: 0%;
-
 }
 
-.container2
-{
+.container2 {
 	width: 100%;
 }
 
-hr
-{
+hr {
 	width: 90%;
 	background-color: black;
 	height: 2px;

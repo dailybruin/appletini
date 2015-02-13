@@ -14,18 +14,7 @@
 
         <style type="text/css">
             header:after {
-                width: 100vw;
-                height: 40vh;
-                content: "";
-                background: url('{{ STATIC_URL }}prime/img/{{ typeTitle }}/header.jpg'); /*TODO: fix*/
-                background-size: cover;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                z-index: -1;
-                position: absolute;
-                opacity: 0.6
+                background-image: url('{{ STATIC_URL }}prime/img/{{ typeTitle }}/header.jpg');
             }
         </style>
     </head>
@@ -33,43 +22,59 @@
         <header>
             <ul id="mainnav">
                 <li>
-                    home
+                    <a href="{% url 'root' %}">home</a>
                 </li>
                 <li>
                     {% if typeTitle == 'DIY' %}
-                        diy
+                        <a href="{% url 'prime_diy' %}">diy</a>
                     {% else %}
-                        recipes
+                        <a href="{% url 'prime_recipe' %}">recipes</a>
                     {% endif %}
                 </li>
                 <li>
-                    city guides
+                    <a href="#">city guides</a>
                 </li>
                 <li>
                     {% if typeTitle == 'DIY' %}
-                        recipes
+                        <a href="{% url 'prime_recipe' %}">recipes</a>
                     {% else %}
-                        diy
+                        <a href="{% url 'prime_diy' %}">diy</a>
                     {% endif %}
                 </li>
                 <li>
-                    past issues
+                    <a href="#">past issues</a>
                 </li>
             </ul>
             <p id="title">
                 <span id="one">prime</span> <span id="two">{{ typeTitle }}</span>
             </p>
         </header>
+        {% if article %}
 
-        <hr class="hr" />
-
-        <div id="intropara">
-            <p>
-                For many of us, college life means living in tiny spaces. Whether you are in a triple dorm in Hedrick Hall or splitting the expensive LA rent with five other people, prime wants you to feel at home in Westwood. We have everything you need to make your space efficient and cozy, all on a budget!
-            </p>
-        </div>
-        <hr class="hr" />
-
+        {% else %}
+            <hr class="hr" />
+            <div id="intropara">
+                {% if tag_name %}
+                    {% if typeTitle == 'DIY' %}
+                        <p>DIY atricles tagged with "{{ tag_name }}"</p>
+                    {% else %}
+                        <p>Recipes tagged with "{{ tag_name }}"</p>
+                    {% endif %}
+                {% else %}
+                    {% if typeTitle == 'DIY' %}
+                        <p>
+                            For many of us, college life means living in tiny spaces. Whether you are in a triple dorm in Hedrick Hall or splitting the expensive LA rent with five other people, prime wants you to feel at home in Westwood. We have everything you need to make your space efficient and cozy, all on a budget!
+                        </p>
+                    {% else %}
+                        <p>
+                            Being a college student doesn't mean you have to resort to a diet of instant ramen and hot pockets. The goal of prime recipes is to inspire college students to try cooking delicious food while maintaining a busy schedule. Explore our latest recipes before or browse by category on the side. Bon appetit!
+                        </p>
+                    {% endif %}
+                {% endif %}
+            </div>
+            <hr class="hr" />
+        {% endif %}
+        
         {% block content %}
         {% endblock %}
 

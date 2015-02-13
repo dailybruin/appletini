@@ -83,6 +83,7 @@ class LandingView(View):
                     } 
         return render_to_response('prime/landingbase.html', context)
 
+
 class RecipeFrontView(View):
     def get(self, context):
         recipe_list = Recipe.objects.all()
@@ -122,8 +123,8 @@ class DIYView(View):
         article = DIYarticle.objects.get(slug=diy_slug)
         context = {
             'article': article,
-            'typeTitle': 'Recipes',
-            'typeRoot': 'prime_recipe',
+            'typeTitle': 'DIY',
+            'typeRoot': 'prime_diy',
             'STATIC_URL': settings.STATIC_URL,
             'MEDIA_URL': settings.MEDIA_URL
         }
@@ -145,8 +146,8 @@ class RecipeTagsView(View):
             'articles': recipes,
             'tags': tags,
             'tag_name': tag_name,
-            'typeTitle': 'DIY',
-            'typeRoot': 'prime_diy',
+            'typeTitle': 'Recipes',
+            'typeRoot': 'prime_recipe',
             'STATIC_URL': settings.STATIC_URL,
             'MEDIA_URL': settings.MEDIA_URL
         }
