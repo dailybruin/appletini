@@ -1,4 +1,6 @@
-<<<<<<< HEAD
+.tile_photo_transcription {
+	text-align: center;
+}
 .container-fluid
 {
 	background-color: white !important;
@@ -96,6 +98,7 @@
 		display: none;
     	font-family: "helvetica" !important;
     	font-size: 20px !important;
+    	text-align: center !important;
 	}
 }
 
