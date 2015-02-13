@@ -71,9 +71,6 @@ class CityGuide(models.Model):
     time_stamp = models.DateField()
 
 
-# class CityGuide(Article):
-
-
 class Recipe(models.Model):
     title = models.CharField(max_length=128)
     slug = models.SlugField(max_length=128)

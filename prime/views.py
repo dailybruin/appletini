@@ -66,7 +66,6 @@ class ArticleView(View):
 
 class LandingView(View):
     def get(self, context):
-        categories = Category.objects.all()
         articles = Article.objects.order_by('position').reverse()
         rows = []
         count = 0
@@ -75,13 +74,12 @@ class LandingView(View):
             rows.append(articles[count:count+2])
             count += 2
         context = {
-                    'categories': categories,
                     'size': size,
                     'rows': rows,
                     'MEDIA_URL': settings.MEDIA_URL,
                     'STATIC_URL': settings.STATIC_URL
                     } 
-        return render_to_response('prime/landingbase.html', context)
+        return render_to_response('prime/landing.html', context)
 
 
 class RecipeFrontView(View):
