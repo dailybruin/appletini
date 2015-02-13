@@ -1,3 +1,13 @@
+#thick_border
+{
+	border: solid black 3px;
+}
+
+#thick_border2
+{
+	border: solid black 1px;
+}
+
 .tile_photo_transcription {
 	text-align: center;
 }
@@ -93,7 +103,11 @@
 }
 
 @media only screen and (min-width: 767px) {
+
 	.tile_photo_transcription {
+
+		visibility: hidden !important;
+		position: fixed !important;
 		height: 0;
 		display: none;
     	font-family: "helvetica" !important;
@@ -122,6 +136,12 @@
 }
 
 @media only screen and (max-width: 767px) {
+	.container>.navbar-header, .container-fluid>.navbar-header, .container>.navbar-collapse, .container-fluid>.navbar-collapse {
+	margin-right: 2% !important;
+	}
+
+
+
 	.tile_photo {
 		display: none;
 	}
