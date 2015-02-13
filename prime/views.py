@@ -1,4 +1,4 @@
-from prime.models import Issue, Article, PDF, Recipe, DIYarticle, Category
+from prime.models import Issue, Article, PDF, Recipe, DIYarticle
 from main.models import RecipeTag, DIYTag
 from django.views.generic import View
 from django.views.generic.detail import DetailView

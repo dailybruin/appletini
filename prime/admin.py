@@ -1,7 +1,15 @@
 from django.contrib import admin
 from django.db import models
 from django.forms import Textarea
-from prime.models import Issue, Article, Image, PDF, Recipe, DIYarticle
+from prime.models import Issue, Article, Image, PDF, Recipe, DIYarticle, CityGuideArticle, District
+
+admin.site.register(CityGuideArticle, CGAdmin)
+admin.site.register(District)
+
+class CDAdmin
+    fieldsets = (
+        (None, {'fields' : ('name','District')})
+        )
 
 class IssueAdmin(admin.ModelAdmin):
     list_display = ('name', 'release_date')

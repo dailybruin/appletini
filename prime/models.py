@@ -37,14 +37,6 @@ class Issue(models.Model):
     def __unicode__(self):
         return self.name
 
-class Category(models.Model):
-    name = models.CharField(max_length=128, unique=True)
-
-    def __unicode__(self):
-        return self.name
-
-
-
 class Article(models.Model):
     issue = models.ForeignKey('Issue', default=None, null=True, blank=True)
     title = models.CharField(max_length=128)
