@@ -52,18 +52,23 @@ class Article(models.Model):
         return ' and '.join([str(a) for a in self.author])
 
     def __unicode__(self):
-        return self.title
+        return self.title    
 
 class Neighborhood(models.Model):
     name = models.CharField(max_length=128, unique=True)
     def __unicode__(self):
         return self.name
 
+class CGOption(models.Model):
+    name = models.CharField(max_length=50, unique= True)
+    def __unicode__(self):
+        return self.name
+
 class CityGuideArticle(Article):
     neighborhood = models.ForeignKey(Neighborhood)
+    option = models.ForeignKey(CGOption)
     def __unicode__(self):
         return self.title
-
 
 class Recipe(models.Model):
     title = models.CharField(max_length=128)

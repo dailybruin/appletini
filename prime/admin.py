@@ -1,11 +1,11 @@
 from django.contrib import admin
 from django.db import models
 from django.forms import Textarea
-from prime.models import Issue, Article, Image, PDF, Recipe, DIYarticle, CityGuideArticle, Neighborhood
+from prime.models import Issue, Article, Image, PDF, Recipe, DIYarticle, CityGuideArticle, Neighborhood, CGOption
 
 # admin.site.register(CityGuideArticle, CGAdmin)
 admin.site.register(Neighborhood)
-
+admin.site.register(CGOption)
 
 class IssueAdmin(admin.ModelAdmin):
     list_display = ('name', 'release_date')
