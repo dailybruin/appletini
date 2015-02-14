@@ -62,16 +62,17 @@ class ArticleView(View):
 
 class LandingView(View):
     def get(self, context):
-        articles = Article.objects.order_by('position').reverse()
-        rows = []
-        count = 0
-        size = len(articles)
-        while( (count+2) < size):
-            rows.append(articles[count:count+2])
-            count += 2
+        article_list = Article.objects.order_by('position').reverse()
+        paginator = Paginator(article_list, 4)
+        page = self.request.GET.get('page')
+        try:
+            articles = paginator.page(page)
+        except PageNotAnInteger:
+            articles = paginator.page(1)
+        except EmptyPage:
+            articles = paginator.page(paginator.num_pages)
         context = {
-                    'size': size,
-                    'rows': rows,
+                    'articles': articles,
                     'MEDIA_URL': settings.MEDIA_URL,
                     'STATIC_URL': settings.STATIC_URL
                     } 
