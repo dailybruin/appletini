@@ -1,11 +1,10 @@
 from django.contrib import admin
 from django.db import models
 from django.forms import Textarea
-from prime.models import Issue, Article, Image, PDF, Recipe, DIYarticle, CityGuideArticle, District, CityGuide
+from prime.models import Issue, Article, Image, PDF, Recipe, DIYarticle, CityGuideArticle, Neighborhood
 
 # admin.site.register(CityGuideArticle, CGAdmin)
-admin.site.register(District)
-admin.site.register(CityGuide)
+admin.site.register(Neighborhood)
 
 
 class IssueAdmin(admin.ModelAdmin):

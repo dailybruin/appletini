@@ -54,26 +54,15 @@ class Article(models.Model):
     def __unicode__(self):
         return self.title
 
-# class see_do_eat:
-#     articles = models.CharField(max_length=128, unique=True)
-#     def __unicode__(self):
-#         return self.option
-
-class CityGuideArticle(Article):
-    #category = {'see': False, 'do': False, 'eat': False}
-    #option = models.ForeignKey(see_do_eat)
-    def __unicode__(self):
-        return self.title
-
-class District(models.Model):
+class Neighborhood(models.Model):
     name = models.CharField(max_length=128, unique=True)
-    articles = models.ManyToManyField(CityGuideArticle, through='CityGuide')
     def __unicode__(self):
         return self.name
 
-class CityGuide(models.Model):
-    article = models.ForeignKey(CityGuideArticle)
-    neighborhood = models.ForeignKey(District)
+class CityGuideArticle(Article):
+    neighborhood = models.ForeignKey(Neighborhood)
+    def __unicode__(self):
+        return self.title
 
 
 class Recipe(models.Model):
