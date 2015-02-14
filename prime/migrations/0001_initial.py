@@ -41,6 +41,33 @@ class Migration(SchemaMigration):
         ))
         db.create_unique(m2m_table_name, ['article_id', 'author_id'])
 
+        # Adding model 'Neighborhood'
+        db.create_table(u'prime_neighborhood', (
+            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('lead_photo', self.gf('django.db.models.fields.files.ImageField')(max_length=100)),
+            ('title', self.gf('django.db.models.fields.CharField')(unique=True, max_length=128)),
+            ('slug', self.gf('django.db.models.fields.SlugField')(max_length=128)),
+        ))
+        db.send_create_signal(u'prime', ['Neighborhood'])
+
+        # Adding model 'CGOption'
+        db.create_table(u'prime_cgoption', (
+            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('name', self.gf('django.db.models.fields.CharField')(unique=True, max_length=50)),
+        ))
+        db.send_create_signal(u'prime', ['CGOption'])
+
+        # Adding model 'CityGuideArticle'
+        db.create_table(u'prime_cityguidearticle', (
+            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('neighborhood', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['prime.Neighborhood'])),
+            ('title', self.gf('django.db.models.fields.CharField')(max_length=128)),
+            ('lead_photo', self.gf('django.db.models.fields.files.ImageField')(max_length=100)),
+            ('option', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['prime.CGOption'])),
+            ('body', self.gf('django.db.models.fields.TextField')(blank=True)),
+        ))
+        db.send_create_signal(u'prime', ['CityGuideArticle'])
+
         # Adding model 'Recipe'
         db.create_table(u'prime_recipe', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
@@ -94,6 +121,15 @@ class Migration(SchemaMigration):
         ))
         db.create_unique(m2m_table_name, ['diyarticle_id', 'author_id'])
 
+        # Adding M2M table for field tag on 'DIYarticle'
+        m2m_table_name = db.shorten_name(u'prime_diyarticle_tag')
+        db.create_table(m2m_table_name, (
+            ('id', models.AutoField(verbose_name='ID', primary_key=True, auto_created=True)),
+            ('diyarticle', models.ForeignKey(orm[u'prime.diyarticle'], null=False)),
+            ('diytag', models.ForeignKey(orm[u'main.diytag'], null=False))
+        ))
+        db.create_unique(m2m_table_name, ['diyarticle_id', 'diytag_id'])
+
         # Adding model 'Image'
         db.create_table(u'prime_image', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
@@ -124,6 +160,15 @@ class Migration(SchemaMigration):
         # Removing M2M table for field author on 'Article'
         db.delete_table(db.shorten_name(u'prime_article_author'))
 
+        # Deleting model 'Neighborhood'
+        db.delete_table(u'prime_neighborhood')
+
+        # Deleting model 'CGOption'
+        db.delete_table(u'prime_cgoption')
+
+        # Deleting model 'CityGuideArticle'
+        db.delete_table(u'prime_cityguidearticle')
+
         # Deleting model 'Recipe'
         db.delete_table(u'prime_recipe')
 
@@ -138,6 +183,9 @@ class Migration(SchemaMigration):
 
         # Removing M2M table for field author on 'DIYarticle'
         db.delete_table(db.shorten_name(u'prime_diyarticle_author'))
+
+        # Removing M2M table for field tag on 'DIYarticle'
+        db.delete_table(db.shorten_name(u'prime_diyarticle_tag'))
 
         # Deleting model 'Image'
         db.delete_table(u'prime_image')
@@ -196,6 +244,11 @@ class Migration(SchemaMigration):
             'twitter': ('django.db.models.fields.CharField', [], {'max_length': '15', 'blank': 'True'}),
             'user': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['auth.User']", 'null': 'True', 'blank': 'True'})
         },
+        u'main.diytag': {
+            'Meta': {'object_name': 'DIYTag'},
+            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '32'})
+        },
         u'main.recipetag': {
             'Meta': {'object_name': 'RecipeTag'},
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
@@ -214,6 +267,20 @@ class Migration(SchemaMigration):
             'teaser': ('django.db.models.fields.CharField', [], {'max_length': '200'}),
             'title': ('django.db.models.fields.CharField', [], {'max_length': '128'})
         },
+        u'prime.cgoption': {
+            'Meta': {'object_name': 'CGOption'},
+            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'name': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '50'})
+        },
+        u'prime.cityguidearticle': {
+            'Meta': {'object_name': 'CityGuideArticle'},
+            'body': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
+            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'lead_photo': ('django.db.models.fields.files.ImageField', [], {'max_length': '100'}),
+            'neighborhood': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['prime.Neighborhood']"}),
+            'option': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['prime.CGOption']"}),
+            'title': ('django.db.models.fields.CharField', [], {'max_length': '128'})
+        },
         u'prime.diyarticle': {
             'Meta': {'object_name': 'DIYarticle'},
             'author': ('django.db.models.fields.related.ManyToManyField', [], {'to': u"orm['main.Author']", 'symmetrical': 'False'}),
@@ -223,6 +290,7 @@ class Migration(SchemaMigration):
             'position': ('django.db.models.fields.PositiveIntegerField', [], {'default': '0'}),
             'redirect': ('django.db.models.fields.URLField', [], {'max_length': '200', 'blank': 'True'}),
             'slug': ('django.db.models.fields.SlugField', [], {'max_length': '128'}),
+            'tag': ('django.db.models.fields.related.ManyToManyField', [], {'to': u"orm['main.DIYTag']", 'symmetrical': 'False'}),
             'teaser': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
             'title': ('django.db.models.fields.CharField', [], {'max_length': '128'})
         },
@@ -241,6 +309,13 @@ class Migration(SchemaMigration):
             'name': ('django.db.models.fields.CharField', [], {'max_length': '32'}),
             'release_date': ('django.db.models.fields.DateField', [], {}),
             'slug': ('django.db.models.fields.SlugField', [], {'max_length': '32'})
+        },
+        u'prime.neighborhood': {
+            'Meta': {'object_name': 'Neighborhood'},
+            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'lead_photo': ('django.db.models.fields.files.ImageField', [], {'max_length': '100'}),
+            'slug': ('django.db.models.fields.SlugField', [], {'max_length': '128'}),
+            'title': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '128'})
         },
         u'prime.pdf': {
             'Meta': {'object_name': 'PDF'},
