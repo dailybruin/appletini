@@ -24,6 +24,7 @@ admin.site.register(Article, ArticleAdmin)
 
 class CDAdmin(ArticleAdmin):
     pass
+    Neighborhood = models.ForeignKey(Neighborhood)
 admin.site.register(CityGuideArticle, CDAdmin)
 
 
