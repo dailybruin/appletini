@@ -52,6 +52,7 @@ header {
 }
 
 @media screen and (max-width: 750px) {
+
     #title {
         font-size: 4em;
     }
@@ -72,6 +73,18 @@ header {
     }
     .article-intro {
         font-size: .9em;
+    }
+}
+
+@media screen and (max-width: 550px) {
+
+    #title
+    {
+        font-size: 3.5em;
+    }
+    #mainnav
+    {
+        background-color: black !important;
     }
 }
 
@@ -130,7 +143,9 @@ header {
     }
         #sidebar a:hover {
             text-decoration: none;
-        }
+    }
+
+
 
 #main {
     width: 80vw;

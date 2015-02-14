@@ -5,7 +5,6 @@ from prime.models import Issue, Article, Image, PDF, Recipe, DIYarticle, CityGui
 
 # admin.site.register(CityGuideArticle, CGAdmin)
 admin.site.register(Neighborhood)
-admin.site.register(CGOption)
 
 class IssueAdmin(admin.ModelAdmin):
     list_display = ('name', 'release_date')
