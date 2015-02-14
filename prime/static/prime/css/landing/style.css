@@ -191,4 +191,15 @@ hr {
 	height: 2px;
 }
 
+.pagination{
+    clear: both;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 50px !important;
+}
+
+.step-links a {
+    color: black;
+}
+
 

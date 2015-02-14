@@ -80,9 +80,23 @@
         <hr id="thick_border2">
 
         <div id="container">
-            {% for row in rows %}
                 <div class="row">
-                    {% for article in row %}
+                    {% for article in articles|slice:":2" %}
+                        <div class="col-xs-6">
+                            <img height="50% !important" src="{{ MEDIA_URL }}{{ article.lead_photo }}" class="img-responsive">
+                            <div class="header">
+                                {{article.title}}
+                            </div>
+                            <div class="description">
+                                <p>{{article.body|truncatechars:200}}</p>
+                                <p><a href="{{article.slug}}">READ MORE </a></p>
+                            </div>
+                            <hr>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="row">
+                    {% for article in articles|slice:"2:4" %}
                         <div class="col-xs-6">
                             <img height="50% !important" src="{{ MEDIA_URL }}{{ article.lead_photo }}" class="img-responsive">
                             <div class="header">
@@ -98,6 +112,23 @@
                 </div>
             {% endfor %}
         </div>
+
+        <div class="pagination">
+            <span class="step-links">
+                {% if articles.has_previous %}
+                    <a href="?page={{ articles.previous_page_number }}"> << </a>
+                {% endif %}
+
+                <span class="current">
+                    Page {{ articles.number }} of {{ articles.paginator.num_pages }}.
+                </span>
+
+                {% if articles.has_next %}
+                    <a href="?page={{ articles.next_page_number }}"> >> </a>
+                {% endif %}
+            </span>
+        </div>
+
 
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
