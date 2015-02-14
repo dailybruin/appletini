@@ -4,7 +4,10 @@ from django.forms import Textarea
 from prime.models import Issue, Article, Image, PDF, Recipe, DIYarticle, CityGuideArticle, Neighborhood, CGOption
 
 # admin.site.register(CityGuideArticle, CGAdmin)
-admin.site.register(Neighborhood)
+class NeighborhoodAdmin(admin.ModelAdmin):
+    prepopulated_fields = {"slug": ("title",)}
+admin.site.register(Neighborhood, NeighborhoodAdmin)
+
 admin.site.register(CGOption)
 
 class IssueAdmin(admin.ModelAdmin):
@@ -22,8 +25,7 @@ class ArticleAdmin(admin.ModelAdmin):
     }
 admin.site.register(Article, ArticleAdmin)
 
-class CDAdmin(ArticleAdmin):
-    pass
+class CDAdmin(admin.ModelAdmin):
     Neighborhood = models.ForeignKey(Neighborhood)
 admin.site.register(CityGuideArticle, CDAdmin)
 
