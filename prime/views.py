@@ -43,21 +43,17 @@ class IssueView(View):
 
 
 class ArticleView(View):
-    def get(self, context, issue_slug, article_slug):
-        issue, recent_issues = get_recent_issues(issue_slug)
+    def get(self, context, article_slug):
         try:
-            article = Article.objects.filter(issue=issue).get(slug=article_slug)
+            article = Article.objects.get(slug=article_slug)
         except Article.DoesNotExist:
             raise Http404
         if article.redirect:
             return redirect(article.redirect)
-        articles = Article.objects.filter(issue=issue).order_by('position')
-        pdf = PDF.objects.get(issue=issue)
+        articles = Article.objects.order_by('position')
         context = {
-            'issue': issue,
-            'recent_issues': recent_issues,
             'article': article,
-            'articles': articles, 'pdf': pdf,
+            'articles': articles, 
             'MEDIA_URL': settings.MEDIA_URL,
             'STATIC_URL': settings.STATIC_URL
         }

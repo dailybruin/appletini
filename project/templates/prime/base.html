@@ -28,11 +28,8 @@
     {% block header %}
         <header>
             <a href="http://dailybruin.com"><img src="{{ STATIC_URL }}prime/img/nameplate.png"/></a>
-            <a class="banner" href="{% url 'prime_issue' '' %}"><img src="{{ STATIC_URL }}prime/img/logo_banner.png" alt="Prime"/></a>
-            <a class="current-issue" href="{% url 'prime_issue' issue.slug %}">{{ issue.name }}</a>
             <div class="previous-issues">
                 {% for issue in recent_issues %}
-                    <a href="{% url 'prime_issue' issue.slug %}"><span class="issue">{{ issue.name }}</span></a>
                 {% endfor %}
                 <a href="http://dailybruin.com/prime/"><span class="issue">Older issues</span></a>
             </div>
@@ -44,7 +41,6 @@
             <div class="refer">
                 <h1>prime {{ issue.name }}</h1>
                 {% for article in articles %}
-                    <a class="article-refer" href="{% url 'prime_article' article.issue.slug article.slug %}">{{ article.title }}</a>
                 {% endfor %}
                 <div class="print-refer">
                     <a target="blank" href="{{ MEDIA_URL }}{{ pdf.pdf }}">
