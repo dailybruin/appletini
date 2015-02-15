@@ -1,0 +1,22 @@
+<script>
+$(document).on('click', '.load-more-posts', function(){
+    var $this = $(this);
+    var userID = $('.user_id').val();
+    var request = $.ajax({
+          url: "/mysite/load_more/",
+          type: "POST",
+          data: { user_id : userID },
+          dataType: "html"
+        });
+        request.done(function( msg ) {          
+            console.log(msg);
+        });
+})
+</script>
+
+{% for article in more_posts %} 
+    <div class='user-article'>
+        <h3> {{article.header}} </h3>
+        <p> {{article.content}}</p>
+    </div>
+{% endfor %}
