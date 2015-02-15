@@ -1,3 +1,7 @@
+body {
+    text-rendering: optimizelegibility;
+}
+
 ul {
     padding: 0;
 }
