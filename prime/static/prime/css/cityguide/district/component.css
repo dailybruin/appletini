@@ -58,16 +58,16 @@ html, body, .container, .header {
 .title h1 {
 	padding: 0 0 0.2em;
 	color: #fff;
-	font-weight: 800;
-	font-size: 3.25em;
+	font-weight: 800 !important;
+	font-size: 3.25em !important;
 	margin: 0 auto;
 }
 
 .title p {
 	color: #fff;
 	padding: 0 0 0.6em;
-	font-weight: 300;
-	font-size: 0.85em;
+	font-weight: 300 !important;
+	font-size: 0.85em !important;
 	margin: 0 auto;
 }
 
@@ -77,7 +77,7 @@ html, body, .container, .header {
 }
 
 .title p.subline {
-	font-size: 1.75em;
+	font-size: 1.75em !important;
 }
 
 /* Trigger Button */
@@ -94,8 +94,13 @@ button.trigger {
 	border: none;
 	background: transparent;
 	color: transparent;
-	font-size: 2em;
+	font-size: 2em !important;
 	cursor: pointer;
+}
+
+.container {
+	width: 100% !important;
+	padding: 0 !important;
 }
 
 .container:not(.notrans) button.trigger {
@@ -154,6 +159,104 @@ button.trigger span::before {
 	-moz-osx-font-smoothing: grayscale;
 }
 
+header {
+    text-align: center;
+    height: 275px;
+    color: black;
+}
+    /* It needs to be in an :after because of the opacity attribute. */
+header:after {
+    background-size: cover;
+    content: "";
+    width: 100%;
+    height: 275px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    position: absolute;
+    opacity: 0.6;
+}
+
+#one {
+    font-family: "helvetica";
+    font-weight: lighter;
+    font-size: 1.3em;
+}
+
+#two {
+    font-family: serif;
+    text-transform: uppercase;
+}
+
+#title {
+    padding-top: 30px;
+    font-size: 6em;
+    font-weight: lighter;
+    opacity: 1;
+    color: rgba(0, 0, 0, 0.7);
+}
+
+@media screen and (max-width: 750px) {
+
+    #title {
+        font-size: 4em;
+    }
+    #sidebar li {
+        width: 75%;
+    }
+    #sidebar li:hover {
+        width: 90%;
+    }
+    #mainnav li {
+        font-size: .9em;
+    }
+    #mainnav li a {
+        padding-top: 10px;
+    }
+    #intropara p {
+        font-size: .9em;
+    }
+}
+
+@media screen and (max-width: 550px) {
+
+    #title
+    {
+        font-size: 3em;
+    }
+    #mainnav
+    {
+        background-color: black !important;
+    }
+}
+
+#mainnav {
+	padding: 0;
+}
+
+#mainnav li {
+    display: inline-block;
+    height: 6.5vh;
+    width: 14vw;
+    background-color: black;
+    color: white;
+    margin-left: 1.5vw;
+    margin-right: 1.5vw;
+    font-size: 1.2em;
+    font-family: "helvetica";
+    font-weight: lighter;
+}
+#mainnav li a {
+    color: white;
+    display: block;
+    height: 100%;
+    width: 100%;
+    padding-top: 8px;
+}
+
+
 /* Conent */
 .content {
 	margin: 0 auto;
@@ -171,18 +274,18 @@ button.trigger span::before {
 }
 
 .content > div:not(.title) p:first-child {
-	font-size: 1.35em;
+	font-size: 1.35em !important;
 }
 
 .content h3 {
 	margin: 0;
-	font-size: 1.4em;
+	font-size: 1.4em !important;
 }
 
 .content blockquote {
 	padding: 0.25em;
 	font-style: italic;
-	font-size: 1.65em;
+	font-size: 1.65em !important;
 	font-family: 'Lora', serif;
 	line-height: 1.4;
 }
@@ -267,7 +370,7 @@ button.trigger span::before {
 
 .intro-effect-grid .header h1 {
 	font-family: 'Raleway', sans-serif;
-	font-weight: 700;
+	font-weight: 700 !important;
 	padding: 0 0 0.6em;
 }
 
@@ -281,7 +384,7 @@ button.trigger span::before {
 }
 
 .intro-effect-grid .header p.subline {
-	font-size: 1.5em;
+	font-size: 1.5em !important;
 }
 
 .intro-effect-grid.modify .header p {
@@ -331,12 +434,12 @@ button.trigger span::before {
 
 .intro-effect-grid .grid li h2 {
 	font-family: 'Raleway', sans-serif;
-	font-weight: 600;
+	font-weight: 600 !important;
 	padding-bottom: 0.4em;
 	margin: 1em;
 	color: #fff;
 	line-height: 1;
-	font-size: 1em;
+	font-size: 1em !important;
 	position: absolute;
 	bottom: 0;
 	z-index: 100;
@@ -367,11 +470,11 @@ button.trigger span::before {
 /* Media Queries */
 @media screen and (max-width: 47em) {
 	.title, .content {
-		font-size: 70%;
+		font-size: 70% !important;
 	}
 
 	.codrops-demos a {
-		font-size: 80%;
+		font-size: 80% !important;
 	}
 
 	.intro-effect-side .title {
@@ -395,7 +498,7 @@ button.trigger span::before {
 	}
 
 	.intro-effect-side.modify .bg-img::after {
-		background: rgba(255,255,255,0.8);
+		background: rgba(255,255,255,1);
 	}
 
 	.intro-effect-sidefixed .content {
@@ -425,7 +528,7 @@ button.trigger span::before {
 	}
 
 	.title, .content {
-		font-size: 50%;
+		font-size: 50% !important;
 	}
 
 	button.trigger::before {

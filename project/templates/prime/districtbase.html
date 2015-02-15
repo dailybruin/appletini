@@ -14,75 +14,57 @@
 
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 		<!-- Optional theme -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
-
+<!-- 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+ -->
 		<style type="text/css">
-
-			.intro-effect-grid .grid li:first-child {
-				top: 0;
-				left: 0;
-				height: 50%;
-				width: 25%;
-				background-image: url(../img/thumbs/hashimoto2.jpg);
-			}
-
-			.intro-effect-grid .grid li:nth-child(2) {
-				top: 50%;
-				left: 0;
-				height: 50%;
-				width: 25%;
-				background-image: url(../img/thumbs/melrose.jpg);
-			}
-
-			.intro-effect-grid .grid li:nth-child(3) {
-				top: 0;
-				left: 25%;
-				height: 100%;
-				width: 25%;
-				background-image: url(../img/thumbs/melrose2.jpg);
-			}
-
-			.intro-effect-grid .grid li:nth-child(4) {
-				top: 0;
-				left: 50%;
-				height: 50%;
-				width: 50%;
-				background-image: url(../img/thumbs/cheese.jpg);
-			}
-
-			.intro-effect-grid .grid li:nth-child(5) {
-				top: 50%;
-				left: 50%;
-				height: 50%;
-				width: 25%;
-				background-image: url(../img/thumbs/sm.jpg);
-				-webkit-transform: scale(0);
-				transform: scale(0);
-				opacity: 0;
-			}
-
-			.intro-effect-grid .grid li:nth-child(6) {
-				top: 50%;
-				left: 75%;
-				height: 50%;
-				width: 25%;
-				background-image: url(../img/thumbs/pizza.jpg);
-			}
-
+			header:after {
+				background-image: url('{{ STATIC_URL }}prime/img/cityguides/header.jpg');
+            }
 		</style>
 
 	</head>
 	<body class="demo-6">
 		<div id="container" class="container intro-effect-grid">
 			<!-- Top Navigation -->
-			<header class="header">
+			<div class="header">
 				<div class="bg-img"><img src="{{ MEDIA_URL }}{{ neighborhood.lead_photo }}" alt="Background Image"/></div>
+				<header>
+		            <ul id="mainnav">
+		                <li>
+		                    <a href="{% url 'root' %}">home</a>
+		                </li>
+		                <li>
+		                    {% if typeTitle == 'DIY' %}
+		                        <a href="{% url 'prime_diy' %}">diy</a>
+		                    {% else %}
+		                        <a href="{% url 'prime_recipe' %}">recipes</a>
+		                    {% endif %}
+		                </li>
+		                <li>
+		                    <a href="{% url 'cityguides_view' %}">city guides</a>
+		                </li>
+		                <li>
+		                    {% if typeTitle == 'DIY' %}
+		                        <a href="{% url 'prime_recipe' %}">recipes</a>
+		                    {% else %}
+		                        <a href="{% url 'prime_diy' %}">diy</a>
+		                    {% endif %}
+		                </li>
+		                <li>
+		                    <a href="#">past issues</a>
+		                </li>
+		            </ul>
+		            <p id="title">
+		                <span id="one">prime</span> <span id="two"> City Guides</span>
+		            </p>
+		        </header>
+
 				<div class="title">
 				<h1>{{ neighborhood.title }}</h1>
 					<p class="subline">Beyond the Promenade</p>
 					<p> originally published <strong>September 30, 2014</strong></strong></p>
 				</div>
-			</header>
+			</div>
 			<button class="trigger" data-info="Click to read"><span>Trigger</span></button>
 			<article class="content">
 
