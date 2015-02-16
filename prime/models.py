@@ -57,20 +57,16 @@ class Article(models.Model):
 class Neighborhood(models.Model):
     lead_photo = models.ImageField(upload_to="prime/cityguides/lead")
     title = models.CharField(max_length=128, unique=True)
+    intro_body = models.TextField(blank=True)
     slug = models.SlugField(max_length=128)
     def __unicode__(self):
         return self.title
-
-class CGOption(models.Model):
-    name = models.CharField(max_length=50, unique= True)
-    def __unicode__(self):
-        return self.name
 
 class CityGuideArticle(models.Model):
     neighborhood = models.ForeignKey(Neighborhood)
     title = models.CharField(max_length=128)
     lead_photo = models.ImageField(upload_to="prime/cityguides/neighborhood/")
-    option = models.ForeignKey(CGOption)
+    option = models.CharField(max_length=256, choices=[('see', 'see'), ('do', 'do'), ('eat', 'eat')])
     body = models.TextField(blank=True)
 
     def __unicode__(self):

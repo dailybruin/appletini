@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+{% load shortcodes %}
+{% load markdown %}
+
 <html lang="en" class="no-js">
 	<head>
 		<meta charset="UTF-8" />
@@ -11,7 +14,7 @@
 		<!--[if IE]>
   		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
-
+		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js" ></script>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 		<!-- Optional theme -->
 <!-- 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
@@ -65,47 +68,44 @@
 
 				<div class="title">
 				<h1>{{ neighborhood.title }}</h1>
-					<p class="subline">Beyond the Promenade</p>
-					<p> originally published <strong>September 30, 2014</strong></strong></p>
 				</div>
 			</div>
 			<button class="trigger" data-info="Click to read"><span>Trigger</span></button>
 			<article class="content">
-
-							<div id="jenjiera" >
-
-									<div class="row">
-									  <div class="col-md-12"> </div>
-									  		<div class="col-md-12"><img src="{{ STATIC_URL }}prime/img/cityguides/seedoeat.jpg" class="img-responsive"
-									  		width: 100% \9;
-									  		alt="Responsive image"></div>
-									  <div class="col-md-1"> </div>
-									</div>
-
-							<div class="row">
-								  <div class="col-md-12">
-								<h4><b> It's no secret that Santa Monica is a tourist haven.</b></h4> 
-								<h5>Between Third Street Promenade, the pier and even 
-
-								the beach, the city is rife with overpriced, highly commercialized money traps.
-								<p></p>
-									
-								But there's much more to Santa Monica than these tried-and-true tourist picks. In fact, the further south you go, the 
-
-								trendier and more eclectic Santa Monica becomes. Luckily for us, this famous town is practically in UCLA's backyard. 
-								<p></p>
-					
-								The best street to get a feel of what Santa Monica is like for the locals is Main Street. This quirky district lies just south 
-
-								of Third Street Promenade but north of Venice. Here, you'll find a myriad of shops and eateries littering the twinkle light-
-								covered neighborhood.
-								</h5>
-							</div>
-								{% block content %}
-								{% endblock %}
-
+				<div id="jenjiera" >
+<!-- 					<div class="row">
+						<div class="col-md-12">
+							<a href="#see">
+								<div class="see">
+									<img class="scroll" src="{{ STATIC_URL }}prime/img/cityguides/SEE.png" class="img-responsive" alt="Responsive image">
+								</div>
+							</a>
+							<a href="#do">
+								<div class="do">
+									<img class="scroll" src="{{ STATIC_URL }}prime/img/cityguides/DO.png" class="img-responsive" alt="Responsive image">
+								</div>
+							</a>
+							<a href="#eat">
+								<div class="eat">
+									<img class="scroll" src="{{ STATIC_URL }}prime/img/cityguides/EAT.png" class="img-responsive" alt="Responsive image">
+								</div>
+							</a>
+						</div>
+						<div class="col-md-1"> </div>
+					</div> -->
+					<div class="row">
+						<div class="col-md-12">
+							{{ neighborhood.intro_body|markdown|image|youtube }}
 						</div>
 					</div>
+					<ul id="types">
+						<li class="see" style="text-decoration: underline;">See</li>
+						<li class="do" style="text-decoration: underline;">Do</li>
+						<li class="eat" style="text-decoration: underline;">Eat</li>
+					</ul>
+					{% block content %}
+					{% endblock %}
+				</div>
 			</article>
 		</div>		
 		<script src="{{ STATIC_URL }}prime/js/cityguide/classie.js"></script>
@@ -246,7 +246,26 @@
 					classie.add( container, 'notrans' );
 					classie.add( container, 'modify' );
 				}
-				
+
+				$(".see").click(function() {
+					$('html, body').animate({
+						scrollTop: $("#see").offset().top},
+					'slow');
+				});
+
+				$(".do").click(function() {
+					$('html, body').animate({
+						scrollTop: $("#do").offset().top},
+					'slow');
+				});
+
+
+				$(".eat").click(function() {
+					$('html, body').animate({
+						scrollTop: $("#eat").offset().top},
+					'slow');
+				});
+
 				window.addEventListener( 'scroll', scrollPage );
 				trigger.addEventListener( 'click', function() { toggle( 'reveal' ); } );
 			})();
