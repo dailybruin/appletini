@@ -1,4 +1,4 @@
-from prime.models import Issue, Article, PDF, Recipe, DIYarticle
+from prime.models import Issue, Article, PDF, Recipe, DIYarticle, Neighborhood, CityGuideArticle
 from main.models import RecipeTag, DIYTag
 from django.views.generic import View
 from django.views.generic.detail import DetailView
@@ -62,20 +62,46 @@ class ArticleView(View):
 
 class LandingView(View):
     def get(self, context):
-        articles = Article.objects.order_by('position').reverse()
-        rows = []
-        count = 0
-        size = len(articles)
-        while( (count+2) < size):
-            rows.append(articles[count:count+2])
-            count += 2
+        article_list = Article.objects.order_by('position').reverse()
+        paginator = Paginator(article_list, 4)
+        page = self.request.GET.get('page')
+        try:
+            articles = paginator.page(page)
+        except PageNotAnInteger:
+            articles = paginator.page(1)
+        except EmptyPage:
+            articles = paginator.page(paginator.num_pages)
         context = {
-                    'size': size,
-                    'rows': rows,
+                    'articles': articles,
                     'MEDIA_URL': settings.MEDIA_URL,
                     'STATIC_URL': settings.STATIC_URL
                     } 
         return render_to_response('prime/landing.html', context)
+
+class CGView(View):
+    def get(self, context):
+        districts = Neighborhood.objects.all()
+        context = {
+            'districts': districts,
+            'STATIC_URL': settings.STATIC_URL,
+            'MEDIA_URL': settings.MEDIA_URL
+        }
+        return render_to_response('prime/cityguide.html', context)
+
+class DistrictView(View):
+    def get(self, context, district_name):
+        article_list = CityGuideArticle.objects.all();
+        articles = article_list.filter(neighborhood__slug=district_name)
+        neighborhood = Neighborhood.objects.get(slug=district_name)
+        neighborhoods = Neighborhood.objects.all()[0:8]
+        context = {
+            'latest' : neighborhoods,
+            'neighborhood': neighborhood,
+            'articles': articles,
+            'STATIC_URL': settings.STATIC_URL,
+            'MEDIA_URL': settings.MEDIA_URL
+        }
+        return render_to_response('prime/district.html', context)
 
 
 class RecipeFrontView(View):

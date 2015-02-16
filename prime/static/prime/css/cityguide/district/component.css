@@ -1,8 +1,77 @@
-.container
-{
-	padding-left: 0px !important;
-	padding-right: 0px !important;
+/* */
+
+/* Conent necessary for city guides css */
+.content {
+	z-index: -1;
+	position: relative;
+	margin: 0 auto;
+	padding: 0 0 3em;
 }
+
+@media screen and (min-width: 950px) {
+.content {
+	margin-top: -15%;
+}
+}
+
+
+@media screen and (min-width: 751px) and (max-width: 949px) {
+.content {
+	margin-top: -20%;
+}
+}
+
+@media screen and (max-width: 750px) and (min-width: 500px) {
+.content {
+	margin-top: -35%;
+}
+}
+
+@media screen and (max-width: 499px) {
+.content {
+	margin-top: -50%;
+}
+}
+
+.content > div:not(.title) {
+	margin: -80px auto 0;
+	max-width: 900px;
+	padding: 0 1.25em;
+}
+
+.content > div:not(.title) p {
+	margin: 0 auto 1.5em auto;
+}
+
+.content > div:not(.title) p:first-child {
+	font-size: 1.35em !important;
+}
+
+.content h3 {
+	margin: 0;
+	font-size: 1.4em !important;
+}
+
+.content blockquote {
+	padding: 0.25em;
+	font-style: italic;
+	font-size: 1.65em !important;
+	font-family: 'Lora', serif;
+	line-height: 1.4;
+}
+
+.content blockquote::before {
+	content: '\201C';
+}
+
+.content blockquote::after {
+	content: '\201D';
+}
+
+
+/* -------------------------- */
+/* Grid */
+/* -------------------------- */
 
 @font-face {
 	font-weight: normal;
@@ -17,7 +86,6 @@
 
 html, body, .container, .header {
 	height: 100%;
-	background-color: white;
 }
 
 /* Header */
@@ -64,16 +132,16 @@ html, body, .container, .header {
 .title h1 {
 	padding: 0 0 0.2em;
 	color: #fff;
-	font-weight: 800;
-	font-size: 3.25em;
+	font-weight: 800 !important;
+	font-size: 3.25em !important;
 	margin: 0 auto;
 }
 
 .title p {
 	color: #fff;
 	padding: 0 0 0.6em;
-	font-weight: 300;
-	font-size: 0.85em;
+	font-weight: 300 !important;
+	font-size: 0.85em !important;
 	margin: 0 auto;
 }
 
@@ -83,7 +151,7 @@ html, body, .container, .header {
 }
 
 .title p.subline {
-	font-size: 1.75em;
+	font-size: 1.75em !important;
 }
 
 /* Trigger Button */
@@ -95,13 +163,18 @@ button.trigger {
 	display: block;
 	margin-left: -0.5em;
 	padding: 0;
-	width: 1em;
+	width: 2em;
 	height: 1em;
 	border: none;
 	background: transparent;
 	color: transparent;
-	font-size: 2em;
+	font-size: 2em !important;
 	cursor: pointer;
+}
+
+.container {
+	width: 100% !important;
+	padding: 0 !important;
 }
 
 .container:not(.notrans) button.trigger {
@@ -120,11 +193,11 @@ button.trigger::before {
 	position: absolute;
 	bottom: 100%;
 	left: -100%;
-	padding: 0.8em;
+	padding: 0;
 	width: 300%;
 	color: #fff;
 	content: attr(data-info);
-	font-size: 0.35em;
+	font-size: 0.5em;
 	-webkit-backface-visibility: hidden;
 	backface-visibility: hidden;
 }
@@ -142,16 +215,16 @@ button.trigger span {
 }
 
 button.trigger span::before {
-	content: "↓" !important;
 	position: absolute;
 	top: 0;
 	left: 0;
 	width: 100%;
 	height: 100%;
 	color: #fff;
+	content: "\e097";
 	text-transform: none;
 	font-weight: normal;
-	font-style: bold;
+	font-style: normal;
 	font-variant: normal;
 	font-family: 'icomoon';
 	line-height: 1;
@@ -160,51 +233,116 @@ button.trigger span::before {
 	-moz-osx-font-smoothing: grayscale;
 }
 
-/* Conent */
-.content {
-	margin: 0 auto;
-	padding: 0 0 3em;
+header {
+    text-align: center;
+    height: 275px;
+    color: black;
+}
+    /* It needs to be in an :after because of the opacity attribute. */
+header:after {
+    background-size: cover;
+    content: "";
+    width: 100%;
+    height: 275px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    position: absolute;
+    opacity: 0.6;
 }
 
-.content > div:not(.title) {
-	margin: -80px auto 0;
-	max-width: 900px;
-	padding: 0 1.25em;
+#one {
+    font-family: "helvetica";
+    font-weight: lighter;
+    font-size: 1.3em;
 }
 
-.content > div:not(.title) p {
-	margin: 0 auto 1.5em auto;
+#two {
+    font-family: serif;
+    text-transform: uppercase;
 }
 
-.content > div:not(.title) p:first-child {
-	font-size: 1.35em;
+#title {
+    padding-top: 30px;
+    font-size: 6em;
+    font-weight: lighter;
+    opacity: 1;
+    color: rgba(0, 0, 0, 0.7);
+    -webkit-font-smoothing: antialiased;
 }
 
-.content h3 {
-	margin: 0;
-	font-size: 1.4em;
+@media screen and (max-width: 750px) {
+
+    #title {
+        font-size: 4em;
+    }
+    #sidebar li {
+        width: 75%;
+    }
+    #sidebar li:hover {
+        width: 90%;
+    }
+    #mainnav li {
+        font-size: .9em;
+    }
+    #mainnav li a {
+        padding-top: 10px;
+    }
+    #intropara p {
+        font-size: .9em;
+    }
 }
 
-.content blockquote {
-	padding: 0.25em;
-	font-style: italic;
-	font-size: 1.65em;
-	font-family: 'Lora', serif;
-	line-height: 1.4;
-}
+@media screen and (max-width: 830px) {
 
-.content blockquote::before {
-	content: '\201C';
-}
-
-.content blockquote::after {
-	content: '\201D';
+    #title
+    {
+        font-size: 4em;
+    }
 }
 
 
-/* -------------------------- */
-/* Grid */
-/* -------------------------- */
+@media screen and (max-width: 608px) {
+
+
+    #title
+    {
+        font-size: 3em;
+    }
+    #mainnav
+    {
+        background-color: black !important;
+    }
+}
+
+#mainnav {
+	padding: 0;
+}
+
+#mainnav li {
+    display: inline-block;
+    height: 6.5vh;
+    width: 14vw;
+    background-color: black;
+    color: white;
+    margin-left: 1.5vw;
+    margin-right: 1.5vw;
+    font-size: 1.2em;
+    font-family: "helvetica";
+    font-weight: lighter;
+}
+#mainnav li a {
+    color: white;
+    display: block;
+    height: 100%;
+    width: 100%;
+    padding-top: 8px;
+}
+
+
+
 
 .intro-effect-grid:not(.notrans) .grid li:nth-child(5) {
 	-webkit-transition-property: -webkit-transform, opacity;
@@ -273,7 +411,7 @@ button.trigger span::before {
 
 .intro-effect-grid .header h1 {
 	font-family: 'Raleway', sans-serif;
-	font-weight: 700;
+	font-weight: 700 !important;
 	padding: 0 0 0.6em;
 }
 
@@ -287,7 +425,7 @@ button.trigger span::before {
 }
 
 .intro-effect-grid .header p.subline {
-	font-size: 1.5em;
+	font-size: 1.5em !important;
 }
 
 .intro-effect-grid.modify .header p {
@@ -337,12 +475,12 @@ button.trigger span::before {
 
 .intro-effect-grid .grid li h2 {
 	font-family: 'Raleway', sans-serif;
-	font-weight: 600;
+	font-weight: 600 !important;
 	padding-bottom: 0.4em;
 	margin: 1em;
 	color: #fff;
 	line-height: 1;
-	font-size: 1em;
+	font-size: 1em !important;
 	position: absolute;
 	bottom: 0;
 	z-index: 100;
@@ -355,49 +493,6 @@ button.trigger span::before {
 	transform: translateY(-10px);
 }
 
-.intro-effect-grid .grid li:first-child {
-	top: 0;
-	left: 0;
-	height: 50%;
-	width: 25%;
-	background-image: url(../img/thumbs/hashimoto2.jpg);
-}
-
-.intro-effect-grid .grid li:nth-child(2) {
-	top: 50%;
-	left: 0;
-	height: 50%;
-	width: 25%;
-	background-image: url(../img/thumbs/melrose.jpg);
-}
-
-.intro-effect-grid .grid li:nth-child(3) {
-	top: 0;
-	left: 25%;
-	height: 100%;
-	width: 25%;
-	background-image: url(../img/thumbs/melrose2.jpg);
-}
-
-.intro-effect-grid .grid li:nth-child(4) {
-	top: 0;
-	left: 50%;
-	height: 50%;
-	width: 50%;
-	background-image: url(../img/thumbs/cheese.jpg);
-}
-
-.intro-effect-grid .grid li:nth-child(5) {
-	top: 50%;
-	left: 50%;
-	height: 50%;
-	width: 25%;
-	background-image: url(../img/thumbs/sm.jpg);
-	-webkit-transform: scale(0);
-	transform: scale(0);
-	opacity: 0;
-}
-
 .intro-effect-grid.modify .grid li:nth-child(5) {
 	-webkit-transform: scale(1);
 	transform: scale(1);
@@ -408,14 +503,6 @@ button.trigger span::before {
 	color: #de8721;
 }
 
-.intro-effect-grid .grid li:nth-child(6) {
-	top: 50%;
-	left: 75%;
-	height: 50%;
-	width: 25%;
-	background-image: url(../img/thumbs/pizza.jpg);
-}
-
 .intro-effect-grid.modify .bg-img {
 	-webkit-transform: translateY(-100%);
 	transform: translateY(-100%);
@@ -424,11 +511,11 @@ button.trigger span::before {
 /* Media Queries */
 @media screen and (max-width: 47em) {
 	.title, .content {
-		font-size: 70%;
+		font-size: 70% !important;
 	}
 
 	.codrops-demos a {
-		font-size: 80%;
+		font-size: 80% !important;
 	}
 
 	.intro-effect-side .title {
@@ -452,7 +539,7 @@ button.trigger span::before {
 	}
 
 	.intro-effect-side.modify .bg-img::after {
-		background: rgba(255,255,255,0.8);
+		background: rgba(255,255,255,1);
 	}
 
 	.intro-effect-sidefixed .content {
@@ -482,7 +569,7 @@ button.trigger span::before {
 	}
 
 	.title, .content {
-		font-size: 50%;
+		font-size: 50% !important;
 	}
 
 	button.trigger::before {

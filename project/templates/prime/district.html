@@ -1,0 +1,16 @@
+{% extends 'prime/districtbase.html' %}
+
+{% block content %}
+
+{% for article in articles %}
+	<div class="row">
+		<div class="col-md-5"><img src="{{ MEDIA_URL }}{{ article.lead_photo }}" class="img-responsive" alt="Responsive image"></div>
+		<div class="col-md-7">
+			<h3>{{ article.title }}</h3>
+			<p>{{ article.body }}
+			</p>
+	</div>
+{% endfor %}
+
+
+{% endblock %}
