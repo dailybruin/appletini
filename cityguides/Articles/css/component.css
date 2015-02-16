@@ -142,16 +142,16 @@ button.trigger span {
 }
 
 button.trigger span::before {
+	content: "↓" !important;
 	position: absolute;
 	top: 0;
 	left: 0;
 	width: 100%;
 	height: 100%;
 	color: #fff;
-	content: "\e097";
 	text-transform: none;
 	font-weight: normal;
-	font-style: normal;
+	font-style: bold;
 	font-variant: normal;
 	font-family: 'icomoon';
 	line-height: 1;
