@@ -62,6 +62,7 @@ class ArticleView(View):
 
 class LandingView(View):
     def get(self, context):
+        current_issue, _ = get_recent_issues()
         article_list = Article.objects.order_by('position').reverse()
         paginator = Paginator(article_list, 4)
         page = self.request.GET.get('page')
@@ -72,10 +73,11 @@ class LandingView(View):
         except EmptyPage:
             articles = paginator.page(paginator.num_pages)
         context = {
-                    'articles': articles,
-                    'MEDIA_URL': settings.MEDIA_URL,
-                    'STATIC_URL': settings.STATIC_URL
-                    }
+            'current_issue': current_issue,
+            'articles': articles,
+            'MEDIA_URL': settings.MEDIA_URL,
+            'STATIC_URL': settings.STATIC_URL
+        }
         return render_to_response('prime/landing.html', context)
 
 class CGView(View):

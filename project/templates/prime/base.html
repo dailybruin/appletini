@@ -30,6 +30,8 @@
     {% block header %}
         <header>
             <a href="http://dailybruin.com"><img src="{{ STATIC_URL }}prime/img/nameplate.png"/></a>
+            <a class="banner" href="{% url 'root' %}"><img src="{{ STATIC_URL }}prime/img/logo_banner.png" alt="Prime"/></a>
+            <a class="current-issue" href="{% url 'prime_issue' issue.slug %}">{{ issue.name }}</a>
             <div class="previous-issues">
                 {% for issue in recent_issues %}
                 {% endfor %}

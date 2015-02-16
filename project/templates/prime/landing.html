@@ -27,10 +27,10 @@
                         <div class="row"> <!--in place so that photo tiles are in line with cover_photo-->
                             <ul class="nav navbar-nav" id="below_cover_photo">
                                 <li>
-                                    <a href="{% url 'root' %}">
+                                    <a href="{% url 'prime_issue' current_issue.slug %}">
                                         <img class="tile_photo" src="{{ STATIC_URL }}prime/img/Front/tile_photo.jpg">
                                     </a>
-                                    <a href="{% url 'root' %}" class="tile_photo_transcription">
+                                    <a href="{% url 'prime_issue' current_issue.slug %}" class="tile_photo_transcription">
                                         <div class="tile_photo_transcription">Current Issue</div>
                                     </a>
                                 </li>
