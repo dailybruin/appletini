@@ -1,3 +1,20 @@
+@media screen and (max-width: 550px) {
+
+    #title
+    {
+        font-size: 3em;
+    }
+    #mainnav
+    {
+        height: 6.5vh;
+        background-color: black !important;
+    }
+    #mainnav li
+    {
+        background-color: transparent !important;
+    }
+
+}
 body {
     text-rendering: optimizelegibility;
     -webkit-font-smoothing: antialiased;
