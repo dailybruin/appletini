@@ -39,6 +39,7 @@ header {
     font-size: 1.2em;
     font-family: "helvetica";
     font-weight: lighter;
+    -webkit-font-smoothing: antialiased;
 }
     #mainnav li a {
         color: white;
@@ -53,6 +54,8 @@ header {
     font-size: 6em;
     font-weight: lighter;
     opacity: 1;
+    color: rgba(0, 0, 0, 0.7);
+    -webkit-font-smoothing: antialiased;
 }
 
 @media screen and (max-width: 750px) {
