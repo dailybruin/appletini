@@ -13,8 +13,8 @@ urlpatterns = patterns('',
 
     url(r'^issue/(?P<slug>[-_\w]+)/$', IssueView.as_view(), name='prime_issue'),
     url(r'^(?P<issue_slug>[-_\w]+)/(?P<article_slug>[-_\w]+)/$', ArticleView.as_view(), name='prime_article'),
-
     url(r'^$', LandingView.as_view(), name='root'),
+    url(r'^(?P<article_slug>[-_\w]+)/$', ArticleView.as_view(), name='prime_article'),
 
     # url(r'^cityguide/$', CityGuideFrontView.as_view(), name='prime_city'),
 )

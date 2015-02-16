@@ -288,6 +288,19 @@ header:after {
 	text-align: center;
 }
 
+.cgarticles h3 {
+	margin-bottom: 10px;
+}
+
+.cgarticles .hr {
+	color: black;
+}
+
+#full {
+	width: 100%;
+	text-align: center;
+}
+
 .cgarticles {
 	padding: 15px;
 	padding-bottom: 0px;
@@ -305,6 +318,7 @@ header:after {
 #types {
 	text-align: center;
 	text-transform: uppercase;
+	margin-left: 9%;
 }
 
 #types li {

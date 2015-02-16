@@ -28,42 +28,42 @@
                             <ul class="nav navbar-nav" id="below_cover_photo">
                                 <li>
                                     <a href="{% url 'prime_issue' current_issue.slug %}">
-                                        <img class="tile_photo" src="{{ STATIC_URL }}prime/img/Front/tile_photo.jpg">
+                                        <img class="tile_photo" src="{{ STATIC_URL }}prime/img/Front/nav_currentissue.jpg">
                                     </a>
                                     <a href="{% url 'prime_issue' current_issue.slug %}" class="tile_photo_transcription">
-                                        <div class="tile_photo_transcription">Current Issue</div>
+                                        <div class="tile_photo_transcription">current Issue</div>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
-                                        <img class="tile_photo" src="{{ STATIC_URL }}prime/img/Front/tile_photo.jpg">
+                                    <a href="{% url 'prime_recipe' %}">
+                                        <img class="tile_photo" src="{{ STATIC_URL }}prime/img/Front/nav_recipe.jpg">
                                     </a>
-                                    <a href="#" class="tile_photo_transcription">
-                                        <div class="tile_photo_transcription">LA City Guide</div>
+                                    <a href="{% url 'prime_recipe' %}" class="tile_photo_transcription">
+                                        <div class="tile_photo_transcription">recipes</div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'cityguides_view' %}">
+                                        <img class="tile_photo" src="{{ STATIC_URL }}prime/img/Front/nav_cityguide.jpg">
+                                    </a>
+                                    <a href="{% url 'cityguides_view' %}" class="tile_photo_transcription">
+                                        <div class="tile_photo_transcription">city guide</div>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="{% url 'prime_diy' %}">
-                                        <img class="tile_photo" src="{{ STATIC_URL }}prime/img/Front/tile_photo.jpg">
+                                        <img class="tile_photo" src="{{ STATIC_URL }}prime/img/Front/nav_diy.jpg">
                                     </a>
                                     <a href="{% url 'prime_diy' %}" class="tile_photo_transcription">
                                         <div class="tile_photo_transcription">DIY</div>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{% url 'prime_recipe' %}">
-                                        <img class="tile_photo" src="{{ STATIC_URL }}prime/img/Front/tile_photo.jpg">
-                                    </a>
-                                    <a href="{% url 'prime_recipe' %}" class="tile_photo_transcription">
-                                        <div class="tile_photo_transcription">Recipes</div>
-                                    </a>
-                                </li>
-                                <li>
                                     <a href="#">
-                                        <img class="tile_photo" src="{{ STATIC_URL }}prime/img/Front/tile_photo.jpg">
+                                        <img class="tile_photo" src="{{ STATIC_URL }}prime/img/Front/nav_previousissue.jpg">
                                     </a>
                                     <a href="#" class="tile_photo_transcription">
-                                        <div class="tile_photo_transcription">Previous Issues</div>
+                                        <div class="tile_photo_transcription">previous issues</div>
                                     </a>
                                 </li>
                             </ul>
