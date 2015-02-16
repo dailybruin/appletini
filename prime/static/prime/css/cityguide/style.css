@@ -1,5 +1,3 @@
-@import url('reset.css');
-
 body{
     background: #fff;
     color: #fff;
@@ -88,7 +86,7 @@ a{
 }
 .ib-main{
     position: relative;
-    overflow: scroll;
+    overflow-y: scroll;
     cursor: default !important;
 }
 .ib-main a{
