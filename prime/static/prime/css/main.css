@@ -101,9 +101,14 @@ footer {
         }
 
 figure {
-    margin: 0;
+    margin: 0 !important;
     position: relative;
 }
+
+.fullwidth img {
+    margin-left: -40px !important;
+}
+
     figure img {
         display: block;
         width: 100%;
