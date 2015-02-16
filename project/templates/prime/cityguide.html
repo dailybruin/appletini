@@ -2,6 +2,6 @@
 
 {% block content %}
 	{% for district in districts %}
-		<a href="{{ district.slug }}"><img src="{{ MEDIA_URL }}{{ district.lead_photo }}"/><span>{{ district.title }}</span></a>
+		<a style="background: url({{ MEDIA_URL }}{{ district.lead_photo }}); "href="{{ district.slug }}"><span>{{ district.title }}</span></a>
 	{% endfor %}
 {% endblock %}
