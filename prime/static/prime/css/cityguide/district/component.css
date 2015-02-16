@@ -10,26 +10,26 @@
 
 @media screen and (min-width: 950px) {
 .content {
-	margin-top: -15%;
+	margin-top: -16%;
 }
 }
 
 
 @media screen and (min-width: 751px) and (max-width: 949px) {
 .content {
-	margin-top: -20%;
+	margin-top: -30%;
 }
 }
 
 @media screen and (max-width: 750px) and (min-width: 500px) {
 .content {
-	margin-top: -35%;
+	margin-top: -45%;
 }
 }
 
 @media screen and (max-width: 499px) {
 .content {
-	margin-top: -50%;
+	margin-top: -60%;
 }
 }
 
@@ -40,11 +40,11 @@
 }
 
 .content > div:not(.title) p {
-	margin: 0 auto 1.5em auto;
+	margin: 0 auto 0 auto;
 }
 
 .content > div:not(.title) p:first-child {
-	font-size: 1.35em !important;
+	font-size: 1.1em !important;
 }
 
 .content h3 {
@@ -93,8 +93,8 @@ html, body, .container, .header {
 .header {
 	position: relative;
 	margin: 0 auto;
-	min-height: 560px;
-	width: 100%;
+/*	min-height: 560px;
+*/	width: 100%;
 }
 
 .bg-img {
@@ -120,7 +120,7 @@ html, body, .container, .header {
 .title {
 	z-index: 1000;
 	margin: 0 auto;
-	padding: 0 1.25em;
+	padding: 0;
 	width: 100%;
 	text-align: center;
 	position: absolute;
@@ -131,7 +131,7 @@ html, body, .container, .header {
 }
 
 .title h1 {
-	padding: 0 0 0.2em;
+	padding: 0 0 !important;
 	color: #fff;
 	font-weight: 800 !important;
 	font-size: 3.25em !important;
@@ -272,6 +272,66 @@ header:after {
     opacity: 1;
     color: rgba(0, 0, 0, 0.7);
     -webkit-font-smoothing: antialiased;
+}
+
+#scrollto {
+	text-align: center;
+}
+
+.scroll {
+	width: 31%;
+	float: left;
+	margin: 1%;
+}
+
+.cgarticles h2 {
+	text-align: center;
+}
+
+.cgarticles {
+	padding: 15px;
+	padding-bottom: 0px;
+}
+
+#jenjira {
+	font-size: .5em !important;
+}
+
+.row {
+	width: 100%;
+	padding-bottom: 30px;
+}
+
+#types {
+	text-align: center;
+	text-transform: uppercase;
+}
+
+#types li {
+	font-size: 1.5em;
+	display: inline;
+	font-family: serif;
+}
+
+#types li:after {
+	padding: 0 5%;
+	content: "/";
+}
+
+#types li:last-child:after {
+	content:"";
+}
+
+.see:hover {
+	cursor: pointer;
+}
+
+.do:hover {
+	cursor: pointer;
+}
+
+.eat:hover{
+	cursor: pointer;
 }
 
 @media screen and (max-width: 750px) {
@@ -418,7 +478,7 @@ header:after {
 }
 
 .intro-effect-grid.modify .header h1 {
-	color: #2d3b44;
+	color: rgba(0, 0, 0, 0.8);
 }
 
 .intro-effect-grid .header p {
@@ -513,11 +573,11 @@ header:after {
 /* Media Queries */
 @media screen and (max-width: 47em) {
 	.title, .content {
-		font-size: 70% !important;
+		font-size: 100% !important;
 	}
 
 	.codrops-demos a {
-		font-size: 80% !important;
+		font-size: 100% !important;
 	}
 
 	.intro-effect-side .title {

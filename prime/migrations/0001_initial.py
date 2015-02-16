@@ -46,16 +46,10 @@ class Migration(SchemaMigration):
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('lead_photo', self.gf('django.db.models.fields.files.ImageField')(max_length=100)),
             ('title', self.gf('django.db.models.fields.CharField')(unique=True, max_length=128)),
+            ('intro_body', self.gf('django.db.models.fields.TextField')(blank=True)),
             ('slug', self.gf('django.db.models.fields.SlugField')(max_length=128)),
         ))
         db.send_create_signal(u'prime', ['Neighborhood'])
-
-        # Adding model 'CGOption'
-        db.create_table(u'prime_cgoption', (
-            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('name', self.gf('django.db.models.fields.CharField')(unique=True, max_length=50)),
-        ))
-        db.send_create_signal(u'prime', ['CGOption'])
 
         # Adding model 'CityGuideArticle'
         db.create_table(u'prime_cityguidearticle', (
@@ -63,7 +57,7 @@ class Migration(SchemaMigration):
             ('neighborhood', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['prime.Neighborhood'])),
             ('title', self.gf('django.db.models.fields.CharField')(max_length=128)),
             ('lead_photo', self.gf('django.db.models.fields.files.ImageField')(max_length=100)),
-            ('option', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['prime.CGOption'])),
+            ('option', self.gf('django.db.models.fields.CharField')(max_length=256)),
             ('body', self.gf('django.db.models.fields.TextField')(blank=True)),
         ))
         db.send_create_signal(u'prime', ['CityGuideArticle'])
@@ -162,9 +156,6 @@ class Migration(SchemaMigration):
 
         # Deleting model 'Neighborhood'
         db.delete_table(u'prime_neighborhood')
-
-        # Deleting model 'CGOption'
-        db.delete_table(u'prime_cgoption')
 
         # Deleting model 'CityGuideArticle'
         db.delete_table(u'prime_cityguidearticle')
@@ -267,18 +258,13 @@ class Migration(SchemaMigration):
             'teaser': ('django.db.models.fields.CharField', [], {'max_length': '200'}),
             'title': ('django.db.models.fields.CharField', [], {'max_length': '128'})
         },
-        u'prime.cgoption': {
-            'Meta': {'object_name': 'CGOption'},
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '50'})
-        },
         u'prime.cityguidearticle': {
             'Meta': {'object_name': 'CityGuideArticle'},
             'body': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'lead_photo': ('django.db.models.fields.files.ImageField', [], {'max_length': '100'}),
             'neighborhood': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['prime.Neighborhood']"}),
-            'option': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['prime.CGOption']"}),
+            'option': ('django.db.models.fields.CharField', [], {'max_length': '256'}),
             'title': ('django.db.models.fields.CharField', [], {'max_length': '128'})
         },
         u'prime.diyarticle': {
@@ -313,6 +299,7 @@ class Migration(SchemaMigration):
         u'prime.neighborhood': {
             'Meta': {'object_name': 'Neighborhood'},
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'intro_body': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
             'lead_photo': ('django.db.models.fields.files.ImageField', [], {'max_length': '100'}),
             'slug': ('django.db.models.fields.SlugField', [], {'max_length': '128'}),
             'title': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '128'})
