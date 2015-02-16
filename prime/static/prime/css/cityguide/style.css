@@ -87,11 +87,11 @@ a{
     margin: 0px 0px 2px 2px;
     background: #fff url(../images/thumb_bg.jpg) no-repeat center center;
     background-size: 110% 110%;
-    -webkit-transition: all 0.1s ease-in-out;
-    -moz-transition: all 0.1s ease-in-out;
-    -o-transition: all 0.1s ease-in-out;
-    -ms-transition: all 0.1s ease-in-out;
-    transition: all 0.1s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 .ib-main a.ib-loading,
 .ib-main a.ib-loading:hover{
@@ -106,14 +106,7 @@ a{
 .ib-main a.ib-loading > span{
     display: none;
 }
-.ib-main a img{
-    opacity: 100%;
-    -webkit-transition: all 0.3s ease-in-out;
-    -moz-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
-    -ms-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
-}
+
 .ib-main > a > span{
     display: block;
     position: relative;
@@ -124,25 +117,24 @@ a{
     font-family: 'Raleway', sans-serif;
     color: #fff;
     font-size: 20px;
-    bottom: -22px;
+    top: 45%;
     left: 0px;
-    text-shadow: 1.3px 1.3px 1.3px rgba(0,0,0,0.9);
-    -webkit-transition: all 0.4s ease-in-out;
-    -moz-transition: all 0.4s ease-in-out;
-    -o-transition: all 0.4s ease-in-out;
-    -ms-transition: all 0.4s ease-in-out;
-    transition: all 0.4s ease-in-out;
+    text-shadow: 1.3px 1.3px 1.3px rgba(0,0,0,.7);
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 .ib-main a:hover > span{
-    bottom: 0px;
+    text-decoration: none;
+    top: 35%;
 }
-.ib-main a:hover img{
-    opacity: 0.8;
-}
+
 .ib-main a:hover{
-	
+	text-decoration: none;
     background-size: 100% 100%;
-    opacity: 50%;
+    opacity: 0.9;
 }
 .ib-content{
     background: #f9f9f9;

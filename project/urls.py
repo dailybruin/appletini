@@ -11,12 +11,12 @@ urlpatterns = patterns('',
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     # admin
+    url(r'^', include('prime.urls')),
     url(r'^admin/', include(admin.site.urls)),
 
     # mainsite
 
     # other apps
-    url(r'^prime/', include('prime.urls')),
     url(r'^music/', include('music.urls'))
     
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
