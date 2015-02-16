@@ -1,3 +1,26 @@
+/* CSS reset */
+ol,li { 
+
+    overflow-y: scroll;
+}
+
+@media screen and (max-width: 550px) {
+
+    #title
+    {
+        font-size: 3em;
+    }
+    #mainnav
+    {
+        height: 6.5vh;
+        background-color: blue !important;
+    }
+    #mainnav li
+    {
+        background-color: transparent !important;
+    }
+
+}
 body {
     text-rendering: optimizelegibility;
     -webkit-font-smoothing: antialiased;
@@ -9,6 +32,7 @@ ul {
     ul li {
         list-style: none;
     }
+
 
 header {
     text-align: center;
@@ -48,7 +72,15 @@ header {
         height: 100%;
         width: 100%;
         padding-top: 8px;
+        transition: background-color .4s;
     }
+
+#mainnav li a:hover {
+    color: black;
+    text-decoration: none;
+    background-color: white;
+    transition: color .3s, background-color .4s;
+}
 
 #title {
     padding-top: 30px;
@@ -59,7 +91,7 @@ header {
     -webkit-font-smoothing: antialiased;
 }
 
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 830px) {
 
     #title {
         font-size: 4em;
@@ -117,7 +149,7 @@ header {
 }
 
 .hr {
-    width : 50vw;
+    width : 30vw;
     background-color: black;
     height : 3px;
 }
@@ -165,9 +197,9 @@ header {
 
 
 #main {
-    width: 80vw;
+    width: 70vw;
     margin: 0px;
-    float: right;
+    float: left;
 }
 
 .article {
@@ -187,9 +219,9 @@ header {
         }
 
 .article-intro {
-    width: 73%;
+    width: 65%;
     margin: 0px;
-    float: right;
+    float: left;
     padding-right: 10px;
     padding: 0px 10px;
     margin-bottom: 20px;
@@ -212,7 +244,7 @@ header {
     margin-top: 40px;
     height: 2px;
     background-color: black;
-    width: 80%;
+    width: 90%;
 }
 
 .readmore {
@@ -261,14 +293,14 @@ figure {
     }
         figure.right {
             float: right;
-            left: 130px;
-            margin-left: -110px;
-        }
+            left: 20px;
+/*            margin-left: -110px;
+*/        }
         figure.left {
             float: left;
-            right: 130px;
-            margin-right: -110px;
-        }
+            right: 20px;
+/*            margin-right: -110px;
+*/        }
     figure.fullwidth {
         width: 100%;
     }
@@ -285,6 +317,11 @@ figure {
         background-color: rgba(0,0,0, 0.25);
         color: rgba(255,255,255, 0.75);
     }
+
+figure {
+    margin: 0 !important;
+    position: relative;
+}
 
 .headline {
     font-size: 300%;

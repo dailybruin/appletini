@@ -1,4 +1,5 @@
 @import url('reset.css');
+
 body{
     background: #fff;
     color: #fff;
@@ -13,7 +14,14 @@ a{
 .clr{
     clear: both;
 }
+
+.container {
+    margin: 40px;
+    text-align: center;
+}
+
 /* Header Style */
+
 .header{
     font-family: 'Century', serif;
     position: fixed;
@@ -28,23 +36,28 @@ a{
     opacity: 0.7;
     z-index: 20;
 }
+
 .header a{
     padding: 5px 10px;
     letter-spacing: 0px;
     color: #fff;
     text-align: right;
 }
+
 .header a:hover{
     color: #ddd;
 }
+
 .header a span{
     font-weight: bold;
 }
+
 .header span.right_ab{
     position: absolute;
     right: 4px;
 }
 /* Top Bar */
+
 .ib-top{
     background: #fff;
     opacity: 0.9;
@@ -80,40 +93,36 @@ a{
 }
 .ib-main a{
     float: left;
-    width: 300px;
-    height: 300px;
+    width: 280px;
+    height: 280px;
     position: relative;
     overflow: hidden;
-    margin: 0px 0px 2px 2px;
+    margin: 0px 0px 5px 5px;
     background: #fff url(../images/thumb_bg.jpg) no-repeat center center;
     background-size: 110% 110%;
-    -webkit-transition: all 0.1s ease-in-out;
-    -moz-transition: all 0.1s ease-in-out;
-    -o-transition: all 0.1s ease-in-out;
-    -ms-transition: all 0.1s ease-in-out;
-    transition: all 0.1s ease-in-out;
-}
-.ib-main a.ib-loading,
-.ib-main a.ib-loading:hover{
-    background: #fff url(../images/ajax-loader.gif) no-repeat center center;
-    background-size: 31px 31px;
-}
-.ib-main a.ib-loading img,
-.ib-main a.ib-loading:hover img{
-    opacity: 0.8;
-}
-.ib-main > a.ib-loading > span,
-.ib-main a.ib-loading > span{
-    display: none;
-}
-.ib-main a img{
-    opacity: 100%;
     -webkit-transition: all 0.3s ease-in-out;
     -moz-transition: all 0.3s ease-in-out;
     -o-transition: all 0.3s ease-in-out;
     -ms-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
 }
+
+.ib-main a.ib-loading,
+.ib-main a.ib-loading:hover{
+    background: #fff url(../images/ajax-loader.gif) no-repeat center center;
+    background-size: 31px 31px;
+}
+
+.ib-main a.ib-loading img,
+.ib-main a.ib-loading:hover img{
+    opacity: 0.8;
+}
+
+.ib-main > a.ib-loading > span,
+.ib-main a.ib-loading > span{
+    display: none;
+}
+
 .ib-main > a > span{
     display: block;
     position: relative;
@@ -124,29 +133,31 @@ a{
     font-family: 'Raleway', sans-serif;
     color: #fff;
     font-size: 20px;
-    bottom: -22px;
+    top: 45%;
     left: 0px;
-    text-shadow: 1.3px 1.3px 1.3px rgba(0,0,0,0.9);
-    -webkit-transition: all 0.4s ease-in-out;
-    -moz-transition: all 0.4s ease-in-out;
-    -o-transition: all 0.4s ease-in-out;
-    -ms-transition: all 0.4s ease-in-out;
-    transition: all 0.4s ease-in-out;
+    text-shadow: 1.3px 1.3px 1.3px rgba(0,0,0,.7);
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
+
 .ib-main a:hover > span{
-    bottom: 0px;
+    text-decoration: none;
+    top: 35%;
 }
-.ib-main a:hover img{
-    opacity: 0.8;
-}
+
 .ib-main a:hover{
-	
+	text-decoration: none;
     background-size: 100% 100%;
-    opacity: 50%;
+    opacity: 0.9;
 }
+
 .ib-content{
     background: #f9f9f9;
 }
+
 .ib-content .ib-teaser{
     text-align: center;
     background: #333;
@@ -158,6 +169,7 @@ a{
     -ms-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
 }
+
 .ib-teaser h2{
     color: #fff;
     font-family: 'Source Sans Pro', sans-serif;
@@ -166,6 +178,7 @@ a{
     padding-top: 40%;
     text-shadow: 1px 0px 2px rgba(0,0,0,0.2);
 }
+
 .ib-teaser h2 span{
     text-transform: none;
     font-size: 20px;
@@ -173,9 +186,11 @@ a{
     font-style: italic;
     display: block;
 }
+
 .ib-content .ib-teaser:hover{
     background: #000;
 }
+
 .ib-content-preview{
     position: absolute;
     top: 44px;
@@ -185,14 +200,17 @@ a{
     height: 630px; /*dynamic*/
     display: none;
 }
+
 .ib-content-preview .ib-teaser h2{
     font-size: 60px;
     padding: 85px 40px 20px 40px;
 }
+
 .ib-content-preview .ib-teaser span{
     padding: 20px 0px 0px 5px;
     font-size: 22px;
 }
+
 .ib-content-full{
     font-family: 'Source Sans Pro';
     text-transform: none;
@@ -203,16 +221,19 @@ a{
 	font-size: 16px;
 	overflow: scroll;
 }
+
 .ib-content-full p{
 	padding: 5px 0px;
 	overflow: scroll;
 }
+
 .ib-preview{
     overflow: hidden;
     position: absolute;
     top: 40px;
     display: none;
 }
+
 .ib-preview-descr{
     position: absolute;
     bottom: 30px;
@@ -221,9 +242,11 @@ a{
     font-size: 60px;
     text-shadow: 1px 0px 2px rgba(0,0,0,0.9);
 }
+
 .ib-preview img{
 	position: absolute;
 }
+
 .ib-nav span{
 	width: 53px;
 	height: 87px;
@@ -242,11 +265,13 @@ a{
 	-o-user-select: none;
 	user-select: none;
 }
+
 .ib-nav span.ib-nav-prev{
 	background-position: top left;
 	left: 10px;
     right: auto;
 }
+
 .ib-close{
 	top: 7px;
 	right: 7px;
@@ -259,9 +284,12 @@ a{
 	z-index: 999;
     text-indent: -9000px;
 }
+
 .ib-nav span:hover, .ib-close:hover{
 	opacity: 1;
 }
+
+
 .ib-loading-large{
     text-indent: -9000px;
     width: 60px;
@@ -276,4 +304,17 @@ a{
     -webkit-border-radius: 10px;
     border-radius: 10px 10px 10px 10px;
     opacity: 0.9;
+}
+
+@media screen and (max-width: 750px) {
+    .ib-main {
+        padding-left: 30%;
+    }
+}
+
+
+@media screen and (max-width: 600px) {
+    .ib-main {
+        padding-left: 20%;
+    }
 }

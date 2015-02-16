@@ -74,6 +74,22 @@ class ArticleView(View):
             'STATIC_URL': settings.STATIC_URL
         }
         return render_to_response('prime/article.html', context)
+    def get(self, context, article_slug):
+        try:
+            article = Article.objects.get(slug=article_slug)
+        except Article.DoesNotExist:
+            raise Http404
+        if article.redirect:
+            return redirect(article.redirect)
+        articles = Article.objects.order_by('position')
+        context = {
+            'article': article,
+            'articles': articles,
+            'MEDIA_URL': settings.MEDIA_URL,
+            'STATIC_URL': settings.STATIC_URL
+        }
+        return render_to_response('prime/article.html', context)
+
 
 
 class LandingView(View):
@@ -110,12 +126,17 @@ class DistrictView(View):
     def get(self, context, district_name):
         article_list = CityGuideArticle.objects.all();
         articles = article_list.filter(neighborhood__slug=district_name)
+        see = articles.filter(option="see")
+        do = articles.filter(option="do")
+        eat = articles.filter(option="eat")
         neighborhood = Neighborhood.objects.get(slug=district_name)
         neighborhoods = Neighborhood.objects.all()[0:8]
         context = {
             'latest' : neighborhoods,
             'neighborhood': neighborhood,
-            'articles': articles,
+            'see': see,
+            'do': do,
+            'eat': eat,
             'STATIC_URL': settings.STATIC_URL,
             'MEDIA_URL': settings.MEDIA_URL
         }

@@ -1,16 +1,58 @@
 {% extends 'prime/districtbase.html' %}
+{% load shortcodes %}
+{% load markdown %}
 
 {% block content %}
 
-{% for article in articles %}
-	<div class="row">
-		<div class="col-md-5"><img src="{{ MEDIA_URL }}{{ article.lead_photo }}" class="img-responsive" alt="Responsive image"></div>
-		<div class="col-md-7">
-			<h3>{{ article.title }}</h3>
-			<p>{{ article.body }}
-			</p>
-	</div>
-{% endfor %}
+<div id="see" class="cgarticles">
+{% if see %}
+	<h2>See</h2>
+	<hr class="hr"/>
+	{% for seearticle in see %}
+		<div class="row">
+			<div class="col-md-5"><img src="{{ MEDIA_URL }}{{ seearticle.lead_photo }}" class="img-responsive" alt="Responsive image"></div>
+			<div class="col-md-7">
+				<h3>{{ seearticle.title }}</h3>
+				<p>{{ seearticle.body|markdown|image|youtube }}
+				</p>
+			</div>
+		</div>
+	{% endfor %}
+{% endif %}
+</div>
 
+<div id="do" class="cgarticles">
+{% if do %}
+	<h2>Do</h2>
+	<hr class="hr"/>
+	{% for doarticle in do %}
+		<div class="row">
+			<div class="col-md-5"><img src="{{ MEDIA_URL }}{{ doarticle.lead_photo }}" class="img-responsive" alt="Responsive image">
+			</div>
+			<div class="col-md-7">
+				<h3>{{ doarticle.title }}</h3>
+				<p>{{ doarticle.body|markdown|image|youtube }}</p>
+			</div>
+		</div>
+	{% endfor %}
+{% endif %}
+</div>
+
+<div id="eat" class="cgarticles">
+{% if eat %}
+	<h2>Eat</h2>
+	<hr class="hr"/>
+	{% for eatarticle in eat %}
+		<div class="row">
+			<div class="col-md-5"><img src="{{ MEDIA_URL }}{{ eatarticle.lead_photo }}" class="img-responsive" alt="Responsive image"></div>
+			<div class="col-md-7">
+				<h3>{{ eatarticle.title }}</h3>
+				<p>{{ eatarticle.body|markdown|image|youtube }}
+				</p>
+			</div>
+		</div>
+	{% endfor %}
+{% endif %}
+</div>
 
 {% endblock %}

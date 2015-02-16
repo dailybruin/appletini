@@ -14,9 +14,8 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
 
     # mainsite
-
+    url(r'^', include('prime.urls')),
     # other apps
-    url(r'^prime/', include('prime.urls')),
     url(r'^music/', include('music.urls'))
     
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
