@@ -89,7 +89,7 @@
                         </div>
                         <div class="description">
                             <p>{{article.body|truncatechars:200}}</p>
-                            <p><a href="{{article.slug}}">READ MORE </a></p>
+                            <p><a href="{% url 'prime_article' article.issue.slug article.slug %}">READ MORE </a></p>
                         </div>
                         <hr>
                     </div>
@@ -104,7 +104,7 @@
                         </div>
                         <div class="description">
                             <p>{{article.body|truncatechars:200}}</p>
-                            <p><a href="{{article.slug}}">READ MORE </a></p>
+                            <p><a href="{% url 'prime_article' article.issue.slug article.slug %}">READ MORE </a></p>
                         </div>
                         <hr>
                     </div>
