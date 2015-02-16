@@ -1,44 +1,20 @@
 {% extends 'prime/articleBase.html' %}
+
 {% load shortcodes %}
 {% load markdown %}
 
 {% block content %}
-
-<link href="{{ STATIC_URL }}prime/css/articles.css" rel="stylesheet" type="text/css">
-<link href="{{ STATIC_URL }}prime/css/diy-or-recipe/style.css" rel="stylesheet" type="text/css">
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
-
-    <script>
-        $(document).ready(function(){
-            $.miniShare( { 
-                message: "Share this", 
-                done_message: "Thanks!",
-                twitter_message: "{{ article.title }}, from @dailybruinprime's {{ article.issue.name }} issue"
-            });
-        });
-    </script>
-
-    <div class = "row">
-        <div class = "lead col-xs-5">
-            <img class = "temp" src="{{ MEDIA_URL }}{{ article.lead_photo }}"class="img-responsive">
-        </div>
-
-        <div class="article2 col-xs-6">
-            <h1 class="headline">{{ article.title }}</h1>
-            <span class="author">by 
-            {% for author in article.author.all %}
-                {% if forloop.last %}
-                    {{ author }}
-                {% else %}
-                    {{ author }} and
-                {% endif %}
-            {% endfor %}    
-            </span>
-            {{ article.body|markdown|youtube }}
-        </div>
+    <div class="ind-article">
+        <h1 class="headline">{{ article.title }}</h1>
+        <span class="author">by
+        {% for author in article.author.all %}
+            {% if forloop.last %}
+                {{ author }}
+            {% else %}
+                {{ author }} and
+            {% endif %}
+        {% endfor %}
+        </span>
+        {{ article.body|markdown|image|youtube }}
     </div>
-
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 {% endblock %}
