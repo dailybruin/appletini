@@ -41,6 +41,22 @@ class IssueView(View):
         }
         return render_to_response('prime/front.html', context)
 
+class PastIssuesView(View):
+    def get(self, context):
+        current_issue, recent_issues = get_recent_issues()
+        recent_issues = Issue.objects.order_by('-release_date')[1:]
+        pdfs = []
+        for issue in recent_issues:
+            pdfs.append(PDF.objects.get(issue=issue))
+        context = {
+            'issue': current_issue,
+            'recent_issues': recent_issues,
+            'pdfs': pdfs,
+            'hide_footer': True,
+            'MEDIA_URL': settings.MEDIA_URL,
+            'STATIC_URL': settings.STATIC_URL
+        }
+        return render_to_response('prime/past-issues-front.html', context)
 
 class ArticleView(View):
     def get(self, context, issue_slug, article_slug):
