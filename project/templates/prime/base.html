@@ -41,6 +41,7 @@
             <div class="refer">
                 <h1>prime {{ issue.name }}</h1>
                 {% for article in articles %}
+                    <a class="article-refer" href="{% url 'prime_article' article.issue.slug article.slug %}">{{ article.title }}</a>
                 {% endfor %}
                 <div class="print-refer">
                     <a target="blank" href="{{ MEDIA_URL }}{{ pdf.pdf }}">

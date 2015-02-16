@@ -43,7 +43,7 @@ class IssueView(View):
 
 
 class ArticleView(View):
-    def get(self, context, article_slug):
+    def get(self, context, issue_slug, article_slug):
         try:
             article = Article.objects.get(slug=article_slug)
         except Article.DoesNotExist:
@@ -53,7 +53,7 @@ class ArticleView(View):
         articles = Article.objects.order_by('position')
         context = {
             'article': article,
-            'articles': articles, 
+            'articles': articles,
             'MEDIA_URL': settings.MEDIA_URL,
             'STATIC_URL': settings.STATIC_URL
         }
@@ -75,7 +75,7 @@ class LandingView(View):
                     'articles': articles,
                     'MEDIA_URL': settings.MEDIA_URL,
                     'STATIC_URL': settings.STATIC_URL
-                    } 
+                    }
         return render_to_response('prime/landing.html', context)
 
 class CGView(View):

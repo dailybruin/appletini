@@ -8,11 +8,13 @@ urlpatterns = patterns('',
     url(r'^diy/$', DIYFrontView.as_view(), name='prime_diy'),
     url(r'^diy/(?P<diy_slug>[-_\w]+)/$', DIYView.as_view(), name='prime_diys'),
     url(r'^diy/tagged/(?P<tag_name>[\w|\W]+)/$', DIYTagsView.as_view(), name='prime_diy_tag'),
-    url(r'^$', LandingView.as_view(), name='root'),
     url(r'^cityguides/$', CGView.as_view(), name='cityguides_view'),
     url(r'^cityguides/(?P<district_name>[\w|\W]+)/$', DistrictView.as_view(), name='cityguide_view'),
 
-    # url(r'^(?P<slug>[-_\w]+)?/?$', IssueView.as_view(), name='prime_issue'),
-    url(r'^(?P<article_slug>[-_\w]+)/$', ArticleView.as_view(), name='prime_article'),
+    url(r'^issue/(?P<slug>[-_\w]+)/$', IssueView.as_view(), name='prime_issue'),
+    url(r'^(?P<issue_slug>[-_\w]+)/(?P<article_slug>[-_\w]+)/$', ArticleView.as_view(), name='prime_article'),
+
+    url(r'^$', LandingView.as_view(), name='root'),
+
     # url(r'^cityguide/$', CityGuideFrontView.as_view(), name='prime_city'),
 )
