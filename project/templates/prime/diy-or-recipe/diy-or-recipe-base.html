@@ -25,21 +25,13 @@
                     <a href="{% url 'root' %}">home</a>
                 </li>
                 <li>
-                    {% if typeTitle == 'DIY' %}
-                        <a href="{% url 'prime_diy' %}">diy</a>
-                    {% else %}
-                        <a href="{% url 'prime_recipe' %}">recipes</a>
-                    {% endif %}
+                    <a href="{% url 'prime_recipe' %}">recipes</a>
                 </li>
                 <li>
                     <a href="{% url 'cityguides_view' %}">city guides</a>
                 </li>
                 <li>
-                    {% if typeTitle == 'DIY' %}
-                        <a href="{% url 'prime_recipe' %}">recipes</a>
-                    {% else %}
-                        <a href="{% url 'prime_diy' %}">diy</a>
-                    {% endif %}
+                    <a href="{% url 'prime_diy' %}">diy</a>
                 </li>
                 <li>
                     <a href="#">past issues</a>
