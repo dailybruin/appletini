@@ -7,6 +7,7 @@ from django.http import Http404
 from django.conf import settings
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import HttpResponse
+from itertools import chain
 
 # utility functions
 
@@ -28,13 +29,19 @@ def get_recent_issues(issue_slug=None):
 class IssueView(View):
     def get(self, context, slug):
         issue, recent_issues = get_recent_issues(slug)
-        #articles = Article.objects.filter(issue=issue).order_by('position')
-        articles = Article.objects.filter(issue=issue).order_by('position').all()[:5]
+
+        diys = DIYarticle.objects.filter(issue=issue).order_by('position')
+        recipes = Recipe.objects.filter(issue=issue).order_by('position')
+        articles = Article.objects.filter(issue=issue).order_by('position')
+        # result_list = list(chain(articles, recipes, diys))
+
         pdf = PDF.objects.get(issue=issue)
         context = {
             'issue': issue,
             'recent_issues': recent_issues,
             'articles': articles,
+            'diys': diys,
+            'recipes': recipes,
             'pdf': pdf,
             'MEDIA_URL': settings.MEDIA_URL,
             'STATIC_URL': settings.STATIC_URL
@@ -151,6 +158,16 @@ class RecipeFrontView(View):
         return render_to_response('prime/diy-or-recipe/diy-or-recipe-front.html', context)
 
 class RecipeView(View):
+    def get(self, context, issue_slug, recipe_slug):
+        recipe = Recipe.objects.get(slug=recipe_slug)
+        context = {
+            'article': recipe,
+            'typeTitle': 'Recipes',
+            'typeRoot': 'prime_recipe',
+            'STATIC_URL': settings.STATIC_URL,
+            'MEDIA_URL': settings.MEDIA_URL
+        }
+        return render_to_response('prime/diy-or-recipe/article.html', context)
     def get(self, context, recipe_slug):
         recipe = Recipe.objects.get(slug=recipe_slug)
         context = {
@@ -163,6 +180,16 @@ class RecipeView(View):
         return render_to_response('prime/diy-or-recipe/article.html', context)
 
 class DIYView(View):
+    def get(self, context, issue_slug, diy_slug):
+        article = DIYarticle.objects.get(slug=diy_slug)
+        context = {
+            'article': article,
+            'typeTitle': 'DIY',
+            'typeRoot': 'prime_diy',
+            'STATIC_URL': settings.STATIC_URL,
+            'MEDIA_URL': settings.MEDIA_URL
+        }
+        return render_to_response('prime/diy-or-recipe/article.html', context)
     def get(self, context, diy_slug):
         article = DIYarticle.objects.get(slug=diy_slug)
         context = {

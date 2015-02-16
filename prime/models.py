@@ -75,6 +75,7 @@ class CityGuideArticle(models.Model):
 class Recipe(models.Model):
     title = models.CharField(max_length=128)
     slug = models.SlugField(max_length=128)
+    issue = models.ForeignKey(Issue, blank=True, null=True)
     lead_photo = models.ImageField(upload_to="prime/recipe/lead")
     teaser = models.TextField(blank=True)
     author = models.ManyToManyField('main.Author')
@@ -92,6 +93,7 @@ class Recipe(models.Model):
 class DIYarticle(models.Model):
     title = models.CharField(max_length=128)
     slug = models.SlugField(max_length=128)
+    issue = models.ForeignKey(Issue, blank=True, null=True)
     lead_photo = models.ImageField(upload_to="prime/diy/lead")
     teaser = models.TextField(blank=True)
     author = models.ManyToManyField('main.Author')

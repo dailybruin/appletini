@@ -13,4 +13,24 @@
             </a>
         {% endfor %}
     </div>
+    <div id="articles">
+        {% for recipe in recipes %}
+            <a href="{% url 'prime_recipes' recipe.slug %}">
+                <span class="mask"></span>
+                <span class="teaser">{{ recipe.teaser }}</span>
+                <img src="{{ MEDIA_URL }}{{ recipe.lead_photo }}"/>
+            </a>
+        {% endfor %}
+    </div>
+
+    <div id="articles">
+        {% for diy in diys %}
+            <a href="{% url 'prime_diys' diy.slug %}">
+                <span class="mask"></span>
+                <span class="teaser">{{ diy.teaser }}</span>
+                <img src="{{ MEDIA_URL }}{{ diy.lead_photo }}"/>
+            </a>
+        {% endfor %}
+    </div>
+
 {% endblock %}
