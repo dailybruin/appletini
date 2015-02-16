@@ -48,6 +48,12 @@
                 {% for article in articles %}
                     <a class="article-refer" href="{% url 'prime_article' article.issue.slug article.slug %}">{{ article.title }}</a>
                 {% endfor %}
+                {% for recipe in recipes %}
+                    <a class="article-refer" href="{% url 'prime_recipes' recipe.slug %}">{{ recipe.title }}</a>
+                {% endfor %}
+                {% for diy in diys %}
+                    <a class="article-refer" href="{% url 'prime_diys' diy.slug %}">{{ diy.title }}</a>
+                {% endfor %}
                 <div class="print-refer">
                     <a target="blank" href="{{ MEDIA_URL }}{{ pdf.pdf }}">
                         <h2>Read the {{ issue.name }} print magazine online:</h2>
