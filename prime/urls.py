@@ -13,7 +13,6 @@ urlpatterns = patterns('',
     url(r'^cityguides/(?P<district_name>[\w|\W]+)/$', DistrictView.as_view(), name='cityguide_view'),
     url(r'^issue/(?P<slug>[-_\w]+)/$', IssueView.as_view(), name='prime_issue'),
     url(r'^(?P<issue_slug>[-_\w]+)/(?P<article_slug>[-_\w]+)/$', ArticleView.as_view(), name='prime_article'),
-    url(r'^(?P<article_slug>[-_\w]+)/$', ArticleView.as_view(), name='prime_article'),
     url(r'^past_issues/$', PastIssuesView.as_view(), name='prime_past_issues'),
 
     # url(r'^cityguide/$', CityGuideFrontView.as_view(), name='prime_city'),
