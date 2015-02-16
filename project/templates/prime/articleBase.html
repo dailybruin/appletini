@@ -2,25 +2,21 @@
 <html>
 <head>
     <meta charset="UTF-8">
-
     {% if article.title %}
         <title>{{ article.title }} | prime | Daily Bruin</title>
     {% else %}
         <title>{{ typeTitle }} | prime | Daily Bruin</title>
     {% endif %}
-
     <link href="{{ STATIC_URL }}prime/css/diy-or-recipe/style.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="http://necolas.github.io/normalize.css/3.0.2/normalize.css">
-
-        <!--
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="http://necolas.github.io/normalize.css/3.0.2/normalize.css">
 
         <style type="text/css">
             header:after {
-                background-image: url('{{ STATIC_URL }}prime/img/{{ typeTitle }}/header.jpg');
+                background-image: url('{{ STATIC_URL }}prime/img/Front/header.jpg');
             }
         </style>
-
-        -->
     </head>
     <body>
         <header>
@@ -29,34 +25,26 @@
                     <a href="{% url 'root' %}">home</a>
                 </li>
                 <li>
-                    {% if typeTitle == 'DIY' %}
-                        <a href="{% url 'prime_diy' %}">diy</a>
-                    {% else %}
-                        <a href="{% url 'prime_recipe' %}">recipes</a>
-                    {% endif %}
+                    <a href="{% url 'prime_recipe' %}">recipes</a>
                 </li>
                 <li>
-                    <a href="#">city guides</a>
+                    <a href="{% url 'cityguides_view' %}">city guides</a>
                 </li>
                 <li>
-                    {% if typeTitle == 'DIY' %}
-                        <a href="{% url 'prime_recipe' %}">recipes</a>
-                    {% else %}
-                        <a href="{% url 'prime_diy' %}">diy</a>
-                    {% endif %}
+                    <a href="{% url 'prime_diy' %}">diy</a>
                 </li>
                 <li>
                     <a href="#">past issues</a>
                 </li>
             </ul>
-
             <p id="title">
-                <span id="prime">prime</span> <span id="two">{{ typeTitle }}</span>
+                <span id="one">prime</span> <span id="two">Article</span>
             </p>
-
         </header>
-        
         {% block content %}
+        {% endblock %}
+
+        {% block footer %}
         {% endblock %}
 
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
@@ -70,3 +58,4 @@
         </script>
     </body>
 </html>
+
