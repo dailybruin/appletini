@@ -1,5 +1,6 @@
 body {
     text-rendering: optimizelegibility;
+    -webkit-font-smoothing: antialiased;
 }
 
 ul {
@@ -34,8 +35,8 @@ header {
     width: 14vw;
     background-color: black;
     color: white;
-    margin-left: 1.5vw;
-    margin-right: 1.5vw;
+    margin-left: .7vw;
+    margin-right: .7vw;
     font-size: 1.2em;
     font-family: "helvetica";
     font-weight: lighter;
@@ -91,6 +92,7 @@ header {
     }
     #mainnav
     {
+        height: 6.5vh;
         background-color: black !important;
     }
 }
@@ -99,6 +101,14 @@ header {
     font-family: "helvetica";
     font-weight: lighter;
     font-size: 1.3em;
+}
+
+#prime
+{
+    font-family: "helvetica";
+    font-weight: lighter;
+    font-size: 1.3em;
+    color: black;
 }
 
 #two {
