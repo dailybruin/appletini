@@ -94,6 +94,14 @@ header {
     font-size: 1.3em;
 }
 
+#prime
+{
+    font-family: "helvetica";
+    font-weight: lighter;
+    font-size: 1.3em;
+    color: black;
+}
+
 #two {
     font-family: serif;
     text-transform: uppercase;
