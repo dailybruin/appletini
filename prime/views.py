@@ -58,6 +58,22 @@ class ArticleView(View):
             'STATIC_URL': settings.STATIC_URL
         }
         return render_to_response('prime/article.html', context)
+    def get(self, context, article_slug):
+        try:
+            article = Article.objects.get(slug=article_slug)
+        except Article.DoesNotExist:
+            raise Http404
+        if article.redirect:
+            return redirect(article.redirect)
+        articles = Article.objects.order_by('position')
+        context = {
+            'article': article,
+            'articles': articles,
+            'MEDIA_URL': settings.MEDIA_URL,
+            'STATIC_URL': settings.STATIC_URL
+        }
+        return render_to_response('prime/article.html', context)
+
 
 
 class LandingView(View):
