@@ -1,3 +1,22 @@
+
+
+@media screen and (max-width: 550px) {
+
+    #title
+    {
+        font-size: 3em;
+    }
+    #mainnav
+    {
+        height: 6.5vh;
+        background-color: blue !important;
+    }
+    #mainnav li
+    {
+        background-color: transparent !important;
+    }
+
+}
 body {
     text-rendering: optimizelegibility;
     -webkit-font-smoothing: antialiased;
@@ -48,7 +67,16 @@ header {
         height: 100%;
         width: 100%;
         padding-top: 8px;
+        transition: padding-top .5s, background-color .4s;
     }
+
+#mainnav li a:hover {
+    padding-top: 10%;
+    color: black;
+    text-decoration: none;
+    background-color: white;
+    transition: color .3s, background-color .4s, padding-top .4s;
+}
 
 #title {
     padding-top: 30px;
