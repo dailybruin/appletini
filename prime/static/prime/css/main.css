@@ -210,6 +210,14 @@ figure.right, figure.left {
             transition: opacity 0.25s, transform 0.25s;
         }
 
+.past-issues {
+    margin: 0 auto 0;
+    width: 90%;
+}
+.past-issues img {
+    width: 49%;
+}
+
 .copyright {
     display: block;
     font-size: 0.8em;

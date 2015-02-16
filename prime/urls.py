@@ -1,5 +1,5 @@
 from django.conf.urls import patterns, url
-from prime.views import CGView, DistrictView, DIYView, RecipeView, IssueView, ArticleView, RecipeFrontView, DIYFrontView, LandingView, RecipeTagsView, DIYTagsView
+from prime.views import CGView, DistrictView, DIYView, RecipeView, IssueView, ArticleView, RecipeFrontView, DIYFrontView, LandingView, RecipeTagsView, DIYTagsView, PastIssuesView
 
 urlpatterns = patterns('',
     url(r'^recipes/$', RecipeFrontView.as_view(), name='prime_recipe'),
@@ -13,6 +13,8 @@ urlpatterns = patterns('',
 
     url(r'^issue/(?P<slug>[-_\w]+)/$', IssueView.as_view(), name='prime_issue'),
     url(r'^(?P<issue_slug>[-_\w]+)/(?P<article_slug>[-_\w]+)/$', ArticleView.as_view(), name='prime_article'),
+
+    url(r'^past_issues/$', PastIssuesView.as_view(), name='prime_past_issues'),
 
     url(r'^$', LandingView.as_view(), name='root'),
 
