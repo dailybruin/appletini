@@ -4,7 +4,7 @@
     <script>
         $(document).ready(function(){ $('#articles').stalactite(); });
     </script>
-    <div id="articles">
+<!--     <div id="articles">
         {% for article in articles %}
             <a href="{% url 'prime_article' article.issue.slug article.slug %}">
                 <span class="mask"></span>
@@ -31,6 +31,6 @@
                 <img src="{{ MEDIA_URL }}{{ diy.lead_photo }}"/>
             </a>
         {% endfor %}
-    </div>
+    </div> -->
 
 {% endblock %}
