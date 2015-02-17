@@ -53,3 +53,10 @@ class PDFAdmin(admin.ModelAdmin):
     list_display = ('issue', 'pdf')
 admin.site.register(PDF, PDFAdmin)
 
+class RecipeTagAdmin(admin.ModelAdmin):
+    pass
+admin.site.register(RecipeTag)
+
+class DIYTagAdmin(admin.ModelAdmin):
+    pass
+admin.site.register(DIYTag)
