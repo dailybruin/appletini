@@ -335,8 +335,8 @@ header:after {
 }
 
 #types li:after {
-	padding: 0 5%;
 	content: "/";
+	margin: 0 5%;
 }
 
 #types li:last-child:after {
