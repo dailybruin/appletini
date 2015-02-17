@@ -14,7 +14,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
 
     # mainsite
-    url(r'^', include('prime.urls')),
+    url(r'^prime/', include('prime.urls')),
     # other apps
     url(r'^music/', include('music.urls'))
     
