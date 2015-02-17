@@ -18,15 +18,3 @@ class Author(models.Model):
     def __unicode__(self):
         return "%s %s" % (self.first_name, self.last_name)
 
-
-class RecipeTag(models.Model):
-    name = models.CharField(max_length = 32)
-
-    def __unicode__(self):
-        return "%s" % (self.name)
-
-class DIYTag(models.Model):
-    name = models.CharField(max_length = 32)
-
-    def __unicode__(self):
-        return "%s" % (self.name)

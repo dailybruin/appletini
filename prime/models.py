@@ -47,12 +47,12 @@ class Article(models.Model):
     body = models.TextField(blank=True)
     redirect = models.URLField(blank=True)
     position = models.PositiveIntegerField(default=0)
-    
+
     def getPrettyAuthors(self):
         return ' and '.join([str(a) for a in self.author])
 
     def __unicode__(self):
-        return self.title    
+        return self.title
 
 class Neighborhood(models.Model):
     lead_photo = models.ImageField(upload_to="prime/cityguides/lead")
@@ -79,7 +79,7 @@ class Recipe(models.Model):
     lead_photo = models.ImageField(upload_to="prime/recipe/lead")
     teaser = models.TextField(blank=True)
     author = models.ManyToManyField('main.Author')
-    tag = models.ManyToManyField('main.RecipeTag')
+    tag = models.ManyToManyField('RecipeTag')
     body = models.TextField(blank=True) #, widget=models.Field.Textarea(attrs={'rows': 40, 'cols': 120}))
     redirect = models.URLField(blank=True)
     position = models.PositiveIntegerField(default=0)
@@ -97,7 +97,7 @@ class DIYarticle(models.Model):
     lead_photo = models.ImageField(upload_to="prime/diy/lead")
     teaser = models.TextField(blank=True)
     author = models.ManyToManyField('main.Author')
-    tag = models.ManyToManyField('main.DIYTag')
+    tag = models.ManyToManyField('DIYTag')
     body = models.TextField(blank=True) #, widget=models.Field.Textarea(attrs={'rows': 40, 'cols': 120}))
     redirect = models.URLField(blank=True)
     position = models.PositiveIntegerField(default=0)
@@ -107,6 +107,18 @@ class DIYarticle(models.Model):
 
     def __unicode__(self):
         return self.title
+
+class RecipeTag(models.Model):
+    name = models.CharField(max_length = 32)
+
+    def __unicode__(self):
+        return "%s" % (self.name)
+
+class DIYTag(models.Model):
+    name = models.CharField(max_length = 32)
+
+    def __unicode__(self):
+        return "%s" % (self.name)
 
 
 class Image(models.Model):
