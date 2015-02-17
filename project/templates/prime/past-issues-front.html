@@ -3,7 +3,14 @@
 {% block content %}
     <div class="past-issues">
         {% for pdf in pdfs %}
-            <img src="{{ MEDIA_URL }}{{ pdf.image }}">
+            <a class="img-container" href="{% url 'prime_issue' pdf.issue.slug %}">
+                <img src="{{ MEDIA_URL }}{{ pdf.image }}">
+                <div class="img-cover">
+                    <div class="img-cover-title">
+                        {{ pdf.issue.name }}
+                    </div>
+                </div>
+            </a>
         {% endfor %}
     </div>
 {% endblock %}

@@ -8,17 +8,15 @@ from django.db import models
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        # Adding model 'DIYTag'
-        db.create_table(u'main_diytag', (
-            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('name', self.gf('django.db.models.fields.CharField')(max_length=32)),
-        ))
-        db.send_create_signal(u'main', ['DIYTag'])
+        # Adding field 'Article.redirect'
+        db.add_column(u'prime_article', 'redirect',
+                      self.gf('django.db.models.fields.URLField')(default='', max_length=200, blank=True),
+                      keep_default=False)
 
 
     def backwards(self, orm):
-        # Deleting model 'DIYTag'
-        db.delete_table(u'main_diytag')
+        # Deleting field 'Article.redirect'
+        db.delete_column(u'prime_article', 'redirect')
 
 
     models = {
@@ -71,16 +69,42 @@ class Migration(SchemaMigration):
             'twitter': ('django.db.models.fields.CharField', [], {'max_length': '15', 'blank': 'True'}),
             'user': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['auth.User']", 'null': 'True', 'blank': 'True'})
         },
-        u'main.diytag': {
-            'Meta': {'object_name': 'DIYTag'},
+        u'prime.article': {
+            'Meta': {'object_name': 'Article'},
+            'author': ('django.db.models.fields.related.ManyToManyField', [], {'to': u"orm['main.Author']", 'symmetrical': 'False'}),
+            'body': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'max_length': '32'})
+            'issue': ('django.db.models.fields.related.ForeignKey', [], {'default': 'None', 'to': u"orm['prime.Issue']", 'null': 'True', 'blank': 'True'}),
+            'lead_photo': ('django.db.models.fields.files.ImageField', [], {'max_length': '100'}),
+            'position': ('django.db.models.fields.PositiveIntegerField', [], {'default': '0'}),
+            'redirect': ('django.db.models.fields.URLField', [], {'max_length': '200', 'blank': 'True'}),
+            'slug': ('django.db.models.fields.SlugField', [], {'max_length': '128'}),
+            'teaser': ('django.db.models.fields.CharField', [], {'max_length': '200'}),
+            'title': ('django.db.models.fields.CharField', [], {'max_length': '128'})
         },
-        u'main.recipetag': {
-            'Meta': {'object_name': 'RecipeTag'},
+        u'prime.image': {
+            'Meta': {'object_name': 'Image'},
+            'author': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['main.Author']"}),
+            'caption': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'max_length': '32'})
+            'image': ('django.db.models.fields.files.ImageField', [], {'max_length': '100'}),
+            'issue': ('django.db.models.fields.related.ForeignKey', [], {'default': 'None', 'to': u"orm['prime.Issue']", 'null': 'True', 'blank': 'True'})
+        },
+        u'prime.issue': {
+            'Meta': {'ordering': "['release_date']", 'object_name': 'Issue'},
+            'header_image': ('django.db.models.fields.files.ImageField', [], {'max_length': '100', 'null': 'True', 'blank': 'True'}),
+            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '32'}),
+            'release_date': ('django.db.models.fields.DateField', [], {}),
+            'slug': ('django.db.models.fields.SlugField', [], {'max_length': '32'})
+        },
+        u'prime.pdf': {
+            'Meta': {'object_name': 'PDF'},
+            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'image': ('django.db.models.fields.files.ImageField', [], {'max_length': '100'}),
+            'issue': ('django.db.models.fields.related.OneToOneField', [], {'to': u"orm['prime.Issue']", 'unique': 'True'}),
+            'pdf': ('django.db.models.fields.files.FileField', [], {'max_length': '100'})
         }
     }
 
-    complete_apps = ['main']
+    complete_apps = ['prime']
