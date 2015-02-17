@@ -20,7 +20,12 @@
 				<div class="article-intro">
 					<p class="article-title">{{ article.title }}</p>
 					<p class="article-body">
-						{{ article.teaser }} <span class="readmore"><a href="{% url typeRoot article.slug %}">read more &#8688</a></span>
+						{{ article.teaser }}
+						{% if typeTitle == 'DIY' %}
+							<span class="readmore"><a href="{% url 'DIYView' article.slug %}">read more &#8688</a></span>
+						{% else %}
+							<span class="readmore"><a href="{% url 'RecipeView' article.slug %}">read more &#8688</a></span>
+						{% endif %}
 					</p>
 				</div>
 			</li>
