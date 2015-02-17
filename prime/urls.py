@@ -2,7 +2,7 @@ from django.conf.urls import patterns, url
 from prime.views import CGView, DistrictView, DIYView, RecipeView, IssueView, ArticleView, RecipeFrontView, DIYFrontView, LandingView, RecipeTagsView, DIYTagsView, PastIssuesView
 
 urlpatterns = patterns('',
-    url(r'^home/$', LandingView.as_view(), name='root'),
+    url(r'^$', LandingView.as_view(), name='root'),
     url(r'^recipes/$', RecipeFrontView.as_view(), name='prime_recipe'),
     url(r'^recipes/(?P<recipe_slug>[-_\w]+)/$', RecipeView.as_view(), name='prime_recipes'),
     url(r'^recipes/tagged/(?P<tag_name>[\w|\W]+)/$', RecipeTagsView.as_view(), name='prime_recipe_tag'),
