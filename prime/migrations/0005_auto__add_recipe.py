@@ -8,19 +8,35 @@ from django.db import models
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        # Adding M2M table for field tag on 'DIYarticle'
-        m2m_table_name = db.shorten_name(u'prime_diyarticle_tag')
+        # Adding model 'Recipe'
+        db.create_table(u'prime_recipe', (
+            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('title', self.gf('django.db.models.fields.CharField')(max_length=128)),
+            ('slug', self.gf('django.db.models.fields.SlugField')(max_length=128)),
+            ('lead_photo', self.gf('django.db.models.fields.files.ImageField')(max_length=100)),
+            ('teaser', self.gf('django.db.models.fields.CharField')(max_length=200)),
+            ('body', self.gf('django.db.models.fields.TextField')(blank=True)),
+            ('redirect', self.gf('django.db.models.fields.URLField')(max_length=200, blank=True)),
+            ('position', self.gf('django.db.models.fields.PositiveIntegerField')(default=0)),
+        ))
+        db.send_create_signal(u'prime', ['Recipe'])
+
+        # Adding M2M table for field author on 'Recipe'
+        m2m_table_name = db.shorten_name(u'prime_recipe_author')
         db.create_table(m2m_table_name, (
             ('id', models.AutoField(verbose_name='ID', primary_key=True, auto_created=True)),
-            ('diyarticle', models.ForeignKey(orm[u'prime.diyarticle'], null=False)),
-            ('diytag', models.ForeignKey(orm[u'main.diytag'], null=False))
+            ('recipe', models.ForeignKey(orm[u'prime.recipe'], null=False)),
+            ('author', models.ForeignKey(orm[u'main.author'], null=False))
         ))
-        db.create_unique(m2m_table_name, ['diyarticle_id', 'diytag_id'])
+        db.create_unique(m2m_table_name, ['recipe_id', 'author_id'])
 
 
     def backwards(self, orm):
-        # Removing M2M table for field tag on 'DIYarticle'
-        db.delete_table(db.shorten_name(u'prime_diyarticle_tag'))
+        # Deleting model 'Recipe'
+        db.delete_table(u'prime_recipe')
+
+        # Removing M2M table for field author on 'Recipe'
+        db.delete_table(db.shorten_name(u'prime_recipe_author'))
 
 
     models = {
@@ -73,16 +89,6 @@ class Migration(SchemaMigration):
             'twitter': ('django.db.models.fields.CharField', [], {'max_length': '15', 'blank': 'True'}),
             'user': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['auth.User']", 'null': 'True', 'blank': 'True'})
         },
-        u'main.diytag': {
-            'Meta': {'object_name': 'DIYTag'},
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'max_length': '32'})
-        },
-        u'main.recipetag': {
-            'Meta': {'object_name': 'RecipeTag'},
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'max_length': '32'})
-        },
         u'prime.article': {
             'Meta': {'object_name': 'Article'},
             'author': ('django.db.models.fields.related.ManyToManyField', [], {'to': u"orm['main.Author']", 'symmetrical': 'False'}),
@@ -94,19 +100,6 @@ class Migration(SchemaMigration):
             'redirect': ('django.db.models.fields.URLField', [], {'max_length': '200', 'blank': 'True'}),
             'slug': ('django.db.models.fields.SlugField', [], {'max_length': '128'}),
             'teaser': ('django.db.models.fields.CharField', [], {'max_length': '200'}),
-            'title': ('django.db.models.fields.CharField', [], {'max_length': '128'})
-        },
-        u'prime.diyarticle': {
-            'Meta': {'object_name': 'DIYarticle'},
-            'author': ('django.db.models.fields.related.ManyToManyField', [], {'to': u"orm['main.Author']", 'symmetrical': 'False'}),
-            'body': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'lead_photo': ('django.db.models.fields.files.ImageField', [], {'max_length': '100'}),
-            'position': ('django.db.models.fields.PositiveIntegerField', [], {'default': '0'}),
-            'redirect': ('django.db.models.fields.URLField', [], {'max_length': '200', 'blank': 'True'}),
-            'slug': ('django.db.models.fields.SlugField', [], {'max_length': '128'}),
-            'tag': ('django.db.models.fields.related.ManyToManyField', [], {'to': u"orm['main.DIYTag']", 'symmetrical': 'False'}),
-            'teaser': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
             'title': ('django.db.models.fields.CharField', [], {'max_length': '128'})
         },
         u'prime.image': {
@@ -141,8 +134,7 @@ class Migration(SchemaMigration):
             'position': ('django.db.models.fields.PositiveIntegerField', [], {'default': '0'}),
             'redirect': ('django.db.models.fields.URLField', [], {'max_length': '200', 'blank': 'True'}),
             'slug': ('django.db.models.fields.SlugField', [], {'max_length': '128'}),
-            'tag': ('django.db.models.fields.related.ManyToManyField', [], {'to': u"orm['main.RecipeTag']", 'symmetrical': 'False'}),
-            'teaser': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
+            'teaser': ('django.db.models.fields.CharField', [], {'max_length': '200'}),
             'title': ('django.db.models.fields.CharField', [], {'max_length': '128'})
         }
     }

@@ -8,30 +8,14 @@ from django.db import models
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        # Deleting model 'Category'
-        db.delete_table(u'prime_category')
 
-        # Deleting field 'CityGuide.time_stamp'
-        db.delete_column(u'prime_cityguide', 'time_stamp')
-
+        # Changing field 'Image.author'
+        db.alter_column(u'prime_image', 'author_id', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['main.Author'], null=True))
 
     def backwards(self, orm):
-        # Adding model 'Category'
-        db.create_table(u'prime_category', (
-            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('name', self.gf('django.db.models.fields.CharField')(max_length=128, unique=True)),
-        ))
-        db.send_create_signal(u'prime', ['Category'])
 
-
-        # User chose to not deal with backwards NULL issues for 'CityGuide.time_stamp'
-        raise RuntimeError("Cannot reverse this migration. 'CityGuide.time_stamp' and its values cannot be restored.")
-        
-        # The following code is provided here to aid in writing a correct migration        # Adding field 'CityGuide.time_stamp'
-        db.add_column(u'prime_cityguide', 'time_stamp',
-                      self.gf('django.db.models.fields.DateField')(),
-                      keep_default=False)
-
+        # Changing field 'Image.author'
+        db.alter_column(u'prime_image', 'author_id', self.gf('django.db.models.fields.related.ForeignKey')(default='', to=orm['main.Author']))
 
     models = {
         u'auth.group': {
@@ -83,16 +67,6 @@ class Migration(SchemaMigration):
             'twitter': ('django.db.models.fields.CharField', [], {'max_length': '15', 'blank': 'True'}),
             'user': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['auth.User']", 'null': 'True', 'blank': 'True'})
         },
-        u'main.diytag': {
-            'Meta': {'object_name': 'DIYTag'},
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'max_length': '32'})
-        },
-        u'main.recipetag': {
-            'Meta': {'object_name': 'RecipeTag'},
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'max_length': '32'})
-        },
         u'prime.article': {
             'Meta': {'object_name': 'Article'},
             'author': ('django.db.models.fields.related.ManyToManyField', [], {'to': u"orm['main.Author']", 'symmetrical': 'False'}),
@@ -104,35 +78,6 @@ class Migration(SchemaMigration):
             'redirect': ('django.db.models.fields.URLField', [], {'max_length': '200', 'blank': 'True'}),
             'slug': ('django.db.models.fields.SlugField', [], {'max_length': '128'}),
             'teaser': ('django.db.models.fields.CharField', [], {'max_length': '200'}),
-            'title': ('django.db.models.fields.CharField', [], {'max_length': '128'})
-        },
-        u'prime.cityguide': {
-            'Meta': {'object_name': 'CityGuide'},
-            'article': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['prime.CityGuideArticle']"}),
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'neighborhood': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['prime.District']"})
-        },
-        u'prime.cityguidearticle': {
-            'Meta': {'object_name': 'CityGuideArticle', '_ormbases': [u'prime.Article']},
-            u'article_ptr': ('django.db.models.fields.related.OneToOneField', [], {'to': u"orm['prime.Article']", 'unique': 'True', 'primary_key': 'True'})
-        },
-        u'prime.district': {
-            'Meta': {'object_name': 'District'},
-            'articles': ('django.db.models.fields.related.ManyToManyField', [], {'to': u"orm['prime.CityGuideArticle']", 'through': u"orm['prime.CityGuide']", 'symmetrical': 'False'}),
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '128'})
-        },
-        u'prime.diyarticle': {
-            'Meta': {'object_name': 'DIYarticle'},
-            'author': ('django.db.models.fields.related.ManyToManyField', [], {'to': u"orm['main.Author']", 'symmetrical': 'False'}),
-            'body': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'lead_photo': ('django.db.models.fields.files.ImageField', [], {'max_length': '100'}),
-            'position': ('django.db.models.fields.PositiveIntegerField', [], {'default': '0'}),
-            'redirect': ('django.db.models.fields.URLField', [], {'max_length': '200', 'blank': 'True'}),
-            'slug': ('django.db.models.fields.SlugField', [], {'max_length': '128'}),
-            'tag': ('django.db.models.fields.related.ManyToManyField', [], {'to': u"orm['main.DIYTag']", 'symmetrical': 'False'}),
-            'teaser': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
             'title': ('django.db.models.fields.CharField', [], {'max_length': '128'})
         },
         u'prime.image': {
@@ -157,19 +102,6 @@ class Migration(SchemaMigration):
             'image': ('django.db.models.fields.files.ImageField', [], {'max_length': '100'}),
             'issue': ('django.db.models.fields.related.OneToOneField', [], {'to': u"orm['prime.Issue']", 'unique': 'True'}),
             'pdf': ('django.db.models.fields.files.FileField', [], {'max_length': '100'})
-        },
-        u'prime.recipe': {
-            'Meta': {'object_name': 'Recipe'},
-            'author': ('django.db.models.fields.related.ManyToManyField', [], {'to': u"orm['main.Author']", 'symmetrical': 'False'}),
-            'body': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'lead_photo': ('django.db.models.fields.files.ImageField', [], {'max_length': '100'}),
-            'position': ('django.db.models.fields.PositiveIntegerField', [], {'default': '0'}),
-            'redirect': ('django.db.models.fields.URLField', [], {'max_length': '200', 'blank': 'True'}),
-            'slug': ('django.db.models.fields.SlugField', [], {'max_length': '128'}),
-            'tag': ('django.db.models.fields.related.ManyToManyField', [], {'to': u"orm['main.RecipeTag']", 'symmetrical': 'False'}),
-            'teaser': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
-            'title': ('django.db.models.fields.CharField', [], {'max_length': '128'})
         }
     }
 
