@@ -190,6 +190,7 @@ figure.right, figure.left {
     }
     #articles a {
         position: relative;
+        display:inline-block;
     }
         #articles a:hover .teaser {
             opacity: 1;
