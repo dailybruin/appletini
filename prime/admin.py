@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.db import models
 from django.forms import Textarea
-from prime.models import Issue, Article, Image, PDF, Recipe, DIYarticle, CityGuideArticle, Neighborhood
+from prime.models import Issue, Article, Image, PDF, Recipe, DIYarticle, CityGuideArticle, Neighborhood, RecipeTag, DIYTag
 
 # admin.site.register(CityGuideArticle, CGAdmin)
 class NeighborhoodAdmin(admin.ModelAdmin):
