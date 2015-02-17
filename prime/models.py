@@ -3,7 +3,6 @@ from django.utils.text import slugify
 
 from PIL import Image as PyImage
 
-
 # utility functions
 
 def createUploadPath(directory, same_model=False):
@@ -48,9 +47,27 @@ class Article(models.Model):
     body = models.TextField(blank=True)
     redirect = models.URLField(blank=True)
     position = models.PositiveIntegerField(default=0)
-    
+
     def getPrettyAuthors(self):
         return ' and '.join([str(a) for a in self.author])
+
+    def __unicode__(self):
+        return self.title
+
+class Neighborhood(models.Model):
+    lead_photo = models.ImageField(upload_to="prime/cityguides/lead")
+    title = models.CharField(max_length=128, unique=True)
+    intro_body = models.TextField(blank=True)
+    slug = models.SlugField(max_length=128)
+    def __unicode__(self):
+        return self.title
+
+class CityGuideArticle(models.Model):
+    neighborhood = models.ForeignKey(Neighborhood)
+    title = models.CharField(max_length=128)
+    lead_photo = models.ImageField(upload_to="prime/cityguides/neighborhood/")
+    option = models.CharField(max_length=256, choices=[('see', 'see'), ('do', 'do'), ('eat', 'eat')])
+    body = models.TextField(blank=True)
 
     def __unicode__(self):
         return self.title
@@ -58,9 +75,11 @@ class Article(models.Model):
 class Recipe(models.Model):
     title = models.CharField(max_length=128)
     slug = models.SlugField(max_length=128)
+    issue = models.ForeignKey(Issue, blank=True, null=True)
     lead_photo = models.ImageField(upload_to="prime/recipe/lead")
     teaser = models.TextField(blank=True)
     author = models.ManyToManyField('main.Author')
+    tag = models.ManyToManyField('RecipeTag')
     body = models.TextField(blank=True) #, widget=models.Field.Textarea(attrs={'rows': 40, 'cols': 120}))
     redirect = models.URLField(blank=True)
     position = models.PositiveIntegerField(default=0)
@@ -70,6 +89,36 @@ class Recipe(models.Model):
 
     def __unicode__(self):
         return self.title
+
+class DIYarticle(models.Model):
+    title = models.CharField(max_length=128)
+    slug = models.SlugField(max_length=128)
+    issue = models.ForeignKey(Issue, blank=True, null=True)
+    lead_photo = models.ImageField(upload_to="prime/diy/lead")
+    teaser = models.TextField(blank=True)
+    author = models.ManyToManyField('main.Author')
+    tag = models.ManyToManyField('DIYTag')
+    body = models.TextField(blank=True) #, widget=models.Field.Textarea(attrs={'rows': 40, 'cols': 120}))
+    redirect = models.URLField(blank=True)
+    position = models.PositiveIntegerField(default=0)
+
+    def getPrettyAuthors(self):
+        return ' and '.join([str(a) for a in self.author])
+
+    def __unicode__(self):
+        return self.title
+
+class RecipeTag(models.Model):
+    name = models.CharField(max_length = 32)
+
+    def __unicode__(self):
+        return "%s" % (self.name)
+
+class DIYTag(models.Model):
+    name = models.CharField(max_length = 32)
+
+    def __unicode__(self):
+        return "%s" % (self.name)
 
 
 class Image(models.Model):

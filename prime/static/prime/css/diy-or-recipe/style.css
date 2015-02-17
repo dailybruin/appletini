@@ -1,0 +1,351 @@
+/* CSS reset */
+/*ol,li {
+
+    overflow-y: scroll;
+}
+*/
+@media screen and (max-width: 550px) {
+
+    #title
+    {
+        font-size: 3em;
+    }
+    #mainnav
+    {
+        height: 6.5vh;
+        background-color: blue !important;
+    }
+    #mainnav li
+    {
+        background-color: transparent !important;
+    }
+
+}
+body {
+    text-rendering: optimizelegibility;
+    -webkit-font-smoothing: antialiased;
+}
+
+ul {
+    padding: 0;
+}
+    ul li {
+        list-style: none;
+    }
+
+
+header {
+    text-align: center;
+    height: 275px;
+}
+    /* It needs to be in an :after because of the opacity attribute. */
+    header:after {
+        background-size: cover;
+        background-position: center;
+        content: "";
+        width: 100%;
+        height: 275px;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: -1;
+        position: absolute;
+    }
+
+#mainnav li {
+    display: inline-block;
+    height: 6.5vh;
+    width: 14vw;
+    background-color: black;
+    color: white;
+    margin-left: .7vw;
+    margin-right: .7vw;
+    font-size: 1.2em;
+    font-family: "helvetica";
+    font-weight: lighter;
+    -webkit-font-smoothing: antialiased;
+}
+    #mainnav li a {
+        color: white;
+        display: block;
+        height: 100%;
+        width: 100%;
+        padding-top: 8px;
+        transition: background-color .4s;
+    }
+
+#mainnav li a:hover {
+    color: black;
+    text-decoration: none;
+    background-color: white;
+    transition: color .3s, background-color .4s;
+}
+
+#title {
+    display: none;
+    padding-top: 30px;
+    font-size: 6em;
+    font-weight: lighter;
+    opacity: 1;
+    color: rgba(0, 0, 0, 0.7);
+    -webkit-font-smoothing: antialiased;
+}
+
+@media screen and (max-width: 830px) {
+
+    #title {
+        font-size: 4em;
+    }
+    #sidebar li {
+        width: 75%;
+    }
+    #sidebar li:hover {
+        width: 90%;
+    }
+    #mainnav li {
+        font-size: .9em;
+    }
+    #mainnav li a {
+        padding-top: 10px;
+    }
+    #intropara p {
+        font-size: .9em;
+    }
+    .article-intro {
+        font-size: .9em;
+    }
+}
+
+@media screen and (max-width: 550px) {
+
+    #title
+    {
+        font-size: 3em;
+    }
+    #mainnav
+    {
+        height: 6.5vh;
+        background-color: black !important;
+    }
+}
+
+#one {
+    font-family: "helvetica";
+    font-weight: lighter;
+    font-size: 1.3em;
+}
+
+#prime
+{
+    font-family: "helvetica";
+    font-weight: lighter;
+    font-size: 1.3em;
+    color: black;
+}
+
+#two {
+    font-family: serif;
+    text-transform: uppercase;
+}
+
+.hr {
+    width : 30vw;
+    background-color: black;
+    height : 3px;
+}
+
+#intropara {
+    margin: auto;
+    width: 70vw;
+    text-align: center;
+    font-size: 1.3em;
+    font-family: "Helvetica";
+    font-weight: lighter;
+}
+
+#sidebar {
+    width: 20vw;
+    margin: 0px;
+    float: left;
+}
+    #sidebar li {
+        max-width: 150px;
+        background-color: black;
+        color: white;
+        height: 50px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        text-align: center;
+        padding-top: 15px;
+        font-family: "helvetica";
+        font-weight: lighter;
+        transition: 0.3s ease;
+    }
+        #sidebar li:hover {
+            max-width: 190px;
+            cursor: pointer;
+        }
+
+    #sidebar a {
+        color: white;
+
+    }
+        #sidebar a:hover {
+            text-decoration: none;
+    }
+
+
+
+#main {
+    width: 70vw;
+    margin: 0px;
+    float: left;
+}
+
+.article {
+    margin-top: 40px;
+}
+    .article:first-child {
+        margin-top: 0px;
+    }
+    .article .img_container {
+        width: 27%;
+        float: left;
+        margin-bottom: 20px;
+        overflow: hidden;
+    }
+        .img_container img {
+            width: 100%;
+        }
+
+.article-intro {
+    width: 65%;
+    margin: 0px;
+    float: left;
+    padding-right: 10px;
+    padding: 0px 10px;
+    margin-bottom: 20px;
+}
+
+.article-title {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+.article-body {
+    font-family: "helvetica";
+    font-weight: lighter;
+    font-size: 1.1em;
+    margin-right: 20px;
+}
+
+.article-divider {
+    margin-top: 40px;
+    height: 2px;
+    background-color: black;
+    width: 90%;
+}
+
+.readmore {
+    text-transform: uppercase;
+    font-family: "helvetica";
+    font-weight: bold;
+}
+    .readmore:hover {
+        cursor: pointer;
+        text-decoration: underline;
+    }
+    .readmore a {
+        text-decoration: inherit;
+        color: inherit;
+    }
+        .readmore a:hover {
+            color: inherit;
+        }
+
+.pagination {
+    clear: both;
+    width: 100%;
+    text-align: center;
+}
+
+.step-links a {
+    color: black;
+}
+
+figure {
+    margin: 0;
+    position: relative;
+}
+    figure img {
+        display: block;
+        width: 100%;
+    }
+    figure figcaption {
+        margin: 0.5em 0 1.5em 0;
+        line-height: 1.216;
+        color: gray;
+        font-size: 0.9em;
+    }
+    figure.right, figure.left {
+        width: 330px;
+    }
+        figure.right {
+            float: right;
+            left: 20px;
+/*            margin-left: -110px;
+*/        }
+        figure.left {
+            float: left;
+            right: 20px;
+/*            margin-right: -110px;
+*/        }
+    figure.fullwidth {
+        width: 100%;
+    }
+    figure .image {
+        position: relative;
+    }
+    figure .credit {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        padding: 0 4px;
+        font-size: 0.7em;
+        font-family: monospace, monospace;
+        background-color: rgba(0,0,0, 0.25);
+        color: rgba(255,255,255, 0.75);
+    }
+
+figure {
+    margin: 0 !important;
+    position: relative;
+}
+
+.headline {
+    font-size: 300%;
+    margin: 0.75em 0 0.25em 0;
+    line-height: 1.3;
+}
+
+.ind-article {
+    width: 500px;
+    margin: 0 auto 2.5em auto;
+}
+
+.author {
+    display: block;
+    margin-bottom: 2em;
+    color: gray;
+}
+
+.copyright {
+    display: block;
+    font-size: 0.8em;
+    text-align: center;
+    margin-top: 1em;
+}
+
+

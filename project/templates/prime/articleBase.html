@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+{% load shortcodes %}
+{% load markdown %}
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    {% if article.title %}
+        <title>{{ article.title }} | prime | Daily Bruin</title>
+    {% else %}
+        <title>{{ typeTitle }} | prime | Daily Bruin</title>
+    {% endif %}
+    <link href="{{ STATIC_URL }}prime/css/diy-or-recipe/style.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
+        <style type="text/css">
+            header:after {
+                background-image: url('{{ STATIC_URL }}prime/img/Front/header.jpg');
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <ul id="mainnav">
+                <li>
+                    <a href="{% url 'root' %}">home</a>
+                </li>
+                <li>
+                    <a href="{% url 'prime_recipe' %}">recipes</a>
+                </li>
+                <li>
+                    <a href="{% url 'cityguides_view' %}">city guides</a>
+                </li>
+                <li>
+                    <a href="{% url 'prime_diy' %}">diy</a>
+                </li>
+                <li>
+                    <a href="{% url 'prime_past_issues' %}">past issues</a>
+                </li>
+            </ul>
+            <p id="title">
+                <span id="one">prime</span> <span id="two"></span>
+            </p>
+        </header>
+        {% block content %}
+        {% endblock %}
+
+        {% block footer %}
+        {% endblock %}
+
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+            ga('create', 'UA-28181852-16', 'dailybruin.com');
+            ga('send', 'pageview');
+        </script>
+    </body>
+</html>
+

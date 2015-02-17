@@ -1,0 +1,7 @@
+{% extends 'prime/cityguidebase.html' %}
+
+{% block content %}
+	{% for district in districts %}
+		<a style="background: url({{ MEDIA_URL }}{{ district.lead_photo }}); "href="{{ district.slug }}"><span>{{ district.title }}</span></a>
+	{% endfor %}
+{% endblock %}

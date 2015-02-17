@@ -9,6 +9,8 @@
     {% endif %}
     <link href="{{ STATIC_URL }}prime/css/main.css" rel="stylesheet" type="text/css">
     <link href="{{ STATIC_URL }}prime/css/minishare.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="{{ STATIC_URL }}prime/js/jquery.stalactite.min.js"></script>
     <script src="{{ STATIC_URL }}prime/js/minishare.js"></script>
@@ -28,23 +30,29 @@
     {% block header %}
         <header>
             <a href="http://dailybruin.com"><img src="{{ STATIC_URL }}prime/img/nameplate.png"/></a>
-            <a class="banner" href="{% url 'prime_issue' '' %}"><img src="{{ STATIC_URL }}prime/img/logo_banner.png" alt="Prime"/></a>
+            <a class="banner" href="{% url 'root' %}"><img src="{{ STATIC_URL }}prime/img/logo_banner.png" alt="Prime"/></a>
             <a class="current-issue" href="{% url 'prime_issue' issue.slug %}">{{ issue.name }}</a>
             <div class="previous-issues">
                 {% for issue in recent_issues %}
                     <a href="{% url 'prime_issue' issue.slug %}"><span class="issue">{{ issue.name }}</span></a>
                 {% endfor %}
-                <a href="http://dailybruin.com/prime/"><span class="issue">Older issues</span></a>
+                <a href="{% url 'prime_past_issues' %}"><span class="issue">Older issues</span></a>
             </div>
         </header>
     {% endblock %}
     {% block content %}{% endblock %}
     {% block footer %}
-        <footer>
+        <footer style="{% if hide_footer %} display: none {% endif %}">
             <div class="refer">
                 <h1>prime {{ issue.name }}</h1>
                 {% for article in articles %}
                     <a class="article-refer" href="{% url 'prime_article' article.issue.slug article.slug %}">{{ article.title }}</a>
+                {% endfor %}
+                {% for recipe in recipes %}
+                    <a class="article-refer" href="{% url 'prime_recipes' recipe.slug %}">{{ recipe.title }}</a>
+                {% endfor %}
+                {% for diy in diys %}
+                    <a class="article-refer" href="{% url 'prime_diys' diy.slug %}">{{ diy.title }}</a>
                 {% endfor %}
                 <div class="print-refer">
                     <a target="blank" href="{{ MEDIA_URL }}{{ pdf.pdf }}">
@@ -64,5 +72,9 @@
         ga('create', 'UA-28181852-16', 'dailybruin.com');
         ga('send', 'pageview');
     </script>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
 </body>
 </html>

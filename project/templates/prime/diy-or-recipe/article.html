@@ -1,0 +1,20 @@
+{% extends 'prime/diy-or-recipe/diy-or-recipe-base.html' %}
+
+{% load shortcodes %}
+{% load markdown %}
+
+{% block content %}
+    <div class="ind-article">
+        <h1 class="headline">{{ article.title }}</h1>
+        <span class="author">by
+        {% for author in article.author.all %}
+            {% if forloop.last %}
+                {{ author }}
+            {% else %}
+                {{ author }} and
+            {% endif %}
+        {% endfor %}
+        </span>
+        {{ article.body|markdown|image|youtube }}
+    </div>
+{% endblock %}
