@@ -81,12 +81,12 @@ a{
     width: 100%;
     margin-top: 60px;
     outline: none;
-    overflow-y: scroll;
+    overflow-y: hidden;
     /*height dynamic*/
 }
 .ib-main{
     position: relative;
-    overflow-y: scroll;
+    overflow-y: hidden;
     cursor: default !important;
 }
 .ib-main a{
