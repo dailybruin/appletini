@@ -6,8 +6,41 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
     </head>
 
+
+    <style>
+    a#prime{
+    font-family: "Times";
+    background-color: black;
+    color: white;
+    font-size: 1em;
+    padding: 4px 8px;
+    float: left;
+    margin-top: 1%;
+    }
+    a#prime:hover{
+        background-color: black;
+        text-decoration: none;
+        color: white;
+    }
+
+    #ugh
+    {
+        width: 16.87%;
+        position: absolute;
+        margin-top: 22.7%;
+        margin-left: 43.4%;
+
+    }
+
+    </style>
+
     <body>
+
+
+        <!-- <a href="http://graphics.dailybruin.com/prime/winter-2014/" id="prime"> D <br /> B</a> -->
+
         <div id="container">
+            <a href="http://dailybruin.com/"><img id="ugh" src="{{ STATIC_URL }}prime/img/db_logo.svg" class="img-responsive"/></a>
             <img id="cover_photo" src="{{ STATIC_URL }}prime/img/Front/cover_photo.jpg" />
             <nav class="navbar navbar-default">
                 <div class="container-fluid">
@@ -64,6 +97,12 @@
                                     </a>
                                     <a href="{% url 'prime_past_issues' %}" class="tile_photo_transcription">
                                         <div class="tile_photo_transcription">Previous Issues</div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'prime_past_issues' %}" class="tile_photo_transcription">
+                                        <br />
+                                        <div class="tile_photo_transcription">Daily Bruin</div>
                                     </a>
                                 </li>
                             </ul>
