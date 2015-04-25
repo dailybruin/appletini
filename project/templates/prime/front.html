@@ -12,8 +12,6 @@
                 <img src="{{ MEDIA_URL }}{{ article.lead_photo }}"/>
             </a>
         {% endfor %}
-    </div>
-    <div id="articles">
         {% for recipe in recipes %}
             <a href="{% url 'prime_recipes' recipe.slug %}">
                 <span class="mask"></span>
@@ -21,9 +19,6 @@
                 <img src="{{ MEDIA_URL }}{{ recipe.lead_photo }}"/>
             </a>
         {% endfor %}
-    </div>
-
-    <div id="articles">
         {% for diy in diys %}
             <a href="{% url 'prime_diys' diy.slug %}">
                 <span class="mask"></span>
