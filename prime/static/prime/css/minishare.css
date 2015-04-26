@@ -2,7 +2,7 @@
 div#minishare {
   left: 50%;
   margin-left: 400px; 
-  top: 225px;
+  top: 300px;
   position: fixed;
   display: block;
   background: rgba(0,0,0, 0.05);
@@ -11,9 +11,9 @@ div#minishare {
 }
 
 div#minishare div.facebook, div#minishare div.twitter {
-  padding: 1px 4px;
+  padding: 1px 7px;
   background: #ebedf4;
-  width: 51px;
+  width: 70px;
   border: 1px solid #cad4e7;
   background-image: url(../img/fb16.gif);
   background-repeat: no-repeat;
