@@ -4,16 +4,23 @@
 {% load markdown %}
 
 <html>
-<head>
-    <meta charset="UTF-8">
-    {% if article.title %}
-        <title>{{ article.title }} | prime | Daily Bruin</title>
-    {% else %}
-        <title>{{ typeTitle }} | prime | Daily Bruin</title>
-    {% endif %}
-    <link href="{{ STATIC_URL }}prime/css/diy-or-recipe/style.css" rel="stylesheet" type="text/css">
+    <head>
+        <meta charset="UTF-8">
+        {% if article.title %}
+            <title>{{ article.title }} | prime | Daily Bruin</title>
+        {% else %}
+            <title>{{ typeTitle }} | prime | Daily Bruin</title>
+        {% endif %}
+        <link href="{{ STATIC_URL }}prime/css/diy-or-recipe/style.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
+
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="{{ STATIC_URL }}prime/js/jquery.stalactite.min.js"></script>
+        <link href="{{ STATIC_URL }}prime/css/minishare.css" rel="stylesheet" type="text/css">
+         <script type="text/javascript" src="{{ STATIC_URL }}prime/js/minishare.js"></script>
+        
         <style type="text/css">
             header:after {
                 background-image: url('{{ STATIC_URL }}prime/img/Front/header.jpg');
@@ -49,7 +56,15 @@
         {% block footer %}
         {% endblock %}
 
-        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script>
+        $(document).ready(function(){
+            $.miniShare( { 
+                message: "Share this", 
+                done_message: "Thanks!",
+                twitter_message: "{{ article.title }}, from @dailybruinprime's {{ article.issue.name }} issue"
+            });
+        });
+        </script>
         <script>
           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
