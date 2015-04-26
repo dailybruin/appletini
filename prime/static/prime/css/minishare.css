@@ -31,15 +31,15 @@ div#minishare div.facebook a, div#minishare div.twitter a {
   text-decoration: none;
 }
 
-div#minishare div.facebook:hover, div#minishare div.twitter:hover {
-  border-color: #728dc0;
-}
-
 div#minishare div.twitter {
   background-color: #dbf6ff;
   border-color: #42cfff;
   background-image: url(../img/twt16.png);
   margin-bottom: 0;
+}
+
+div#minishare div.facebook:hover, div#minishare div.twitter:hover {
+  border-color: #728dc0;
 }
 
 div#minishare div.twitter a {
