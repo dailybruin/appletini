@@ -17,6 +17,22 @@ def youtube(value):
     yt = r'\[youtube\]http://youtu\.be/(?P<uid>\S+)\[/youtube\]'
     return re.sub(yt, ytHTML, value)
 
+@register.filter(is_safe=True)
+@stringfilter
+def spotify(value):
+    spt = r'\[spotify\](?P<sid>\S+)\[/spotify\]'
+    return re.sub(spt, spHTML, value)
+
+
+def spHTML(match):
+    sid = match.group('sid')
+    return '''
+        <iframe src="https://embed.spotify.com/?uri=spotify:track:%s"
+            width="500" height="80" 
+            frameborder="0" 
+            allowtransparency="true">
+        </iframe>
+           ''' % sid
 
 def imgHTML(match):
     try:
