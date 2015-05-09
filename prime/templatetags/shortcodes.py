@@ -23,6 +23,16 @@ def spotify(value):
     spt = r'\[spotify\](?P<sid>\S+)\[/spotify\]'
     return re.sub(spt, spHTML, value)
 
+@register.filter(is_safe=True)
+@stringfilter
+def linebreak(value):
+    ln = r'\[br\]'
+    return re.sub(ln, brHTML, value)
+
+def brHTML(match):
+    return '''
+        <br />
+           ''' 
 
 def spHTML(match):
     sid = match.group('sid')
