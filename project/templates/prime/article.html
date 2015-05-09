@@ -15,6 +15,6 @@
             {% endif %}
         {% endfor %}
         </span>
-        {{ article.body|markdown|image|youtube|spotify }}
+        {{ article.body|markdown|image|youtube|spotify|linebreak }}
     </div>
 {% endblock %}
