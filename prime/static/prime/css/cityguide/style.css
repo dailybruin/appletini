@@ -128,17 +128,18 @@ a{
     height: 25px;
     line-height: 25px;
     text-align: center;
-    font-family: 'Raleway', sans-serif;
+    font-family: 'helvetica', sans-serif;
     color: #fff;
-    font-size: 20px;
+    font-size: 25px;
     top: 45%;
     left: 0px;
-    text-shadow: 1.3px 1.3px 1.3px rgba(0,0,0,.7);
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
     -webkit-transition: all 0.3s ease-in-out;
     -moz-transition: all 0.3s ease-in-out;
     -o-transition: all 0.3s ease-in-out;
     -ms-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
+    font-weight: bold;
 }
 
 .ib-main a:hover > span{
