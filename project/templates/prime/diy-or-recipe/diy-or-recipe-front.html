@@ -15,10 +15,10 @@
 		{% for article in articles %}
 			<li class="article">
 				<div class="img_container">
-					<img src="{{ MEDIA_URL }}{{ article.lead_photo }}" />
+					<a href="{% url 'prime_diys' article.slug %}"><img src="{{ MEDIA_URL }}{{ article.lead_photo }}" /></a>
 				</div>
 				<div class="article-intro">
-					<p class="article-title">{{ article.title }}</p>
+					<p class="article-title"><a style="color: inherit" href="{% url 'prime_diys' article.slug %}">{{ article.title }}</a></p>
 					<p class="article-body">
 						{{ article.teaser }}
 						{{ article.teaser }} 
