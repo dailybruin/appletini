@@ -86,7 +86,7 @@ class ArticleView(View):
 class LandingView(View):
     def get(self, context):
         current_issue, _ = get_recent_issues()
-        article_list = Article.objects.order_by('issue').reverse()
+        article_list = Article.objects.order_by('issue').reverse().distinct()
         paginator = Paginator(article_list, 4)
         page = self.request.GET.get('page')
         try:
