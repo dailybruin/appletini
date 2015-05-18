@@ -67,7 +67,8 @@ class PastIssuesView(View):
 class ArticleView(View):
     def get(self, context, issue_slug, article_slug):
         try:
-            article = Article.objects.get(slug=article_slug)
+            article = Article.objects.get(issue__slug=issue_slug,
+                                          slug=article_slug, )
         except Article.DoesNotExist:
             raise Http404
         if article.redirect:
