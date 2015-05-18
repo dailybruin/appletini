@@ -125,7 +125,7 @@
             <div class="row">
                 {% for article in articles|slice:":2" %}
                     <div class="col-md-6">
-                        <a href="{% url 'prime_article' article.issue.slug article.slug %}"><img height="50% !important" src="{{ MEDIA_URL }}{{ article.lead_photo }}" class="img-responsive"></a>
+                        <a href="{% url 'prime_article' article.issue.slug article.slug %}"><img style="margin: auto" height="50% !important" src="{{ MEDIA_URL }}{{ article.lead_photo }}" class="img-responsive"></a>
                         <div class="header">
                             <a style="color: inherit" href="{% url 'prime_article' article.issue.slug article.slug %}"> {{article.title}}</a>
                         </div>
@@ -140,7 +140,7 @@
             <div class="row">
                 {% for article in articles|slice:"2:4" %}
                     <div class="col-md-6">
-                        <a href="{% url 'prime_article' article.issue.slug article.slug %}"><img height="50% !important" src="{{ MEDIA_URL }}{{ article.lead_photo }}" class="img-responsive"></a>
+                        <a href="{% url 'prime_article' article.issue.slug article.slug %}"><img style="margin: auto" height="50% !important" src="{{ MEDIA_URL }}{{ article.lead_photo }}" class="img-responsive"></a>
                         <div class="header">
                             <a style="color: inherit" href="{% url 'prime_article' article.issue.slug article.slug %}"> {{article.title}}</a>
                         </div>
