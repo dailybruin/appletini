@@ -2,9 +2,9 @@
 <html>
     <head>
         <link rel="stylesheet" href="{{ STATIC_URL }}prime/css/landing/style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title> prime | Daily Bruin </title>
     </head>
 
@@ -117,17 +117,17 @@
 
         <hr id="thick_border">
 
-        <h3 style="text-align:center">LATEST STORIES</h3> 
+<!--         <h3 style="text-align:center">LATEST STORIES</h3> -->
 
         <hr id="thick_border2">
 
-         <div id="container">
+        <div id="container">
             <div class="row">
                 {% for article in articles|slice:":2" %}
                     <div class="col-md-6">
-                        <img height="50% !important" src="{{ MEDIA_URL }}{{ article.lead_photo }}" class="img-responsive">
+                        <a href="{% url 'prime_article' article.issue.slug article.slug %}"><img height="50% !important" src="{{ MEDIA_URL }}{{ article.lead_photo }}" class="img-responsive"></a>
                         <div class="header">
-                            {{article.title}}
+                            <a style="color: inherit" href="{% url 'prime_article' article.issue.slug article.slug %}"> {{article.title}}</a>
                         </div>
                         <div class="description">
                             <p>{{article.teaser}}</p>
@@ -140,9 +140,9 @@
             <div class="row">
                 {% for article in articles|slice:"2:4" %}
                     <div class="col-md-6">
-                        <img height="50% !important" src="{{ MEDIA_URL }}{{ article.lead_photo }}" class="img-responsive">
+                        <a href="{% url 'prime_article' article.issue.slug article.slug %}"><img height="50% !important" src="{{ MEDIA_URL }}{{ article.lead_photo }}" class="img-responsive"></a>
                         <div class="header">
-                            {{article.title}}
+                            <a style="color: inherit" href="{% url 'prime_article' article.issue.slug article.slug %}"> {{article.title}}</a>
                         </div>
                         <div class="description">
                             <p>{{article.teaser}}</p>
@@ -168,7 +168,7 @@
                     <a href="?page={{ articles.next_page_number }}"> >> </a>
                 {% endif %}
             </span>
-        </div> -->
+        </div>
 
 
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
