@@ -1,20 +1,26 @@
 from django.db import models
 from django.utils.text import slugify
+from django.utils.deconstruct import deconstructible
 
 from PIL import Image as PyImage
 
 # utility functions
 
-def createUploadPath(directory, same_model=False):
-    def getUploadPath(instance, filename):
-        if same_model:
+@deconstructible
+class CreateUploadPath(object):
+
+    def __init__(self, directory, same_model=False):
+        self.same = same_model
+        self.path = directory
+
+    def __call__(self, instance, filename):
+        if self.same:
             slug = instance.slug
         else:
             slug = instance.issue.slug
         return "prime/%(issue)s/%(directory)s/%(filename)s" %\
-            {'issue': slug, 'directory': directory,
+            {'issue': slug, 'directory': self.path,
              'filename': filename}
-    return getUploadPath
 
 def getLatestIssue():
     return Issue.objects.latest('release_date')
@@ -26,7 +32,7 @@ class Issue(models.Model):
     name = models.CharField(max_length=32)
     slug = models.SlugField(max_length=32)
     release_date = models.DateField()
-    get_upload_path = createUploadPath('header', same_model=True)
+    get_upload_path = CreateUploadPath('header', same_model=True)
     header_image = models.ImageField(upload_to=get_upload_path, blank=True,
                                      null=True)
 
@@ -40,7 +46,7 @@ class Article(models.Model):
     issue = models.ForeignKey('Issue', default=None, null=True, blank=True)
     title = models.CharField(max_length=128)
     slug = models.SlugField(max_length=128)
-    get_upload_path = createUploadPath('lead')
+    get_upload_path = CreateUploadPath('lead')
     lead_photo = models.ImageField(upload_to=get_upload_path)
     teaser = models.CharField(max_length=200)
     author = models.ManyToManyField('main.Author')
@@ -122,7 +128,7 @@ class DIYTag(models.Model):
 
 
 class Image(models.Model):
-    get_upload_path = createUploadPath('article')
+    get_upload_path = CreateUploadPath('article')
     image = models.ImageField(upload_to=get_upload_path)
     issue = models.ForeignKey('Issue', default=None, null=True, blank=True)
     author = models.ForeignKey('main.Author', null=True, blank=True)
@@ -150,8 +156,8 @@ class Image(models.Model):
                                            self.caption[0:50])
 
 class PDF(models.Model):
-    get_upload_path_pdf = createUploadPath('pdf')
-    get_upload_path_pdf_image = createUploadPath('pdf_image')
+    get_upload_path_pdf = CreateUploadPath('pdf')
+    get_upload_path_pdf_image = CreateUploadPath('pdf_image')
     pdf = models.FileField(upload_to=get_upload_path_pdf)
     image = models.ImageField(upload_to=get_upload_path_pdf_image)
     issue = models.OneToOneField(Issue)

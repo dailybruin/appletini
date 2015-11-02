@@ -35,17 +35,13 @@ DJANGO_APPS = (
     'django.contrib.staticfiles',
 )
 
-THIRD_PARTY_APPS = (
-    'south',
-)
-
 LOCAL_APPS = (
     'main',
     'prime',
     'music'
 )
 
-INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
+INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -96,4 +92,3 @@ MEDIA_ROOT = BASE_DIR + "/../uploads"
 TEMPLATE_DIRS = (
     BASE_DIR+'/templates',
 )
-
