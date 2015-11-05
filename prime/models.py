@@ -164,3 +164,30 @@ class PDF(models.Model):
 
     def __unicode__(self):
         return "%s PDF" % self.issue
+
+
+class PrimeArticle(models.Model):
+    get_upload_path = CreateUploadPath('article')
+    ARTICLE = 'A'
+    CITYGUIDE = 'C'
+    DIYARTICLE = 'D'
+    NEIGHBORHOOD = 'N'
+    RECIPE = 'R'
+    ARTICLE_TYPES = (
+        (ARTICLE, 'prime_article'),
+        (CITYGUIDE, 'city_guide'),
+        (DIYARTICLE, 'diy_article'),
+        (NEIGHBORHOOD, 'neighborhood'),
+        (RECIPE, 'recipe'),
+    )
+    article_type = models.CharField(max_length=1, choices=ARTICLE_TYPES, default=ARTICLE)
+    title = models.CharField(max_length=128)
+    authorDate = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+    issue = models.ForeignKey('Issue', default=None, null=True, blank=True)
+    author = models.ForeignKey('main.Author', null=True, blank=True)
+    caption = models.TextField(null=True, blank=True)
+    lead_photo = models.ImageField(upload_to=get_upload_path, null=True, blank=True)
+    teaser = models.CharField(max_length=200, null=True, blank=True)
+
+    def __unicode__(self):
+        return self.title
