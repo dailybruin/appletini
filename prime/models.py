@@ -48,7 +48,7 @@ class Article(models.Model):
     slug = models.SlugField(max_length=128)
     get_upload_path = CreateUploadPath('lead')
     lead_photo = models.ImageField(upload_to=get_upload_path)
-    teaser = models.CharField(max_length=200)
+    teaser = models.TextField(blank=True)
     author = models.ManyToManyField('main.Author')
     body = models.TextField(blank=True)
     redirect = models.URLField(blank=True)
@@ -166,28 +166,94 @@ class PDF(models.Model):
         return "%s PDF" % self.issue
 
 
-class PrimeArticle(models.Model):
-    get_upload_path = CreateUploadPath('article')
-    ARTICLE = 'A'
-    CITYGUIDE = 'C'
-    DIYARTICLE = 'D'
-    NEIGHBORHOOD = 'N'
-    RECIPE = 'R'
-    ARTICLE_TYPES = (
-        (ARTICLE, 'prime_article'),
-        (CITYGUIDE, 'city_guide'),
-        (DIYARTICLE, 'diy_article'),
-        (NEIGHBORHOOD, 'neighborhood'),
-        (RECIPE, 'recipe'),
-    )
-    article_type = models.CharField(max_length=1, choices=ARTICLE_TYPES, default=ARTICLE)
-    title = models.CharField(max_length=128)
-    authorDate = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+# class PrimeArticle(models.Model):
+#     get_upload_path = CreateUploadPath('article')
+#     ARTICLE = 'A'
+#     CITYGUIDE = 'C'
+#     DIYARTICLE = 'D'
+#     RECIPE = 'R'
+#     ARTICLE_TYPES = (
+#         (ARTICLE, 'prime_article'),
+#         (CITYGUIDE, 'city_guide'),
+#         (DIYARTICLE, 'diy_article'),
+#         (RECIPE, 'recipe'),
+#     )
+#     article_type = models.CharField(max_length=1, choices=ARTICLE_TYPES, default=ARTICLE)
+#     title = models.CharField(max_length=128)
+#     authorDate = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+#     issue = models.ForeignKey('Issue', default=None, null=True, blank=True)
+#     author = models.ForeignKey('main.Author', null=True, blank=True)
+#     lead_photo = models.ImageField(upload_to=get_upload_path, null=True, blank=True)
+#     teaser = models.TextField(null=True, blank=True)
+#     # make ids for each different type of ARTICLE_TYPES
+#
+#     def getPrettyAuthors(self):
+#         return ' and '.join([str(a) for a in self.author])
+#
+#     def __unicode__(self):
+#         return self.title
+
+class PrimeBase(models.Model):
     issue = models.ForeignKey('Issue', default=None, null=True, blank=True)
-    author = models.ForeignKey('main.Author', null=True, blank=True)
-    caption = models.TextField(null=True, blank=True)
-    lead_photo = models.ImageField(upload_to=get_upload_path, null=True, blank=True)
-    teaser = models.CharField(max_length=200, null=True, blank=True)
+    title = models.CharField(max_length=128)
+    slug = models.SlugField(max_length=128, default=None)
+    teaser = models.TextField(blank=True)
+    author = models.ManyToManyField('main.Author')
+    body = models.TextField(blank=True)
+    redirect = models.URLField(blank=True)
+    position = models.PositiveIntegerField(default=0)
+    authorDate = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+    ARTICLE_TYPES = (
+        ('ARTICLE', 'prime_article'),
+        ('CITYGUIDE', 'prime_cityguide'),
+        ('DIYARTICLE', 'prime_diy'),
+        ('RECIPE', 'prime_recipe'),
+    )
+    article_type = models.CharField(max_length=1, choices=ARTICLE_TYPES)
+
+    def getPrettyAuthors(self):
+        return ' and '.join([str(a) for a in self.author])
+
+    def __unicode__(self):
+        return self.title
+
+class PrimeArticle(PrimeBase):
+    get_upload_path = CreateUploadPath('lead')
+    lead_photo = models.ImageField(upload_to=get_upload_path)
+    def getPrettyAuthors(self):
+        return ' and '.join([str(a) for a in self.author])
+
+    def __unicode__(self):
+        return self.title
+
+
+class PrimeCityGuide(PrimeBase):
+    neighborhood = models.ForeignKey('Neighborhood')
+    option = models.CharField(max_length=256, choices=[('see', 'see'), ('do', 'do'), ('eat', 'eat')])
+    lead_photo = models.ImageField(upload_to="prime/cityguides/neighborhood/")
+
+    def getPrettyAuthors(self):
+        return ' and '.join([str(a) for a in self.author])
+
+    def __unicode__(self):
+        return self.title
+
+class PrimeRecipe(PrimeBase):
+    lead_photo = models.ImageField(upload_to="prime/recipe/lead")
+    tag = models.ManyToManyField('RecipeTag')
+
+    def getPrettyAuthors(self):
+        return ' and '.join([str(a) for a in self.author])
+
+    def __unicode__(self):
+        return self.title
+
+class PrimeDIY(PrimeBase):
+    lead_photo = models.ImageField(upload_to="prime/diy/lead")
+    tag = models.ManyToManyField('DIYTag')
+
+    def getPrettyAuthors(self):
+        return ' and '.join([str(a) for a in self.author])
 
     def __unicode__(self):
         return self.title
