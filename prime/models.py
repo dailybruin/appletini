@@ -209,7 +209,7 @@ class PrimeBase(models.Model):
         ('DIYARTICLE', 'prime_diy'),
         ('RECIPE', 'prime_recipe'),
     )
-    article_type = models.CharField(max_length=1, choices=ARTICLE_TYPES)
+    article_type = models.CharField(max_length=10, choices=ARTICLE_TYPES)
 
     def getPrettyAuthors(self):
         return ' and '.join([str(a) for a in self.author])
@@ -218,6 +218,7 @@ class PrimeBase(models.Model):
         return self.title
 
 class PrimeArticle(PrimeBase):
+    base_link = models.OneToOneField(PrimeBase, parent_link=True)
     get_upload_path = CreateUploadPath('lead')
     lead_photo = models.ImageField(upload_to=get_upload_path)
     def getPrettyAuthors(self):
@@ -228,6 +229,7 @@ class PrimeArticle(PrimeBase):
 
 
 class PrimeCityGuide(PrimeBase):
+    base_link = models.OneToOneField(PrimeBase, parent_link=True)
     neighborhood = models.ForeignKey('Neighborhood')
     option = models.CharField(max_length=256, choices=[('see', 'see'), ('do', 'do'), ('eat', 'eat')])
     lead_photo = models.ImageField(upload_to="prime/cityguides/neighborhood/")
@@ -239,6 +241,7 @@ class PrimeCityGuide(PrimeBase):
         return self.title
 
 class PrimeRecipe(PrimeBase):
+    base_link = models.OneToOneField(PrimeBase, parent_link=True)
     lead_photo = models.ImageField(upload_to="prime/recipe/lead")
     tag = models.ManyToManyField('RecipeTag')
 
@@ -249,6 +252,7 @@ class PrimeRecipe(PrimeBase):
         return self.title
 
 class PrimeDIY(PrimeBase):
+    base_link = models.OneToOneField(PrimeBase, parent_link=True)
     lead_photo = models.ImageField(upload_to="prime/diy/lead")
     tag = models.ManyToManyField('DIYTag')
 
