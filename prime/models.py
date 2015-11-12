@@ -1,20 +1,26 @@
 from django.db import models
 from django.utils.text import slugify
+from django.utils.deconstruct import deconstructible
 
 from PIL import Image as PyImage
 
 # utility functions
 
-def createUploadPath(directory, same_model=False):
-    def getUploadPath(instance, filename):
-        if same_model:
+@deconstructible
+class CreateUploadPath(object):
+
+    def __init__(self, directory, same_model=False):
+        self.same = same_model
+        self.path = directory
+
+    def __call__(self, instance, filename):
+        if self.same:
             slug = instance.slug
         else:
             slug = instance.issue.slug
         return "prime/%(issue)s/%(directory)s/%(filename)s" %\
-            {'issue': slug, 'directory': directory,
+            {'issue': slug, 'directory': self.path,
              'filename': filename}
-    return getUploadPath
 
 def getLatestIssue():
     return Issue.objects.latest('release_date')
@@ -26,7 +32,7 @@ class Issue(models.Model):
     name = models.CharField(max_length=32)
     slug = models.SlugField(max_length=32)
     release_date = models.DateField()
-    get_upload_path = createUploadPath('header', same_model=True)
+    get_upload_path = CreateUploadPath('header', same_model=True)
     header_image = models.ImageField(upload_to=get_upload_path, blank=True,
                                      null=True)
 
@@ -40,9 +46,9 @@ class Article(models.Model):
     issue = models.ForeignKey('Issue', default=None, null=True, blank=True)
     title = models.CharField(max_length=128)
     slug = models.SlugField(max_length=128)
-    get_upload_path = createUploadPath('lead')
+    get_upload_path = CreateUploadPath('lead')
     lead_photo = models.ImageField(upload_to=get_upload_path)
-    teaser = models.CharField(max_length=200)
+    teaser = models.TextField(blank=True)
     author = models.ManyToManyField('main.Author')
     body = models.TextField(blank=True)
     redirect = models.URLField(blank=True)
@@ -122,7 +128,7 @@ class DIYTag(models.Model):
 
 
 class Image(models.Model):
-    get_upload_path = createUploadPath('article')
+    get_upload_path = CreateUploadPath('article')
     image = models.ImageField(upload_to=get_upload_path)
     issue = models.ForeignKey('Issue', default=None, null=True, blank=True)
     author = models.ForeignKey('main.Author', null=True, blank=True)
@@ -150,11 +156,108 @@ class Image(models.Model):
                                            self.caption[0:50])
 
 class PDF(models.Model):
-    get_upload_path_pdf = createUploadPath('pdf')
-    get_upload_path_pdf_image = createUploadPath('pdf_image')
+    get_upload_path_pdf = CreateUploadPath('pdf')
+    get_upload_path_pdf_image = CreateUploadPath('pdf_image')
     pdf = models.FileField(upload_to=get_upload_path_pdf)
     image = models.ImageField(upload_to=get_upload_path_pdf_image)
     issue = models.OneToOneField(Issue)
 
     def __unicode__(self):
         return "%s PDF" % self.issue
+
+
+# class PrimeArticle(models.Model):
+#     get_upload_path = CreateUploadPath('article')
+#     ARTICLE = 'A'
+#     CITYGUIDE = 'C'
+#     DIYARTICLE = 'D'
+#     RECIPE = 'R'
+#     ARTICLE_TYPES = (
+#         (ARTICLE, 'prime_article'),
+#         (CITYGUIDE, 'city_guide'),
+#         (DIYARTICLE, 'diy_article'),
+#         (RECIPE, 'recipe'),
+#     )
+#     article_type = models.CharField(max_length=1, choices=ARTICLE_TYPES, default=ARTICLE)
+#     title = models.CharField(max_length=128)
+#     authorDate = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+#     issue = models.ForeignKey('Issue', default=None, null=True, blank=True)
+#     author = models.ForeignKey('main.Author', null=True, blank=True)
+#     lead_photo = models.ImageField(upload_to=get_upload_path, null=True, blank=True)
+#     teaser = models.TextField(null=True, blank=True)
+#     # make ids for each different type of ARTICLE_TYPES
+#
+#     def getPrettyAuthors(self):
+#         return ' and '.join([str(a) for a in self.author])
+#
+#     def __unicode__(self):
+#         return self.title
+
+class PrimeBase(models.Model):
+    issue = models.ForeignKey('Issue', default=None, null=True, blank=True)
+    title = models.CharField(max_length=128)
+    slug = models.SlugField(max_length=128, default=None)
+    teaser = models.TextField(blank=True)
+    author = models.ManyToManyField('main.Author')
+    body = models.TextField(blank=True)
+    redirect = models.URLField(blank=True)
+    position = models.PositiveIntegerField(default=0)
+    authorDate = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+    ARTICLE_TYPES = (
+        ('ARTICLE', 'prime_article'),
+        ('CITYGUIDE', 'prime_cityguide'),
+        ('DIYARTICLE', 'prime_diy'),
+        ('RECIPE', 'prime_recipe'),
+    )
+    article_type = models.CharField(max_length=10, choices=ARTICLE_TYPES)
+
+    def getPrettyAuthors(self):
+        return ' and '.join([str(a) for a in self.author])
+
+    def __unicode__(self):
+        return self.title
+
+class PrimeArticle(PrimeBase):
+    base_link = models.OneToOneField(PrimeBase, parent_link=True)
+    get_upload_path = CreateUploadPath('lead')
+    lead_photo = models.ImageField(upload_to=get_upload_path)
+    def getPrettyAuthors(self):
+        return ' and '.join([str(a) for a in self.author])
+
+    def __unicode__(self):
+        return self.title
+
+
+class PrimeCityGuide(PrimeBase):
+    base_link = models.OneToOneField(PrimeBase, parent_link=True)
+    neighborhood = models.ForeignKey('Neighborhood')
+    option = models.CharField(max_length=256, choices=[('see', 'see'), ('do', 'do'), ('eat', 'eat')])
+    lead_photo = models.ImageField(upload_to="prime/cityguides/neighborhood/")
+
+    def getPrettyAuthors(self):
+        return ' and '.join([str(a) for a in self.author])
+
+    def __unicode__(self):
+        return self.title
+
+class PrimeRecipe(PrimeBase):
+    base_link = models.OneToOneField(PrimeBase, parent_link=True)
+    lead_photo = models.ImageField(upload_to="prime/recipe/lead")
+    tag = models.ManyToManyField('RecipeTag')
+
+    def getPrettyAuthors(self):
+        return ' and '.join([str(a) for a in self.author])
+
+    def __unicode__(self):
+        return self.title
+
+class PrimeDIY(PrimeBase):
+    base_link = models.OneToOneField(PrimeBase, parent_link=True)
+    lead_photo = models.ImageField(upload_to="prime/diy/lead")
+    tag = models.ManyToManyField('DIYTag')
+
+    def getPrettyAuthors(self):
+        return ' and '.join([str(a) for a in self.author])
+
+    def __unicode__(self):
+        return self.title
