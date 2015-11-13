@@ -1,3 +1,6 @@
+@font-face {
+  font-family: brand;
+  src: url(../James_Fajardo.ttf); }
 * {
   box-sizing: border-box; }
 
@@ -6,7 +9,8 @@
   height: 60px !important; }
   .scrolled a {
     color: black !important;
-    transform: skewY(0deg) !important; }
+    transform: skewY(0deg) !important;
+    text-decoration: none !important; }
 
 #slides-overlay {
   z-index: 10;
@@ -18,6 +22,17 @@
   height: 100%;
   width: 100%;
   background: linear-gradient(to bottom, #292929, rgba(91, 120, 118, 0)); }
+  #slides-overlay #slides-caption {
+    position: relative;
+    margin: 0 auto;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+    width: 200px;
+    background: white;
+    color: black;
+    padding: 10px;
+    font-family: 'PT Sans', sans-serif; }
 
 #navbar {
   -webkit-transition: all 350ms ease-in-out;
@@ -41,26 +56,33 @@
         width: 100px;
         height: 125px; }
         #navbar .container-fluid .navbar-nav li a {
-          -webkit-transition: color 350ms ease-in-out;
-          -moz-transition: color 350ms ease-in-out;
-          -ms-transition: color 350ms ease-in-out;
-          -o-transition: color 350ms ease-in-out;
-          transition: color 350ms ease-in-out;
+          -webkit-transition: all 350ms ease-in-out;
+          -moz-transition: all 350ms ease-in-out;
+          -ms-transition: all 350ms ease-in-out;
+          -o-transition: all 350ms ease-in-out;
+          transition: all 350ms ease-in-out;
           color: white;
           text-align: center;
           line-height: 125px;
-          padding: 0; }
+          padding: 0;
+          font-family: 'PT Sans', sans-serif;
+          text-transform: uppercase; }
+          #navbar .container-fluid .navbar-nav li a:hover {
+            text-decoration: line-through; }
       #navbar .container-fluid .navbar-nav #brand {
         width: 200px;
         text-align: center; }
         #navbar .container-fluid .navbar-nav #brand a {
+          font-family: brand;
           -webkit-transition: all 350ms ease-in-out;
           -moz-transition: all 350ms ease-in-out;
           -ms-transition: all 350ms ease-in-out;
           -o-transition: all 350ms ease-in-out;
           transition: all 350ms ease-in-out;
           transform: skewY(-4deg);
-          font-size: 3em; }
+          font-size: 4.2em;
+          text-transform: none;
+          text-decoration: underline; }
 
 #slides .slides-navigation {
   z-index: 100; }
@@ -72,30 +94,18 @@
   z-index: 100;
   margin-bottom: 10px; }
   #slides .slides-pagination a {
-    background: white;
+    background: none;
     border: white; }
 
-#oldNav .navbar-nav {
-  float: none !important;
-  background-color: white !important; }
-#oldNav .navbar {
-  border: none !important; }
-#oldNav .container-fluid {
-  background-color: white !important;
-  padding-right: 0 !important;
-  padding-left: 0 !important; }
-  #oldNav .container-fluid .navbar-header {
-    margin-left: 0;
-    margin-right: 0; }
-  #oldNav .container-fluid .navbar-collapse {
-    margin-left: 0;
-    margin-right: 0; }
-
-#thick_border {
-  border: solid  black 3px; }
-
-#thick_border2 {
-  border: solid  black 1px; }
+.pagination .step-links {
+  font-family: 'PT Sans', sans-serif;
+  text-transform: uppercase; }
+  .pagination .step-links .current, .pagination .step-links .prev, .pagination .step-links .next {
+    margin: 5px;
+    background: black;
+    color: white;
+    text-align: center;
+    padding: 5px 5px 5px 7px; }
 
 .tile_photo_transcription {
   text-align: center; }
@@ -170,13 +180,6 @@
 @media only screen and (max-width: 767px) {
   .tile_photo {
     display: none; }
-
-  #below_cover_photo {
-    background-color: transparent !important; }
-    #below_cover_photo li {
-      width: 100%;
-      font-size: 20px;
-      font-family: helvetica; }
 
   .container .navbar-header {
     margin-right: 2% !important; }

@@ -5,6 +5,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
         <link rel="stylesheet" href="{{ STATIC_URL }}prime/css/landing/superslides.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+        <link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
 
         <script src="{{ STATIC_URL }}prime/js/navbar.js"></script>
     </head>
@@ -12,7 +13,6 @@
     <body>
         <nav class="navbar navbar-default navbar-fixed-top" id="navbar">
           <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                 <span class="sr-only">Toggle navigation</span>
@@ -23,36 +23,26 @@
               
             </div>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse">
               
               <ul class="nav navbar-nav">
 
                 <!-- <li><a href="{% url 'prime_issue' current_issue.slug %}">Current Issue</a></li> -->
                 <li><a href="{% url 'prime_past_issues' %}">All Issues</a></li>
-                <li><a href="{% url 'prime_diy' %}">DIY</a></li>
+                <li><a href="{% url 'prime_recipe' %}">Recipes</a></li>
 
     
                 <!-- <li><a href="">About</a></li> -->
-                <li id="brand"><a href="#">PRIME</a></li>
-                <li><a href="{% url 'prime_recipe' %}">Recipe</a></li>
+                <li id="brand"><a href="#">Prime</a></li>
                 <li><a href="{% url 'cityguides_view' %}">City Guides</a></li>
-               
-                                <!-- <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                  <ul class="dropdown-menu">
-                    <li><a href="#">Action</a></li>
-                    <li><a href="#">Another action</a></li>
-                    <li><a href="#">Something else here</a></li>
-                    <li role="separator" class="divider"></li>
-                    <li><a href="#">Separated link</a></li>
-                  </ul>
-                </li> -->
+                <li><a href="{% url 'prime_diy' %}">DIY</a></li>
               </ul>
-            </div><!-- /.navbar-collapse -->
-          </div><!-- /.container-fluid -->
+            </div>
+          </div>
         </nav>
-        <div id="slides-overlay"></div>
+        <div id="slides-overlay">
+          <div id="slides-caption"><b><a href="http://www.dailybruin.com">UCLA Daily Bruin's</a></b> <br>Premiere Magazine</div>
+        </div>
         <div id="slides">
           
           <div class="slides-container">
@@ -62,83 +52,29 @@
           </div>
 
           <nav class="slides-navigation">
-            <a href="#" class="next"><i class="fa fa-arrow-right"></i></a>
-            <a href="#" class="prev"><i class="fa fa-arrow-left"></i></a>
+            <a href="#" class="next"><i class="fa fa-chevron-right"></i></a>
+            <a href="#" class="prev"><i class="fa fa-chevron-left"></i></a>
           </nav>
         </div>
 
 
-        <div id="container oldNav">
-            <img id="cover_photo" src="{{ STATIC_URL }}prime/img/Front/cover_photo.jpg" />
-            <nav class="navbar navbar-default">
-                <div class="container-fluid">
-                    <!-- Brand and toggle get grouped for better mobile display -->
-                    <div class="navbar-header">
+        
 
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" style="margin-right: auto; margin-left: auto">
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-
-                    </div>
-
-                    <!-- Collect the nav links, forms, and other content for toggling -->
-                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        <div class="row"> <!--in place so that photo tiles are in line with cover_photo-->
-                            <ul class="nav navbar-nav" id="below_cover_photo">
-                                <li>
-                                    <a href="{% url 'prime_issue' current_issue.slug %}">
-                                        <img class="tile_photo" src="{{ STATIC_URL }}prime/img/Front/nav_currentissue.jpg">
-                                    </a>
-                                    <a href="{% url 'prime_issue' current_issue.slug %}" class="tile_photo_transcription">
-                                        <div class="tile_photo_transcription">current Issue</div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{% url 'prime_recipe' %}">
-                                        <img class="tile_photo" src="{{ STATIC_URL }}prime/img/Front/nav_recipe.jpg">
-                                    </a>
-                                    <a href="{% url 'prime_recipe' %}" class="tile_photo_transcription">
-                                        <div class="tile_photo_transcription">recipes</div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{% url 'cityguides_view' %}">
-                                        <img class="tile_photo" src="{{ STATIC_URL }}prime/img/Front/nav_cityguide.jpg">
-                                    </a>
-                                    <a href="{% url 'cityguides_view' %}" class="tile_photo_transcription">
-                                        <div class="tile_photo_transcription">city guide</div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{% url 'prime_diy' %}">
-                                        <img class="tile_photo" src="{{ STATIC_URL }}prime/img/Front/nav_diy.jpg">
-                                    </a>
-                                    <a href="{% url 'prime_diy' %}" class="tile_photo_transcription">
-                                        <div class="tile_photo_transcription">DIY</div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{% url 'prime_past_issues' %}">
-                                        <img class="tile_photo" src="{{ STATIC_URL }}prime/img/Front/nav_previousissue.jpg">
-                                    </a>
-                                    <a href="{% url 'prime_past_issues' %}" class="tile_photo_transcription">
-                                        <div class="tile_photo_transcription">Previous Issues</div>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div> <!-- /.navbar-collapse -->
-                </div> <!-- /.container-fluid -->
-            </nav>
-        </div>
-
-        <hr id="thick_border">
-
-        <h3 style="text-align:center">LATEST STORIES</h3>
-
-        <hr id="thick_border2">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6"> <h2>Latest Stories</h2></div>
+          </div>
+          <div class="row">
+            <div class="col-lg-3">
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search Article Titles">
+                <span class="input-group-btn">
+                  <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
+                </span>
+              </div><!-- /input-group -->
+            </div><!-- /.col-lg-6 -->
+          </div><!-- /.row -->
+        </div>  
 
         <div id="container">
             <div class="row">
@@ -221,15 +157,18 @@
         <div class="pagination">
             <span class="step-links">
                 {% if articles.has_previous %}
-                    <a href="?page={{ articles.previous_page_number }}"> << </a>
+                    <a class="prev" href="?page={{ articles.previous_page_number }}"> <i class="fa fa-chevron-left"></i> </a>
                 {% endif %}
-
+                Page 
                 <span class="current">
-                    Page {{ articles.number }} of {{ articles.paginator.num_pages }}.
+                {{ articles.number }}
+                </span> 
+                of 
+                <span class="total">{{ articles.paginator.num_pages }}
                 </span>
 
                 {% if articles.has_next %}
-                    <a href="?page={{ articles.next_page_number }}"> >> </a>
+                    <a class="next" href="?page={{ articles.next_page_number }}"><i class="fa fa-chevron-right"></i> </a>
                 {% endif %}
             </span>
         </div>
