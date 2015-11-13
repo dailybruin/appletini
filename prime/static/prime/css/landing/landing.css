@@ -1,38 +1,79 @@
 * {
   box-sizing: border-box; }
 
+.scrolled {
+  background: white !important;
+  height: 60px !important; }
+  .scrolled a {
+    color: black !important;
+    transform: skewY(0deg) !important; }
+
+#slides-overlay {
+  z-index: 10;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(to bottom, #292929, rgba(91, 120, 118, 0)); }
+
 #navbar {
+  -webkit-transition: all 350ms ease-in-out;
+  -moz-transition: all 350ms ease-in-out;
+  -ms-transition: all 350ms ease-in-out;
+  -o-transition: all 350ms ease-in-out;
+  transition: all 350ms ease-in-out;
   height: 125px;
   background: none; }
   #navbar .container-fluid {
     position: relative;
-    height: 100%; }
-  #navbar .navbar-nav {
-    text-align: center;
-    height: 125px;
-    width: 100%; }
-    #navbar .navbar-nav li {
-      display: inline-block;
-      float: none;
-      width: 125px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+    #navbar .container-fluid .navbar-nav {
+      text-align: center;
       height: 125px;
-      padding: 20px; }
-      #navbar .navbar-nav li div {
-        width: 72px;
-        height: 72px;
-        background-size: cover;
-        border-radius: 50%;
-        text-align: center;
-        margin: 0 auto; }
-        #navbar .navbar-nav li div a {
+      width: 100%; }
+      #navbar .container-fluid .navbar-nav li {
+        width: 100px;
+        height: 125px; }
+        #navbar .container-fluid .navbar-nav li a {
+          -webkit-transition: color 350ms ease-in-out;
+          -moz-transition: color 350ms ease-in-out;
+          -ms-transition: color 350ms ease-in-out;
+          -o-transition: color 350ms ease-in-out;
+          transition: color 350ms ease-in-out;
+          color: white;
           text-align: center;
           line-height: 125px;
           padding: 0; }
-    #navbar .navbar-nav #brand {
-      width: 200px;
-      text-align: center; }
-      #navbar .navbar-nav #brand a {
-        font-size: 3em; }
+      #navbar .container-fluid .navbar-nav #brand {
+        width: 200px;
+        text-align: center; }
+        #navbar .container-fluid .navbar-nav #brand a {
+          -webkit-transition: all 350ms ease-in-out;
+          -moz-transition: all 350ms ease-in-out;
+          -ms-transition: all 350ms ease-in-out;
+          -o-transition: all 350ms ease-in-out;
+          transition: all 350ms ease-in-out;
+          transform: skewY(-4deg);
+          font-size: 3em; }
+
+#slides .slides-navigation {
+  z-index: 100; }
+  #slides .slides-navigation .next i, #slides .slides-navigation .prev i {
+    color: white;
+    font-size: 2em;
+    margin: 10px; }
+#slides .slides-pagination {
+  z-index: 100;
+  margin-bottom: 10px; }
+  #slides .slides-pagination a {
+    background: white;
+    border: white; }
 
 #oldNav .navbar-nav {
   float: none !important;

@@ -1,57 +1,108 @@
+@mixin vendorize($property, $value) {
+	-webkit-#{$property}: $value;
+	-moz-#{$property}: $value;
+	-ms-#{$property}: $value;
+	-o-#{$property}: $value;
+	#{$property}: $value;
+}
+
 * {
 	box-sizing: border-box;
 }
 
+.scrolled {
+	background: white !important;
+	height: 60px !important; 
+
+	a {
+		color: black !important;
+		transform: skewY(0deg) !important;
+	}
+}
+#slides-overlay {
+	z-index: 10;
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	height: 100%;
+	width: 100%;
+	background: linear-gradient(to bottom, rgba(41, 41, 41, 1.0) , rgba(91, 120, 118, 0.0));
+	
+
+
+}
+
+
 #navbar {
+	@include vendorize(transition, all 350ms ease-in-out);
 	height: 125px;
 	background: none;
 	.container-fluid {
 		position: relative;
 		height: 100%;
-	}
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	
 
-	.navbar-nav {
-		text-align: center;
-		height: 125px;
-		width: 100%;
-		li {
-			display: inline-block;
-			float: none;
-			width: 125px;
+		.navbar-nav {
+			text-align: center;
 			height: 125px;
-			padding: 20px;
-			
-			div {
-				width: 72px;
-				height: 72px;
-				background-size: cover;
-				border-radius: 50%;
-				text-align: center;
-				margin: 0 auto;
+			width: 100%;
+			li {
+				width: 100px;
+				height: 125px;
 				a {
+					@include vendorize(transition, color 350ms ease-in-out);
+					color: white;
 					text-align: center;
 					line-height: 125px;
 					padding: 0;
 				}
 			}
-		}
-		#brand {
-			width: 200px;
-			text-align: center;
-			a {
-				font-size: 3em;
+			#brand {
+				width: 200px;
+				text-align: center;
+				a {
+					@include vendorize(transition, all 350ms ease-in-out);
+					transform: skewY(-4deg);
+					font-size: 3em;
+				}
+
+				// padding: 0px;
+				// width: 125px; height: 125px;
+				// div {
+				// 	width: 125px; height: 125px;
+
+				// }
+
 			}
-
-			// padding: 0px;
-			// width: 125px; height: 125px;
-			// div {
-			// 	width: 125px; height: 125px;
-
-			// }
-
 		}
 	}
 
+}
+
+#slides {
+	.slides-navigation {
+		z-index: 100;
+		.next, .prev {
+			i {
+				color: white;
+				font-size: 2em;
+				margin: 10px;
+			}
+		}
+	}
+	.slides-pagination {
+		z-index: 100;
+		a {
+			background: white;
+			border: white;
+		}
+		margin-bottom: 10px;
+	}
 }
 
 #oldNav {
