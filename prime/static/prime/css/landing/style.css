@@ -1,203 +1,83 @@
-.navbar-nav
-{
-	float: none !important;
-}
+/*
+Error: Invalid parent selector for "&.navbar-header": ".container-fluid >"
+        on line 33 of prime/static/prime/scss/landing.scss
 
-#thick_border
-{
-	border: solid black 3px;
-}
+28: .container-fluid {
+29: 	background-color: $white !important;
+30: 	padding-right: 0 !important;
+31: 	padding-left: 0 !important;
+32: 	> {
+33: 		&.navbar-header {
+34: 			margin-left: 0;
+35: 			margin-right: 0;
+36: 		}
+37: 		&.navbar-collapse {
+38: 			margin-left: 0;
 
-#thick_border2
-{
-	border: solid black 1px;
-}
-
-.tile_photo_transcription {
-	text-align: center;
-}
-.container-fluid
-{
-	background-color: white !important;
-}
-
-#thick_border
-{
-	border: solid black 3px;
-}
-
-#thick_border2
-{
-	border: solid black 1px;
-}
-
-#one {
-    font-family: "helvetica" !important;
-    font-weight: lighter;
-    font-size: 1.3em;
-}
-
-#two {
-    font-family: serif;
-    text-transform: uppercase;
-}
-
-.navbar-default .navbar-collapse, .navbar-default .navbar-form
-{
-	border-top: none !important;
-}
-
-.row {
-	margin-left: 0px !important;
-	margin-right: 0px !important;
-}
-
-.container>.navbar-header, .container-fluid>.navbar-header, .container>.navbar-collapse, .container-fluid>.navbar-collapse {
-	margin-left: 0px;
-	margin-right: 0px;
-}
-
-.navbar-nav {
-	background-color: white !important;
-}
-
-.navbar {
-	border: none !important;
-}
-.navbar-default {
-	border: none !important;
-}
-
-#below_cover_photo li {
-	width: 20%;
-}
-
-.navbar-collapse {
-	padding-right: 0px !important;
-	padding-left: 0px !important;
-}
-
-.container-fluid {
-	padding-right: 0px !important;
-	padding-left: 0px !important;
-}
-
-#container {
-    padding-top: 4%;
-    padding-left: 3%;
-    padding-right: 3%;
-    margin-left: auto;
-    margin-right: auto;
-    width: 95%;
-}
-
-#cover_photo {
-	width: 100%;
-}
-
-#below_cover_photo {
-	background-color: transparent;
-	margin-left: auto;
-	margin-right: auto;
-	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-}
-
-.tile_photo {
-	margin-top: 2%;
-	width: 100%;
-}
-
-@media only screen and (min-width: 767px) {
-
-	.tile_photo_transcription {
-
-		visibility: hidden !important;
-		position: fixed !important;
-		height: 0;
-		display: none;
-    	font-family: "helvetica" !important;
-    	font-size: 20px !important;
-    	text-align: center !important;
-	}
-}
-
-
-@media only screen and (max-width: 767px) and (min-width: 501px) {
-	.tile_photo {
-		width: 47%;
-		font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-	}
-
-	.tile_photo.col-sm-3 {
-		padding: 0px;
-	}
-}
-
-@media only screen and (max-width: 500px) {
-	.tile_photo {
-		width: 100%;
-	}
-
-}
-
-@media only screen and (max-width: 767px) {
-	.container>.navbar-header, .container-fluid>.navbar-header, .container>.navbar-collapse, .container-fluid>.navbar-collapse {
-	margin-right: 2% !important;
-	}
-
-
-
-	.tile_photo {
-		display: none;
-	}
-
-	#below_cover_photo li {
-		width: 100%;
-		font-size: 20px;
-		font-family: "helvetica";
-	}
-
-	#below_cover_photo {
-		background-color: transparent !important;
-	}
-}
-
-.row {
-	width: 100%;
-	padding-left: 0;
-}
-
-.header {
-	font-weight: bold;
-	/*font-size: 28px; *//*idk actual size */
-	font-size: 3.0vh;
-	margin-bottom: 0%;
-}
-
-.description {
-	font-size: 2.25vh;
-	font-weight: lighter;
-	color: #778899;
-	margin-top: 0%;
-}
-
-.container2 {
-	width: 100%;
-}
-
-hr {
-	width: 90%;
-	background-color: black;
-	height: 2px;
-}
-
-.pagination{
-    clear: both;
-    width: 100%;
-    text-align: center;
-    margin-bottom: 50px !important;
-}
-
-.step-links a {
-    color: black;
-}
+Backtrace:
+prime/static/prime/scss/landing.scss:33
+/Users/changliu/.rvm/gems/ruby-2.2.1/gems/sass-3.4.19/lib/sass/selector/simple_sequence.rb:105:in `block in resolve_parent_refs'
+/Users/changliu/.rvm/gems/ruby-2.2.1/gems/sass-3.4.19/lib/sass/selector/simple_sequence.rb:101:in `map'
+/Users/changliu/.rvm/gems/ruby-2.2.1/gems/sass-3.4.19/lib/sass/selector/simple_sequence.rb:101:in `resolve_parent_refs'
+/Users/changliu/.rvm/gems/ruby-2.2.1/gems/sass-3.4.19/lib/sass/selector/sequence.rb:67:in `block in resolve_parent_refs'
+/Users/changliu/.rvm/gems/ruby-2.2.1/gems/sass-3.4.19/lib/sass/selector/sequence.rb:65:in `map'
+/Users/changliu/.rvm/gems/ruby-2.2.1/gems/sass-3.4.19/lib/sass/selector/sequence.rb:65:in `resolve_parent_refs'
+/Users/changliu/.rvm/gems/ruby-2.2.1/gems/sass-3.4.19/lib/sass/selector/comma_sequence.rb:36:in `block in resolve_parent_refs'
+/Users/changliu/.rvm/gems/ruby-2.2.1/gems/sass-3.4.19/lib/sass/selector/comma_sequence.rb:35:in `map'
+/Users/changliu/.rvm/gems/ruby-2.2.1/gems/sass-3.4.19/lib/sass/selector/comma_sequence.rb:35:in `resolve_parent_refs'
+/Users/changliu/.rvm/gems/ruby-2.2.1/gems/sass-3.4.19/lib/sass/tree/visitors/perform.rb:426:in `visit_rule'
+/Users/changliu/.rvm/gems/ruby-2.2.1/gems/sass-3.4.19/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Users/changliu/.rvm/gems/ruby-2.2.1/gems/sass-3.4.19/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+/Users/changliu/.rvm/gems/ruby-2.2.1/gems/sass-3.4.19/lib/sass/stack.rb:79:in `block in with_base'
+/Users/changliu/.rvm/gems/ruby-2.2.1/gems/sass-3.4.19/lib/sass/stack.rb:115:in `with_frame'
+/Users/changliu/.rvm/gems/ruby-2.2.1/gems/sass-3.4.19/lib/sass/stack.rb:79:in `with_base'
+/Users/changliu/.rvm/gems/ruby-2.2.1/gems/sass-3.4.19/lib/sass/tree/visitors/perform.rb:158:in `visit'
+/Users/changliu/.rvm/gems/ruby-2.2.1/gems/sass-3.4.19/lib/sass/tree/visitors/perform.rb:431:in `block (2 levels) in visit_rule'
+/Users/changliu/.rvm/gems/ruby-2.2.1/gems/sass-3.4.19/lib/sass/tree/visitors/perform.rb:431:in `map'
+/Users/changliu/.rvm/gems/ruby-2.2.1/gems/sass-3.4.19/lib/sass/tree/visitors/perform.rb:431:in `block in visit_rule'
+/Users/changliu/.rvm/gems/ruby-2.2.1/gems/sass-3.4.19/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+/Users/changliu/.rvm/gems/ruby-2.2.1/gems/sass-3.4.19/lib/sass/tree/visitors/perform.rb:429:in `visit_rule'
+/Users/changliu/.rvm/gems/ruby-2.2.1/gems/sass-3.4.19/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Users/changliu/.rvm/gems/ruby-2.2.1/gems/sass-3.4.19/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+/Users/changliu/.rvm/gems/ruby-2.2.1/gems/sass-3.4.19/lib/sass/stack.rb:79:in `block in with_base'
+/Users/changliu/.rvm/gems/ruby-2.2.1/gems/sass-3.4.19/lib/sass/stack.rb:115:in `with_frame'
+/Users/changliu/.rvm/gems/ruby-2.2.1/gems/sass-3.4.19/lib/sass/stack.rb:79:in `with_base'
+/Users/changliu/.rvm/gems/ruby-2.2.1/gems/sass-3.4.19/lib/sass/tree/visitors/perform.rb:158:in `visit'
+/Users/changliu/.rvm/gems/ruby-2.2.1/gems/sass-3.4.19/lib/sass/tree/visitors/perform.rb:431:in `block (2 levels) in visit_rule'
+/Users/changliu/.rvm/gems/ruby-2.2.1/gems/sass-3.4.19/lib/sass/tree/visitors/perform.rb:431:in `map'
+/Users/changliu/.rvm/gems/ruby-2.2.1/gems/sass-3.4.19/lib/sass/tree/visitors/perform.rb:431:in `block in visit_rule'
+/Users/changliu/.rvm/gems/ruby-2.2.1/gems/sass-3.4.19/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+/Users/changliu/.rvm/gems/ruby-2.2.1/gems/sass-3.4.19/lib/sass/tree/visitors/perform.rb:429:in `visit_rule'
+/Users/changliu/.rvm/gems/ruby-2.2.1/gems/sass-3.4.19/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Users/changliu/.rvm/gems/ruby-2.2.1/gems/sass-3.4.19/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+/Users/changliu/.rvm/gems/ruby-2.2.1/gems/sass-3.4.19/lib/sass/stack.rb:79:in `block in with_base'
+/Users/changliu/.rvm/gems/ruby-2.2.1/gems/sass-3.4.19/lib/sass/stack.rb:115:in `with_frame'
+/Users/changliu/.rvm/gems/ruby-2.2.1/gems/sass-3.4.19/lib/sass/stack.rb:79:in `with_base'
+/Users/changliu/.rvm/gems/ruby-2.2.1/gems/sass-3.4.19/lib/sass/tree/visitors/perform.rb:158:in `visit'
+/Users/changliu/.rvm/gems/ruby-2.2.1/gems/sass-3.4.19/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+/Users/changliu/.rvm/gems/ruby-2.2.1/gems/sass-3.4.19/lib/sass/tree/visitors/base.rb:52:in `map'
+/Users/changliu/.rvm/gems/ruby-2.2.1/gems/sass-3.4.19/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+/Users/changliu/.rvm/gems/ruby-2.2.1/gems/sass-3.4.19/lib/sass/tree/visitors/perform.rb:167:in `block in visit_children'
+/Users/changliu/.rvm/gems/ruby-2.2.1/gems/sass-3.4.19/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+/Users/changliu/.rvm/gems/ruby-2.2.1/gems/sass-3.4.19/lib/sass/tree/visitors/perform.rb:166:in `visit_children'
+/Users/changliu/.rvm/gems/ruby-2.2.1/gems/sass-3.4.19/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+/Users/changliu/.rvm/gems/ruby-2.2.1/gems/sass-3.4.19/lib/sass/tree/visitors/perform.rb:186:in `visit_root'
+/Users/changliu/.rvm/gems/ruby-2.2.1/gems/sass-3.4.19/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Users/changliu/.rvm/gems/ruby-2.2.1/gems/sass-3.4.19/lib/sass/tree/visitors/perform.rb:157:in `visit'
+/Users/changliu/.rvm/gems/ruby-2.2.1/gems/sass-3.4.19/lib/sass/tree/visitors/perform.rb:8:in `visit'
+/Users/changliu/.rvm/gems/ruby-2.2.1/gems/sass-3.4.19/lib/sass/tree/root_node.rb:36:in `css_tree'
+/Users/changliu/.rvm/gems/ruby-2.2.1/gems/sass-3.4.19/lib/sass/tree/root_node.rb:29:in `render_with_sourcemap'
+/Users/changliu/.rvm/gems/ruby-2.2.1/gems/sass-3.4.19/lib/sass/engine.rb:378:in `_render_with_sourcemap'
+/Users/changliu/.rvm/gems/ruby-2.2.1/gems/sass-3.4.19/lib/sass/engine.rb:295:in `render_with_sourcemap'
+/Users/changliu/.rvm/gems/ruby-2.2.1/gems/sass-3.4.19/lib/sass/exec/sass_scss.rb:412:in `run'
+/Users/changliu/.rvm/gems/ruby-2.2.1/gems/sass-3.4.19/lib/sass/exec/sass_scss.rb:63:in `process_result'
+/Users/changliu/.rvm/gems/ruby-2.2.1/gems/sass-3.4.19/lib/sass/exec/base.rb:52:in `parse'
+/Users/changliu/.rvm/gems/ruby-2.2.1/gems/sass-3.4.19/lib/sass/exec/base.rb:19:in `parse!'
+/Users/changliu/.rvm/gems/ruby-2.2.1/gems/sass-3.4.19/bin/sass:13:in `<top (required)>'
+/Users/changliu/.rvm/gems/ruby-2.2.1/bin/sass:23:in `load'
+/Users/changliu/.rvm/gems/ruby-2.2.1/bin/sass:23:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Invalid parent selector for \"&.navbar-header\": \".container-fluid >\"\A         on line 33 of prime/static/prime/scss/landing.scss\A \A 28: .container-fluid {\A 29: 	background-color: $white !important;\A 30: 	padding-right: 0 !important;\A 31: 	padding-left: 0 !important;\A 32: 	> {\A 33: 		&.navbar-header {\A 34: 			margin-left: 0;\A 35: 			margin-right: 0;\A 36: 		}\A 37: 		&.navbar-collapse {\A 38: 			margin-left: 0;"; }
