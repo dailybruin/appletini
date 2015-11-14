@@ -110,6 +110,51 @@
                     </div>
                 {% endfor %}
             </div>
+            <div class="row">
+                {% for article in articles|slice:"4:6" %}
+                    <div class="col-xs-6">
+                        <img height="50% !important" src="{{ MEDIA_URL }}{{ article.lead_photo }}" class="img-responsive">
+                        <div class="header">
+                            {{article.title}}
+                        </div>
+                        <div class="description">
+                            <p>{{article.body|truncatechars:200}}</p>
+                            <p><a href="{% url 'prime_article' article.issue.slug article.slug %}">READ MORE </a></p>
+                        </div>
+                        <hr>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="row">
+                {% for article in articles|slice:"6:8" %}
+                    <div class="col-xs-6">
+                        <img height="50% !important" src="{{ MEDIA_URL }}{{ article.lead_photo }}" class="img-responsive">
+                        <div class="header">
+                            {{article.title}}
+                        </div>
+                        <div class="description">
+                            <p>{{article.body|truncatechars:200}}</p>
+                            <p><a href="{% url 'prime_article' article.issue.slug article.slug %}">READ MORE </a></p>
+                        </div>
+                        <hr>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="row">
+                {% for article in articles|slice:"8:10" %}
+                    <div class="col-xs-6">
+                        <img height="50% !important" src="{{ MEDIA_URL }}{{ article.lead_photo }}" class="img-responsive">
+                        <div class="header">
+                            {{article.title}}
+                        </div>
+                        <div class="description">
+                            <p>{{article.body|truncatechars:200}}</p>
+                            <p><a href="{% url 'prime_article' article.issue.slug article.slug %}">READ MORE </a></p>
+                        </div>
+                        <hr>
+                    </div>
+                {% endfor %}
+            </div>
         </div>
 
         <div class="pagination">
