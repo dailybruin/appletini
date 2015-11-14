@@ -33,27 +33,25 @@
 </head>
 <body>
   <header>
-    <nav class="navbar navbar-default navbar-fixed-top" id="navbar">
+    <nav class="navbar navbar-fixed-top" id="navbar">
       <div class="container-fluid">
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <a class="navbar-brand" id="brand-collapse" href="#">Prime</a>
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse" aria-expanded="false">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          
+
         </div>
 
-        <div class="collapse navbar-collapse">
-          
+        <div class="collapse navbar-collapse" id="collapse">
+
           <ul class="nav navbar-nav">
             <li><a href="{% url 'prime_past_issues' %}">All Issues</a></li>
             <li><a href="{% url 'prime_recipe' %}">Recipes</a></li>
-
-            
-            <!-- <li><a href="">About</a></li> -->
-            <li id="brand"><a href="#">Prime</a></li>
+            <li id="brand"><a href="{% url 'root' %}">Prime</a></li>
             <li><a href="{% url 'cityguides_view' %}">City Guides</a></li>
             <li><a href="{% url 'prime_diy' %}">DIY</a></li>
           </ul>
@@ -72,17 +70,20 @@
     </div><!-- ib-main-wrapper -->
   </div>
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="{{ STATIC_URL }}prime/js/cityguide/jquery.tmpl.min.js"></script>
   <script type="text/javascript" src="{{ STATIC_URL }}prime/js/cityguide/jquery.kinetic.js"></script>
   <script type="text/javascript" src="{{ STATIC_URL }}prime/js/cityguide/jquery.easing.1.3.js"></script>
   <script>
-    $(document).ready(function() {
+    $(document).ready(function(){
       $(window).scroll(function() {
-        if ($('#navbar').offset().top > 100) {
-          $('#navbar').addClass('scrolled');
-        }
-        else {
-          $('#navbar').removeClass('scrolled');
+        if ($(window).width() > 767) {
+          if ($('#navbar').offset().top > 100) {
+            $('#navbar').addClass('scrolled');
+          }
+          else {
+            $('#navbar').removeClass('scrolled');
+          }
         }
       })
     })

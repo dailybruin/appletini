@@ -31,6 +31,10 @@
   transition: all 350ms ease-in-out;
   height: 125px;
   background: none; }
+  #navbar .navbar-header #brand-collapse {
+    display: none; }
+  #navbar .navbar-header .icon-bar {
+    background-color: black; }
   #navbar .container-fluid {
     position: relative;
     height: 100%;
@@ -57,6 +61,7 @@
           font-family: 'PT Sans', sans-serif;
           text-transform: uppercase; }
           #navbar .container-fluid .navbar-nav li a:hover {
+            background: none !important;
             text-decoration: line-through; }
       #navbar .container-fluid .navbar-nav #brand {
         width: 200px;
@@ -72,5 +77,45 @@
           font-size: 4.2em;
           text-transform: none;
           text-decoration: underline; }
+
+@media (max-width: 767px) {
+  #navbar {
+    -webkit-box-shadow: 2px 1px #F2F2F2 !important;
+    -moz-box-shadow: 2px 1px #F2F2F2 !important;
+    -ms-box-shadow: 2px 1px #F2F2F2 !important;
+    -o-box-shadow: 2px 1px #F2F2F2 !important;
+    box-shadow: 2px 1px #F2F2F2 !important;
+    background: white !important;
+    height: auto; }
+    #navbar .container-fluid {
+      background: white;
+      position: relative;
+      height: auto;
+      display: block; }
+      #navbar .container-fluid .navbar-header #brand-collapse {
+        font-family: brand;
+        font-size: 3.2em;
+        color: black;
+        transform: skewY(-4deg);
+        display: block; }
+      #navbar .container-fluid .navbar-nav {
+        text-align: none;
+        height: 169px;
+        width: 100%; }
+        #navbar .container-fluid .navbar-nav li {
+          height: 40px;
+          width: 100%; }
+          #navbar .container-fluid .navbar-nav li a {
+            color: black;
+            text-align: center;
+            line-height: 40px;
+            padding: 0;
+            font-family: 'PT Sans', sans-serif;
+            text-transform: uppercase; }
+            #navbar .container-fluid .navbar-nav li a:hover {
+              background: none !important;
+              text-decoration: line-through; }
+        #navbar .container-fluid .navbar-nav #brand {
+          display: none; } }
 
 /*# sourceMappingURL=navbar.css.map */

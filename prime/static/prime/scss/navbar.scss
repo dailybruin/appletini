@@ -8,8 +8,8 @@
 }
 
 @font-face {
-    font-family: brand;
-    src: url(./James_Fajardo.ttf);
+	font-family: brand;
+	src: url(./James_Fajardo.ttf);
 }
 
 * {
@@ -34,6 +34,15 @@
 	@include vendorize(transition, all 350ms ease-in-out);
 	height: 125px;
 	background: none;
+	
+	.navbar-header {
+		#brand-collapse {
+			display: none;
+		}
+		.icon-bar {
+			background-color: black;
+		}
+	}
 
 	.container-fluid {
 		position: relative;
@@ -41,8 +50,8 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-	
 
+		
 		.navbar-nav {
 			text-align: center;
 			height: 125px;
@@ -59,6 +68,7 @@
 					font-family: 'PT Sans', sans-serif;
 					text-transform: uppercase;
 					&:hover {
+						background: none !important;
 						text-decoration: line-through;
 					}
 				}
@@ -76,7 +86,60 @@
 				}
 			}
 		}
+
 	}
 
+}
+
+@media (max-width: 767px) {
+	#navbar {
+		@include vendorize(box-shadow, 2px 1px #F2F2F2 !important);
+		background: white !important;
+		height: auto;
+
+		.container-fluid {
+			background: white;
+			position: relative;
+			height: auto;
+			display: block;
+
+			.navbar-header {
+				#brand-collapse {
+					font-family: brand;
+					font-size: 3.2em;
+					color: black;
+					transform: skewY(-4deg);
+					display: block;
+				}
+			}
+
+			
+			.navbar-nav {
+				text-align: none;
+				height: 169px;
+				width: 100%;
+				li {
+					height: 40px;
+					width: 100%;
+					a {
+						color: black;
+						text-align: center;
+						line-height: 40px;
+						padding: 0;
+						font-family: 'PT Sans', sans-serif;
+						text-transform: uppercase;
+						&:hover {
+							background: none !important;
+							text-decoration: line-through;
+						}
+					}
+				}
+				#brand {
+					display: none;
+				}
+			}
+
+		}
+	}
 }
 
