@@ -316,3 +316,181 @@ a{
         padding-left: 20%;
     }
 }
+
+#googlemaps {
+  height: 100%;
+  width: 100%;
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  z-index: 0; /* Set z-index to 0 as it will be on a layer below the contact form */
+}
+
+#nav {
+text-align:center;
+    position: fixed;
+    width: 100%;
+    height: 60px;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    background: white;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+}
+
+#dblogo {
+    position: fixed;
+    left: 0;
+    border: 0;
+    padding:5px;
+    height: 50px;
+}
+
+#unseenlogo {
+    padding: 5px;
+    height: 50px;
+}
+
+#social-buttons {
+    position: fixed;
+    right: 10px;
+    border: 0;
+    padding: 10px;
+    height: 40px;
+    top: -12px;
+}
+
+ul.share-buttons{
+  list-style: none;
+  padding: 0;
+}
+
+ul.share-buttons li{
+  display: inline;
+}
+
+#content {
+    margin-top: 90px;
+    padding-left: 20px;
+}
+
+#content-credit {
+    padding-left: 20px;
+}
+
+.card {
+    position: relative;
+    margin-bottom: 20px;
+    min-height: 10px;
+    min-width: 450px;
+    width: 32%;
+    padding: 15px;
+    background: white;
+    pointer-events: auto;
+}
+
+.card-title {
+    font-family: Roboto;
+    font-size: 20pt;
+    font-weight: bold;
+    margin: 5px;
+    margin-bottom: 15px;
+}
+
+.card-video {
+    position: relative;
+    margin-left: -15px;
+    padding-right: 30px;
+    width: 100%;
+    height: 0;
+    padding-bottom: 60%;
+}
+.card-video-embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.card-description {
+    font-family: Roboto;
+    font-size: 12pt;
+    margin: 5px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    text-align: justify;
+}
+
+#intro {
+    font-family: Roboto;
+    text-align: center;
+    font-weight:none;
+    font-size: 15pt;
+}
+
+#conclusion {
+    font-family: Roboto;
+    text-align: center;
+    font-size: 10pt;
+}
+
+/*  Mobile style */
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    #googlemaps {
+        z-index: 2;
+        height: 33%;
+        border-bottom: 6pt solid rgb(1, 136, 210)
+    }
+    #content {
+        margin: 0px;
+        margin-top: 60%;
+    }
+    .card {
+        width: 95%;
+    }
+    #intro {
+        font-size: 2em;
+    }
+    .card-description {
+        font-size: 12pt;
+    }
+    #nav {
+    text-align:center;
+        position: fixed;
+        width: 100%;
+        height: 100px;
+        top: 0;
+        left: 0;
+        z-index: 2;
+        background: white;
+    }
+
+    #dblogo {
+        position: fixed;
+        left: 0;
+        border: 0;
+        padding: 10px;
+        height: 80px;
+    }
+
+    #unseenlogo {
+        padding: 10px;
+        height: 80px;
+    }
+
+    #social-buttons {
+        position: fixed;
+        right: 10px;
+        border: 0;
+        padding: 10px;
+        height: 80px;
+        top: -12px;
+    }
+}
+
+a {
+    text-decoration: none;
+    color: #3381B5;
+}
