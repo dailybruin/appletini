@@ -2,94 +2,61 @@
 
 {% block content %}
 
-<link rel="stylesheet" href="{{ STATIC_URL }}prime/css/past-issues-front/owl.carousel.css">
-<link rel="stylesheet" href="{{ STATIC_URL }}prime/css/past-issues-front/owl.theme.css">
-<script src="{{ STATIC_URL }}prime/js/jquery-1.9.1.min.js"></script>
-<script src="{{ STATIC_URL }}prime/js/owl.carousel.js"></script>
-
-<style>
-#past-issues .img-container{
-  margin: 3px;
-}
-#past-issues .img-container img{
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-.img-cover-title{
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-    color: black;
-    font-size: 14pt;
-    text-transform: uppercase;
-    text-decoration-color: black;
-    text-align: center;
-}
-
-a:link .img-cover-title {text-decoration: none;}
-a:visited .img-cover-title{color: black;}
-a:hover .img-cover-title {text-shadow: 0px 0px 2px #505050;}
-a:active .img-cover-title {
-    color: #00e699;
-    text-shadow: 0px 0px 2px #505050;
-}
+<div id="past-issues">
 
 
-</style>
+  {% for pdf in pdfs %}
 
-    <div id="past-issues">
+  <a class="img-container" class="owl-item" href="{% url 'prime_issue' pdf.issue.slug %}">
 
-
-        {% for pdf in pdfs %}
-            
-            <a class="img-container" class="owl-item" href="{% url 'prime_issue' pdf.issue.slug %}">
-                
-                <img src="{{ MEDIA_URL }}{{ pdf.image }}">
-                <div class="img-cover">
-                    <div class="img-cover-title">
-                        {{ pdf.issue.name }}
-                    </div>
-                </div>
-            </a> 
-            
-       
-        {% endfor %} 
+    <!-- <img src="{{ MEDIA_URL }}{{ pdf.image }}"> -->
+    <img src="http://graphics.dailybruin.com/media/prime/winter-2015/pdf_image/cover.jpg">
+    <div class="img-cover">
+      <div class="img-cover-title">
+        {{ pdf.issue.name }}
+      </div>
     </div>
+  </a> 
 
-    
+
+  {% endfor %} 
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="{{ STATIC_URL }}prime/js/owl.carousel.js"></script>    
 <script type="text/javascript">
-jQuery(document).ready( function($){
+  jQuery(document).ready( function($){
     $("#past-issues").owlCarousel({        
-        center: true,
-        items:2,
-        loop:false,
-        margin:10,
-        
-        responsive:{    
-            0:{
-                items:1,
-                nav:true,
-                margin: 10,
-            },
-            600:{
-                items:2,
-                nav:true,
-                margin: 10,
-            },
-            1000:{
-                items:4,
-                nav:true,
-                margin: 10,
-            }  
-        },
+      center: true,
+      items:2,
+      loop:false,
+      margin:10,
 
-        navText: [
-          "<i class='icon-chevron-left icon-white' ><</i>",
-           "<i class='icon-chevron-right icon-white'>></i>"
-        ]
-       
+      responsive:{    
+        0:{
+          items:1,
+          nav:true,
+          margin: 10,
+        },
+        600:{
+          items:2,
+          nav:true,
+          margin: 10,
+        },
+        1000:{
+          items:4,
+          nav:true,
+          margin: 10,
+        }  
+      },
+
+      navText: [
+      "<i class='icon-chevron-left icon-white' ><</i>",
+      "<i class='icon-chevron-right icon-white'>></i>"
+      ]
+
     });
-});
+  });
 </script>
 
 
