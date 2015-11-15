@@ -1,77 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>prime | city guide</title>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-        <link rel="shortcut icon" href="../favicon.ico"> 
-        <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}prime/css/cityguide/style.css" />
-		<noscript>
-			<style>
-				.ib-main a{
-					cursor:pointer;
-					overflow: auto;
-				}
-				.ib-main-wrapper{
-					position:absolute;
-					top:0px;
-					bottom:24px;
-					overflow:auto;
-				}
-			</style>
-		</noscript>
-        <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
-        <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300' rel='stylesheet' type='text/css'>
-        <link href="{{ STATIC_URL }}prime/css/diy-or-recipe/style.css" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
-        <link rel="stylesheet" href="http://necolas.github.io/normalize.css/3.0.2/normalize.css">
+<head>
+  <title>prime | city guide</title>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <noscript>
+   <style>
+    .ib-main a{
+     cursor:pointer;
+     overflow: auto;
+   }
+   .ib-main-wrapper{
+     position:absolute;
+     top:0px;
+     bottom:24px;
+     overflow:auto;
+   }
+ </style>
+</noscript>
+<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300' rel='stylesheet' type='text/css'>
+<link href="{{ STATIC_URL }}prime/css/diy-or-recipe/style.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="http://necolas.github.io/normalize.css/3.0.2/normalize.css">
+<link rel="shortcut icon" href="../favicon.ico"> 
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}prime/css/cityguide/style.css" />
+<link rel="stylesheet" href="{{ STATIC_URL }}prime/css/navbar.css">
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.4/handlebars.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}prime/js/cityguide/map.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-fixed-top" id="navbar">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" id="brand-collapse" href="#">Prime</a>
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
 
-        <style type="text/css">
-            header:after {
-                background-image: url('{{ STATIC_URL }}prime/img/cityguides/header.jpg');
-            }
-        </style>
-    </head>
-    <body>
-        <header>
-            <ul id="mainnav">
-                <li>
-                    <a href="{% url 'root' %}">home</a>
-                </li>
-                <li>
-                    <a href="{% url 'prime_recipe' %}">recipes</a>
-                </li>
-                <li>
-                    <a href="{% url 'cityguides_view' %}">city guides</a>
-                </li>
-                <li>
-                    <a href="{% url 'prime_diy' %}">diy</a>
-                </li>
-                <li>
-                    <a href="{% url 'prime_past_issues' %}">past issues</a>
-                </li>
-            </ul>
-            <p id="title">
-                <span id="one">prime</span> <span id="two">city guides</span>
-            </p>
-        </header>
-        <div class="container">
-            <div id="ib-main-wrapper" class="ib-main-wrapper">
-                <div class="ib-main">
-                    {% block content %}
+      </div>
 
-                    {% endblock %}
-                    <div class="clr"></div>
-                </div><!-- ib-main -->
-            </div><!-- ib-main-wrapper -->
-        </div>
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
-        <script type="text/javascript" src="{{ STATIC_URL }}prime/js/cityguide/jquery.tmpl.min.js"></script>
-        <script type="text/javascript" src="{{ STATIC_URL }}prime/js/cityguide/jquery.kinetic.js"></script>
-        <script type="text/javascript" src="{{ STATIC_URL }}prime/js/cityguide/jquery.easing.1.3.js"></script>
-        <script type="text/javascript">
-        </script>
-    </body>
+      <div class="collapse navbar-collapse" id="collapse">
+
+        <ul class="nav navbar-nav">
+          <li><a href="{% url 'prime_past_issues' %}">All Issues</a></li>
+          <li><a href="{% url 'prime_recipe' %}">Recipes</a></li>
+          <li id="brand"><a href="{% url 'root' %}">Prime</a></li>
+          <li><a href="{% url 'cityguides_view' %}">City Guides</a></li>
+          <li><a href="{% url 'prime_diy' %}">DIY</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div id="banner-container">
+    <img id="banner" src="{{ STATIC_URL }}prime/img/cityguides/header.jpg" class="img-responsive" alt="Responsive image">
+  </div>
+  <div id="intropara">
+    <p>
+      Whether it's Santa Monica or the Hollywood Hills, the variety of smaller communities that make up Los Angeles bring unique colors to the city's mosaic. prime has taken to venturing out of Westwood in order to get the inside scoop on these neighborhoods – where to grab a bite, take a date – and put together a guide to Los Angeles.
+    </p>
+  </div>
+
+  <div id="googlemaps"></div>
+
+  <div id="content">
+    <div class="card" style="border-top: 6pt solid rgb(1, 136, 210)">
+      Daily Bruin introduces <i>Prime Cityguide</i>, a travel manual featuring the must-go places around Los Angeles
+    </div>
+  </div>
+  
+  {% verbatim %}
+  <script id="card_template" type="text/template">
+    {{#each places}}
+    <div class="card" style="border-top: 6pt solid rgb(1, 136, 210)"> 
+      <h3 class="cafe_name">{{gsx$cafe.$t}}</h3>
+      <h4 class="cafe_address"> {{gsx$address.$t}}</h4>
+      <p class="cafe_drink"> {{gsx$drink.$t}}</p>
+      <p class="cafe_courtesy"> {{gsx$courtesy.$t}}</p>
+    </div>
+    {{/each}}
+
+  </script>
+  {% endverbatim %}
+
+  
+
+
+    <!--<div class="container">
+      <div id="ib-main-wrapper" class="ib-main-wrapper">
+        <div class="ib-main">
+          {% block content %}
+
+          {% endblock %}
+          <div class="clr"></div>
+        </div><! ib-main 
+      </div><! ib-main-wrapper 
+    </div> -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}prime/js/cityguide/jquery.tmpl.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}prime/js/cityguide/jquery.kinetic.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}prime/js/cityguide/jquery.easing.1.3.js"></script>
+    
+    <script type="text/javascript" src="{{ STATIC_URL }}prime/js/cityguide/dataloader.js"></script>
+
+  </body>
+  <script>
+    $(document).ready(function(){
+      $(window).scroll(function() {
+        if ($(window).width() > 767) {
+          if ($('#navbar').offset().top > 100) {
+            $('#navbar').addClass('scrolled');
+          }
+          else {
+            $('#navbar').removeClass('scrolled');
+          }
+        }
+      })
+    })
+  </script>
+</body>
 </html> 

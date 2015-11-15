@@ -1,17 +1,3 @@
-@font-face {
-  font-family: brand;
-  src: url(../James_Fajardo.ttf); }
-* {
-  box-sizing: border-box; }
-
-.scrolled {
-  background: white !important;
-  height: 60px !important; }
-  .scrolled a {
-    color: black !important;
-    transform: skewY(0deg) !important;
-    text-decoration: none !important; }
-
 #slides-overlay {
   z-index: 10;
   position: absolute;
@@ -33,56 +19,6 @@
     color: black;
     padding: 10px;
     font-family: 'PT Sans', sans-serif; }
-
-#navbar {
-  -webkit-transition: all 350ms ease-in-out;
-  -moz-transition: all 350ms ease-in-out;
-  -ms-transition: all 350ms ease-in-out;
-  -o-transition: all 350ms ease-in-out;
-  transition: all 350ms ease-in-out;
-  height: 125px;
-  background: none; }
-  #navbar .container-fluid {
-    position: relative;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center; }
-    #navbar .container-fluid .navbar-nav {
-      text-align: center;
-      height: 125px;
-      width: 100%; }
-      #navbar .container-fluid .navbar-nav li {
-        width: 100px;
-        height: 125px; }
-        #navbar .container-fluid .navbar-nav li a {
-          -webkit-transition: all 350ms ease-in-out;
-          -moz-transition: all 350ms ease-in-out;
-          -ms-transition: all 350ms ease-in-out;
-          -o-transition: all 350ms ease-in-out;
-          transition: all 350ms ease-in-out;
-          color: white;
-          text-align: center;
-          line-height: 125px;
-          padding: 0;
-          font-family: 'PT Sans', sans-serif;
-          text-transform: uppercase; }
-          #navbar .container-fluid .navbar-nav li a:hover {
-            text-decoration: line-through; }
-      #navbar .container-fluid .navbar-nav #brand {
-        width: 200px;
-        text-align: center; }
-        #navbar .container-fluid .navbar-nav #brand a {
-          font-family: brand;
-          -webkit-transition: all 350ms ease-in-out;
-          -moz-transition: all 350ms ease-in-out;
-          -ms-transition: all 350ms ease-in-out;
-          -o-transition: all 350ms ease-in-out;
-          transition: all 350ms ease-in-out;
-          transform: skewY(-4deg);
-          font-size: 4.2em;
-          text-transform: none;
-          text-decoration: underline; }
 
 #slides .slides-navigation {
   z-index: 100; }
