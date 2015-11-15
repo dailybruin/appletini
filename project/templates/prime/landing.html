@@ -158,18 +158,15 @@
   <div class="pagination">
     <span class="step-links">
       {% if articles.has_previous %}
-      <a class="prev" href="?page={{ articles.previous_page_number }}"> <i class="fa fa-chevron-left"></i> </a>
+      <a href="?page={{ articles.previous_page_number }}"><i class="fa fa-chevron-left"></i></a>
       {% endif %}
-      Page 
+
       <span class="current">
-        {{ articles.number }}
-      </span> 
-      of 
-      <span class="total">{{ articles.paginator.num_pages }}
+        Page {{ articles.number }} of {{ articles.paginator.num_pages }}
       </span>
 
       {% if articles.has_next %}
-      <a class="next" href="?page={{ articles.next_page_number }}"><i class="fa fa-chevron-right"></i> </a>
+      <a href="?page={{ articles.next_page_number }}"> <i class="fa fa-chevron-right"></i></a>
       {% endif %}
     </span>
   </div>

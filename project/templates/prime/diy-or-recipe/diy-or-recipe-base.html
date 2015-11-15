@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
   <link rel="stylesheet" href="http://necolas.github.io/normalize.css/3.0.2/normalize.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="{{ STATIC_URL }}prime/css/navbar.css">
 </head>
 <body>
@@ -47,51 +48,52 @@
 
 {% else %}
 
-<div id="intropara">
+
   {% if tag_name %}
-  {% if typeTitle == 'DIY' %}
-  <p>DIY articles tagged with "{{ tag_name }}"</p>
+
   {% else %}
-  <p>Recipes tagged with "{{ tag_name }}"</p>
-  {% endif %}
-  {% else %}
+
   {% if typeTitle == 'DIY' %}
+  <div id="intropara">
   <p>
     For many of us, college life means living in tiny spaces. Whether you are in a triple dorm in Hedrick Hall or splitting the expensive LA rent with five other people, prime wants you to feel at home in Westwood. We have everything you need to make your space efficient and cozy, all on a budget!
   </p>
+  </div>
+
   {% else %}
+  <div id="intropara">
   <p>
     Being a college student doesn't mean you have to resort to a diet of instant ramen and hot pockets. The goal of prime recipes is to inspire college students to try cooking delicious food while maintaining a busy schedule. Explore our latest recipes before or browse by category on the side. Bon appetit!
   </p>
+  </div>
+  
   {% endif %}
+  <nav class="navbar" id="affix" >
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+      </div>
+
+      <div class="collapse navbar-collapse">
+
+        <ul class="nav navbar-nav">
+          {% block affix %}
+          {% endblock %}
+        </ul>
+      </div>
+    </div>
+  </nav>
   {% endif %}
-</div>
+
 
 {% endif %}
-<nav class="navbar" id="affix" >
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
 
-    </div>
-
-    <div class="collapse navbar-collapse">
-
-      <ul class="nav navbar-nav">
-        <li><a href="{% url 'prime_past_issues' %}">All Issues</a></li>
-        <li><a href="{% url 'prime_recipe' %}">Recipes</a></li>
-        <li id="brand"><a href="{% url 'root' %}">Prime</a></li>
-        <li><a href="{% url 'cityguides_view' %}">City Guides</a></li>
-        <li><a href="{% url 'prime_diy' %}">DIY</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
 {% block content %}
 {% endblock %}
 
@@ -111,10 +113,6 @@
 </script>
 <script>
   $(document).ready(function(){
-    var os = $('#affix').offset().top - $('#navbar').height()
-    $('#affix').affix({
-      offset: {top: os}
-    })
 
     $(window).scroll(function() {
       if ($(window).width() > 767) {
@@ -125,6 +123,10 @@
           $('#navbar').removeClass('scrolled');
         }
       }
+    })
+    var os = $('#affix').offset().top - $('#navbar').height()
+    $('#affix').affix({
+      offset: {top: os}
     })
   })
 </script>

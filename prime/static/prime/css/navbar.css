@@ -25,7 +25,7 @@
   width: 100% !important; }
 
 #affix {
-  background-color: whitesmoke; }
+  background-color: black; }
   #affix .container-fluid .navbar-collapse {
     text-align: center; }
     #affix .container-fluid .navbar-collapse .navbar-nav {
@@ -33,6 +33,26 @@
       #affix .container-fluid .navbar-collapse .navbar-nav li {
         float: none;
         display: inline-block; }
+        #affix .container-fluid .navbar-collapse .navbar-nav li a {
+          z-index: 100;
+          color: white; }
+          #affix .container-fluid .navbar-collapse .navbar-nav li a:hover {
+            background-color: transparent; }
+
+.pagination .step-links {
+  font-family: 'PT Sans', sans-serif;
+  text-transform: uppercase; }
+  .pagination .step-links .prev .next {
+    margin: 5px;
+    color: white;
+    text-align: center;
+    padding: 5px 5px 5px 7px; }
+  .pagination .step-links .current {
+    margin: 5px;
+    color: white;
+    text-align: center;
+    padding: 5px 5px 5px 7px;
+    background: black; }
 
 #navbar {
   border: none;

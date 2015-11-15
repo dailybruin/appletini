@@ -41,8 +41,9 @@
 	width: 100% !important;
 }
 
+// Affixed Navbar for Some Articles
 #affix {
-	background-color: whitesmoke;
+	background-color: black;
 	.container-fluid {
 		.navbar-collapse {
 			text-align: center;
@@ -51,12 +52,40 @@
 				li {
 					float: none;
 					display: inline-block;
+					a {
+						z-index: 100;
+						color: white;
+						&:hover {
+							background-color: transparent;
+						}
+					}
 				}
 			}
 		}
 		
 	}
 }	
+
+// Page Arrows at the Bottom
+.pagination {
+	.step-links {
+		font-family: 'PT Sans', sans-serif;
+		text-transform: uppercase;
+		.prev .next {
+			margin: 5px;
+			color: white;
+			text-align: center;
+			padding: 5px 5px 5px 7px;
+		}
+		.current {
+			margin: 5px;
+			color: white;
+			text-align: center;
+			padding: 5px 5px 5px 7px;
+			background: black;
+		}
+	}
+}
 
 #navbar {
 	border: none;
