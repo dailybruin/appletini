@@ -28,6 +28,24 @@
 	}
 }
 
+// Intro Paragraph
+#intropara {
+  margin: auto;
+  width: 70vw;
+  text-align: center;
+  font-size: 1.3em;
+  font-family: "Helvetica";
+  font-weight: lighter;
+  padding: 50px;
+}
+
+@media screen and (max-width: 830px) {
+	#intropara p {
+	  font-size: .9em;
+	}
+}
+
+// Banner Styling
 #banner-container {
 
 	#banner {

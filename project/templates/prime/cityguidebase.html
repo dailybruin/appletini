@@ -17,10 +17,7 @@
      bottom:24px;
      overflow:auto;
    }
-   header:after {
-    background-image: url('{{ STATIC_URL }}prime/img/cityguides/header.jpg');
-  }
-</style>
+ </style>
 </noscript>
 <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300' rel='stylesheet' type='text/css'>
@@ -32,33 +29,39 @@
 <link rel="stylesheet" href="{{ STATIC_URL }}prime/css/navbar.css">
 </head>
 <body>
-  <header>
-    <nav class="navbar navbar-fixed-top" id="navbar">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <a class="navbar-brand" id="brand-collapse" href="#">Prime</a>
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
+  <nav class="navbar navbar-fixed-top" id="navbar">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" id="brand-collapse" href="#">Prime</a>
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
 
-        </div>
-
-        <div class="collapse navbar-collapse" id="collapse">
-
-          <ul class="nav navbar-nav">
-            <li><a href="{% url 'prime_past_issues' %}">All Issues</a></li>
-            <li><a href="{% url 'prime_recipe' %}">Recipes</a></li>
-            <li id="brand"><a href="{% url 'root' %}">Prime</a></li>
-            <li><a href="{% url 'cityguides_view' %}">City Guides</a></li>
-            <li><a href="{% url 'prime_diy' %}">DIY</a></li>
-          </ul>
-        </div>
       </div>
-    </nav>
-  </header>
+
+      <div class="collapse navbar-collapse" id="collapse">
+
+        <ul class="nav navbar-nav">
+          <li><a href="{% url 'prime_past_issues' %}">All Issues</a></li>
+          <li><a href="{% url 'prime_recipe' %}">Recipes</a></li>
+          <li id="brand"><a href="{% url 'root' %}">Prime</a></li>
+          <li><a href="{% url 'cityguides_view' %}">City Guides</a></li>
+          <li><a href="{% url 'prime_diy' %}">DIY</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div id="banner-container">
+    <img id="banner" src="{{ STATIC_URL }}prime/img/cityguides/header.jpg" class="img-responsive" alt="Responsive image">
+  </div>
+  <div id="intropara">
+  <p>
+    Whether it's Santa Monica or the Hollywood Hills, the variety of smaller communities that make up Los Angeles bring unique colors to the city's mosaic. prime has taken to venturing out of Westwood in order to get the inside scoop on these neighborhoods – where to grab a bite, take a date – and put together a guide to Los Angeles.
+  </p>
+  </div>
   <div class="container">
     <div id="ib-main-wrapper" class="ib-main-wrapper">
       <div class="ib-main">

@@ -33,26 +33,6 @@ ul li {
   list-style: none;
 }
 
-
-header {
-  text-align: center;
-  height: 275px;
-}
-/* It needs to be in an :after because of the opacity attribute. */
-header:after {
-  background-size: cover;
-  background-position: center;
-  content: "";
-  width: 100%;
-  height: 275px;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: -1;
-  position: absolute;
-}
-
 #mainnav li {
   display: inline-block;
   height: 6.5vh;
