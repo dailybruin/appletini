@@ -494,3 +494,13 @@ a {
     text-decoration: none;
     color: #3381B5;
 }
+
+
+.cafe { 
+    color: black; 
+    font-family: Arial;
+}
+
+body h3, h4, p{ 
+    color: black; 
+}

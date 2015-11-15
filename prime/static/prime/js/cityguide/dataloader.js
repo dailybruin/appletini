@@ -10,6 +10,8 @@
 //    'column2': info2,
 //  }
 // ]
+var markers = new Array();
+
 function clean_google_sheet_json(data){
   var formatted_json = [];
   var elem = {};
@@ -42,18 +44,75 @@ function addDataToMap(){
   $.getJSON(dataURL, function(json){
     
     var data = {places: json.feed.entry};
-    console.log(data); 
     // console.log(data.places[0]["gsx$address"]);
-    var content = getElementById('content');
+    var content = document.getElementById("content")
     
-    var source = $("#card-template").html(); 
+    var source = $("#card_template").html(); 
     var template = Handlebars.compile(source)
     content.innerHTML = template(data);
+    
+      $.each(data.places, function (index, value){
+      var loc; 
+
+      var bubble = document.createElement("BUTTON");        
+      var t = document.createTextNode(index + 1);    
+
+      if (index == 9) {
+        bubble.className = "content-bubble double-digit"
+      }
+      else {
+        bubble.className = "content-bubble";
+      }
+      bubble.id = index; 
+
+      if (index == 7 || index == 10 || index == 11) {
+        bubble.innerHTML = '&#x2605;'
+        bubble.className = "content-bubble star"
+      }
+      else {
+        bubble.appendChild(t);
+      }
+      
+      $(bubble).click(function() {
+        clickMarker(bubble.id);
+      })
+
+      $('#content-nav').append(bubble);
+
+      gc.geocode( { 'address' : data.places[index]["gsx$address"]["$t"] }, function(results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+          loc = new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng());
+        }
+
+        var newURL;
+        // if (index == 7 || index == 10 || index == 11) {
+        //   newURL = starURL;
+        // }
+        // else {
+          newURL = normalPinURL;
+        // }
+
+        markers[markers.length] = new google.maps.Marker({
+          position: loc,
+          map: map,
+          draggable: false,
+          // title: "0",
+          animation: google.maps.Animation.DROP,
+          icon: newURL
+        });
+
+        var markerIndex = markers.length-1;
+        google.maps.event.addListener(markers[markerIndex], 'click', function() {
+          clickMarker(markerIndex);
+        });
+      });
+    });
+
 
     // $("#content").append(cardTemp({apidata: data}));
-    $.each(data, function (index, value){
+    $.each(data.places, function (index, value){
       mapMarkers[mapMarkers.length] = new google.maps.Marker({
-        position: new google.maps.LatLng(value["lattitude"], value["longitude"]),
+        position: gc.geocode( { 'address' : 'University of California, Los Angeles, CA' }),
         map: map,
         draggable: false,
         animation: google.maps.Animation.DROP,
@@ -91,7 +150,7 @@ function addDataToMap(){
     })
 
     // Pan to first item at start
-    panMapTo(0, true);
+    // panMapTo(0, true);
     currentPinIndex = -1;
   });
 }

@@ -11,6 +11,11 @@ function showGoogleMaps() {
 
     var latLng = new google.maps.LatLng(position[0], position[1]);
 
+    gc = new google.maps.Geocoder;
+    gc.geocode( { 'address' : 'University of California, Los Angeles, CA' }, function(results, status) {
+    if (status == google.maps.GeocoderStatus.OK) {
+      center = new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng());
+
     var mapOptions = {
       zoom: 11, // initialize zoom level - the max value is 21
       streetViewControl: false, // hide the yellow Street View pegman
@@ -31,6 +36,8 @@ function showGoogleMaps() {
         mapOptions);
 
     addDataToMap();
+    }
+});
 }
 
 google.maps.event.addDomListener(window, 'load', showGoogleMaps);

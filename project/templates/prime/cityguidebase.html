@@ -67,45 +67,48 @@
 
   <div id="content">
     <div class="card" style="border-top: 6pt solid rgb(1, 136, 210)">
-      Daily Bruin introduces <i>Prime Cityguide</i>, a travel manual featuring the must-go places around Los Angeles</div>
+      Daily Bruin introduces <i>Prime Cityguide</i>, a travel manual featuring the must-go places around Los Angeles
     </div>
-    {% verbatim %}
+  </div>
+    
+     {% verbatim %}
     <script id="card_template" type="text/template">
-      {{#places}}
-      <li class="place">
-        <p class="card-title">{{gsx$cafe.$t}}</p>
-        <div class="card-description">{{gsx$address.$t}}</div>
-        <div class="card-drink">{{gsx$drink.$t}}</div>
-        <div class="card-courtesy">{{gsx$courtesy.$t}}}</div>
-      </li>
-      {{/places}}
+      {{#each places}}
+         <div class="card" style="border-top: 6pt solid rgb(1, 136, 210)"> 
+            <h3 class="cafe_name">{{gsx$cafe.$t}}</h3>
+            <h4 class="cafe_address"> {{gsx$address.$t}}</h4>
+            <p class="cafe_drink"> {{gsx$drink.$t}}</p>
+            <p class="cafe_courtesy"> {{gsx$courtesy.$t}}</p>
+        </div>
+      {{/each}}
 
     </script>
     {% endverbatim %}
 
-    <div class="container">
+   
+
+
+    <!--<div class="container">
       <div id="ib-main-wrapper" class="ib-main-wrapper">
         <div class="ib-main">
           {% block content %}
 
           {% endblock %}
           <div class="clr"></div>
-        </div><!-- ib-main -->
-      </div><!-- ib-main-wrapper -->
-    </div>
+        </div><! ib-main 
+      </div><! ib-main-wrapper 
+    </div> -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}prime/js/cityguide/jquery.tmpl.min.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}prime/js/cityguide/jquery.kinetic.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}prime/js/cityguide/jquery.easing.1.3.js"></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAROMcHY4NnQ8AZGk5jN71FICduJTm0T-s&callback=showGoogleMaps">
-    </script>
+  
     <script type="text/javascript" src="{{ STATIC_URL }}prime/js/cityguide/dataloader.js"></script>
 
     </body>
     <script>
       $(document).ready(function(){
-        showGoogleMaps();
         $(window).scroll(function() {
           if ($(window).width() > 767) {
             if ($('#navbar').offset().top > 100) {
@@ -119,5 +122,4 @@
       })
     </script>
   </body>
-  >>>>>>> prime-redesign
   </html> 
