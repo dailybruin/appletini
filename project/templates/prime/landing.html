@@ -25,15 +25,9 @@
       </div>
 
       <div class="collapse navbar-collapse" id="collapse">
-
         <ul class="nav navbar-nav">
-
-          <!-- <li><a href="{% url 'prime_issue' current_issue.slug %}">Current Issue</a></li> -->
           <li><a href="{% url 'prime_past_issues' %}">All Issues</a></li>
           <li><a href="{% url 'prime_recipe' %}">Recipes</a></li>
-
-
-          <!-- <li><a href="">About</a></li> -->
           <li id="brand"><a href="{% url 'root' %}">Prime</a></li>
           <li><a href="{% url 'cityguides_view' %}">City Guides</a></li>
           <li><a href="{% url 'prime_diy' %}">DIY</a></li>
@@ -58,24 +52,19 @@
     </nav>
   </div>
 
-
-
-
   <div class="container">
     <div class="row">
-      <div class="col-lg-6"> <h2>Latest Stories</h2></div>
+      <div class="col-lg-6" style="position: fixed; bottom: 10px; right: 10px; z-index: 10000;">
+        <div id="sb-search" class="sb-search">
+          <form>
+            <input class="sb-search-input" placeholder="Enter your search term..." type="text" value="" name="search" id="search">
+            <input class="sb-search-submit" type="submit" value="">
+            <span class="sb-icon-search"></span>
+          </form>
+        </div>
+      </div>
     </div>
-    <div class="row">
-      <div class="col-lg-3">
-        <div class="input-group">
-          <input type="text" class="form-control" placeholder="Search Article Titles">
-          <span class="input-group-btn">
-            <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
-          </span>
-        </div><!-- /input-group -->
-      </div><!-- /.col-lg-6 -->
-    </div><!-- /.row -->
-  </div>  
+  </div>
 
   <div id="container">
     <div class="row">
@@ -174,8 +163,11 @@
   <script src="{{ STATIC_URL }}prime/js/jquery.superslides.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   <script src="{{ STATIC_URL }}prime/js/landing.js"></script>
+  <script src="{{ STATIC_URL }}prime/js/cityguide/classie.js"></script>
+  <script src="{{ STATIC_URL }}prime/js/base.js"></script>
   <script>
     $(document).ready(function(){
+      new UISearch( document.getElementById( 'sb-search' ) );
       $(window).scroll(function() {
         if ($(window).width() > 767) {
           if ($('#navbar').offset().top > 100) {
