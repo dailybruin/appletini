@@ -1,10 +1,11 @@
 // Inital location for map
 var position = [34.0708189, -118.4531212];
 // URL for spreadsheet with data
-var dataURL = "https://spreadsheets.google.com/feeds/list/11bSWs8Lf_MvvvbE19rgKXyWmQ4OjM5bWwhm16-fpEYM/od6/public/values?alt=json";
+var dataURL = "https://spreadsheets.google.com/feeds/list/1eIxoc4h6B2nTdDAitHkviJH5rtH-MNyBaEUS7zHmKk0/od6/public/values?alt=json";
 // Pin images for map
 var normalPinURL = "http://dailybruin.com/images/2015/05/pin.png";
 var highlightedPinURL = "http://dailybruin.com/images/2015/05/highlighted-pin.png";
+var map; 
 
 function showGoogleMaps() {
 

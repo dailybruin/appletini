@@ -62,20 +62,28 @@
             <p id="title">
                 <span id="one">prime</span> <span id="two">city guides</span>
             </p>
+             
         </header>
         
         <div id="googlemaps"></div>
 
         <div id="content">
             <div class="card" style="border-top: 6pt solid rgb(1, 136, 210)">
-            <p id="intro">
-            Daily Bruin introduces <i>Prime Cityguide</i>, a travel manual featuring the must-go places around Los Angeles
-            </p>
-            </div>
+                Daily Bruin introduces <i>Prime Cityguide</i>, a travel manual featuring the must-go places around Los Angeles</div>
         </div>
 
-        
-        <!-- 
+        <script id="card_template" type="text/template">
+            {{#places}}
+                 <li class="place">
+                    <p class="card-title">{{gsx$cafe.$t}}</p>
+                    <div class="card-description">{{gsx$address.$t}}</div>
+                    <div class="card-drink">{{gsx$drink.$t}}</div>
+                    <div class="card-courtesy">{{gsx$courtesy.$t}}}</div>
+                </li>
+            {{/places}}
+          
+        </script>
+
         <div id="ib-main-wrapper" class="ib-main-wrapper">
             <div class="ib-main">
                 {% block content %}
@@ -83,22 +91,18 @@
                 {% endblock %}
                 <div class="clr"></div>
             </div>
-        </div> -->
+        </div>
         
-
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.4/handlebars.amd.min.js"></script> 
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
         <script type="text/javascript" src="{{ STATIC_URL }}prime/js/cityguide/jquery.tmpl.min.js"></script>
         <script type="text/javascript" src="{{ STATIC_URL }}prime/js/cityguide/jquery.kinetic.js"></script>
         <script type="text/javascript" src="{{ STATIC_URL }}prime/js/cityguide/jquery.easing.1.3.js"></script>
-        <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAROMcHY4NnQ8AZGk5jN71FICduJTm0T-s&callback=initialize">
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAROMcHY4NnQ8AZGk5jN71FICduJTm0T-s&callback=showGoogleMaps">
         </script>
          <script type="text/javascript" src="{{ STATIC_URL }}prime/js/cityguide/dataloader.js"></script>
         
         $.(document).ready(function() { 
             showGoogleMaps();
         });
-        </script>
     </body>
 </html> 

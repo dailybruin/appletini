@@ -40,12 +40,17 @@ var currentPinIndex = -1;
 // Gets data from Google Spreadsheets
 function addDataToMap(){
   $.getJSON(dataURL, function(json){
-    var data = clean_google_sheet_json(json);
-    var source   = $("#card-template").html();
-    var cardTemp = Handlebars.compile(source);
+    
+    var data = {places: json.feed.entry};
+    console.log(data); 
+    // console.log(data.places[0]["gsx$address"]);
+    var content = getElementById('content');
+    
+    var source = $("#card-template").html(); 
+    var template = Handlebars.compile(source)
+    content.innerHTML = template(data);
 
-    $("#content").append(cardTemp({apidata: data}));
-    console.log("apidata: " + apidata);
+    // $("#content").append(cardTemp({apidata: data}));
     $.each(data, function (index, value){
       mapMarkers[mapMarkers.length] = new google.maps.Marker({
         position: new google.maps.LatLng(value["lattitude"], value["longitude"]),
