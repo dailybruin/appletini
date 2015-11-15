@@ -1,46 +1,48 @@
 {% extends 'prime/diy-or-recipe/diy-or-recipe-base.html' %}
 
+{% block affix %}
+	{% for tag in tags %}
+	<li><a href="{% url typeRoot %}tagged/{{ tag.name }}/"> {{ tag.name }}</a>
+	{% endfor %}
+{% endblock %}
+
 {% block content %}
 
-<div id="sidebar">
-	<ul id="sidenav">
-		{% for tag in tags %}
-			<a href="{% url typeRoot %}tagged/{{ tag.name }}/"> <li> {{ tag.name }} </li></a>
-		{% endfor %}
-	</ul>
-</div>
-
-<div id="main">
-	<ul id="article-list">
-		{% for article in articles %}
+<div class="container-fluid">
+	<div id="main" style="margin: 0 auto;">
+		<ul id="article-list" style="padding-top: 40px;">
+			{% for article in articles %}
 			<li class="article">
 				<div class="img_container">
-					<img src="{{ MEDIA_URL }}{{ article.lead_photo }}" />
+					<!-- <img src="{{ MEDIA_URL }}{{ article.lead_photo }}" /> -->
+					<img src="http://graphics.dailybruin.com/media/prime/diy/lead/Crafts_Lightbulbs.jpg" />
+
 				</div>
 				<div class="article-intro">
-					<p class="article-title">{{ article.title }}</p>
+					<p class="article-title"><a href="{% url typeRoot %}{{ article.slug }}">{{ article.title }}</a></p>
 					<p class="article-body">
-						{{ article.teaser }} <span class="readmore"><a href="{% url typeRoot %}{{ article.slug }}">read more &#8688</a></span>
+						{{ article.teaser }} 
 					</p>
 				</div>
 			</li>
 			<hr class="article-divider" />
-		{% endfor %}
-	</ul>
+			{% endfor %}
+		</ul>
+	</div>
 </div>
 
 <div class="pagination">
 	<span class="step-links">
 		{% if articles.has_previous %}
-			<a href="?page={{ articles.previous_page_number }}"> << </a>
+		<a href="?page={{ articles.previous_page_number }}"><i class="fa fa-chevron-left"></i></a>
 		{% endif %}
 
 		<span class="current">
-			Page {{ articles.number }} of {{ articles.paginator.num_pages }}.
+			Page {{ articles.number }} of {{ articles.paginator.num_pages }}
 		</span>
 
 		{% if articles.has_next %}
-			<a href="?page={{ articles.next_page_number }}"> >> </a>
+		<a href="?page={{ articles.next_page_number }}"> <i class="fa fa-chevron-right"></i></a>
 		{% endif %}
 	</span>
 </div>
