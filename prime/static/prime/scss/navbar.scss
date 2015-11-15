@@ -28,6 +28,36 @@
 	}
 }
 
+#banner-container {
+
+	#banner {
+		width: 100%;
+	}
+}
+
+// Override Bootstrap Affix
+.affix {
+	top: 60px;
+	width: 100% !important;
+}
+
+#affix {
+	background-color: whitesmoke;
+	.container-fluid {
+		.navbar-collapse {
+			text-align: center;
+			.navbar-nav {
+				width: 100%;
+				li {
+					float: none;
+					display: inline-block;
+				}
+			}
+		}
+		
+	}
+}	
+
 #navbar {
 	border: none;
 	@include vendorize(box-shadow, 0px 0px white);
@@ -92,6 +122,9 @@
 }
 
 @media (max-width: 767px) {
+	.affix {
+		top: 50px;
+	}
 	#navbar {
 		@include vendorize(box-shadow, 2px 1px #F2F2F2 !important);
 		background: white !important;

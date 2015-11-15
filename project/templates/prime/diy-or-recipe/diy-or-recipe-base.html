@@ -7,58 +7,50 @@
   {% else %}
   <title>{{ typeTitle }} | prime | Daily Bruin</title>
   {% endif %}
-
-
-
-
   <link href="{{ STATIC_URL }}prime/css/diy-or-recipe/style.css" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
   <link rel="stylesheet" href="http://necolas.github.io/normalize.css/3.0.2/normalize.css">
   <link rel="stylesheet" href="{{ STATIC_URL }}prime/css/navbar.css">
-  <style type="text/css">
-    header:after {
-      background-image: url('{{ STATIC_URL }}prime/img/{{ typeTitle }}/header.jpg');
-    }
-  </style>
 </head>
 <body>
-  <header>
-    <nav class="navbar navbar-fixed-top" id="navbar">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <a class="navbar-brand" id="brand-collapse" href="#">Prime</a>
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
+  <nav class="navbar navbar-fixed-top" id="navbar">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" id="brand-collapse" href="#">Prime</a>
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
 
-        </div>
-
-        <div class="collapse navbar-collapse" id="collapse">
-
-          <ul class="nav navbar-nav">
-            <li><a href="{% url 'prime_past_issues' %}">All Issues</a></li>
-            <li><a href="{% url 'prime_recipe' %}">Recipes</a></li>
-            <li id="brand"><a href="{% url 'root' %}">Prime</a></li>
-            <li><a href="{% url 'cityguides_view' %}">City Guides</a></li>
-            <li><a href="{% url 'prime_diy' %}">DIY</a></li>
-          </ul>
-        </div>
       </div>
-    </nav>
+
+      <div class="collapse navbar-collapse" id="collapse">
+
+        <ul class="nav navbar-nav">
+          <li><a href="{% url 'prime_past_issues' %}">All Issues</a></li>
+          <li><a href="{% url 'prime_recipe' %}">Recipes</a></li>
+          <li id="brand"><a href="{% url 'root' %}">Prime</a></li>
+          <li><a href="{% url 'cityguides_view' %}">City Guides</a></li>
+          <li><a href="{% url 'prime_diy' %}">DIY</a></li>
+        </ul>
+      </div>
+    </div>
   </nav>
-</header>
+</nav>
+<div id="banner-container">
+  <img id="banner" src="{{ STATIC_URL }}prime/img/{{ typeTitle }}/header.jpg" class="img-responsive" alt="Responsive image">
+</div>
 {% if article %}
 
 {% else %}
-<hr class="hr" />
+
 <div id="intropara">
   {% if tag_name %}
   {% if typeTitle == 'DIY' %}
-  <p>DIY atricles tagged with "{{ tag_name }}"</p>
+  <p>DIY articles tagged with "{{ tag_name }}"</p>
   {% else %}
   <p>Recipes tagged with "{{ tag_name }}"</p>
   {% endif %}
@@ -74,14 +66,38 @@
   {% endif %}
   {% endif %}
 </div>
-<hr class="hr" />
-{% endif %}
 
+{% endif %}
+<nav class="navbar" id="affix" >
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+    </div>
+
+    <div class="collapse navbar-collapse">
+
+      <ul class="nav navbar-nav">
+        <li><a href="{% url 'prime_past_issues' %}">All Issues</a></li>
+        <li><a href="{% url 'prime_recipe' %}">Recipes</a></li>
+        <li id="brand"><a href="{% url 'root' %}">Prime</a></li>
+        <li><a href="{% url 'cityguides_view' %}">City Guides</a></li>
+        <li><a href="{% url 'prime_diy' %}">DIY</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
 {% block content %}
 {% endblock %}
 
 {% block footer %}
 {% endblock %}
+
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
@@ -95,6 +111,11 @@
 </script>
 <script>
   $(document).ready(function(){
+    var os = $('#affix').offset().top - $('#navbar').height()
+    $('#affix').affix({
+      offset: {top: os}
+    })
+
     $(window).scroll(function() {
       if ($(window).width() > 767) {
         if ($('#navbar').offset().top > 100) {

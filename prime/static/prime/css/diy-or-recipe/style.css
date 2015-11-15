@@ -162,6 +162,7 @@ header {
     font-size: 1.3em;
     font-family: "Helvetica";
     font-weight: lighter;
+    padding: 50px;
 }
 
 #sidebar {
