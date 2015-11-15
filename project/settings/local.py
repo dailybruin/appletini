@@ -8,7 +8,6 @@ STATIC_ROOT = BASE_DIR + "/static"
 
 SECRET_KEY = os.environ['SECRET_KEY']
 
-
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
