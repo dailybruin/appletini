@@ -74,11 +74,12 @@
      {% verbatim %}
     <script id="card_template" type="text/template">
       {{#each places}}
-         <div class="card" style="border-top: 6pt solid rgb(1, 136, 210)"> 
-            <h3 class="cafe_name">{{gsx$cafe.$t}}</h3>
-            <h4 class="cafe_address"> {{gsx$address.$t}}</h4>
-            <p class="cafe_drink"> {{gsx$drink.$t}}</p>
-            <p class="cafe_courtesy"> {{gsx$courtesy.$t}}</p>
+         <div class="card" id="card-{{@index}}" style="border-top: 6pt solid rgb(1, 136, 210)"> 
+            <img class="cafe_photo" src={{gsx$photo.jpg.$t}}>
+            <h3 class="cafe_name">{{gsx$place.$t}}</h3>
+            <p class="cafe_address"> {{gsx$intro.$t}}</p>
+            // <p class="cafe_drink"> {{gsx$drink.$t}}</p>
+            // <p class="cafe_courtesy"> {{gsx$courtesy.$t}}</p>
         </div>
       {{/each}}
 
