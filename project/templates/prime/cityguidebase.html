@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <title>prime | city guide</title>
@@ -26,10 +25,6 @@
   <link rel="shortcut icon" href="../favicon.ico"> 
   <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}prime/css/cityguide/style.css" />
   <link rel="stylesheet" href="{{ STATIC_URL }}prime/css/navbar.css">
-  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.4/handlebars.min.js"></script>
-  <script type="text/javascript" src="{{ STATIC_URL }}prime/js/cityguide/map.js"></script>
 
 </head>
 <body>
@@ -79,10 +74,67 @@
   <script type="text/javascript" src="{{ STATIC_URL }}prime/js/cityguide/jquery.tmpl.min.js"></script>
   <script type="text/javascript" src="{{ STATIC_URL }}prime/js/cityguide/jquery.kinetic.js"></script>
   <script type="text/javascript" src="{{ STATIC_URL }}prime/js/cityguide/jquery.easing.1.3.js"></script>
-
-
-  </body>
+  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
   <script>
+  $(document).ready(function(){
+    google.maps.event.addDomListener(window, 'load', showGoogleMaps);
+    $(window).scroll(function() {
+      if ($(window).width() > 767) {
+        if ($('#navbar').offset().top > 100) {
+          $('#navbar').addClass('scrolled');
+        }
+        else {
+          $('#navbar').removeClass('scrolled');
+        }
+      }
+    })
+  })
+
+
+  // Inital location for map
+  var position = [34.0708189, -118.4531212];
+  // URL for spreadsheet with data
+  var dataURL = "https://spreadsheets.google.com/feeds/list/1eIxoc4h6B2nTdDAitHkviJH5rtH-MNyBaEUS7zHmKk0/od6/public/values?alt=json";
+  // Pin images for map
+  var normalPinURL = "http://dailybruin.com/images/2015/05/pin.png";
+  var highlightedPinURL = "http://dailybruin.com/images/2015/05/highlighted-pin.png";
+  var map; 
+
+  function showGoogleMaps() {
+
+      var latLng = new google.maps.LatLng(position[0], position[1]);
+
+      gc = new google.maps.Geocoder;
+      gc.geocode( { 'address' : 'University of California, Los Angeles, CA' }, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        center = new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng());
+
+      var mapOptions = {
+        zoom: 11, // initialize zoom level - the max value is 21
+        streetViewControl: false, // hide the yellow Street View pegman
+        scaleControl: false, // allow users to zoom the Google Map
+        panControl: false,
+        navigationControl: false,
+        mapTypeControl: false,
+        scrollwheel: false,
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        center: latLng,
+        zoomControlOptions: {
+          style: google.maps.ZoomControlStyle.LARGE,
+          position: google.maps.ControlPosition.RIGHT_CENTER
+        },
+      };
+
+      map = new google.maps.Map(document.getElementById('googlemaps'),
+          mapOptions);
+
+      addDataToMap();
+      }
+    });
+  }
+
+
   var currentCard = -1;
   var autoMapScroll = 0;
   var mapMarkers = new Array();
@@ -105,47 +157,44 @@
 
       var newURL = normalPinURL; 
 
-      // if (index == 0) {
-      //   mapMarkers[mapMarkers.length] = null;
-      // }
-      // else {
-        mapMarkers[mapMarkers.length] = new google.maps.Marker({
-          position: loc,
-          map: map,
-          draggable: false,
-          animation: google.maps.Animation.DROP,
-          icon: newURL
-        });
+      mapMarkers[mapMarkers.length] = new google.maps.Marker({
+        position: loc,
+        map: map,
+        draggable: false,
+        animation: google.maps.Animation.DROP,
+        icon: newURL
+      });
 
-        var markerIndex = mapMarkers.length-1;
-        google.maps.event.addListener(mapMarkers[markerIndex], 'click', function() {
-          clickPin(markerIndex);
-        });
-      // }
-    });
+      var markerIndex = mapMarkers.length-1;
+      google.maps.event.addListener(mapMarkers[markerIndex], 'click', function() {
+        clickPin(markerIndex);
+      });
 
-    var cardID = '#card-' + index;
+    
 
-    $(window).bind('scroll', function() {
-      if(currentCard > index || autoMapScroll != 0)
-        return;
+      var cardID = '#card-' + index;
 
-      if($(window).scrollTop() < 10)
-      {
-        panMapTo(0);
-      }
+      $(window).bind('scroll', function() {
+        if(currentCard > index || autoMapScroll != 0)
+          return;
 
-      var position = $(cardID).offset().top + $(cardID).outerHeight() - window.innerHeight;
-      if(currentCard == index && $(window).scrollTop() < position)
-      {
-        currentCard--;
-        panMapTo(markerIndex-1);
-      }
+        if($(window).scrollTop() < 10)
+        {
+          panMapTo(0);
+        }
 
-      if($(window).scrollTop() >= position && currentCard != index) {
-        currentCard = index;
-        panMapTo(markerIndex);
-      }
+        var position = $(cardID).offset().top + $(cardID).outerHeight() - window.innerHeight;
+        if(currentCard == index && $(window).scrollTop() < position)
+        {
+          currentCard--;
+          panMapTo(markerIndex-1);
+        }
+
+        if($(window).scrollTop() >= position && currentCard != index) {
+          currentCard = index;
+          panMapTo(markerIndex);
+        }
+      });
     });
     {% endfor %} 
 
@@ -217,20 +266,6 @@
       map.panBy(-offset-16, -30);
     }
   }
-  </script>
-  <script>
-    $(document).ready(function(){
-      $(window).scroll(function() {
-        if ($(window).width() > 767) {
-          if ($('#navbar').offset().top > 100) {
-            $('#navbar').addClass('scrolled');
-          }
-          else {
-            $('#navbar').removeClass('scrolled');
-          }
-        }
-      })
-    })
   </script>
 </body>
 </html> 
