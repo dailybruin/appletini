@@ -333,7 +333,7 @@
     	// background: #e67e22;
     	background: black;
     	z-index: 90;
-    	font-size: 22px;
+    	font-size: 24px;
     	font-family: 'icomoon';
     	speak: none;
     	font-style: normal;
@@ -343,9 +343,9 @@
     	-webkit-font-smoothing: antialiased;
     }
 
-    .sb-icon-search:before {
-    	content: "\e000";
-    }
+    // .sb-icon-search:before {
+    // 	content: "\e000";
+    // }
 
     /* Open state */
     .sb-search.sb-search-open,
