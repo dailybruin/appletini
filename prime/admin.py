@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.db import models
 from django.forms import Textarea
-from prime.models import Issue, Article, Image, PDF, Recipe, DIYarticle, CityGuideArticle, Neighborhood
+from prime.models import Issue, Article, Image, PDF, Recipe, DIYarticle, CityGuideArticle, Neighborhood, PrimeArticle, PrimeCityGuide, PrimeDIY, PrimeRecipe
 
 # admin.site.register(CityGuideArticle, CGAdmin)
 class NeighborhoodAdmin(admin.ModelAdmin):
@@ -53,3 +53,42 @@ class PDFAdmin(admin.ModelAdmin):
     list_display = ('issue', 'pdf')
 admin.site.register(PDF, PDFAdmin)
 
+class PrimeArticleAdmin(admin.ModelAdmin):
+    list_display = ('title', 'issue', 'position')
+    prepopulated_fields = {"slug": ("title",)}
+    formfield_overrides = {
+        models.TextField: {
+            'widget': Textarea(attrs={'rows': 40, 'cols': 120})
+        },
+    }
+admin.site.register(PrimeArticle, PrimeArticleAdmin)
+
+class PrimeCityGuideAdmin(admin.ModelAdmin):
+    list_display = ('title', 'issue', 'position')
+    prepopulated_fields = {"slug": ("title",)}
+    formfield_overrides = {
+        models.TextField: {
+            'widget': Textarea(attrs={'rows': 40, 'cols': 120})
+        },
+    }
+admin.site.register(PrimeCityGuide, PrimeCityGuideAdmin)
+
+class PrimeDIYAdmin(admin.ModelAdmin):
+    list_display = ('title', 'issue', 'position')
+    prepopulated_fields = {"slug": ("title",)}
+    formfield_overrides = {
+        models.TextField: {
+            'widget': Textarea(attrs={'rows': 40, 'cols': 120})
+        },
+    }
+admin.site.register(PrimeDIY, PrimeDIYAdmin)
+
+class PrimeRecipeAdmin(admin.ModelAdmin):
+    list_display = ('title', 'issue', 'position')
+    prepopulated_fields = {"slug": ("title",)}
+    formfield_overrides = {
+        models.TextField: {
+            'widget': Textarea(attrs={'rows': 40, 'cols': 120})
+        },
+    }
+admin.site.register(PrimeRecipe, PrimeRecipeAdmin)
