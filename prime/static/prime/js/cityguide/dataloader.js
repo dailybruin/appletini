@@ -1,37 +1,3 @@
-// Here be dragons. Thou art forewarned.
-// This file makes everything work
-// To change basic settings, modify maps.js
-
-// takes in JSON object from google sheets and turns into a json formatted
-// this way based on the original google Doc
-// [
-//  {
-//    'column1': info1,
-//    'column2': info2,
-//  }
-// ]
-var markers = new Array();
-
-function clean_google_sheet_json(data){
-  var formatted_json = [];
-  var elem = {};
-  var real_keyname = '';
-  $.each(data.feed.entry.reverse(), function(i, entry) {
-    elem = {};
-    $.each(entry, function(key, value){
-      // fields that were in the spreadsheet start with gsx$
-      if (key.indexOf("gsx$") == 0)
-      {
-        // get everything after gsx$
-        real_keyname = key.substring(4);
-        elem[real_keyname] = value['$t'];
-      }
-    });
-    formatted_json.push(elem);
-  });
-  return formatted_json;
-}
-
 var currentCard = -1;
 var autoMapScroll = 0;
 var mapMarkers = new Array();
@@ -42,90 +8,58 @@ var currentPinIndex = -1;
 // Gets data from Google Spreadsheets
 function addDataToMap(){
   $.getJSON(dataURL, function(json){
-    
+
     var data = {places: json.feed.entry};
-    // console.log(data.places[0]["gsx$address"]);
     var content = document.getElementById("content")
-    
+
+    Handlebars.registerHelper('link', function(text, url) {
+      url = Handlebars.escapeExpression(url);
+      text = Handlebars.escapeExpression(text);
+
+      return new Handlebars.SafeString(
+        "<a href='" + url + "'>" + text + "</a>"
+      );
+    });
+
     var source = $("#card_template").html(); 
     var template = Handlebars.compile(source)
     content.innerHTML = template(data);
-    
-      $.each(data.places, function (index, value){
+
+    $.each(data.places, function (index, value){
+      
+
       var loc; 
 
-      var bubble = document.createElement("BUTTON");        
-      var t = document.createTextNode(index + 1);    
+      var address = data.places[index]["gsx$place"]["$t"] + ", Los Angeles, CA";
+      gc.geocode( { 'address' : address }, function(results, status) {
 
-      if (index == 9) {
-        bubble.className = "content-bubble double-digit"
-      }
-      else {
-        bubble.className = "content-bubble";
-      }
-      bubble.id = index; 
-
-      if (index == 7 || index == 10 || index == 11) {
-        bubble.innerHTML = '&#x2605;'
-        bubble.className = "content-bubble star"
-      }
-      else {
-        bubble.appendChild(t);
-      }
-      
-      $(bubble).click(function() {
-        clickMarker(bubble.id);
-      })
-
-      $('#content-nav').append(bubble);
-
-      gc.geocode( { 'address' : data.places[index]["gsx$address"]["$t"] }, function(results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
           loc = new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng());
         }
 
-        var newURL;
-        // if (index == 7 || index == 10 || index == 11) {
-        //   newURL = starURL;
-        // }
-        // else {
-          newURL = normalPinURL;
-        // }
+        var newURL = normalPinURL; 
 
-        markers[markers.length] = new google.maps.Marker({
-          position: loc,
-          map: map,
-          draggable: false,
-          // title: "0",
-          animation: google.maps.Animation.DROP,
-          icon: newURL
-        });
+        if (index == 0) {
+          mapMarkers[mapMarkers.length] = null;
+        }
+        else {
+          mapMarkers[mapMarkers.length] = new google.maps.Marker({
+            position: loc,
+            map: map,
+            draggable: false,
+            animation: google.maps.Animation.DROP,
+            icon: newURL
+          });
 
-        var markerIndex = markers.length-1;
-        google.maps.event.addListener(markers[markerIndex], 'click', function() {
-          clickMarker(markerIndex);
-        });
-      });
-    });
+          var markerIndex = mapMarkers.length-1;
+          google.maps.event.addListener(mapMarkers[markerIndex], 'click', function() {
+            clickPin(markerIndex);
+          });
+        }
 
-
-    // $("#content").append(cardTemp({apidata: data}));
-    $.each(data.places, function (index, value){
-      mapMarkers[mapMarkers.length] = new google.maps.Marker({
-        position: gc.geocode( { 'address' : 'University of California, Los Angeles, CA' }),
-        map: map,
-        draggable: false,
-        animation: google.maps.Animation.DROP,
-        title: value["title"],
-        icon: normalPinURL
-      });
-
-      var markerIndex = mapMarkers.length-1;
-      google.maps.event.addListener(mapMarkers[markerIndex], 'click', function() {
-        clickPin(markerIndex);
-      });
 
       var cardID = '#card-' + index;
+
       $(window).bind('scroll', function() {
         if(currentCard > index || autoMapScroll != 0)
           return;
@@ -147,12 +81,13 @@ function addDataToMap(){
           panMapTo(markerIndex);
         }
       });
-    })
+    });
+});
 
-    // Pan to first item at start
-    // panMapTo(0, true);
-    currentPinIndex = -1;
-  });
+});
+  // Pan to first item at start
+  panMapTo(0, true);
+  currentPinIndex = -1;
 }
 
 function clickPin(markerIndex)

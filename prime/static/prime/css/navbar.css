@@ -51,20 +51,26 @@
           #affix .container-fluid .navbar-collapse .navbar-nav li a:hover {
             background-color: transparent; }
 
-.pagination .step-links {
-  font-family: 'PT Sans', sans-serif;
-  text-transform: uppercase; }
-  .pagination .step-links .prev .next {
-    margin: 5px;
-    color: white;
-    text-align: center;
-    padding: 5px 5px 5px 7px; }
-  .pagination .step-links .current {
-    margin: 5px;
-    color: white;
-    text-align: center;
-    padding: 5px 5px 5px 7px;
-    background: black; }
+.pagination {
+  margin: 0 auto;
+  display: block;
+  width: 400px;
+  z-index: 10000;
+  position: relative; }
+  .pagination .step-links {
+    font-family: 'PT Sans', sans-serif;
+    text-transform: uppercase; }
+    .pagination .step-links .prev .next {
+      margin: 5px;
+      color: white;
+      text-align: center;
+      padding: 5px 5px 5px 7px; }
+    .pagination .step-links .current {
+      margin: 5px;
+      color: white;
+      text-align: center;
+      padding: 5px 5px 5px 7px;
+      background: black; }
 
 #navbar {
   border: none;
