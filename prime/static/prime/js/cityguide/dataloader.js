@@ -39,18 +39,23 @@ function addDataToMap(){
 
         var newURL = normalPinURL; 
 
-        mapMarkers[mapMarkers.length] = new google.maps.Marker({
-          position: loc,
-          map: map,
-          draggable: false,
-          animation: google.maps.Animation.DROP,
-          icon: newURL
-        });
+        if (index == 0) {
+          mapMarkers[mapMarkers.length] = null;
+        }
+        else {
+          mapMarkers[mapMarkers.length] = new google.maps.Marker({
+            position: loc,
+            map: map,
+            draggable: false,
+            animation: google.maps.Animation.DROP,
+            icon: newURL
+          });
 
-        var markerIndex = mapMarkers.length-1;
-        google.maps.event.addListener(mapMarkers[markerIndex], 'click', function() {
-          clickPin(markerIndex);
-        });
+          var markerIndex = mapMarkers.length-1;
+          google.maps.event.addListener(mapMarkers[markerIndex], 'click', function() {
+            clickPin(markerIndex);
+          });
+        }
 
 
       var cardID = '#card-' + index;
