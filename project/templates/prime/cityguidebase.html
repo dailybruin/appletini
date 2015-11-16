@@ -62,21 +62,7 @@
   <div id="map-overlay"></div>
   <div id="googlemaps"></div>
 
-  <div id="content">
-    {% verbatim %}
-    <script id="card_template" type="text/template">
-      {{#each places}}
-      <div class="card" id="card-{{@index}}" style="border-top: 6pt solid rgb(1, 136, 210)"> 
-        <img src={{gsx$photo.jpg.$t}}>
-        <h3>{{{link gsx$place.$t gsx$url.$t}}}</h3>
-        <p> {{gsx$intro.$t}}</p>
-
-      </div>
-      {{/each}}
-
-    </script>
-    {% endverbatim %}
-  </div>
+  
 
 
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
