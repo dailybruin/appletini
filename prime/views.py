@@ -1,4 +1,4 @@
-from prime.models import Issue, Article, PDF, Recipe, RecipeTag, DIYarticle, DIYTag, Neighborhood, CityGuideArticle
+from prime.models import Issue, Article, PDF, Recipe, RecipeTag, DIYarticle, DIYTag, Neighborhood, CityGuideArticle, PrimeBase, PrimeArticle, PrimeCityGuide, PrimeRecipe, PrimeDIY
 from django.views.generic import View
 from django.views.generic.detail import DetailView
 from django.shortcuts import render_to_response, get_object_or_404, redirect
@@ -7,6 +7,7 @@ from django.conf import settings
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import HttpResponse
 from itertools import chain
+from django.db.models import Q
 
 # utility functions
 
@@ -273,7 +274,7 @@ class SearchResultView(View):
     def get(self, context):
         current_issue, _ = get_recent_issues()
         query = self.request.GET.get('query')
-        article_list = Article.objects.filter(title__contains=query)
+        article_list = PrimeBase.objects.filter(Q(title__icontains=query) | Q(body__icontains=query))
         # article_list = Article.objects.order_by('position').reverse()
         paginator = Paginator(article_list, 10)
         page = self.request.GET.get('page')
