@@ -121,6 +121,8 @@
           padding: 0;
           font-family: 'PT Sans', sans-serif;
           text-transform: uppercase; }
+          #navbar .container-fluid .navbar-nav li a:focus {
+            background-color: transparent; }
           #navbar .container-fluid .navbar-nav li a:hover {
             background: none !important;
             text-decoration: line-through; }
