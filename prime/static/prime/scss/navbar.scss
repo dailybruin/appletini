@@ -86,6 +86,11 @@
 
 // Page Arrows at the Bottom
 .pagination {
+	margin: 0 auto;
+	display: block;
+	width: 400px;
+	z-index: 10000;
+	position: relative;
 	.step-links {
 		font-family: 'PT Sans', sans-serif;
 		text-transform: uppercase;
