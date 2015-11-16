@@ -9,21 +9,23 @@ var currentPinIndex = -1;
 function addDataToMap(){
   $.getJSON(dataURL, function(json){
 
+
+
     var data = {places: json.feed.entry};
     var content = document.getElementById("content")
 
-    // Handlebars.registerHelper('link', function(text, url) {
-    //   url = Handlebars.escapeExpression(url);
-    //   text = Handlebars.escapeExpression(text);
+    Handlebars.registerHelper('link', function(text, url) {
+      url = Handlebars.escapeExpression(url);
+      text = Handlebars.escapeExpression(text);
 
-    //   return new Handlebars.SafeString(
-    //     "<a href='" + url + "'>" + text + "</a>"
-    //   );
-    // });
+      return new Handlebars.SafeString(
+        "<a href='" + url + "'>" + text + "</a>"
+      );
+    });
 
-    // var source = $("#card_template").html(); 
-    // var template = Handlebars.compile(source)
-    // content.innerHTML = template(data);
+    var source = $("#card_template").html(); 
+    var template = Handlebars.compile(source)
+    content.innerHTML = template(data);
 
     $.each(data.places, function (index, value){
       
