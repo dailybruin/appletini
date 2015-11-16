@@ -1,50 +1,49 @@
 {% extends 'prime/diy-or-recipe/diy-or-recipe-base.html' %}
 
 {% block affix %}
-	{% for tag in tags %}
-	<li><a href="{% url typeRoot %}tagged/{{ tag.name }}/"> {{ tag.name }}</a>
+{% for tag in tags %}
+<li><a href="{% url typeRoot %}tagged/{{ tag.name }}/"> {{ tag.name }}</a>
 	{% endfor %}
-{% endblock %}
+	{% endblock %}
 
-{% block content %}
+	{% block content %}
 
-<div class="container-fluid">
-	<div id="main" style="margin: 0 auto;">
-		<ul id="article-list" style="padding-top: 40px;">
-			{% for article in articles %}
-			<li class="article">
-				<div class="img_container">
-					<!-- <img src="{{ MEDIA_URL }}{{ article.lead_photo }}" /> -->
-					<img src="http://graphics.dailybruin.com/media/prime/diy/lead/Crafts_Lightbulbs.jpg" />
+	<div class="container-fluid">
+		<div id="main" style="display: block; margin: 0 auto;">
+			<ul id="article-list" style="padding-top: 40px;">
+				{% for article in articles %}
+				<li class="article">
+					<div class="img_container">
+						<img src="{{ MEDIA_URL }}{{ article.lead_photo }}" />
 
-				</div>
-				<div class="article-intro">
-					<p class="article-title"><a href="{% url typeRoot %}{{ article.slug }}">{{ article.title }}</a></p>
-					<p class="article-body">
-						{{ article.teaser }} 
-					</p>
-				</div>
-			</li>
-			<hr class="article-divider" />
-			{% endfor %}
-		</ul>
+					</div>
+					<div class="article-intro">
+						<p class="article-title"><a href="{% url typeRoot %}{{ article.slug }}">{{ article.title }}</a></p>
+						<p class="article-body">
+							{{ article.teaser }} 
+						</p>
+					</div>
+				</li>
+				<hr class="article-divider" />
+				{% endfor %}
+			</ul>
+		</div>
 	</div>
-</div>
 
-<div class="pagination">
-	<span class="step-links">
-		{% if articles.has_previous %}
-		<a href="?page={{ articles.previous_page_number }}"><i class="fa fa-chevron-left"></i></a>
-		{% endif %}
+	<div class="pagination">
+		<span class="step-links">
+			{% if articles.has_previous %}
+			<a href="?page={{ articles.previous_page_number }}"><i class="fa fa-chevron-left"></i></a>
+			{% endif %}
 
-		<span class="current">
-			Page {{ articles.number }} of {{ articles.paginator.num_pages }}
+			<span class="current">
+				Page {{ articles.number }} of {{ articles.paginator.num_pages }}
+			</span>
+
+			{% if articles.has_next %}
+			<a href="?page={{ articles.next_page_number }}"> <i class="fa fa-chevron-right"></i></a>
+			{% endif %}
 		</span>
+	</div>
 
-		{% if articles.has_next %}
-		<a href="?page={{ articles.next_page_number }}"> <i class="fa fa-chevron-right"></i></a>
-		{% endif %}
-	</span>
-</div>
-
-{% endblock %}
+	{% endblock %}

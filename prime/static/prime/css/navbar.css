@@ -43,6 +43,7 @@
   width: 100% !important; }
 
 #affix {
+  z-index: 1000;
   background-color: black; }
   #affix .container-fluid .navbar-collapse {
     text-align: center; }
@@ -140,6 +141,8 @@
           font-size: 4.2em;
           text-transform: none;
           text-decoration: underline; }
+          #navbar .container-fluid .navbar-nav #brand a:focus {
+            background-color: transparent; }
 
 @media (max-width: 767px) {
   .affix {

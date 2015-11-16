@@ -73,6 +73,7 @@
 
 // Affixed Navbar for Some Articles
 #affix {
+	z-index: 1000;
 	background-color: black;
 	.container-fluid {
 		.navbar-collapse {
@@ -180,6 +181,9 @@
 					font-size: 4.2em;
 					text-transform: none;
 					text-decoration: underline;
+					&:focus {
+						background-color: transparent;
+					}
 				}
 			}
 		}
