@@ -12,11 +12,23 @@ function addDataToMap(){
     var data = {places: json.feed.entry};
     var content = document.getElementById("content")
 
+    Handlebars.registerHelper('link', function(text, url) {
+      url = Handlebars.escapeExpression(url);
+      text = Handlebars.escapeExpression(text);
+
+      return new Handlebars.SafeString(
+        "<a href='" + url + "'>" + text + "</a>"
+      );
+    });
+
     var source = $("#card_template").html(); 
     var template = Handlebars.compile(source)
     content.innerHTML = template(data);
 
     $.each(data.places, function (index, value){
+      if (index == 0) return;
+
+      index -= 1; 
       var loc; 
 
       var address = data.places[index]["gsx$place"]["$t"] + ", Los Angeles, CA";
@@ -39,10 +51,6 @@ function addDataToMap(){
         google.maps.event.addListener(mapMarkers[markerIndex], 'click', function() {
           clickPin(markerIndex);
         });
-
-
-
-      // $("#content").append(cardTemp({apidata: data}));
 
 
       var cardID = '#card-' + index;
