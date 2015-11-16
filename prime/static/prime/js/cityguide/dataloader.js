@@ -26,13 +26,13 @@ function addDataToMap(){
     content.innerHTML = template(data);
 
     $.each(data.places, function (index, value){
-      if (index == 0) return;
+      
 
-      index -= 1; 
       var loc; 
 
       var address = data.places[index]["gsx$place"]["$t"] + ", Los Angeles, CA";
       gc.geocode( { 'address' : address }, function(results, status) {
+
         if (status == google.maps.GeocoderStatus.OK) {
           loc = new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng());
         }

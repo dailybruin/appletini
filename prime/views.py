@@ -269,6 +269,27 @@ class DIYTagsView(View):
         }
         return render_to_response('prime/diy-or-recipe/diy-or-recipe-front.html', context)
 
+class SearchResultView(View):
+    def get(self, context):
+        current_issue, _ = get_recent_issues()
+        query = self.request.GET.get('query')
+        article_list = Article.objects.filter(title__contains=query)
+        # article_list = Article.objects.order_by('position').reverse()
+        paginator = Paginator(article_list, 10)
+        page = self.request.GET.get('page')
+        try:
+            articles = paginator.page(page)
+        except PageNotAnInteger:
+            articles = paginator.page(1)
+        except EmptyPage:
+            articles = paginator.page(paginator.num_pages)
+        context = {
+            'current_issue': current_issue,
+            'articles': articles,
+            'MEDIA_URL': settings.MEDIA_URL,
+            'STATIC_URL': settings.STATIC_URL
+        }
+        return render_to_response('prime/search.html', context)
 # special handlers
 
 def error404(request): # not currently implemented
