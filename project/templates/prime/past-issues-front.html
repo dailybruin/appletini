@@ -9,8 +9,7 @@
 
   <a class="img-container" class="owl-item" href="{% url 'prime_issue' pdf.issue.slug %}">
 
-    <!-- <img src="{{ MEDIA_URL }}{{ pdf.image }}"> -->
-    <img src="http://graphics.dailybruin.com/media/prime/winter-2015/pdf_image/cover.jpg">
+    <img src="{{ MEDIA_URL }}{{ pdf.image }}">
     <div class="img-cover">
       <div class="img-cover-title">
         {{ pdf.issue.name }}
