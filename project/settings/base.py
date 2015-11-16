@@ -85,7 +85,7 @@ RECIPE_MEDIA_URL = '/uploads/'
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/var/www/example.com/static/"
 
-STATIC_ROOT = BASE_DIR + "/../static"
+STATIC_ROOT = BASE_DIR + "/static"
 MEDIA_ROOT = BASE_DIR + "/../uploads"
 
 
