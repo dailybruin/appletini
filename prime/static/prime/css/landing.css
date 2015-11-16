@@ -10,21 +10,6 @@
   width: 100%;
   background: linear-gradient(to bottom, #292929, rgba(91, 120, 118, 0)); }
 
-#slides-caption {
-  text-transform: uppercase;
-  position: absolute;
-  color: white;
-  bottom: 0px;
-  left: 40px;
-  text-align: center;
-  width: 40%;
-  display: block;
-  background-color: black;
-  font-size: 2em;
-  transform: translateY(-50%);
-  padding: 10px;
-  font-family: 'PT Sans', sans-serif; }
-
 #slides .slides-navigation {
   z-index: 100; }
   #slides .slides-navigation .next i, #slides .slides-navigation .prev i {

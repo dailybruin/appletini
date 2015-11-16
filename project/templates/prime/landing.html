@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="stylesheet" href="{{ STATIC_URL }}prime/css/landing/landing.css">
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <link rel="stylesheet" href="{{ STATIC_URL }}prime/css/landing/superslides.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
-  <link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700|Open+Sans:300,400' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="{{ STATIC_URL }}prime/css/navbar.css">
+  <link rel="stylesheet" href="{{ STATIC_URL }}prime/css/landing/landing.css">
+
+
 </head>
 
 <body>
@@ -36,13 +38,32 @@
     </div>
   </nav>
   <div id="slides-overlay">
-    <div id="slides-caption"><b><a href="http://www.dailybruin.com">UCLA Daily Bruin's</a></b> <br>Premiere Magazine</div>
   </div>
   <div id="slides">
     <div class="slides-container">
-      <img src="https://images.unsplash.com/photo-1446080501695-8e929f879f2b?ixlib=rb-0.3.5&q=80&fm=jpg&w=1080&fit=max&s=9ace04203847266b08426fa7886ad9e3" alt="Cinelli">
-      <img src="https://images.unsplash.com/photo-1446080501695-8e929f879f2b?ixlib=rb-0.3.5&q=80&fm=jpg&w=1080&fit=max&s=9ace04203847266b08426fa7886ad9e3" width="1024" height="682" alt="Surly">
-      <img src="https://images.unsplash.com/photo-1446080501695-8e929f879f2b?ixlib=rb-0.3.5&q=80&fm=jpg&w=1080&fit=max&s=9ace04203847266b08426fa7886ad9e3" width="1024" height="683" alt="Cinelli">
+      <div>
+        <img src="http://dailybruin.com/images/2015/11/AYU_1926_meitu_6.jpg" width="1024" height"683" alt="Cinelli">
+        <div id="slides-caption">A Space to Dream</div>
+      </div>
+      <div>
+        <img src="http://dailybruin.com/images/2015/11/AYU_0019_meitu_1.jpg" width="1024" height="683">
+        <div id="slides-caption">Museums of LA</div>
+
+      </div>
+      <div>
+        <img src="http://mckennagalvin.me/prime-study-abroad/img/edinburgh/two.jpg" width="1024" height"683"> 
+        <div id="slides-caption">All Abroad</div>
+      </div>
+      <div>
+        <img src="http://dailybruin.com/images/2015/11/AYU_9638_meitu_1.jpg" width="1024" height"683"> 
+        <div id="slides-caption">Age of Learning</div>
+      </div>
+      <div>
+        <img src="http://dailybruin.com/images/2015/11/AYU_9804_meitu_2.jpg" width="1024" height"683"> 
+        <div id="slides-caption">Campfire</div>
+      </div>
+
+      
     </div>
 
     <nav class="slides-navigation">
@@ -72,11 +93,10 @@
       <div class="col-xs-6">
         <img height="50% !important" src="{{ MEDIA_URL }}{{ article.lead_photo }}" class="img-responsive">
         <div class="header">
-          {{article.title}}
+          <a href="{% url 'prime_article' article.issue.slug article.slug %}">{{article.title}}</a>
         </div>
         <div class="description">
           <p>{{article.body|truncatechars:200}}</p>
-          <p><a href="{% url 'prime_article' article.issue.slug article.slug %}">READ MORE </a></p>
         </div>
         <hr>
       </div>
@@ -87,11 +107,10 @@
       <div class="col-xs-6">
         <img height="50% !important" src="{{ MEDIA_URL }}{{ article.lead_photo }}" class="img-responsive">
         <div class="header">
-          {{article.title}}
+          <a href="{% url 'prime_article' article.issue.slug article.slug %}">{{article.title}}</a>
         </div>
         <div class="description">
           <p>{{article.body|truncatechars:200}}</p>
-          <p><a href="{% url 'prime_article' article.issue.slug article.slug %}">READ MORE </a></p>
         </div>
         <hr>
       </div>
@@ -102,11 +121,10 @@
       <div class="col-xs-6">
         <img height="50% !important" src="{{ MEDIA_URL }}{{ article.lead_photo }}" class="img-responsive">
         <div class="header">
-          {{article.title}}
+          <a href="{% url 'prime_article' article.issue.slug article.slug %}">{{article.title}}</a>
         </div>
         <div class="description">
           <p>{{article.body|truncatechars:200}}</p>
-          <p><a href="{% url 'prime_article' article.issue.slug article.slug %}">READ MORE </a></p>
         </div>
         <hr>
       </div>
@@ -117,11 +135,10 @@
       <div class="col-xs-6">
         <img height="50% !important" src="{{ MEDIA_URL }}{{ article.lead_photo }}" class="img-responsive">
         <div class="header">
-          {{article.title}}
+          <a href="{% url 'prime_article' article.issue.slug article.slug %}">{{article.title}}</a>
         </div>
         <div class="description">
           <p>{{article.body|truncatechars:200}}</p>
-          <p><a href="{% url 'prime_article' article.issue.slug article.slug %}">READ MORE </a></p>
         </div>
         <hr>
       </div>
@@ -132,11 +149,10 @@
       <div class="col-xs-6">
         <img height="50% !important" src="{{ MEDIA_URL }}{{ article.lead_photo }}" class="img-responsive">
         <div class="header">
-          {{article.title}}
+          <a href="{% url 'prime_article' article.issue.slug article.slug %}">{{article.title}}</a>
         </div>
         <div class="description">
           <p>{{article.body|truncatechars:200}}</p>
-          <p><a href="{% url 'prime_article' article.issue.slug article.slug %}">READ MORE </a></p>
         </div>
         <hr>
       </div>

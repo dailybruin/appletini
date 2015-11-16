@@ -17,6 +17,12 @@
     transform: skewY(0deg) !important;
     text-decoration: none !important; }
 
+.header a {
+  color: black; }
+
+.description p {
+  font-family: 'Open Sans', sans-serif; }
+
 #intropara {
   margin: auto;
   width: 70vw;

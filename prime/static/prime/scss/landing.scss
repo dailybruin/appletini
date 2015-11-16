@@ -1,28 +1,34 @@
 #slides-overlay {
+	pointer-events: none;
 	z-index: 10;
 	position: absolute;
 	top: 0;
 	right: 0;
 	left: 0;
 	bottom: 0;
-	height: 100%;
+	height: 50%;
 	width: 100%;
 	background: linear-gradient(to bottom, rgba(41, 41, 41, 1.0) , rgba(91, 120, 118, 0.0));
-	
-	#slides-caption {
-		position: relative;
-		margin: 0 auto;
-		top: 50%;
-		transform: translateY(-50%);
-		text-align: center;
-		width: 200px;
-		background: white;
-		color: black;
-		padding: 10px;
-		font-family: 'PT Sans', sans-serif;
-	}
 
 
+}
+
+#slides-caption {
+	text-transform: uppercase;
+	// position: relative;
+	position: absolute;
+	color: white;
+	bottom: 0px;
+	left: 40px;
+	text-align: center;
+	width: 40%;
+	// margin: 0 auto;
+	display: block;
+	background-color: black;
+	font-size: 2em;
+	transform: translateY(-50%);
+	padding: 10px;
+	font-family: 'PT Sans', sans-serif;
 }
 
 #slides {
@@ -39,7 +45,7 @@
 	.slides-pagination {
 		z-index: 100;
 		a {
-			background: none;
+			background: white;
 			border: white;
 		}
 		margin-bottom: 10px;
