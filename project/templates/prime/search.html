@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="{{ STATIC_URL }}prime/css/landing/landing.css">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{{ STATIC_URL }}prime/css/landing/superslides.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+  <link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="{{ STATIC_URL }}prime/css/navbar.css">
+</head>
+
+<body>
+  <nav class="navbar navbar-fixed-top" id="navbar">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" id="brand-collapse" href="#">Prime</a>
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+      </div>
+
+      <div class="collapse navbar-collapse" id="collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="{% url 'prime_past_issues' %}">All Issues</a></li>
+          <li><a href="{% url 'prime_recipe' %}">Recipes</a></li>
+          <li id="brand"><a href="{% url 'root' %}">Prime</a></li>
+          <li><a href="{% url 'cityguides_view' %}">City Guides</a></li>
+          <li><a href="{% url 'prime_diy' %}">DIY</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div id="slides-overlay">
+    <div id="slides-caption"><b><a href="http://www.dailybruin.com">UCLA Daily Bruin's</a></b> <br>Premiere Magazine</div>
+  </div>
+  <div id="slides">
+    <div class="slides-container">
+      <img src="https://images.unsplash.com/photo-1446080501695-8e929f879f2b?ixlib=rb-0.3.5&q=80&fm=jpg&w=1080&fit=max&s=9ace04203847266b08426fa7886ad9e3" alt="Cinelli">
+      <img src="https://images.unsplash.com/photo-1446080501695-8e929f879f2b?ixlib=rb-0.3.5&q=80&fm=jpg&w=1080&fit=max&s=9ace04203847266b08426fa7886ad9e3" width="1024" height="682" alt="Surly">
+      <img src="https://images.unsplash.com/photo-1446080501695-8e929f879f2b?ixlib=rb-0.3.5&q=80&fm=jpg&w=1080&fit=max&s=9ace04203847266b08426fa7886ad9e3" width="1024" height="683" alt="Cinelli">
+    </div>
+
+    <nav class="slides-navigation">
+      <a href="#" class="next"><i class="fa fa-chevron-right"></i></a>
+      <a href="#" class="prev"><i class="fa fa-chevron-left"></i></a>
+    </nav>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6" style="position: fixed; bottom: 10px; right: 10px; z-index: 10000;">
+        <div id="sb-search" class="sb-search">
+          <form action="{% url 'search_result'%}" method="get">
+            <input class="sb-search-input" placeholder="Enter your search term..." type="text" value="" name="query" id="search">
+            <input class="sb-search-submit" type="submit" value="">
+            <span class="sb-icon-search"></span>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="container">
+    <div class="row">
+      {% for article in articles|slice:":2" %}
+      <div class="col-xs-6">
+        <img height="50% !important" src="{{ MEDIA_URL }}{{ article.lead_photo }}" class="img-responsive">
+        <div class="header">
+          {{article.title}}
+        </div>
+        <div class="description">
+          <p>{{article.body|truncatechars:200}}</p>
+          <p><a href="{% url 'prime_article' article.issue.slug article.slug %}">READ MORE </a></p>
+        </div>
+        <hr>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="row">
+      {% for article in articles|slice:"2:4" %}
+      <div class="col-xs-6">
+        <img height="50% !important" src="{{ MEDIA_URL }}{{ article.lead_photo }}" class="img-responsive">
+        <div class="header">
+          {{article.title}}
+        </div>
+        <div class="description">
+          <p>{{article.body|truncatechars:200}}</p>
+          <p><a href="{% url 'prime_article' article.issue.slug article.slug %}">READ MORE </a></p>
+        </div>
+        <hr>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="row">
+      {% for article in articles|slice:"4:6" %}
+      <div class="col-xs-6">
+        <img height="50% !important" src="{{ MEDIA_URL }}{{ article.lead_photo }}" class="img-responsive">
+        <div class="header">
+          {{article.title}}
+        </div>
+        <div class="description">
+          <p>{{article.body|truncatechars:200}}</p>
+          <p><a href="{% url 'prime_article' article.issue.slug article.slug %}">READ MORE </a></p>
+        </div>
+        <hr>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="row">
+      {% for article in articles|slice:"6:8" %}
+      <div class="col-xs-6">
+        <img height="50% !important" src="{{ MEDIA_URL }}{{ article.lead_photo }}" class="img-responsive">
+        <div class="header">
+          {{article.title}}
+        </div>
+        <div class="description">
+          <p>{{article.body|truncatechars:200}}</p>
+          <p><a href="{% url 'prime_article' article.issue.slug article.slug %}">READ MORE </a></p>
+        </div>
+        <hr>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="row">
+      {% for article in articles|slice:"8:10" %}
+      <div class="col-xs-6">
+        <img height="50% !important" src="{{ MEDIA_URL }}{{ article.lead_photo }}" class="img-responsive">
+        <div class="header">
+          {{article.title}}
+        </div>
+        <div class="description">
+          <p>{{article.body|truncatechars:200}}</p>
+          <p><a href="{% url 'prime_article' article.issue.slug article.slug %}">READ MORE </a></p>
+        </div>
+        <hr>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+
+  <div class="pagination">
+    <span class="step-links">
+      {% if articles.has_previous %}
+      <a href="?page={{ articles.previous_page_number }}"><i class="fa fa-chevron-left"></i></a>
+      {% endif %}
+
+      <span class="current">
+        Page {{ articles.number }} of {{ articles.paginator.num_pages }}
+      </span>
+
+      {% if articles.has_next %}
+      <a href="?page={{ articles.next_page_number }}"> <i class="fa fa-chevron-right"></i></a>
+      {% endif %}
+    </span>
+  </div>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="{{ STATIC_URL }}prime/js/jquery.superslides.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script src="{{ STATIC_URL }}prime/js/landing.js"></script>
+  <script src="{{ STATIC_URL }}prime/js/cityguide/classie.js"></script>
+  <script src="{{ STATIC_URL }}prime/js/base.js"></script>
+  <script>
+    $(document).ready(function(){
+      new UISearch( document.getElementById( 'sb-search' ) );
+      $(window).scroll(function() {
+        if ($(window).width() > 767) {
+          if ($('#navbar').offset().top > 100) {
+            $('#navbar').addClass('scrolled');
+          }
+          else {
+            $('#navbar').removeClass('scrolled');
+          }
+        }
+      })
+    })
+  </script>
+</body>
+</html>

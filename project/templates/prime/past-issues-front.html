@@ -1,16 +1,62 @@
 {% extends 'prime/base.html' %}
 
 {% block content %}
-    <div class="past-issues">
-        {% for pdf in pdfs %}
-            <a class="img-container" href="{% url 'prime_issue' pdf.issue.slug %}">
-                <img src="{{ MEDIA_URL }}{{ pdf.image }}">
-                <div class="img-cover">
-                    <div class="img-cover-title">
-                        {{ pdf.issue.name }}
-                    </div>
-                </div>
-            </a>
-        {% endfor %}
+
+<div id="past-issues">
+
+
+  {% for pdf in pdfs %}
+
+  <a class="img-container" class="owl-item" href="{% url 'prime_issue' pdf.issue.slug %}">
+
+    <img src="{{ MEDIA_URL }}{{ pdf.image }}">
+    <div class="img-cover">
+      <div class="img-cover-title">
+        {{ pdf.issue.name }}
+      </div>
     </div>
+  </a> 
+
+
+  {% endfor %} 
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="{{ STATIC_URL }}prime/js/owl.carousel.js"></script>    
+<script type="text/javascript">
+  jQuery(document).ready( function($){
+    $("#past-issues").owlCarousel({        
+      center: true,
+      items:2,
+      loop:false,
+      margin:10,
+
+      responsive:{    
+        0:{
+          items:1,
+          nav:true,
+          margin: 10,
+        },
+        600:{
+          items:2,
+          nav:true,
+          margin: 10,
+        },
+        1000:{
+          items:4,
+          nav:true,
+          margin: 10,
+        }  
+      },
+
+      navText: [
+      "<i class='icon-chevron-left icon-white' ><</i>",
+      "<i class='icon-chevron-right icon-white'>></i>"
+      ]
+
+    });
+  });
+</script>
+
+
 {% endblock %}

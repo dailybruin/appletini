@@ -1,178 +1,201 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <link rel="stylesheet" href="{{ STATIC_URL }}prime/css/landing/style.css">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
-        <title> prime | Daily Bruin </title>
-    </head>
+<head>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{{ STATIC_URL }}prime/css/landing/superslides.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+  <link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700|Open+Sans:300,400' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="{{ STATIC_URL }}prime/css/navbar.css">
+  <link rel="stylesheet" href="{{ STATIC_URL }}prime/css/landing/landing.css">
 
 
-    <style>
-    a#prime{
-    font-family: "Times";
-    background-color: black;
-    color: white;
-    font-size: 1em;
-    padding: 4px 8px;
-    float: left;
-    margin-top: 1%;
-    }
-    
-    a#prime:hover{
-        background-color: black;
-        text-decoration: none;
-        color: white;
-    }
+</head>
 
-    #ugh
-    {
-        width: 16.87%;
-        position: absolute;
-        margin-top: 16.7%;
-        margin-left: 40%;
+<body>
+  <nav class="navbar navbar-fixed-top" id="navbar">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" id="brand-collapse" href="#">Prime</a>
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
 
-    }
+      </div>
 
-    </style>
+      <div class="collapse navbar-collapse" id="collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="{% url 'prime_past_issues' %}">All Issues</a></li>
+          <li><a href="{% url 'prime_recipe' %}">Recipes</a></li>
+          <li id="brand"><a href="{% url 'root' %}">Prime</a></li>
+          <li><a href="{% url 'cityguides_view' %}">City Guides</a></li>
+          <li><a href="{% url 'prime_diy' %}">DIY</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div id="slides-overlay">
+  </div>
+  <div id="slides">
+    <div class="slides-container">
+      <div>
+        <img src="http://dailybruin.com/images/2015/11/AYU_1926_meitu_6.jpg" width="1024" height"683" alt="Cinelli">
+        <div id="slides-caption">A Space to Dream</div>
+      </div>
+      <div>
+        <img src="http://dailybruin.com/images/2015/11/AYU_0019_meitu_1.jpg" width="1024" height="683">
+        <div id="slides-caption">Museums of LA</div>
 
-    <body>
+      </div>
+      <div>
+        <img src="http://dailybruin.com/images/2015/11/two_meitu_1.jpg" width="1024" height"683"> 
+        <div id="slides-caption">All Abroad</div>
+      </div>
+      <div>
+        <img src="http://dailybruin.com/images/2015/11/AYU_9638_meitu_1.jpg" width="1024" height"683"> 
+        <div id="slides-caption">Age of Learning</div>
+      </div>
+      <div>
+        <img src="http://dailybruin.com/images/2015/11/AYU_9804_meitu_2.jpg" width="1024" height"683"> 
+        <div id="slides-caption">Campfire</div>
+      </div>
 
+      
+    </div>
 
-        <!-- <a href="http://graphics.dailybruin.com/prime/winter-2014/" id="prime"> D <br /> B</a> -->
+    <nav class="slides-navigation">
+      <a href="#" class="next"><i class="fa fa-chevron-right"></i></a>
+      <a href="#" class="prev"><i class="fa fa-chevron-left"></i></a>
+    </nav>
+  </div>
 
-        <div id="container">
-            <a href="http://dailybruin.com/"><img id="ugh" src="{{ STATIC_URL }}prime/img/db_logo.svg" class="img-responsive"/></a>
-            <img id="cover_photo" src="{{ STATIC_URL }}prime/img/Front/cover_photo1.jpg" />
-            <nav class="navbar navbar-default">
-                <div class="container-fluid">
-                    <!-- Brand and toggle get grouped for better mobile display -->
-                    <div class="navbar-header">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4" style="position: fixed; bottom: 30px; right: 30px; z-index: 1000;">
+        <div id="sb-search" class="sb-search">
 
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" style="margin-right: auto; margin-left: auto">
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-
-                    </div>
-
-                    <!-- Collect the nav links, forms, and other content for toggling -->
-                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        <div class="row"> <!--in place so that photo tiles are in line with cover_photo-->
-                            <ul class="nav navbar-nav" id="below_cover_photo">
-                                <li>
-                                    <a href="{% url 'prime_issue' current_issue.slug %}">
-                                        <img class="tile_photo" src="{{ STATIC_URL }}prime/img/Front/nav_currentissue%20(2).jpg">
-                                    </a>
-                                    <a href="{% url 'prime_issue' current_issue.slug %}" class="tile_photo_transcription">
-                                        <div class="tile_photo_transcription">current Issue</div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{% url 'prime_recipe' %}">
-                                        <img class="tile_photo" src="{{ STATIC_URL }}prime/img/Front/nav_recipe.jpg">
-                                    </a>
-                                    <a href="{% url 'prime_recipe' %}" class="tile_photo_transcription">
-                                        <div class="tile_photo_transcription">recipes</div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{% url 'cityguides_view' %}">
-                                        <img class="tile_photo" src="{{ STATIC_URL }}prime/img/Front/nav_cityguide.jpg">
-                                    </a>
-                                    <a href="{% url 'cityguides_view' %}" class="tile_photo_transcription">
-                                        <div class="tile_photo_transcription">city guide</div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{% url 'prime_diy' %}">
-                                        <img class="tile_photo" src="{{ STATIC_URL }}prime/img/Front/nav_diy.jpg">
-                                    </a>
-                                    <a href="{% url 'prime_diy' %}" class="tile_photo_transcription">
-                                        <div class="tile_photo_transcription">DIY</div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{% url 'prime_past_issues' %}">
-                                        <img class="tile_photo" src="{{ STATIC_URL }}prime/img/Front/nav_previousissue.jpg">
-                                    </a>
-                                    <a href="{% url 'prime_past_issues' %}" class="tile_photo_transcription">
-                                        <div class="tile_photo_transcription">Previous Issues</div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{% url 'prime_past_issues' %}" class="tile_photo_transcription">
-                                        <br />
-                                        <div class="tile_photo_transcription">Daily Bruin</div>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div> <!-- /.navbar-collapse -->
-                </div> <!-- /.container-fluid -->
-            </nav>
+          <form action="{% url 'search_result'%}">
+            <input class="sb-search-input" placeholder="Search Articles..." type="text" value="" name="query" id="search">
+            <input class="sb-search-submit" type="submit" value="">
+            <span class="sb-icon-search"></span>
+          </form>
         </div>
+      </div>
+    </div>
+  </div>
 
-        <hr id="thick_border">
-
-         <h3 style="text-align:center">LATEST STORIES</h3>
-
-        <hr id="thick_border2">
-
-        <div id="container">
-            <div class="row">
-                {% for article in articles|slice:":2" %}
-                    <div class="col-md-6">
-                        <a href="{% url 'prime_article' article.issue.slug article.slug %}"><img style="margin: auto" height="50% !important" src="{{ MEDIA_URL }}{{ article.lead_photo }}" class="img-responsive"></a>
-                        <div class="header">
-                            <a style="color: inherit" href="{% url 'prime_article' article.issue.slug article.slug %}"> {{article.title}}</a>
-                        </div>
-                        <div class="description">
-                            <p>{{article.teaser}}</p>
-                            <p><a href="{% url 'prime_article' article.issue.slug article.slug %}">READ MORE </a></p>
-                        </div>
-                        <hr>
-                    </div>
-                {% endfor %}
-            </div>
-            <div class="row">
-                {% for article in articles|slice:"2:4" %}
-                    <div class="col-md-6">
-                        <a href="{% url 'prime_article' article.issue.slug article.slug %}"><img style="margin: auto" height="50% !important" src="{{ MEDIA_URL }}{{ article.lead_photo }}" class="img-responsive"></a>
-                        <div class="header">
-                            <a style="color: inherit" href="{% url 'prime_article' article.issue.slug article.slug %}"> {{article.title}}</a>
-                        </div>
-                        <div class="description">
-                            <p>{{article.teaser}}</p>
-                            <p><a href="{% url 'prime_article' article.issue.slug article.slug %}">READ MORE </a></p>
-                        </div>
-                        <hr>
-                    </div>
-                {% endfor %}
-            </div>
+  <div id="container">
+    <div class="row">
+      {% for article in articles|slice:":2" %}
+      <div class="col-xs-6">
+        <img height="50% !important" src="{{ MEDIA_URL }}{{ article.lead_photo }}" class="img-responsive">
+        <div class="header">
+          <a href="{% url 'prime_article' article.issue.slug article.slug %}">{{article.title}}</a>
         </div>
-
-        <div class="pagination">
-            <span class="step-links">
-                {% if articles.has_previous %}
-                    <a href="?page={{ articles.previous_page_number }}"> << </a>
-                {% endif %}
-
-                <span class="current">
-                    Page {{ articles.number }} of {{ articles.paginator.num_pages }}.
-                </span>
-
-                {% if articles.has_next %}
-                    <a href="?page={{ articles.next_page_number }}"> >> </a>
-                {% endif %}
-            </span>
+        <div class="description">
+          <p>{{article.body|truncatechars:200}}</p>
         </div>
+        <hr>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="row">
+      {% for article in articles|slice:"2:4" %}
+      <div class="col-xs-6">
+        <img height="50% !important" src="{{ MEDIA_URL }}{{ article.lead_photo }}" class="img-responsive">
+        <div class="header">
+          <a href="{% url 'prime_article' article.issue.slug article.slug %}">{{article.title}}</a>
+        </div>
+        <div class="description">
+          <p>{{article.body|truncatechars:200}}</p>
+        </div>
+        <hr>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="row">
+      {% for article in articles|slice:"4:6" %}
+      <div class="col-xs-6">
+        <img height="50% !important" src="{{ MEDIA_URL }}{{ article.lead_photo }}" class="img-responsive">
+        <div class="header">
+          <a href="{% url 'prime_article' article.issue.slug article.slug %}">{{article.title}}</a>
+        </div>
+        <div class="description">
+          <p>{{article.body|truncatechars:200}}</p>
+        </div>
+        <hr>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="row">
+      {% for article in articles|slice:"6:8" %}
+      <div class="col-xs-6">
+        <img height="50% !important" src="{{ MEDIA_URL }}{{ article.lead_photo }}" class="img-responsive">
+        <div class="header">
+          <a href="{% url 'prime_article' article.issue.slug article.slug %}">{{article.title}}</a>
+        </div>
+        <div class="description">
+          <p>{{article.body|truncatechars:200}}</p>
+        </div>
+        <hr>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="row">
+      {% for article in articles|slice:"8:10" %}
+      <div class="col-xs-6">
+        <img height="50% !important" src="{{ MEDIA_URL }}{{ article.lead_photo }}" class="img-responsive">
+        <div class="header">
+          <a href="{% url 'prime_article' article.issue.slug article.slug %}">{{article.title}}</a>
+        </div>
+        <div class="description">
+          <p>{{article.body|truncatechars:200}}</p>
+        </div>
+        <hr>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
 
 
-        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-        <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
-    </body>
+  <div class="pagination">
+    <span class="step-links">
+      {% if articles.has_previous %}
+      <a href="?page={{ articles.previous_page_number }}"><i class="fa fa-chevron-left"></i></a>
+      {% endif %}
+
+      <span class="current">
+        Page {{ articles.number }} of {{ articles.paginator.num_pages }}
+      </span>
+
+      {% if articles.has_next %}
+      <a href="?page={{ articles.next_page_number }}"> <i class="fa fa-chevron-right"></i></a>
+      {% endif %}
+    </span>
+  </div>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="{{ STATIC_URL }}prime/js/jquery.superslides.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script src="{{ STATIC_URL }}prime/js/landing.js"></script>
+  <script src="{{ STATIC_URL }}prime/js/cityguide/classie.js"></script>
+  <script src="{{ STATIC_URL }}prime/js/base.js"></script>
+  <script>
+    $(document).ready(function(){
+      new UISearch( document.getElementById( 'sb-search' ) );
+      $(window).scroll(function() {
+        if ($(window).width() > 767) {
+          if ($('#navbar').offset().top > 100) {
+            $('#navbar').addClass('scrolled');
+          }
+          else {
+            $('#navbar').removeClass('scrolled');
+          }
+        }
+      })
+    })
+  </script>
+</body>
 </html>
