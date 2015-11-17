@@ -146,7 +146,6 @@
   function addDataToMap(){
     {% for district in districts %}
     var loc; 
-    var index = {{forloop.counter0}}
 
     var address = "{{ district.title }}" + ", Los Angeles, CA";
     gc.geocode( { 'address' : address }, function(results, status) {
@@ -172,10 +171,10 @@
 
     
 
-      var cardID = '#card-' + index;
+      var cardID = '#card-' + "{{ forloop.counter0 }}";
 
       $(window).bind('scroll', function() {
-        if(currentCard > index || autoMapScroll != 0)
+        if(currentCard > {{ forloop.counter0 }} || autoMapScroll != 0)
           return;
 
         if($(window).scrollTop() < 10)
@@ -184,14 +183,14 @@
         }
 
         var position = $(cardID).offset().top + $(cardID).outerHeight() - window.innerHeight;
-        if(currentCard == index && $(window).scrollTop() < position)
+        if(currentCard == {{ forloop.counter0 }} && $(window).scrollTop() < position)
         {
           currentCard--;
           panMapTo(markerIndex-1);
         }
 
-        if($(window).scrollTop() >= position && currentCard != index) {
-          currentCard = index;
+        if($(window).scrollTop() >= position && currentCard != {{ forloop.counter0 }}) {
+          currentCard = {{ forloop.counter0 }};
           panMapTo(markerIndex);
         }
       });
