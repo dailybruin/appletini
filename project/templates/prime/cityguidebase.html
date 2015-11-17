@@ -55,12 +55,13 @@
   </nav>
 
   <div id="map-overlay"></div>
-  <div id="googlemaps"></div>
+  <div id="googlemaps" style="position: fixed; height: 100%; width: 100%;"></div>
 
   <div id="content">
     {% for district in districts %}
       <div class="card" id="card-{{ forloop.counter0 }}" style="border-top: 6pt solid rgb(1, 136, 210)"> 
-        <img src="{{ MEDIA_URL }}{{ district.lead_photo }}">
+        <!-- <img style="width:100%;" src="{{ MEDIA_URL }}{{ district.lead_photo }}"> -->
+        <img style="width: 100%;" src="http://graphics.dailybruin.com/media/prime/cityguides/lead/santa-monica.jpg" alt="">
         <h3><a href="{% url 'cityguide_view' district.slug %}">{{district.title}}</a></h3>
         <p>{{district.intro_body}}</p>
 
