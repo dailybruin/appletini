@@ -68,8 +68,7 @@ class PastIssuesView(View):
 class ArticleView(View):
     def get(self, context, issue_slug, article_slug):
         try:
-            article = Article.objects.get(issue__slug=issue_slug,
-                                          slug=article_slug, )
+            article = Article.objects.get(slug=article_slug)
         except Article.DoesNotExist:
             raise Http404
         if article.redirect:
@@ -275,7 +274,7 @@ class SearchResultView(View):
     def get(self, context):
         current_issue, _ = get_recent_issues()
         query = self.request.GET.get('query')
-        article_list = PrimeBase.objects.filter(Q(title__icontains=query) | Q(body__icontains=query))
+        article_list = Article.objects.filter(title__icontains=query)
         # article_list = Article.objects.order_by('position').reverse()
         paginator = Paginator(article_list, 10)
         page = self.request.GET.get('page')
