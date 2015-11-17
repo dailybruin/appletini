@@ -60,8 +60,7 @@
   <div id="content">
     {% for district in districts %}
       <div class="card" id="card-{{ forloop.counter0 }}" style="border-top: 6pt solid rgb(1, 136, 210)"> 
-        <!-- <img style="width:100%;" src="{{ MEDIA_URL }}{{ district.lead_photo }}"> -->
-        <img style="width: 100%;" src="http://graphics.dailybruin.com/media/prime/cityguides/lead/santa-monica.jpg" alt="">
+        <img style="width:100%;" src="{{ MEDIA_URL }}{{ district.lead_photo }}">
         <h3><a href="{% url 'cityguide_view' district.slug %}">{{district.title}}</a></h3>
         <p>{{district.intro_body}}</p>
 
