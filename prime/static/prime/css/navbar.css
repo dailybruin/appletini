@@ -43,7 +43,7 @@
   width: 100% !important; }
 
 #affix {
-  z-index: 1000;
+  z-index: 100000;
   background-color: black; }
   #affix .container-fluid .navbar-collapse {
     text-align: center; }
