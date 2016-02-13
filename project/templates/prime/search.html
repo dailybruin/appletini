@@ -92,7 +92,7 @@
           <a href="{% url 'prime_article' article.issue.slug article.slug %}">{{article.title}}</a>
         </div>
         <div class="description">
-          <p>{{article.body|truncatechars:200}}</p>
+          <p>{{article.teaser|truncatechars:200}}</p>
         </div>
         <hr>
       </div>
@@ -106,7 +106,7 @@
           <a href="{% url 'prime_article' article.issue.slug article.slug %}">{{article.title}}</a>
         </div>
         <div class="description">
-          <p>{{article.body|truncatechars:200}}</p>
+          <p>{{article.teaser|truncatechars:200}}</p>
         </div>
         <hr>
       </div>
@@ -120,7 +120,7 @@
           <a href="{% url 'prime_article' article.issue.slug article.slug %}">{{article.title}}</a>
         </div>
         <div class="description">
-          <p>{{article.body|truncatechars:200}}</p>
+          <p>{{article.teaser|truncatechars:200}}</p>
         </div>
         <hr>
       </div>
@@ -134,7 +134,7 @@
           <a href="{% url 'prime_article' article.issue.slug article.slug %}">{{article.title}}</a>
         </div>
         <div class="description">
-          <p>{{article.body|truncatechars:200}}</p>
+          <p>{{article.teaser|truncatechars:200}}</p>
         </div>
         <hr>
       </div>
@@ -148,7 +148,7 @@
           <a href="{% url 'prime_article' article.issue.slug article.slug %}">{{article.title}}</a>
         </div>
         <div class="description">
-          <p>{{article.body|truncatechars:200}}</p>
+          <p>{{article.teaser|truncatechars:200}}</p>
         </div>
         <hr>
       </div>
@@ -157,7 +157,7 @@
   </div>
 
 
-  <div class="pagination">
+  <div class="pagination" style="margin-top: 25px;">
     <span class="step-links">
       {% if articles.has_previous %}
       <a href="?page={{ articles.previous_page_number }}"><i class="fa fa-chevron-left"></i></a>

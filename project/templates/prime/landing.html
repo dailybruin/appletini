@@ -44,24 +44,24 @@
     <div class="slides-container">
       <div>
         <img src="http://dailybruin.com/images/2015/11/AYU_1926_meitu_6.jpg" width="1024" height"683" alt="Cinelli">
-        <div id="slides-caption">A Space to Dream</div>
+        <div id="slides-caption"><a href="http://graphics.dailybruin.com/a-space-to-dream/">A Space to Dream</a></div>
       </div>
       <div>
         <img src="http://dailybruin.com/images/2015/11/AYU_0019_meitu_1.jpg" width="1024" height="683">
-        <div id="slides-caption">Museums of LA</div>
+        <div id="slides-caption"><a href="http://graphics.dailybruin.com/museums-of-LA/">Museums of LA</a></div>
 
       </div>
       <div>
         <img src="http://dailybruin.com/images/2015/11/two_meitu_1.jpg" width="1024" height"683"> 
-        <div id="slides-caption">All Abroad</div>
+        <div id="slides-caption"><a href="http://graphics.dailybruin.com/all-abroad/">All Abroad</a></div>
       </div>
       <div>
         <img src="http://dailybruin.com/images/2015/11/AYU_9638_meitu_1.jpg" width="1024" height"683"> 
-        <div id="slides-caption">Age of Learning</div>
+        <div id="slides-caption"><a href="http://graphics.dailybruin.com/age-of-learning/#firstPage">Age of Learning</a></div>
       </div>
       <div>
         <img src="http://dailybruin.com/images/2015/11/AYU_9804_meitu_2.jpg" width="1024" height"683"> 
-        <div id="slides-caption">Campfire</div>
+        <div id="slides-caption"><a href="http://graphics.dailybruin.com/prime/fall-2015/campfire-philly-cheesesteak/">Campfire</a></div>
       </div>
 
       
@@ -97,7 +97,7 @@
           <a href="{% url 'prime_article' article.issue.slug article.slug %}">{{article.title}}</a>
         </div>
         <div class="description">
-          <p>{{article.body|truncatechars:200}}</p>
+          <p>{{article.teaser|truncatechars:200}}</p>
         </div>
       </div>
       {% endfor %}
@@ -110,7 +110,7 @@
           <a href="{% url 'prime_article' article.issue.slug article.slug %}">{{article.title}}</a>
         </div>
         <div class="description">
-          <p>{{article.body|truncatechars:200}}</p>
+          <p>{{article.teaser|truncatechars:200}}</p>
         </div>
       </div>
       {% endfor %}
@@ -123,7 +123,7 @@
           <a href="{% url 'prime_article' article.issue.slug article.slug %}">{{article.title}}</a>
         </div>
         <div class="description">
-          <p>{{article.body|truncatechars:200}}</p>
+          <p>{{article.teaser|truncatechars:200}}</p>
         </div>
       </div>
       {% endfor %}
@@ -136,7 +136,7 @@
           <a href="{% url 'prime_article' article.issue.slug article.slug %}">{{article.title}}</a>
         </div>
         <div class="description">
-          <p>{{article.body|truncatechars:200}}</p>
+          <p>{{article.teaser|truncatechars:200}}</p>
         </div>
       </div>
       {% endfor %}
@@ -149,7 +149,7 @@
           <a href="{% url 'prime_article' article.issue.slug article.slug %}">{{article.title}}</a>
         </div>
         <div class="description">
-          <p>{{article.body|truncatechars:200}}</p>
+          <p>{{article.teaser|truncatechars:200}}</p>
         </div>
       </div>
       {% endfor %}
@@ -157,7 +157,7 @@
   </div>
 
 
-  <div class="pagination">
+  <div class="pagination" style="margin-top: 25px;">
     <span class="step-links">
       {% if articles.has_previous %}
       <a href="?page={{ articles.previous_page_number }}"><i class="fa fa-chevron-left"></i></a>
@@ -193,5 +193,5 @@
       })
     })
   </script>
-</body>
+</teaser>
 </html>
