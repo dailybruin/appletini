@@ -43,7 +43,7 @@
   width: 100% !important; }
 
 #affix {
-  z-index: 1000;
+  z-index: 100000;
   background-color: black; }
   #affix .container-fluid .navbar-collapse {
     text-align: center; }
@@ -59,7 +59,7 @@
             background-color: transparent; }
 
 .pagination {
-  margin: 0 auto;
+  margin: 25px auto;
   display: block;
   width: 400px;
   z-index: 10000;

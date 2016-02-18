@@ -73,7 +73,7 @@
 
 // Affixed Navbar for Some Articles
 #affix {
-	z-index: 1000;
+	z-index: 100000;
 	background-color: black;
 	.container-fluid {
 		.navbar-collapse {
@@ -99,7 +99,7 @@
 
 // Page Arrows at the Bottom
 .pagination {
-	margin: 0 auto;
+	margin: 25px auto;
 	display: block;
 	width: 400px;
 	z-index: 10000;

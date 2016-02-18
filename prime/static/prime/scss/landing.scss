@@ -14,6 +14,12 @@
 }
 
 #slides-caption {
+
+	a {
+		color: white;
+		text-decoration: none;
+
+	}
 	text-transform: uppercase;
 	// position: relative;
 	position: absolute;
@@ -29,6 +35,8 @@
 	transform: translateY(-50%);
 	padding: 10px;
 	font-family: 'PT Sans', sans-serif;
+
+
 }
 
 #slides {

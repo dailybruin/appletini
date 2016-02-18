@@ -24,6 +24,9 @@
   transform: translateY(-50%);
   padding: 10px;
   font-family: 'PT Sans', sans-serif; }
+  #slides-caption a {
+    color: white;
+    text-decoration: none; }
 
 #slides .slides-navigation {
   z-index: 100; }
