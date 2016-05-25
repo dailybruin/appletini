@@ -227,7 +227,7 @@ class RecipeTagsView(View):
 
 class DIYFrontView(View):
     def get(self, context):
-        diy_list = DIYarticle.objects.all()
+        diy_list = DIYarticle.objects.order_by('position').reverse()
         paginator = Paginator(diy_list, 5)
         page = self.request.GET.get('page')
         try:
