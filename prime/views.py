@@ -137,7 +137,7 @@ class DistrictView(View):
 
 class RecipeFrontView(View):
     def get(self, context):
-        recipe_list = Recipe.objects.all()
+        recipe_list = Recipe.objects.order_by('position').reverse()
         paginator = Paginator(recipe_list, 5)
         page = self.request.GET.get('page')
         try:
